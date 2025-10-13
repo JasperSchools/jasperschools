@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -18,24 +19,26 @@ export default function Header() {
     <header className="bg-white shadow-lg sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-4">
-          {/* Logo */}
-          <div className="flex items-center flex-shrink-0">
-            <div className="flex items-center">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-school-green rounded-full flex items-center justify-center mr-2 sm:mr-3">
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center">
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 bg-school-blue rounded-sm flex items-center justify-center">
-                    <div className="w-2 h-2 sm:w-4 sm:h-4 bg-school-red rounded-full"></div>
-                  </div>
-                </div>
-              </div>
-              <div className="hidden xs:block">
-                <h1 className="text-lg sm:text-xl font-bold text-school-blue">
-                  Jasper Primary School
-                </h1>
-                <p className="text-xs sm:text-sm text-gray-600">Nyairongo, Uganda</p>
-              </div>
-            </div>
-          </div>
+           {/* Logo */}
+           <div className="flex items-center flex-shrink-0">
+             <div className="flex items-center">
+               <div className="relative w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-3">
+                 <Image
+                   src="/school-logo.png"
+                   alt="Jasper Primary School Logo"
+                   fill
+                   className="object-contain"
+                   priority
+                 />
+               </div>
+               <div className="hidden xs:block">
+                 <h1 className="text-lg sm:text-xl font-bold text-school-blue">
+                   Jasper Primary School
+                 </h1>
+                 <p className="text-xs sm:text-sm text-gray-600">Nyairongo, Uganda</p>
+               </div>
+             </div>
+           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:block">
@@ -56,7 +59,7 @@ export default function Header() {
           <div className="hidden lg:block">
             <a
               href="#donate"
-              className="bg-school-red hover:bg-red-600 text-white font-bold py-2 px-4 xl:px-6 rounded-full transition-all duration-200  hover:shadow-xl transform hover:-translate-y-0.5 text-sm xl:text-base"
+              className="bg-school-red hover:bg-red-600 text-white font-bold py-3 px-6 xl:px-8 rounded-2xl transition-all duration-200 transform hover:-translate-y-0.5 text-sm xl:text-base"
             >
               Donate Now
             </a>
@@ -96,7 +99,7 @@ export default function Header() {
               ))}
               <a
                 href="#donate"
-                className="bg-school-red hover:bg-red-600 text-white font-bold py-3 px-4 rounded-full transition-all duration-200 block text-center mt-4 shadow-lg hover:shadow-xl"
+                className="bg-school-red hover:bg-red-600 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-200 block text-center mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Donate Now
