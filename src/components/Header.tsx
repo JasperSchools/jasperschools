@@ -163,7 +163,7 @@ export default function Header() {
             {/* Mobile Layout - Single Row */}
             <div className="w-full md:hidden flex items-center justify-between">
               {/* Social Icons on left */}
-              <div className="flex items-center space-x-2.5">
+              <div className="flex items-center space-x-1.5">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}

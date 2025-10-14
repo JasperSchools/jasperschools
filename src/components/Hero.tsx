@@ -1,4 +1,67 @@
+'use client'
+
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
+
+// Animated Counter Component
+function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
+  const [count, setCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    const element = document.getElementById(`counter-${end}`)
+    if (element) {
+      observer.observe(element)
+    }
+
+    return () => observer.disconnect()
+  }, [end, isVisible])
+
+  useEffect(() => {
+    if (!isVisible) return
+
+    let startTime: number
+    let animationFrame: number
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+      const currentCount = Math.floor(easeOutQuart * end)
+      
+      setCount(currentCount)
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate)
+      }
+    }
+
+    animationFrame = requestAnimationFrame(animate)
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame)
+      }
+    }
+  }, [end, duration, isVisible])
+
+  return (
+    <span id={`counter-${end}`}>
+      {count}{suffix}
+    </span>
+  )
+}
 
 export default function Hero() {
   return (
@@ -34,15 +97,21 @@ export default function Hero() {
             {/* Key Statistics */}
             <div className="grid grid-cols-3 gap-4 mb-8 max-w-lg mx-auto lg:mx-0">
               <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-yellow-300 mb-1">500+</div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-yellow-300 mb-1">
+                  <AnimatedCounter end={500} duration={2500} suffix="+" />
+                </div>
                 <div className="text-sm sm:text-base text-green-200">Students</div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-yellow-300 mb-1">15+</div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-yellow-300 mb-1">
+                  <AnimatedCounter end={15} duration={2000} suffix="+" />
+                </div>
                 <div className="text-sm sm:text-base text-green-200">Teachers</div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-yellow-300 mb-1">10+</div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-yellow-300 mb-1">
+                  <AnimatedCounter end={10} duration={1800} suffix="+" />
+                </div>
                 <div className="text-sm sm:text-base text-green-200">Years</div>
               </div>
             </div>
