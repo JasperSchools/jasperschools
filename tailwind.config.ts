@@ -15,6 +15,7 @@ const config: Config = {
         'school-green': '#2E8B57',
         'school-red': '#E74C3C',
         'school-blue': '#000080',
+        'school-yellow': '#F4D03F',
       },
     },
   },
