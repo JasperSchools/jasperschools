@@ -8,44 +8,45 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
   const topHeaderLinks = [
-    { name: 'Careers', href: '#careers' },
-    { name: 'Visit Us', href: '#visit' },
-    { name: 'Reports', href: '#reports' },
-    { name: 'Sponsor a Student', href: '#sponsor' },
-    { name: 'Donate', href: '#donate' },
+    { name: 'Careers', href: '/#careers' },
+    { name: 'Visit Us', href: '/#visit' },
+    { name: 'Reports', href: '/#reports' },
+    { name: 'Sponsor a Student', href: '/#sponsor' },
+    { name: 'Donate', href: '/#donate' },
   ]
 
   const socialLinks = [
-    { name: 'LinkedIn', href: '#', icon: 'linkedin' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/jasper-primaryschool-nyairongo/posts/?feedView=all', icon: 'linkedin' },
     { name: 'Facebook', href: '#', icon: 'facebook' },
     { name: 'Instagram', href: '#', icon: 'instagram' },
     { name: 'X (Twitter)', href: '#', icon: 'x' },
   ]
 
   const aboutUsDropdown = [
-    { name: 'About Us', href: '#about', icon: 'info' },
-    { name: 'Our Journey', href: '#journey', icon: 'map' },
-    { name: 'Our Team', href: '#team', icon: 'users' },
-    { name: 'Partners', href: '#partners', icon: 'handshake' },
-    { name: 'Reports', href: '#reports', icon: 'document' },
+    { name: 'About Us', href: '/#about', icon: 'info' },
+    { name: 'Vision & Mission', href: '/about/vision-mission', icon: 'document' },
+    { name: 'Our Journey', href: '/#journey', icon: 'map' },
+    { name: 'Our Team', href: '/#team', icon: 'users' },
+    { name: 'Partners', href: '/#partners', icon: 'handshake' },
+    { name: 'Reports', href: '/#reports', icon: 'document' },
   ]
 
   const schoolsDropdown = [
-    { name: 'Uganda', href: '#school-uganda', icon: 'location' },
+    { name: 'Uganda', href: '/#school-uganda', icon: 'location' },
   ]
 
   const getInvolvedDropdown = [
-    { name: 'Donate', href: '#donate', icon: 'heart' },
-    { name: 'Sponsor a Student', href: '#sponsor', icon: 'gift' },
-    { name: 'Visit Us', href: '#visit', icon: 'calendar' },
-    { name: 'Join Our Team', href: '#careers', icon: 'briefcase' },
+    { name: 'Donate', href: '/#donate', icon: 'heart' },
+    { name: 'Sponsor a Student', href: '/#sponsor', icon: 'gift' },
+    { name: 'Visit Us', href: '/#visit', icon: 'calendar' },
+    { name: 'Join Our Team', href: '/#careers', icon: 'briefcase' },
   ]
 
   const navigation = [
-    { name: 'Home', href: '#' },
-    { name: 'Programs', href: '#programs' },
-    { name: 'Our Impact', href: '#impact' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Programs', href: '/#programs' },
+    { name: 'Our Impact', href: '/#impact' },
+    { name: 'Contact', href: '/#contact' },
   ]
 
   const handleDropdownToggle = (dropdownName: string) => {

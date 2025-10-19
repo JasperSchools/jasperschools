@@ -132,9 +132,6 @@ export default function Hero() {
                 className="group bg-transparent hover:bg-white hover:bg-opacity-10 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 border-2 border-white border-opacity-30 hover:border-opacity-60 backdrop-blur-sm flex items-center justify-center"
               >
                 <span>Learn More</span>
-                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
               </a>
             </div>
           </div>
