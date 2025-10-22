@@ -63,82 +63,60 @@ function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number, d
   )
 }
 
+// Slideshow Component
+function Slideshow() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  
+  const slides = [
+    '/images/istockphoto-1435346080-1024x1024_cleanup.jpg',
+    'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=800&fit=crop'
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [slides.length])
+
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === currentSlide ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <Image
+            src={slide}
+            alt="School slideshow"
+            fill
+            priority={index === 0}
+            quality={100}
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50" />
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-school-green via-green-700 to-green-800 text-white overflow-hidden">
-      {/* Background Image/Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full blur-sm"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-white rounded-full blur-sm"></div>
-        <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-white rounded-full blur-sm"></div>
-        <div className="absolute bottom-40 right-1/3 w-20 h-20 bg-white rounded-full blur-sm"></div>
-      </div>
+    <section className="relative text-white overflow-hidden min-h-screen">
+      {/* Slideshow Background */}
+      <Slideshow />
       
-      {/* Dark Blur Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"></div>
-
-      {/* Professional Content Layout */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 xl:py-24">
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-          {/* Main Content */}
-          <div className="lg:col-span-7 text-center lg:text-left">
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-4">
-              Creating Bright Paths
-              <span className="block text-yellow-300 mt-1">Together</span>
-            </h1>
-            
-            {/* Subheadline */}
-            <p className="text-base sm:text-lg lg:text-xl leading-relaxed mb-6 text-green-100 max-w-2xl mx-auto lg:mx-0">
-              Empowering children in rural Uganda through quality education, 
-              nurturing their potential, and building a brighter future for our community.
-            </p>
-
-            {/* Key Statistics */}
-            <div className="grid grid-cols-3 gap-4 mb-8 max-w-lg mx-auto lg:mx-0">
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-yellow-300 mb-1">
-                  <AnimatedCounter end={500} duration={2500} suffix="+" />
-                </div>
-                <div className="text-sm sm:text-base text-green-200">Students</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-yellow-300 mb-1">
-                  <AnimatedCounter end={15} duration={2000} suffix="+" />
-                </div>
-                <div className="text-sm sm:text-base text-green-200">Teachers</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-yellow-300 mb-1">
-                  <AnimatedCounter end={10} duration={1800} suffix="+" />
-                </div>
-                <div className="text-sm sm:text-base text-green-200">Years</div>
-              </div>
-            </div>
-
-            {/* Call-to-Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a
-                href="#donate"
-                className="group bg-school-red hover:bg-red-600 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 shadow-2xl hover:shadow-red-500/25 transform hover:-translate-y-1 hover:scale-[1.02] flex items-center justify-center"
-              >
-                <span>Support Our Mission</span>
-                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </a>
-              <a
-                href="#about"
-                className="group bg-transparent hover:bg-white hover:bg-opacity-10 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 border-2 border-white border-opacity-30 hover:border-opacity-60 backdrop-blur-sm flex items-center justify-center"
-              >
-                <span>Learn More</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Professional Logo Card */}
-          <div className="lg:col-span-5 relative">
-            <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-3xl p-6 lg:p-8 border border-white border-opacity-20 shadow-2xl">
+      {/* Content */}
+      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12 lg:py-16 xl:py-20">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[70vh]">
+          {/* Card moved to left */}
+          <div className="lg:col-span-4 order-1 lg:order-1">
+            <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-3xl p-6 lg:p-8 border border-white border-opacity-30 shadow-2xl">
               {/* School Logo */}
               <div className="flex flex-col items-center space-y-4">
                 <div className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 bg-white rounded-full flex items-center justify-center shadow-2xl p-4">
@@ -156,17 +134,28 @@ export default function Hero() {
                   <p className="text-green-200 mb-4 text-sm sm:text-base">Nyairongo, Uganda</p>
                   
                   {/* Mission Statement Card */}
-                  <div className="bg-white bg-opacity-10 rounded-2xl p-4 border border-white border-opacity-20">
-                    <h4 className="font-medium mb-3 text-yellow-300 text-base">Our Mission</h4>
+                  <div className="bg-white bg-opacity-10 rounded-2xl p-4 border border-white border-opacity-20 mb-6">
                     <p className="text-sm leading-relaxed text-green-100">
-                      To provide quality education that empowers children to reach their full potential 
-                      and contribute meaningfully to their community and the world.
+                      Elevating children in rural areas through access to quality education, nurturing lifelong learning, innovation, and transformative growth.
                     </p>
                   </div>
+
+
+                  {/* Call-to-Action Button */}
+                  <a
+                    href="#donate"
+                    className="group bg-school-red hover:bg-red-600 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 shadow-2xl hover:shadow-red-500/25 transform hover:-translate-y-1 hover:scale-[1.02] flex items-center justify-center w-full"
+                  >
+                    <span>Support Our Mission</span>
+                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
