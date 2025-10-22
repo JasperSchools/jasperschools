@@ -70,7 +70,7 @@ function Slideshow() {
   const slides = [
     '/images/istockphoto-1435346080-1024x1024_cleanup.jpg',
     'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=800&fit=crop'
+    '/images/yie.jpg'
   ]
 
   useEffect(() => {
