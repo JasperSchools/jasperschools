@@ -76,10 +76,10 @@ export default function Home() {
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             <div className="lg:col-span-7 order-2 lg:order-1">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-school-blue mb-4 sm:mb-6 lg:mb-8">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-clean-medium text-school-blue mb-4 sm:mb-6 lg:mb-8">
                 About Us
               </h2>
-              <div className="space-y-4 sm:space-y-5 text-gray-700 text-base sm:text-lg leading-relaxed">
+              <div className="space-y-4 sm:space-y-5 text-gray-700 text-base sm:text-lg leading-relaxed font-clean">
                 <p>
                   Our vision is to champion community building through innovative, inclusive, and resilient learning.
                 </p>
@@ -94,10 +94,10 @@ export default function Home() {
               </div>
 
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3">
-                <a href="/about/vision-mission" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-school-green text-white font-semibold hover:bg-green-700 transition-colors">
+                <a href="/about/vision-mission" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-school-green text-white font-clean-medium hover:bg-green-700 transition-colors">
                   Read our Vision & Mission
                 </a>
-                <a href="/about/our-story" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-gray-900 font-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200">
+                <a href="/about/our-story" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-gray-900 font-clean-medium hover:bg-gray-50 transition-colors border-2 border-gray-200">
                   Our Story
                 </a>
               </div>
@@ -105,8 +105,8 @@ export default function Home() {
 
             <div className="lg:col-span-5 order-1 lg:order-2">
               <div className="bg-white rounded-2xl shadow-md p-6 lg:p-8 border border-gray-100">
-                <h3 className="text-xl font-semibold text-school-blue mb-3">What guides us</h3>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                <h3 className="text-xl font-clean-medium text-school-blue mb-3">What guides us</h3>
+                <ul className="list-disc pl-5 space-y-2 text-gray-700 font-clean">
                   <li>Inclusive learning that welcomes every child.</li>
                   <li>Resilience through community and care.</li>
                   <li>Innovation grounded in local context.</li>
@@ -119,31 +119,31 @@ export default function Home() {
           {/* Statistics Section */}
           <div className="mt-16 pt-12 border-t border-gray-200">
             <div className="text-center mb-12">
-              <h3 className="text-2xl sm:text-3xl font-bold text-school-blue mb-4">Our Impact</h3>
-              <p className="text-gray-600 text-lg">Numbers that reflect our commitment to education</p>
+              <h3 className="text-2xl sm:text-3xl font-clean-medium text-school-blue mb-4">Our Impact</h3>
+              <p className="text-gray-600 text-lg font-clean">Numbers that reflect our commitment to education</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
               <div className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-school-green mb-2">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-clean-medium text-school-green mb-2">
                   <AnimatedCounter end={500} duration={2500} suffix="+" />
                 </div>
-                <div className="text-lg font-semibold text-gray-700 mb-1">Students</div>
-                <div className="text-gray-600">Empowered through education</div>
+                <div className="text-lg font-clean-medium text-gray-700 mb-1">Students</div>
+                <div className="text-gray-600 font-clean">Empowered through education</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-school-green mb-2">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-clean-medium text-school-green mb-2">
                   <AnimatedCounter end={15} duration={2000} suffix="+" />
                 </div>
-                <div className="text-lg font-semibold text-gray-700 mb-1">Teachers</div>
-                <div className="text-gray-600">Dedicated educators</div>
+                <div className="text-lg font-clean-medium text-gray-700 mb-1">Teachers</div>
+                <div className="text-gray-600 font-clean">Dedicated educators</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-school-green mb-2">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-clean-medium text-school-green mb-2">
                   <AnimatedCounter end={10} duration={1800} suffix="+" />
                 </div>
-                <div className="text-lg font-semibold text-gray-700 mb-1">Years</div>
-                <div className="text-gray-600">Of educational excellence</div>
+                <div className="text-lg font-clean-medium text-gray-700 mb-1">Years</div>
+                <div className="text-gray-600 font-clean">Of educational excellence</div>
               </div>
             </div>
           </div>
@@ -152,10 +152,10 @@ export default function Home() {
 
       <section id="impact" className="py-12 sm:py-16 lg:py-20 bg-school-green text-white">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-clean-medium mb-4 sm:mb-6 lg:mb-8">
             Our Impact
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-green-100 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-green-100 max-w-3xl mx-auto leading-relaxed font-clean">
             See how we're transforming lives and building a brighter future for our community.
           </p>
         </div>
@@ -163,10 +163,10 @@ export default function Home() {
 
       <section id="get-involved" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-school-blue mb-4 sm:mb-6 lg:mb-8">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-clean-medium text-school-blue mb-4 sm:mb-6 lg:mb-8">
             Get Involved
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-clean">
             Join us in making a difference. There are many ways to support our mission.
           </p>
         </div>
@@ -174,10 +174,10 @@ export default function Home() {
 
       <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-school-blue mb-4 sm:mb-6 lg:mb-8">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-clean-medium text-school-blue mb-4 sm:mb-6 lg:mb-8">
             Contact Us
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-clean">
             Get in touch with us to learn more or find out how you can help.
           </p>
         </div>
