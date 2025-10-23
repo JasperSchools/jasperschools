@@ -463,21 +463,21 @@ export default function Header() {
           {/* Mobile menu overlay backdrop */}
           {isMenuOpen && (
             <div
-              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-opacity duration-300"
+              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden menu-backdrop"
               onClick={() => setIsMenuOpen(false)}
             />
           )}
 
           {/* Mobile menu sliding panel */}
           <div
-            className={`fixed top-0 right-0 h-full w-full bg-white shadow-2xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out ${
-              isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            className={`fixed top-0 right-0 h-full w-full bg-white shadow-2xl z-50 lg:hidden transform ${
+              isMenuOpen ? 'menu-slide-in translate-x-0' : 'menu-slide-out translate-x-full'
             }`}
           >
             <div className="h-full overflow-y-auto">
               {/* Main Menu */}
               <div
-                className={`absolute inset-0 transition-transform duration-300 ease-in-out ${
+                className={`absolute inset-0 menu-content ${
                   subMenuStack.length === 0 ? 'translate-x-0' : '-translate-x-full'
                 }`}
               >
@@ -512,7 +512,7 @@ export default function Header() {
                 {/* Mobile menu content */}
                 <div className="px-4 py-6">
                   {navigation.map((item, index) => (
-                    <div key={item.name}>
+                    <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.1}s both` }}>
                       <a
                         href={item.href}
                         className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-medium transition-all duration-200 uppercase tracking-wide"
@@ -525,13 +525,13 @@ export default function Header() {
                   ))}
                   
                   {/* Mobile About Us */}
-                  <div>
+                  <div style={{ animation: `slideInUp 0.4s ease-out 0.4s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('about')}
                       className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       About Us
-                      <svg className="h-5 w-5 text-school-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
@@ -539,13 +539,13 @@ export default function Header() {
                   </div>
 
                   {/* Mobile Schools */}
-                  <div>
+                  <div style={{ animation: `slideInUp 0.4s ease-out 0.5s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('schools')}
                       className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       Schools
-                      <svg className="h-5 w-5 text-school-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
@@ -553,13 +553,13 @@ export default function Header() {
                   </div>
 
                   {/* Mobile Get Involved */}
-                  <div>
+                  <div style={{ animation: `slideInUp 0.4s ease-out 0.6s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('getInvolved')}
                       className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       Get Involved
-                      <svg className="h-5 w-5 text-school-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
@@ -570,25 +570,25 @@ export default function Header() {
 
               {/* Sub Menu - About Us */}
               <div
-                className={`absolute inset-0 transition-transform duration-300 ease-in-out ${
+                className={`absolute inset-0 menu-content ${
                   activeDropdown === 'about' ? 'translate-x-0' : 'translate-x-full'
                 }`}
               >
-                <div className="flex items-center p-4 border-b border-gray-200 bg-school-green">
+                <div className="flex items-center p-4 border-b border-gray-200 bg-school-green" style={{ animation: `slideInUp 0.3s ease-out 0.1s both` }}>
                   <button
                     onClick={navigateBack}
                     className="text-white hover:text-gray-200 p-2 transition-colors duration-200 mr-3"
                     aria-label="Go back"
                   >
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-6 w-6 transition-transform duration-200 hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
                   <h2 className="text-lg font-bold text-white">About Us</h2>
                 </div>
                 <div className="px-4 py-6">
-                  {aboutUsDropdown.map((item) => (
-                    <div key={item.name}>
+                  {aboutUsDropdown.map((item, index) => (
+                    <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
                         className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-medium transition-all duration-200 uppercase tracking-wide"
@@ -605,25 +605,25 @@ export default function Header() {
 
               {/* Sub Menu - Schools */}
               <div
-                className={`absolute inset-0 transition-transform duration-300 ease-in-out ${
+                className={`absolute inset-0 menu-content ${
                   activeDropdown === 'schools' ? 'translate-x-0' : 'translate-x-full'
                 }`}
               >
-                <div className="flex items-center p-4 border-b border-gray-200 bg-school-green">
+                <div className="flex items-center p-4 border-b border-gray-200 bg-school-green" style={{ animation: `slideInUp 0.3s ease-out 0.1s both` }}>
                   <button
                     onClick={navigateBack}
                     className="text-white hover:text-gray-200 p-2 transition-colors duration-200 mr-3"
                     aria-label="Go back"
                   >
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-6 w-6 transition-transform duration-200 hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
                   <h2 className="text-lg font-bold text-white">Schools</h2>
                 </div>
                 <div className="px-4 py-6">
-                  {schoolsDropdown.map((item) => (
-                    <div key={item.name}>
+                  {schoolsDropdown.map((item, index) => (
+                    <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
                         className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-medium transition-all duration-200 uppercase tracking-wide"
@@ -640,25 +640,25 @@ export default function Header() {
 
               {/* Sub Menu - Get Involved */}
               <div
-                className={`absolute inset-0 transition-transform duration-300 ease-in-out ${
+                className={`absolute inset-0 menu-content ${
                   activeDropdown === 'getInvolved' ? 'translate-x-0' : 'translate-x-full'
                 }`}
               >
-                <div className="flex items-center p-4 border-b border-gray-200 bg-school-green">
+                <div className="flex items-center p-4 border-b border-gray-200 bg-school-green" style={{ animation: `slideInUp 0.3s ease-out 0.1s both` }}>
                   <button
                     onClick={navigateBack}
                     className="text-white hover:text-gray-200 p-2 transition-colors duration-200 mr-3"
                     aria-label="Go back"
                   >
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="h-6 w-6 transition-transform duration-200 hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
                   <h2 className="text-lg font-bold text-white">Get Involved</h2>
                 </div>
                 <div className="px-4 py-6">
-                  {getInvolvedDropdown.map((item) => (
-                    <div key={item.name}>
+                  {getInvolvedDropdown.map((item, index) => (
+                    <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
                         className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-medium transition-all duration-200 uppercase tracking-wide"

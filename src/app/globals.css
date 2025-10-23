@@ -75,14 +75,53 @@ body {
   overflow-x: hidden;
 }
 
-/* Slide in from left animation for mobile menu items */
+/* Smooth slide animations for mobile menu */
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth menu transitions */
+.menu-slide-in {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.menu-slide-out {
+  transition: transform 0.35s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+}
+
+.menu-backdrop {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.menu-content {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
