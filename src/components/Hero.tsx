@@ -112,29 +112,29 @@ export default function Hero() {
       <Slideshow />
       
       {/* Content */}
-      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12 lg:py-16 xl:py-20">
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[70vh]">
+      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12 lg:py-12 xl:py-16">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center h-screen lg:h-auto">
           {/* Card moved to left */}
-          <div className="lg:col-span-4 order-1 lg:order-1">
-            <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-3xl p-4 sm:p-6 lg:p-8 border border-white border-opacity-30 shadow-2xl max-w-sm mx-auto lg:max-w-none">
+          <div className="lg:col-span-4 order-1 lg:order-1 mt-16 lg:mt-0">
+            <div className="bg-black bg-opacity-40 backdrop-blur-xl rounded-3xl p-3 sm:p-4 lg:p-6 xl:p-8 border border-white border-opacity-30 shadow-2xl max-w-sm mx-auto lg:max-w-none">
               {/* School Logo */}
-              <div className="flex flex-col items-center space-y-3 sm:space-y-4">
-                <div className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-48 lg:h-48 bg-white rounded-full flex items-center justify-center shadow-2xl p-3 sm:p-4">
+              <div className="flex flex-col items-center space-y-2 sm:space-y-3">
+                <div className="relative w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 xl:w-40 xl:h-40 bg-white rounded-full flex items-center justify-center shadow-2xl p-2 sm:p-3">
                   <Image
                     src="/school-logo.png"
                     alt="Jasper Primary School Logo"
                     fill
-                    className="object-contain p-3 sm:p-4"
+                    className="object-contain p-2 sm:p-3"
                     priority
                   />
                 </div>
                 
                 <div className="text-center">
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-clean-medium mb-2">Jasper Primary School</h3>
-                  <p className="text-green-200 mb-3 sm:mb-4 text-xs sm:text-sm lg:text-base font-clean">Nyairongo, Uganda</p>
+                  <h3 className="text-base sm:text-lg lg:text-xl font-clean-medium mb-1 sm:mb-2">Jasper Primary School</h3>
+                  <p className="text-green-200 mb-2 sm:mb-3 text-xs sm:text-sm font-clean">Nyairongo, Uganda</p>
                   
                   {/* Mission Statement Card */}
-                  <div className="bg-white bg-opacity-10 rounded-2xl p-3 sm:p-4 border border-white border-opacity-20 mb-4 sm:mb-6">
+                  <div className="bg-white bg-opacity-10 rounded-2xl p-2 sm:p-3 lg:p-4 border border-white border-opacity-20 mb-3 sm:mb-4">
                     <p className="text-xs sm:text-sm leading-relaxed text-green-100 font-clean-light">
                       Elevating children in rural areas through access to quality education, nurturing lifelong learning, innovation, and transformative growth.
                     </p>
@@ -143,10 +143,10 @@ export default function Hero() {
                   {/* Call-to-Action Button */}
                   <a
                     href="#donate"
-                    className="group bg-school-red hover:bg-red-600 text-white font-clean-medium py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-lg transition-all duration-300 shadow-2xl hover:shadow-red-500/25 transform hover:-translate-y-1 hover:scale-[1.02] flex items-center justify-center w-full"
+                    className="group bg-school-red hover:bg-transparent hover:border-2 hover:border-school-red text-white hover:text-school-red font-clean-medium py-2.5 sm:py-3 lg:py-3.5 px-5 sm:px-6 lg:px-7 rounded-full text-xs sm:text-sm lg:text-base transition-all duration-300 shadow-2xl hover:shadow-red-500/25 transform hover:-translate-y-1 hover:scale-[1.02] flex items-center justify-center w-full border-2 border-transparent"
                   >
                     <span>Support Our Mission</span>
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </a>
