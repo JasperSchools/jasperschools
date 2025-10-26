@@ -45,13 +45,13 @@ export default function Header() {
   ]
 
   const aboutUsDropdown = [
-    { name: 'About Us', href: '/#about', icon: 'info'},
-    { name: 'Vision & Mission', href: '/about/vision-mission', icon: 'book'},
-    { name: 'Our Story', href: '/about/our-story', icon: 'book'},
-    { name: 'Our Journey', href: '/#journey', icon: 'map'},
-    { name: 'Our Team', href: '/#team', icon: 'users'},
-    { name: 'Partners', href: '/#partners', icon: 'handshake'},
-    { name: 'Reports', href: '/#reports', icon: 'document'},
+    { name: 'About Us', href: '/#about'},
+    { name: 'Vision & Mission', href: '/about/vision-mission'},
+    { name: 'Our Story', href: '/about/our-story'},
+    { name: 'Our Journey', href: '/#journey'},
+    { name: 'Our Team', href: '/about/team'},
+    { name: 'Partners', href: '/#partners'},
+    { name: 'Reports', href: '/#reports'},
   ]
 
   const schoolsDropdown = [
@@ -59,10 +59,10 @@ export default function Header() {
   ]
 
   const getInvolvedDropdown = [
-    { name: 'Donate', href: '/#donate', icon: 'heart'},
-    { name: 'Sponsor a Student', href: '/#sponsor', icon: 'gift'},
-    { name: 'Visit Us', href: '/#visit', icon: 'calendar'},
-    { name: 'Join Our Team', href: '/#careers', icon: 'briefcase'},
+    { name: 'Donate', href: '/#donate'},
+    { name: 'Sponsor a Student', href: '/#sponsor'},
+    { name: 'Visit Us', href: '/#visit'},
+    { name: 'Join Our Team', href: '/#careers'},  
   ]
 
   const navigation = [
@@ -365,7 +365,6 @@ export default function Header() {
                             className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0"
                             onClick={() => setActiveDropdown(null)}
                           >
-                            {renderDropdownIcon(item.icon)}
                             {item.name}
                           </a>
                         ))}
@@ -399,7 +398,7 @@ export default function Header() {
                             className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0"
                             onClick={() => setActiveDropdown(null)}
                           >
-                            {renderDropdownIcon(item.icon)}
+                            {'icon' in item && renderDropdownIcon(item.icon as string)}
                             {item.name}
                           </a>
                         ))}
@@ -433,7 +432,6 @@ export default function Header() {
                             className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0"
                             onClick={() => setActiveDropdown(null)}
                           >
-                            {renderDropdownIcon(item.icon)}
                             {item.name}
                           </a>
                         ))}
@@ -596,7 +594,7 @@ export default function Header() {
                         className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-medium transition-all duration-200 uppercase tracking-wide"
                         onClick={closeMenu}
                       >
-                        {renderDropdownIcon(item.icon)}
+                        {'icon' in item && renderDropdownIcon(item.icon as string)}
                         {item.name}
                       </a>
                       <div className="border-b border-gray-200"></div>
@@ -631,7 +629,7 @@ export default function Header() {
                         className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-medium transition-all duration-200 uppercase tracking-wide"
                         onClick={closeMenu}
                       >
-                        {renderDropdownIcon(item.icon)}
+                        {'icon' in item && renderDropdownIcon(item.icon as string)}
                         {item.name}
                       </a>
                       <div className="border-b border-gray-200"></div>
@@ -666,7 +664,6 @@ export default function Header() {
                         className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-medium transition-all duration-200 uppercase tracking-wide"
                         onClick={closeMenu}
                       >
-                        {renderDropdownIcon(item.icon)}
                         {item.name}
                       </a>
                       <div className="border-b border-gray-200"></div>
