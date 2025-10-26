@@ -45,24 +45,24 @@ export default function Header() {
   ]
 
   const aboutUsDropdown = [
-    { name: 'About Us', href: '/#about', icon: 'info' },
-    { name: 'Vision & Mission', href: '/about/vision-mission', icon: 'document' },
-    { name: 'Our Story', href: '/about/our-story', icon: 'book' },
-    { name: 'Our Journey', href: '/#journey', icon: 'map' },
-    { name: 'Our Team', href: '/#team', icon: 'users' },
-    { name: 'Partners', href: '/#partners', icon: 'handshake' },
-    { name: 'Reports', href: '/#reports', icon: 'document' },
+    { name: 'About Us', href: '/#about', icon: 'info'},
+    { name: 'Vision & Mission', href: '/about/vision-mission', icon: 'book'},
+    { name: 'Our Story', href: '/about/our-story', icon: 'book'},
+    { name: 'Our Journey', href: '/#journey', icon: 'map'},
+    { name: 'Our Team', href: '/#team', icon: 'users'},
+    { name: 'Partners', href: '/#partners', icon: 'handshake'},
+    { name: 'Reports', href: '/#reports', icon: 'document'},
   ]
 
   const schoolsDropdown = [
-    { name: 'Uganda', href: '/#school-uganda', icon: 'location' },
+    { name: 'Uganda', href: '/#school-uganda', icon: 'location'},
   ]
 
   const getInvolvedDropdown = [
-    { name: 'Donate', href: '/#donate', icon: 'heart' },
-    { name: 'Sponsor a Student', href: '/#sponsor', icon: 'gift' },
-    { name: 'Visit Us', href: '/#visit', icon: 'calendar' },
-    { name: 'Join Our Team', href: '/#careers', icon: 'briefcase' },
+    { name: 'Donate', href: '/#donate', icon: 'heart'},
+    { name: 'Sponsor a Student', href: '/#sponsor', icon: 'gift'},
+    { name: 'Visit Us', href: '/#visit', icon: 'calendar'},
+    { name: 'Join Our Team', href: '/#careers', icon: 'briefcase'},
   ]
 
   const navigation = [
@@ -267,7 +267,9 @@ export default function Header() {
                   +256 XXX XXX XXX
                 </span>
                 <span className="flex items-center">
-                  <span className="mr-1.5">✉️</span>
+                  <svg className="w-4 h-4 text-white mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
                   <span className="hidden xl:inline">jasperschoolsuganda@gmail.com</span>
                   <span className="xl:hidden">jasper...@gmail.com</span>
                 </span>
