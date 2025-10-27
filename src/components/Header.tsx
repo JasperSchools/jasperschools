@@ -224,13 +224,13 @@ export default function Header() {
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <button
                     onClick={() => window.location.href = '#sponsor'}
-                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-semibold text-xs px-2.5 sm:px-3 py-1 sm:py-1.5 rounded transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-xs px-2.5 sm:px-3 py-1 sm:py-1.5 rounded transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
                   >
                     Sponsor
                   </button>
                   <button
                     onClick={() => window.location.href = '#donate'}
-                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-semibold text-xs px-2.5 sm:px-3 py-1 sm:py-1.5 rounded transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-xs px-2.5 sm:px-3 py-1 sm:py-1.5 rounded transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
                   >
                     Donate
                   </button>
@@ -258,7 +258,7 @@ export default function Header() {
               <div className="h-4 w-px bg-white bg-opacity-30"></div>
               
               {/* Contact Info */}
-              <div className="flex items-center space-x-3 xl:space-x-4 text-sm">
+              <div className="flex items-center space-x-3 xl:space-x-4 text-sm font-paragraph">
                 <span className="flex items-center whitespace-nowrap">
                   <svg className="w-4 h-4 text-white mr-1.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M22 17.65v3.2a1.15 1.15 0 0 1-1.25 1.15A20.16 20.16 0 0 1 3 5.25 1.15 1.15 0 0 1 4.15 4h3.21a1.15 1.15 0 0 1 1.14.99c.07.54.2 1.07.36 1.57a1.15 1.15 0 0 1-.26 1.19l-1.37 1.37a16.93 16.93 0 0 0 7.09 7.09l1.37-1.37a1.15 1.15 0 0 1 1.19-.26c.5.16 1.03.29 1.57.36a1.15 1.15 0 0 1 .99 1.14z"/>
@@ -282,7 +282,7 @@ export default function Header() {
                   <button
                     key={link.name}
                     onClick={() => window.location.href = link.href}
-                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-semibold text-sm px-3 xl:px-4 py-1.5 xl:py-2 rounded-md transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-sm px-3 xl:px-4 py-1.5 xl:py-2 rounded-md transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
                   >
                     {link.name}
                   </button>
@@ -290,7 +290,7 @@ export default function Header() {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="hover:text-gray-200 transition-all duration-200 text-sm px-2 xl:px-3 py-1.5 rounded-md whitespace-nowrap"
+                    className="hover:text-gray-200 transition-all duration-200 text-sm px-2 xl:px-3 py-1.5 rounded-md whitespace-nowrap font-paragraph"
                   >
                     {link.name}
                   </a>
@@ -318,10 +318,10 @@ export default function Header() {
                   />
                 </div>
                 <div className="hidden xs:block">
-                  <h1 className="text-lg sm:text-xl font-bold text-school-blue">
+                  <h1 className="text-lg sm:text-xl font-heading-bold text-school-blue">
                     Jasper Primary School
                   </h1>
-                  <p className="text-xs sm:text-sm text-gray-600">Nyairongo, Uganda</p>
+                  <p className="text-xs sm:text-sm text-gray-600 font-paragraph">Nyairongo, Uganda</p>
                 </div>
               </div>
             </div>
@@ -333,7 +333,7 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-heading-semibold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.name}
                   </a>
@@ -347,7 +347,7 @@ export default function Header() {
                 >
                   <button
                     onClick={() => handleDropdownToggle('about')}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-heading-semibold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
                     About Us
                     <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -361,7 +361,7 @@ export default function Header() {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0"
+                            className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-paragraph"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
@@ -380,7 +380,7 @@ export default function Header() {
                 >
                   <button
                     onClick={() => handleDropdownToggle('schools')}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-heading-semibold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
                     Schools
                     <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -394,7 +394,7 @@ export default function Header() {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0"
+                            className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-paragraph"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {'icon' in item && renderDropdownIcon(item.icon as string)}
@@ -414,7 +414,7 @@ export default function Header() {
                 >
                   <button
                     onClick={() => handleDropdownToggle('getInvolved')}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-heading-semibold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
                     Get Involved
                     <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -428,7 +428,7 @@ export default function Header() {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0"
+                            className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-paragraph"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
@@ -493,8 +493,8 @@ export default function Header() {
                       />
                     </div>
                     <div>
-                      <h2 className="text-base font-bold text-white">Jasper Primary</h2>
-                      <p className="text-xs text-gray-100">Nyairongo, Uganda</p>
+                      <h2 className="text-base font-heading-bold text-white">Jasper Primary</h2>
+                      <p className="text-xs text-gray-100 font-paragraph">Nyairongo, Uganda</p>
                     </div>
                   </div>
                   <button
@@ -514,7 +514,7 @@ export default function Header() {
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.1}s both` }}>
                       <a
                         href={item.href}
-                        className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-medium transition-all duration-200 uppercase tracking-wide"
+                        className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-medium transition-all duration-200 uppercase tracking-wide"
                         onClick={closeMenu}
                       >
                         {item.name}
@@ -527,7 +527,7 @@ export default function Header() {
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.4s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('about')}
-                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
+                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       About Us
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -541,7 +541,7 @@ export default function Header() {
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.5s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('schools')}
-                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
+                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       Schools
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -555,7 +555,7 @@ export default function Header() {
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.6s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('getInvolved')}
-                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
+                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       Get Involved
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -583,14 +583,14 @@ export default function Header() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
-                  <h2 className="text-lg font-bold text-white">About Us</h2>
+                  <h2 className="text-lg font-heading-bold text-white">About Us</h2>
                 </div>
                 <div className="px-4 py-6">
                   {aboutUsDropdown.map((item, index) => (
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
-                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-medium transition-all duration-200 uppercase tracking-wide"
+                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-paragraph transition-all duration-200 uppercase tracking-wide"
                         onClick={closeMenu}
                       >
                         {'icon' in item && renderDropdownIcon(item.icon as string)}
@@ -618,14 +618,14 @@ export default function Header() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
-                  <h2 className="text-lg font-bold text-white">Schools</h2>
+                  <h2 className="text-lg font-heading-bold text-white">Schools</h2>
                 </div>
                 <div className="px-4 py-6">
                   {schoolsDropdown.map((item, index) => (
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
-                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-medium transition-all duration-200 uppercase tracking-wide"
+                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-paragraph transition-all duration-200 uppercase tracking-wide"
                         onClick={closeMenu}
                       >
                         {'icon' in item && renderDropdownIcon(item.icon as string)}
@@ -653,14 +653,14 @@ export default function Header() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
-                  <h2 className="text-lg font-bold text-white">Get Involved</h2>
+                  <h2 className="text-lg font-heading-bold text-white">Get Involved</h2>
                 </div>
                 <div className="px-4 py-6">
                   {getInvolvedDropdown.map((item, index) => (
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
-                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-medium transition-all duration-200 uppercase tracking-wide"
+                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-paragraph transition-all duration-200 uppercase tracking-wide"
                         onClick={closeMenu}
                       >
                         {item.name}

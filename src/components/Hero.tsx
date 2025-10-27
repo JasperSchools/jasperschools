@@ -107,56 +107,105 @@ function Slideshow() {
 
 export default function Hero() {
   return (
-    <section className="relative text-white overflow-hidden min-h-screen">
+    <section className="relative text-white overflow-hidden min-h-[85vh]">
       {/* Slideshow Background */}
       <Slideshow />
       
-      {/* Content */}
-      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-6 xl:px-12 w-full py-12 sm:py-16 lg:py-20 xl:py-24">
-        <div className="grid lg:grid-cols-12 gap-4 lg:gap-6 xl:gap-8 items-start lg:items-center">
-          {/* Card centered on mobile, left-aligned on desktop */}
-          <div className="lg:col-span-5 xl:col-span-4 order-1 lg:order-1 flex items-center justify-center lg:items-center lg:justify-start">
-            <div className="bg-black bg-opacity-50 backdrop-blur-xl rounded-3xl p-5 sm:p-6 lg:p-6 xl:p-8 border border-white border-opacity-30 shadow-2xl max-w-md w-full lg:max-w-none min-h-[450px] lg:min-h-[500px] xl:min-h-[600px] flex flex-col justify-center">
-              {/* School Logo */}
-              <div className="flex flex-col items-center space-y-3 sm:space-y-4">
-                <div className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-32 lg:h-32 xl:w-40 xl:h-40 bg-white rounded-full flex items-center justify-center shadow-2xl p-3 sm:p-4">
-                  <Image
-                    src="/school-logo.png"
-                    alt="Jasper Primary School Logo"
-                    fill
-                    className="object-contain p-3 sm:p-4"
-                    priority
-                  />
-                </div>
-                
-                <div className="text-center">
-                  <h3 className="text-lg sm:text-xl lg:text-xl font-clean-medium mb-3">Jasper Primary School</h3>
-                  
-                  {/* Mission Statement Card */}
-                  <div className="bg-white bg-opacity-10 rounded-2xl p-3 sm:p-4 lg:p-4 border border-white border-opacity-20 mb-4">
-                    <p className="text-sm sm:text-base leading-relaxed text-green-100 font-clean-light">
-                      Elevating children in rural areas through access to quality education, nurturing lifelong learning, innovation, and transformative growth.
-                    </p>
-                  </div>
+      {/* Main Content - Overlaid directly on background */}
+      <div className="relative z-10 min-h-[85vh] flex flex-col">
+        {/* Top Content */}
+        <div className="flex-1 flex items-center pt-16 sm:pt-20 lg:pt-24 pb-16 sm:pb-20 lg:pb-24">
+          <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+            <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
+              {/* Main Heading */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading leading-[1.1] mb-4 sm:mb-6 text-left">
+                <span className="block">Transformative</span>
+                <span className="block">Education</span>
+              </h1>
+              
+              {/* Descriptive Paragraph */}
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 font-paragraph leading-relaxed mb-6 sm:mb-8 max-w-2xl text-left">
+                We empower children in rural areas through access to quality education, nurturing lifelong learning, innovation, and transformative growth.
+              </p>
+              
+              {/* Call-to-Action Button */}
+              <a
+                href="#donate"
+                className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold py-3 px-6 sm:py-4 sm:px-8 lg:py-5 lg:px-10 rounded-full text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-500/25"
+              >
+                <span>Support Our Mission</span>
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
 
-                  {/* Call-to-Action Button */}
-                  <a
-                    href="#donate"
-                    className="group bg-school-red hover:bg-transparent hover:border-2 hover:border-school-red text-white hover:text-school-red font-clean-medium py-3 sm:py-3.5 lg:py-3.5 px-6 sm:px-7 lg:px-7 rounded-full text-sm sm:text-base lg:text-base transition-all duration-300 shadow-2xl hover:shadow-red-500/25 flex items-center justify-center w-full border-2 border-transparent"
-                  >
-                    <span>Support Our Mission</span>
-                    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </a>
+        {/* Bottom Stats Section */}
+        <div className="bg-black/70 backdrop-blur-sm border-t border-white/10">
+          <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
+              {/* Left Column - Description */}
+              <div className="text-center lg:text-left">
+                <p className="text-white font-paragraph text-sm sm:text-base leading-relaxed">
+                  Learn how Jasper Schools transforms lives in rural Uganda
+                </p>
+              </div>
+              
+              {/* Middle Column - Statistics */}
+              <div className="grid grid-cols-3 gap-4 sm:gap-6">
+                <div className="text-center">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                    500+
+                  </div>
+                  <div className="text-white/90 font-paragraph text-xs sm:text-sm">
+                    Students Impacted
+                  </div>
                 </div>
+                <div className="text-center">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                    15+
+                  </div>
+                  <div className="text-white/90 font-paragraph text-xs sm:text-sm">
+                    Teachers
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                    97%
+                  </div>
+                  <div className="text-white/90 font-paragraph text-xs sm:text-sm">
+                    Community Support
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right Column - Action Buttons */}
+              <div className="flex flex-col gap-3 justify-center">
+                <a
+                  href="/about/our-story"
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:bg-white hover:text-gray-900 font-paragraph transition-all duration-300 text-sm"
+                >
+                  Learn More
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
+                <a
+                  href="/about/vision-mission"
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:bg-white hover:text-gray-900 font-paragraph transition-all duration-300 text-sm"
+                >
+                  Our Vision
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
-
         </div>
       </div>
-
     </section>
   )
 }

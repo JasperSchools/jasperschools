@@ -66,8 +66,8 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
         <div className="absolute inset-0" style={{ backgroundColor: '#0D4723' }} />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Our Team</h1>
-          <p className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4">Our Team</h1>
+          <p className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
             Meet the dedicated leaders driving transformative education in rural Uganda
           </p>
         </div>
@@ -102,25 +102,25 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
                 {/* Content Section */}
                 <div className="lg:w-2/3">
                   <div className="mb-4">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">
+                    <h2 className="text-2xl sm:text-3xl font-heading-bold text-gray-900 mb-1">
                       {member.name}
                     </h2>
-                    <p className="text-lg text-[#0D4723] font-semibold mb-2">{member.role}</p>
-                    <p className="text-sm text-gray-600">{member.education}</p>
+                    <p className="text-lg text-[#0D4723] font-heading-semibold mb-2">{member.role}</p>
+                    <p className="text-sm text-gray-600 font-paragraph">{member.education}</p>
                   </div>
 
                   <div className="prose prose-lg max-w-none">
-                    <p className="text-gray-700 leading-relaxed mb-6">
+                    <p className="text-gray-700 leading-relaxed mb-6 font-paragraph">
                       {member.profile.split('\n\n')[0]}
                     </p>
-                    <p className="text-gray-700 leading-relaxed">
+                    <p className="text-gray-700 leading-relaxed font-paragraph">
                       {member.profile.split('\n\n').slice(1).join('\n\n')}
                     </p>
                   </div>
 
                   {/* Achievements */}
                   <div className="mt-6 pt-6 border-t border-gray-100">
-                    <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-3">
+                    <h3 className="text-sm font-heading-semibold text-gray-900 uppercase tracking-wide mb-3">
                       Key Achievements
                     </h3>
                     <ul className="space-y-2">
@@ -129,7 +129,7 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
                           <svg className="w-5 h-5 text-[#0D4723] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
-                          <span className="text-gray-700">{achievement}</span>
+                          <span className="text-gray-700 font-paragraph">{achievement}</span>
                         </li>
                       ))}
                     </ul>
@@ -144,22 +144,22 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
       {/* Call to Action */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-gray-900 mb-4">
             Join Our Mission
           </h2>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-gray-600 mb-8 font-paragraph">
             Together, we can empower communities and transform lives through quality education.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="/#donate" 
-              className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-[#0D4723] text-white font-semibold hover:bg-green-800 transition-colors text-lg"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-[#0D4723] text-white font-heading-semibold hover:bg-green-800 transition-colors text-lg"
             >
               Donate Now
             </a>
             <a 
               href="/#contact" 
-              className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-white text-gray-900 font-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 text-lg"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-white text-gray-900 font-heading-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 text-lg"
             >
               Get in Touch
             </a>
