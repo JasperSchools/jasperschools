@@ -315,6 +315,10 @@ export default function Header() {
                     fill
                     className="object-contain"
                     priority
+                    onError={(e) => {
+                      console.error('Logo failed to load');
+                      e.currentTarget.style.display = 'none';
+                    }}
                   />
                 </div>
                 <div className="hidden xs:block">
@@ -490,6 +494,10 @@ export default function Header() {
                         fill
                         className="object-contain"
                         priority
+                        onError={(e) => {
+                          console.error('Logo failed to load');
+                          e.currentTarget.style.display = 'none';
+                        }}
                       />
                     </div>
                     <div>

@@ -69,8 +69,8 @@ function Slideshow() {
   
   const slides = [
     '/images/istockphoto-1435346080-1024x1024_cleanup.jpg',
-    'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=800&fit=crop',
-    '/images/yie.jpg'
+    '/images/yie.jpg',
+    'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=800&fit=crop'
   ]
 
   useEffect(() => {
@@ -97,6 +97,11 @@ function Slideshow() {
             priority={index === 0}
             quality={100}
             className="object-cover"
+            onError={(e) => {
+              console.error('Image failed to load:', slide);
+              // Fallback to a solid color if image fails
+              e.currentTarget.style.display = 'none';
+            }}
           />
           <div className="absolute inset-0 bg-black bg-opacity-50" />
         </div>
