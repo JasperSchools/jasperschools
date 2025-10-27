@@ -156,7 +156,7 @@ export default function Home() {
             Our Impact
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-green-100 max-w-3xl mx-auto leading-relaxed font-paragraph">
-            See how we're transforming lives and building a brighter future for our community.
+            See how we&apos;re transforming lives and building a brighter future for our community.
           </p>
         </div>
       </section>

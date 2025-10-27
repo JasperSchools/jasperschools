@@ -207,7 +207,7 @@ export default function OurStory() {
             <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Accessibility Barriers</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed font-paragraph">
-                In addition to these material deficiencies, the inaccessibility of schools poses a major hurdle. Many children in rural areas must travel long distances to reach school, a daily journey that is both physically exhausting and unsafe. This challenge not only limits regular attendance but also negatively impacts students' academic performance and overall well-being.
+                In addition to these material deficiencies, the inaccessibility of schools poses a major hurdle. Many children in rural areas must travel long distances to reach school, a daily journey that is both physically exhausting and unsafe. This challenge not only limits regular attendance but also negatively impacts students&apos; academic performance and overall well-being.
               </p>
             </div>
           </section>
@@ -247,7 +247,7 @@ export default function OurStory() {
             <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Cultural & Economic Barriers</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6 font-paragraph">
-                In addition, there is a widespread lack of awareness in rural communities about the long-term benefits of education, especially for girls. Cultural norms and gender biases often prioritize short-term economic contributions over schooling, leading to high dropout rates and limiting girls' opportunities to achieve their full potential.
+                In addition, there is a widespread lack of awareness in rural communities about the long-term benefits of education, especially for girls. Cultural norms and gender biases often prioritize short-term economic contributions over schooling, leading to high dropout rates and limiting girls&apos; opportunities to achieve their full potential.
               </p>
               <p className="text-gray-700 leading-relaxed font-paragraph">
                 Most households face the challenge of poverty as many families in rural areas depend on seasonal crop farming, which provides an unstable and insufficient income. This economic instability forces families to make difficult choices, often prioritizing immediate survival over long-term educational goals, leading to high dropout rates and perpetuating the cycle of poverty.
