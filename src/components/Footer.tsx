@@ -5,7 +5,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
           {/* Brand Identity & Social Media */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 text-center lg:text-left">
             <div className="mb-6">
               <h3 className="text-2xl font-heading-bold text-white mb-1">Jasper</h3>
               <p className="text-sm text-gray-300 font-paragraph">PRIMARY SCHOOL</p>
@@ -14,7 +14,7 @@ export default function Footer() {
               Creating bright paths together through quality education in Nyairongo, Uganda.
             </p>
             {/* Social Media Icons */}
-            <div className="flex space-x-3">
+            <div className="flex space-x-3 justify-center lg:justify-start">
               <a href="#" className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-school-green transition-colors">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
 
           {/* School Navigation */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 text-center lg:text-left">
             <h4 className="text-lg font-heading-semibold text-white mb-4">School</h4>
             <ul className="space-y-3">
               <li><a href="/about/our-story" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">About Us</a></li>
@@ -51,7 +51,7 @@ export default function Footer() {
           </div>
 
           {/* Programs */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 text-center lg:text-left">
             <h4 className="text-lg font-heading-semibold text-white mb-4">Programs</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Primary Education</a></li>
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           {/* Support */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 text-center lg:text-left">
             <h4 className="text-lg font-heading-semibold text-white mb-4">Support</h4>
             <ul className="space-y-3">
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Donate</a></li>
@@ -80,7 +80,7 @@ export default function Footer() {
           <div className="max-w-6xl mx-auto">
              <div className="rounded-xl p-6 sm:p-8 lg:p-10" style={{ backgroundColor: '#0A0A0A' }}>
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                <div className="flex-1">
+                <div className="flex-1 text-center lg:text-left">
                   <h4 className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-white mb-3 sm:mb-4 leading-tight">
                     Make a<br />
                     <span className="text-school-yellow">Difference</span>
@@ -89,7 +89,7 @@ export default function Footer() {
                     Join us in creating brighter futures for children in Nyairongo through quality education and community support.
                   </p>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-4 lg:flex-shrink-0">
+                <div className="flex flex-col sm:flex-row gap-4 lg:flex-shrink-0 justify-center lg:justify-end">
                   <a href="#donate" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
                     <span>Support Our Mission</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

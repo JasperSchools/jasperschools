@@ -167,21 +167,11 @@ export default function Home() {
             Get Involved
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-paragraph">
-            Join us in making a difference. There are many ways to support our mission.
+            Join us in making a <span style={{ color: '#0A0A0A' }}>difference</span>. There are many ways to support our mission.
           </p>
         </div>
       </section>
 
-      <section id="contact" className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-semibold text-school-blue mb-4 sm:mb-6 lg:mb-8">
-            Contact Us
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-paragraph">
-            Get in touch with us to learn more or find out how you can help.
-          </p>
-        </div>
-      </section>
 
       <Footer />
     </main>
