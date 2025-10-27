@@ -118,7 +118,7 @@ export default function Hero() {
           <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
             <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
               {/* Main Heading */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading leading-[1.1] mb-4 sm:mb-6 text-left">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-light leading-[1.1] mb-4 sm:mb-6 text-left">
                 <span className="block">Transformative</span>
                 <span className="block">Education</span>
               </h1>
