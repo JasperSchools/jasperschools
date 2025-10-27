@@ -3,6 +3,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 // Animated Counter Component
@@ -288,12 +289,12 @@ export default function OurStory() {
           {/* Call to Action */}
           <div className="text-center mt-16">
             <div className="inline-flex flex-col sm:flex-row gap-4">
-              <a
+              <Link
                 href="/#donate"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-[#0D4723] text-white font-heading-semibold hover:bg-green-800 transition-colors text-lg"
               >
                 Support Our Mission
-              </a>
+              </Link>
               <a
                 href="/about/vision-mission"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-white text-gray-900 font-heading-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 text-lg"

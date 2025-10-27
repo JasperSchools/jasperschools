@@ -3,6 +3,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function TeamPage() {
   const teamMembers = [
@@ -151,18 +152,18 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
             Together, we can empower communities and transform lives through quality education.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <Link 
               href="/#donate" 
               className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-[#0D4723] text-white font-heading-semibold hover:bg-green-800 transition-colors text-lg"
             >
               Donate Now
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="/#contact" 
               className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-white text-gray-900 font-heading-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 text-lg"
             >
               Get in Touch
-            </a>
+            </Link>
           </div>
         </div>
       </section>
