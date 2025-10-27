@@ -527,7 +527,7 @@ export default function Header() {
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.4s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('about')}
-                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
+                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       About Us
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -541,7 +541,7 @@ export default function Header() {
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.5s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('schools')}
-                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
+                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       Schools
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -555,7 +555,7 @@ export default function Header() {
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.6s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('getInvolved')}
-                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-medium transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
+                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       Get Involved
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
