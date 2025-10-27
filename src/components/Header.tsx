@@ -224,13 +224,13 @@ export default function Header() {
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <button
                     onClick={() => window.location.href = '#sponsor'}
-                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-xs px-2.5 sm:px-3 py-1 sm:py-1.5 rounded transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
                   >
                     Sponsor
                   </button>
                   <button
                     onClick={() => window.location.href = '#donate'}
-                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-xs px-2.5 sm:px-3 py-1 sm:py-1.5 rounded transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
                   >
                     Donate
                   </button>
@@ -282,7 +282,7 @@ export default function Header() {
                   <button
                     key={link.name}
                     onClick={() => window.location.href = link.href}
-                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-sm px-3 xl:px-4 py-1.5 xl:py-2 rounded-md transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-base px-4 xl:px-5 py-2 xl:py-2.5 rounded-md transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
                   >
                     {link.name}
                   </button>

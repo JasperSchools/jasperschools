@@ -131,7 +131,7 @@ export default function Hero() {
               {/* Call-to-Action Button */}
               <a
                 href="#donate"
-                className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-500/25"
+                className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 shadow-2xl hover:shadow-yellow-500/25"
                 style={{ margin: '20px 0px 0px', padding: '16px 32px' }}
               >
                 <span>Support Our Mission</span>
@@ -186,19 +186,19 @@ export default function Hero() {
               <div className="flex flex-col gap-3 justify-center">
                 <a
                   href="/about/our-story"
-                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:bg-white hover:text-gray-900 font-paragraph transition-all duration-300 text-sm"
+                  className="group inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base"
                 >
                   Learn More
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </a>
                 <a
                   href="/about/vision-mission"
-                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:bg-white hover:text-gray-900 font-paragraph transition-all duration-300 text-sm"
+                  className="group inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base"
                 >
                   Our Vision
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </a>

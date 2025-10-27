@@ -94,10 +94,10 @@ export default function Home() {
               </div>
 
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3">
-                <a href="/about/vision-mission" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-school-green text-white font-heading-medium hover:bg-green-700 transition-colors">
+                <a href="/about/vision-mission" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-school-green text-white font-heading-medium hover:bg-green-700 transition-colors text-base">
                   Read our Vision & Mission
                 </a>
-                <a href="/about/our-story" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-gray-900 font-heading-medium hover:bg-gray-50 transition-colors border-2 border-gray-200">
+                <a href="/about/our-story" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-gray-900 font-heading-medium hover:bg-gray-50 transition-colors border-2 border-gray-200 text-base">
                   Our Story
                 </a>
               </div>
