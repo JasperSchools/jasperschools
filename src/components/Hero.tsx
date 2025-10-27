@@ -118,37 +118,38 @@ export default function Hero() {
           <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
             <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
               {/* Main Heading */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-light leading-[1.1] mb-4 sm:mb-6 text-left">
+              <h1 className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-light leading-[1.1] mb-4 sm:mb-6 text-left">
                 <span className="block">Transformative</span>
                 <span className="block">Education</span>
               </h1>
               
               {/* Descriptive Paragraph */}
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 font-paragraph leading-relaxed mb-6 sm:mb-8 max-w-2xl text-left">
+              <p className="text-sm sm:text-base text-white/90 font-paragraph leading-relaxed mb-6 sm:mb-8 max-w-2xl text-left">
                 We empower children in rural areas through access to quality education, nurturing lifelong learning, innovation, and transformative growth.
               </p>
               
               {/* Call-to-Action Button */}
               <a
                 href="#donate"
-                className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold py-3 px-6 sm:py-4 sm:px-8 lg:py-5 lg:px-10 rounded-full text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-500/25"
+                className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-sm sm:text-base lg:text-lg transition-all duration-300 shadow-2xl hover:shadow-yellow-500/25"
+                style={{ margin: '20px 0px 0px', padding: '16px 32px' }}
               >
                 <span>Support Our Mission</span>
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {/* <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+                </svg> */}
               </a>
             </div>
           </div>
         </div>
 
         {/* Bottom Stats Section */}
-        <div className="bg-black/70 backdrop-blur-sm border-t border-white/10">
+        <div className="bg-black/85 backdrop-blur-sm border-t border-white/10">
           <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
               {/* Left Column - Description */}
               <div className="text-center lg:text-left">
-                <p className="text-white font-paragraph text-sm sm:text-base leading-relaxed">
+                <p className="text-white font-paragraph text-base sm:text-base leading-relaxed">
                   Learn how Jasper Schools transforms lives in rural Uganda
                 </p>
               </div>
@@ -156,26 +157,26 @@ export default function Hero() {
               {/* Middle Column - Statistics */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6">
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                  <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
                     500+
                   </div>
-                  <div className="text-white/90 font-paragraph text-xs sm:text-sm">
+                  <div className="text-white/90 font-paragraph text-sm sm:text-sm">
                     Students Impacted
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                  <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
                     15+
                   </div>
-                  <div className="text-white/90 font-paragraph text-xs sm:text-sm">
+                  <div className="text-white/90 font-paragraph text-sm sm:text-sm">
                     Teachers
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                  <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
                     97%
                   </div>
-                  <div className="text-white/90 font-paragraph text-xs sm:text-sm">
+                  <div className="text-white/90 font-paragraph text-sm sm:text-sm">
                     Community Support
                   </div>
                 </div>

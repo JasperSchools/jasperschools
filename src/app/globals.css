@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -27,7 +27,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  font-family: 'Roboto Slab', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
   letter-spacing: 0.01em;
 }
@@ -37,28 +37,28 @@ body {
     text-wrap: balance;
   }
   
-  /* Roboto Slab typography utilities for all text */
+  /* Crimson Pro typography utilities for headings */
   .font-heading {
-    font-family: 'Roboto Slab', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 400;
+    font-family: 'Crimson Pro', serif;
+    font-weight: 300;
     letter-spacing: 0.01em;
   }
   
   .font-heading-medium {
-    font-family: 'Roboto Slab', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 500;
+    font-family: 'Crimson Pro', serif;
+    font-weight: 400;
     letter-spacing: 0.01em;
   }
   
   .font-heading-semibold {
-    font-family: 'Roboto Slab', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 600;
+    font-family: 'Crimson Pro', serif;
+    font-weight: 500;
     letter-spacing: 0.01em;
   }
   
   .font-heading-bold {
-    font-family: 'Roboto Slab', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 700;
+    font-family: 'Crimson Pro', serif;
+    font-weight: 600;
     letter-spacing: 0.01em;
   }
   
@@ -66,6 +66,24 @@ body {
   .font-paragraph {
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  
+  .font-paragraph-medium {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  
+  .font-paragraph-semibold {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  
+  .font-paragraph-bold {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
     letter-spacing: 0.01em;
   }
   
