@@ -32,7 +32,7 @@ export default function Header() {
   const topHeaderLinks = [
     { name: 'Careers', href: '/#careers' },
     { name: 'Visit Us', href: '/#visit' },
-    { name: 'Reports', href: '/#reports' },
+    { name: 'Newsletter', href: '/#newsletter' },
     { name: 'Sponsor a Student', href: '/#sponsor' },
     { name: 'Donate', href: '/#donate' },
   ]
@@ -48,10 +48,9 @@ export default function Header() {
     { name: 'About Us', href: '/#about'},
     { name: 'Vision & Mission', href: '/about/vision-mission'},
     { name: 'Our Story', href: '/about/our-story'},
-    { name: 'Our Journey', href: '/#journey'},
     { name: 'Our Team', href: '/about/team'},
     { name: 'Partners', href: '/#partners'},
-    { name: 'Reports', href: '/#reports'},
+    { name: 'Newsletter', href: '/#newsletter'},
   ]
 
   const schoolsDropdown = [
@@ -329,12 +328,12 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:block">
-              <div className="ml-6 xl:ml-10 flex items-baseline space-x-2 xl:space-x-4">
+              <div className="ml-4 xl:ml-10 flex items-baseline space-x-1 xl:space-x-4">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-school-green px-2 xl:px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.name}
                   </a>
@@ -348,10 +347,10 @@ export default function Header() {
                 >
                   <button
                     onClick={() => handleDropdownToggle('about')}
-                    className="text-gray-700 hover:text-school-green px-2 xl:px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
                     About Us
-                    <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -381,10 +380,10 @@ export default function Header() {
                 >
                   <button
                     onClick={() => handleDropdownToggle('schools')}
-                    className="text-gray-700 hover:text-school-green px-2 xl:px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
                     Schools
-                    <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
@@ -415,10 +414,10 @@ export default function Header() {
                 >
                   <button
                     onClick={() => handleDropdownToggle('getInvolved')}
-                    className="text-gray-700 hover:text-school-green px-2 xl:px-3 py-2 rounded-md text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
                     Get Involved
-                    <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>

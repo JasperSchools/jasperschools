@@ -112,11 +112,11 @@ export default function Hero() {
       <Slideshow />
       
       {/* Content */}
-      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full py-12 sm:py-16 lg:py-20 xl:py-24">
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start lg:items-center">
+      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-6 xl:px-12 w-full py-12 sm:py-16 lg:py-20 xl:py-24">
+        <div className="grid lg:grid-cols-12 gap-4 lg:gap-6 xl:gap-8 items-start lg:items-center">
           {/* Card centered on mobile, left-aligned on desktop */}
-          <div className="lg:col-span-4 order-1 lg:order-1 flex items-center justify-center lg:items-start lg:justify-start">
-            <div className="bg-black bg-opacity-50 backdrop-blur-xl rounded-3xl p-5 sm:p-6 lg:p-6 xl:p-8 border border-white border-opacity-30 shadow-2xl max-w-md w-full lg:max-w-none">
+          <div className="lg:col-span-5 xl:col-span-4 order-1 lg:order-1 flex items-center justify-center lg:items-center lg:justify-start">
+            <div className="bg-black bg-opacity-50 backdrop-blur-xl rounded-3xl p-5 sm:p-6 lg:p-6 xl:p-8 border border-white border-opacity-30 shadow-2xl max-w-md w-full lg:max-w-none min-h-[450px] lg:min-h-[500px] xl:min-h-[600px] flex flex-col justify-center">
               {/* School Logo */}
               <div className="flex flex-col items-center space-y-3 sm:space-y-4">
                 <div className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-32 lg:h-32 xl:w-40 xl:h-40 bg-white rounded-full flex items-center justify-center shadow-2xl p-3 sm:p-4">
