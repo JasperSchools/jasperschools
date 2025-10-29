@@ -68,9 +68,10 @@ function Slideshow() {
   const [currentSlide, setCurrentSlide] = useState(0)
   
   const slides = [
-    '/images/istockphoto-1435346080-1024x1024_cleanup.jpg',
-    'https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1200&h=800&fit=crop',
-    '/images/yie.jpg'
+    '/images/jps1.jpeg',
+    '/images/jps2.jpeg',
+    '/images/jps3.jpeg',
+    '/images/jps4.jpeg'
   ]
 
   useEffect(() => {
@@ -98,7 +99,7 @@ function Slideshow() {
             quality={100}
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-50" />
+          <div className="absolute inset-0 bg-black bg-opacity-60" />
         </div>
       ))}
     </div>
