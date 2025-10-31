@@ -124,7 +124,7 @@ export default function OurStory() {
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-white rounded-2xl p-8 flex items-center justify-center">
                   <Image
-                    src="/school-logo.png"
+                    src="/images/jps_logo.jpg"
                     alt="Jasper Primary School Logo"
                     width={300}
                     height={300}

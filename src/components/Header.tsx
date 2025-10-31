@@ -313,7 +313,7 @@ export default function Header() {
               <div className="flex items-center">
                 <div className="relative w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-3">
                   <Image
-                    src="/school-logo.png"
+                    src="/images/jps_logo.jpg"
                     alt="Jasper Primary School Logo"
                     fill
                     className="object-contain"
@@ -492,7 +492,7 @@ export default function Header() {
                   <div className="flex items-center">
                     <div className="relative w-10 h-10 mr-3">
                       <Image
-                        src="/school-logo.png"
+                        src="/images/jps_logo.jpg"
                         alt="Jasper Primary School Logo"
                         fill
                         className="object-contain"
