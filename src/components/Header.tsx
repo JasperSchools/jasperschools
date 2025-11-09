@@ -65,7 +65,6 @@ export default function Header() {
   ]
 
   const navigation = [
-    { name: 'Home', href: '/' },
     { name: 'Programs', href: '/#programs' },
     { name: 'Our Impact', href: '/#impact' },
     { name: 'Contact', href: '/#contact' },
@@ -310,7 +309,7 @@ export default function Header() {
           <div className="flex justify-between items-center py-3 sm:py-4">
             {/* Logo */}
             <div className="flex items-center flex-shrink-0">
-              <div className="flex items-center">
+              <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
                 <div className="relative w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-3">
                   <Image
                     src="/images/jps_logo.jpg"
@@ -326,24 +325,13 @@ export default function Header() {
                   </h1>
                   <p className="text-sm sm:text-base text-gray-600 font-paragraph">Nyairongo, Uganda</p>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:block">
               <div className="ml-4 xl:ml-10 flex items-baseline space-x-1 xl:space-x-4">
-                {navigation.map((item) => (
-                  
-                    <a
-                      key={item.name}
-                    href={item.href}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-                
-                {/* About Us Dropdown */}
+                {/* About Us Dropdown - First Position */}
                 <div 
                   className="relative"
                   onMouseEnter={() => setActiveDropdown('about')}
@@ -376,6 +364,18 @@ export default function Header() {
                     </div>
                   )}
                 </div>
+
+                {/* Other Navigation Links */}
+                {navigation.map((item) => (
+                  
+                    <a
+                      key={item.name}
+                    href={item.href}
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
+                  >
+                    {item.name}
+                  </a>
+                ))}
 
                 {/* Schools Dropdown */}
                 <div 
@@ -489,7 +489,7 @@ export default function Header() {
               >
                 {/* Mobile menu header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-school-green">
-                  <div className="flex items-center">
+                  <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
                     <div className="relative w-10 h-10 mr-3">
                       <Image
                         src="/images/jps_logo.jpg"
@@ -503,7 +503,7 @@ export default function Header() {
                       <h2 className="text-base font-heading-bold text-white">Jasper Primary</h2>
                       <p className="text-xs text-gray-100 font-paragraph">Nyairongo, Uganda</p>
                     </div>
-                  </div>
+                  </a>
                   <button
                     onClick={closeMenu}
                     className="text-white hover:text-gray-200 p-2 transition-colors duration-200"
@@ -517,21 +517,8 @@ export default function Header() {
 
                 {/* Mobile menu content */}
                 <div className="px-4 py-6">
-                  {navigation.map((item, index) => (
-                    <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.1}s both` }}>
-                      <a
-                        href={item.href}
-                        className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 uppercase tracking-wide"
-                        onClick={closeMenu}
-                      >
-                        {item.name}
-                      </a>
-                      <div className="border-b border-gray-200"></div>
-                    </div>
-                  ))}
-                  
-                  {/* Mobile About Us */}
-                  <div style={{ animation: `slideInUp 0.4s ease-out 0.4s both` }}>
+                  {/* Mobile About Us - First Position */}
+                  <div style={{ animation: `slideInUp 0.4s ease-out 0s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('about')}
                       className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
@@ -543,6 +530,20 @@ export default function Header() {
                     </button>
                     <div className="border-b border-gray-200"></div>
                   </div>
+
+                  {/* Other Navigation Links */}
+                  {navigation.map((item, index) => (
+                    <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${(index + 1) * 0.1}s both` }}>
+                      <a
+                        href={item.href}
+                        className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 uppercase tracking-wide"
+                        onClick={closeMenu}
+                      >
+                        {item.name}
+                      </a>
+                      <div className="border-b border-gray-200"></div>
+                    </div>
+                  ))}
 
                   {/* Mobile Schools */}
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.5s both` }}>

@@ -57,26 +57,22 @@ export async function POST(request: NextRequest) {
     // Update child's amount_raised
     const { data: child, error: childFetchError } = await supabase
       .from('children')
-      .select('amount_raised, amount_needed')
+      .select('amount_raised, amount_needed, archived')
       .eq('id', childId)
       .single()
 
     if (childFetchError) throw childFetchError
 
     const newAmountRaised = (child.amount_raised || 0) + amount
-    let newStatus: 'available' | 'partially_sponsored' | 'fully_sponsored' = 'available'
-
-    if (newAmountRaised >= child.amount_needed) {
-      newStatus = 'fully_sponsored'
-    } else if (newAmountRaised > 0) {
-      newStatus = 'partially_sponsored'
-    }
+    
+    // Automatically archive if funding goal is met
+    const shouldArchive = newAmountRaised >= child.amount_needed
 
     const { error: updateError } = await supabase
       .from('children')
       .update({
         amount_raised: newAmountRaised,
-        status: newStatus,
+        archived: shouldArchive,
       })
       .eq('id', childId)
 

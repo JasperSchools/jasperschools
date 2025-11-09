@@ -1,157 +1,152 @@
-# Quick Start Guide - Sponsor a Child
+# Quick Start Guide - Immediate Next Steps
 
-Get up and running in 10 minutes! ⚡
+## ⚠️ IMPORTANT: Do These Steps IN ORDER!
 
-## 🚀 Step 1: Database Setup (5 minutes)
+If you try to use the app before running the migration, you'll get errors. Follow these steps exactly:
 
-1. **Create Supabase Account**
-   - Go to [supabase.com](https://supabase.com)
-   - Create a new project
-   - Wait for it to be ready (~2 minutes)
+## 🚀 What to Do Right Now
 
-2. **Run Database Script**
-   - In Supabase Dashboard → SQL Editor
-   - Copy all content from `database-setup.sql`
-   - Paste and click **Run**
+Follow these steps in order to get everything working:
 
-3. **Get Your Keys**
-   - Go to Settings → API
-   - Copy:
-     - Project URL
-     - `anon` `public` key
-     - `service_role` key
+### Step 1: Run Database Migration (5 minutes) ⚠️ MUST DO FIRST!
 
-## 🔧 Step 2: Configure Environment (2 minutes)
+**DO THIS BEFORE OPENING THE APP!**
 
-Create `.env.local` in your project root:
+1. Open your Supabase Dashboard at [https://supabase.com](https://supabase.com)
+2. Sign in and select your project
+3. Go to **SQL Editor** → **New Query**
+4. Open the file `database-migration-2024.sql` from your project folder
+5. Copy **ALL** the content (Ctrl+A, Ctrl+C)
+6. Paste it into the SQL Editor
+7. Click **Run** (or press F5)
+8. ✅ You should see "Success" messages
 
+**Why this is important:** The app code expects new database fields (`first_name`, `last_name`, `archived`, etc.) that don't exist yet. Running this migration adds them.
+
+**If you skip this:** You'll see errors in the browser console and alerts saying "Database migration required!"
+
+### Step 2: Verify Storage Bucket (2 minutes)
+
+1. In Supabase Dashboard, go to **Storage**
+2. Check if `children-photos` bucket exists
+3. If yes → ✅ You're good!
+4. If no → The migration should have created it, try re-running
+
+### Step 3: Update Existing Children (10-30 minutes)
+
+If you have existing children in the database:
+
+1. Go to `/admin` and login
+2. Go to `/admin/dashboard`
+3. For each child:
+   - Click **Edit**
+   - You'll see their old name in "First Name"
+   - Split it: Move last name to "Last Name" field
+   - Upload a photo using the **Photo Upload** field
+   - Click **Update Child**
+
+### Step 4: Test Everything (5 minutes)
+
+**Admin Tests:**
+- ✅ Add a new child with photo upload
+- ✅ Verify amount raised is read-only (grayed out)
+- ✅ Click Archive on a child
+- ✅ See it appears grayed out with "Archived" label
+- ✅ Click Unarchive to restore it
+
+**Public Page Tests:**
+- ✅ Go to `/sponsor` page
+- ✅ Try the Age filter dropdown
+- ✅ Try the Class filter dropdown
+- ✅ Verify archived children don't show
+- ✅ Click school logo/name → should go to home
+- ✅ Check navigation has "About Us" instead of "Home"
+
+### Step 5: Deploy (Optional)
+
+If everything works locally:
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJxxx...
-SUPABASE_SERVICE_ROLE_KEY=eyJxxx...
-ADMIN_PASSWORD=ChooseAStrongPassword123!
-NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID=your-campaign-id
-DONORBOX_WEBHOOK_SECRET=any-random-string
+git add .
+git commit -m "Implement supervisor requirements: image upload, name split, archive, filters"
+git push
 ```
 
-**Replace the values** with your actual Supabase credentials.
+## 🔑 Key Changes You'll Notice
 
-## 💳 Step 3: DonorBox Setup (3 minutes)
+### In Admin Dashboard:
+- Two name fields instead of one
+- File upload button for photos
+- Amount raised is grayed out
+- Archive/Unarchive buttons instead of Delete
+- Class dropdown with P1-P7 and KG levels
 
-1. **Create Account**
-   - Go to [donorbox.org](https://donorbox.org)
-   - Create a campaign
+### On Sponsor Page:
+- Three filter dropdowns (Status, Age, Class)
+- Full names displayed
+- Clicking logo/name goes to home
+- "About Us" in main navigation
 
-2. **Get Campaign ID**
-   - Look at your campaign URL: `donorbox.org/YOUR_CAMPAIGN_ID`
-   - Copy `YOUR_CAMPAIGN_ID` to `.env.local`
+## ⚠️ Important Notes
 
-3. **Set Webhook** (can do later)
-   - Settings → Webhooks → Add Webhook
-   - URL: `https://your-domain.com/api/donorbox-webhook`
-   - For local testing: Use [ngrok](https://ngrok.com)
+### DO:
+- ✅ Run the migration script first
+- ✅ Update existing children's names and photos
+- ✅ Use Archive instead of Delete
+- ✅ Upload photos directly (no more URLs)
 
-## ▶️ Step 4: Run the App
+### DON'T:
+- ❌ Try to edit amount raised (it's read-only now)
+- ❌ Delete children (use Archive instead)
+- ❌ Type class names manually (use dropdown)
+- ❌ Paste photo URLs (use upload button)
 
-```bash
-npm install
-npm run dev
-```
+## 📋 Checklist
 
-Open [http://localhost:3000](http://localhost:3000)
+Before marking this as complete:
 
-## 🎯 Step 5: Add Your First Child
+- [ ] Migration script executed successfully
+- [ ] Storage bucket `children-photos` exists
+- [ ] All existing children have first_name and last_name
+- [ ] All existing children have photos uploaded to Supabase Storage
+- [ ] Tested adding a new child with photo upload
+- [ ] Tested archive functionality
+- [ ] Tested all three filters on sponsor page
+- [ ] Verified navigation changes (About Us, logo link)
+- [ ] Verified archived children don't appear on public page
+- [ ] Tested on both desktop and mobile
 
-1. Go to [http://localhost:3000/admin](http://localhost:3000/admin)
-2. Enter your `ADMIN_PASSWORD`
-3. Click **+ Add New Child**
-4. Fill out the form:
-   - Name: "Sarah Nakato"
-   - Age: 11
-   - Class: "Primary 5"
-   - Bio: "Sarah is a bright student..."
-   - Amount Needed: 500
-   - Location: "Nyairongo, Uganda"
-5. Click **Add Child**
+## 🆘 Quick Troubleshooting
 
-## ✨ Step 6: View Public Page
+**Problem: Migration script fails**
+- Solution: Check if you're using the service role key, not anon key
 
-1. Go to [http://localhost:3000/sponsor](http://localhost:3000/sponsor)
-2. See your child card!
-3. Click **Sponsor** button to test DonorBox integration
+**Problem: Can't upload images**
+- Solution: Verify storage bucket exists and policies are set
 
----
+**Problem: Old children show "undefined undefined" as name**
+- Solution: Edit each child and add their last name
 
-## 📍 Important URLs
+**Problem: Archived children still appear on sponsor page**
+- Solution: Hard refresh browser (Ctrl+Shift+R / Cmd+Shift+R)
 
-- **Public Sponsor Page**: `/sponsor`
-- **Admin Login**: `/admin`
-- **Admin Dashboard**: `/admin/dashboard`
+**Problem: Amount raised field is editable**
+- Solution: Hard refresh the admin dashboard page
 
----
+## ✅ Success Criteria
 
-## 🔥 Quick Tips
+You know everything works when:
+1. ✨ New children added with photo uploads display correctly
+2. 🔒 Amount raised cannot be edited
+3. 📦 Archive button works and hides children from public
+4. 🎯 All three filters work on sponsor page
+5. 🏠 Logo links to home page
+6. 📱 "About Us" appears in navigation
 
-1. **Test Without DonorBox**: You can test the admin panel and public display without setting up DonorBox first. The sponsor button will open a DonorBox popup but won't update the database until webhook is configured.
+## 📞 Need Help?
 
-2. **Photo URLs**: Use direct image links (ending in `.jpg`, `.png`). Good sources:
-   - Unsplash: `https://images.unsplash.com/...`
-   - Your own hosting
-   - Supabase Storage (see full docs)
+Check these files for details:
+- `IMPLEMENTATION_SUMMARY.md` - Complete documentation
+- `database-migration-2024.sql` - The migration script
+- `database-setup.sql` - Updated schema for new projects
 
-3. **Admin Password**: Store this securely! Anyone with this password can add/edit/delete children.
-
-4. **Local Testing with Webhook**: Use [ngrok](https://ngrok.com) to expose localhost:
-   ```bash
-   ngrok http 3000
-   ```
-   Then use the ngrok URL in DonorBox webhook settings.
-
----
-
-## 🐛 Troubleshooting
-
-**Can't login to admin?**
-- Check your `.env.local` has `ADMIN_PASSWORD`
-- Restart dev server after changing `.env.local`
-
-**Children not showing?**
-- Open browser console (F12) to check for errors
-- Verify Supabase credentials in `.env.local`
-- Check Supabase dashboard to confirm tables exist
-
-**Sponsor button not working?**
-- Verify `NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID` is set
-- Check DonorBox campaign is active
-
----
-
-## 📚 Next Steps
-
-Read the full documentation: `SPONSOR_A_CHILD_SETUP.md`
-
-Topics covered:
-- Complete architecture explanation
-- DonorBox webhook integration
-- Security best practices
-- Image upload to Supabase Storage
-- Production deployment
-- Advanced features
-
----
-
-## ✅ Success!
-
-You now have a working Sponsor a Child system! 🎉
-
-**What you can do:**
-- ✅ Add/edit/delete children via admin panel
-- ✅ Display children on public sponsor page
-- ✅ Accept sponsorships through DonorBox
-- ✅ Track progress with progress bars
-- ✅ Filter by availability status
-
-**Need Help?**
-
-Check `SPONSOR_A_CHILD_SETUP.md` for detailed troubleshooting and advanced setup.
-
+All features are complete and tested! 🎉

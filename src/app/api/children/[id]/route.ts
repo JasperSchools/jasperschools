@@ -48,9 +48,32 @@ export async function PUT(
       )
     }
 
+    // Clean up undefined values that might cause issues
+    const cleanedBody = Object.fromEntries(
+      Object.entries(body).filter(([_, value]) => value !== undefined)
+    )
+
+    // First get the current child data to check funding
+    const { data: currentChild, error: fetchError } = await supabase
+      .from('children')
+      .select('amount_raised, amount_needed, archived')
+      .eq('id', id)
+      .single()
+
+    if (fetchError) throw fetchError
+
+    // Calculate if should be archived based on new or existing amounts
+    const newAmountRaised = cleanedBody.amount_raised ?? currentChild.amount_raised
+    const newAmountNeeded = cleanedBody.amount_needed ?? currentChild.amount_needed
+    
+    // Auto-archive if funding goal is met
+    if (newAmountRaised >= newAmountNeeded && !currentChild.archived) {
+      cleanedBody.archived = true
+    }
+
     const { data, error } = await supabase
       .from('children')
-      .update(body)
+      .update(cleanedBody)
       .eq('id', id)
       .select()
       .single()
@@ -60,14 +83,15 @@ export async function PUT(
     return NextResponse.json(data)
   } catch (error) {
     console.error('Error updating child:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Failed to update child'
     return NextResponse.json(
-      { error: 'Failed to update child' },
+      { error: errorMessage },
       { status: 500 }
     )
   }
 }
 
-// DELETE child
+// DELETE child (soft delete - archive instead)
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -85,18 +109,19 @@ export async function DELETE(
       )
     }
 
+    // Archive instead of delete
     const { error } = await supabase
       .from('children')
-      .delete()
+      .update({ archived: true })
       .eq('id', id)
 
     if (error) throw error
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ success: true, archived: true })
   } catch (error) {
-    console.error('Error deleting child:', error)
+    console.error('Error archiving child:', error)
     return NextResponse.json(
-      { error: 'Failed to delete child' },
+      { error: 'Failed to archive child' },
       { status: 500 }
     )
   }

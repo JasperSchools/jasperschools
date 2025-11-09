@@ -14,46 +14,55 @@ export interface Database {
           id: string
           created_at: string
           updated_at: string
-          name: string
+          first_name: string
+          last_name: string
           bio: string
           class_year: string
           amount_needed: number
           amount_raised: number
           photo_url: string | null
+          photo_path: string | null
+          archived: boolean
           status: 'available' | 'partially_sponsored' | 'fully_sponsored'
-          age: number | null
-          location: string | null
-          interests: string | null
+          age: number | null | undefined
+          location: string | null | undefined
+          interests: string | null | undefined
         }
         Insert: {
           id?: string
           created_at?: string
           updated_at?: string
-          name: string
+          first_name: string
+          last_name: string
           bio: string
           class_year: string
           amount_needed: number
           amount_raised?: number
-          photo_url?: string | null
+          photo_url?: string | null | undefined
+          photo_path?: string | null | undefined
+          archived?: boolean
           status?: 'available' | 'partially_sponsored' | 'fully_sponsored'
-          age?: number | null
-          location?: string | null
-          interests?: string | null
+          age?: number | null | undefined
+          location?: string | null | undefined
+          interests?: string | null | undefined
         }
         Update: {
           id?: string
           created_at?: string
           updated_at?: string
-          name?: string
+          first_name?: string
+          last_name?: string
           bio?: string
           class_year?: string
           amount_needed?: number
           amount_raised?: number
-          photo_url?: string | null
+          photo_url?: string | null | undefined
+          photo_path?: string | null | undefined
+          archived?: boolean
           status?: 'available' | 'partially_sponsored' | 'fully_sponsored'
-          age?: number | null
-          location?: string | null
-          interests?: string | null
+          age?: number | null | undefined
+          location?: string | null | undefined
+          interests?: string | null | undefined
         }
       }
       sponsorships: {

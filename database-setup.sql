@@ -17,7 +17,8 @@ CREATE TABLE children (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
-    name TEXT NOT NULL,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
     bio TEXT NOT NULL,
     class_year TEXT NOT NULL,
     age INTEGER,
@@ -26,6 +27,8 @@ CREATE TABLE children (
     amount_needed NUMERIC(10, 2) NOT NULL,
     amount_raised NUMERIC(10, 2) DEFAULT 0 NOT NULL,
     photo_url TEXT,
+    photo_path TEXT,
+    archived BOOLEAN DEFAULT FALSE NOT NULL,
     status child_status DEFAULT 'available' NOT NULL
 );
 
@@ -48,6 +51,7 @@ CREATE TABLE sponsorships (
 -- Create indexes for better performance
 -- ============================================
 CREATE INDEX idx_children_status ON children(status);
+CREATE INDEX idx_children_archived ON children(archived);
 CREATE INDEX idx_children_created_at ON children(created_at DESC);
 CREATE INDEX idx_sponsorships_child_id ON sponsorships(child_id);
 CREATE INDEX idx_sponsorships_created_at ON sponsorships(created_at DESC);
@@ -79,10 +83,10 @@ ALTER TABLE sponsorships ENABLE ROW LEVEL SECURITY;
 -- Create RLS Policies
 -- ============================================
 
--- Public read access for children
+-- Public read access for children (exclude archived)
 CREATE POLICY "Children are viewable by everyone" 
     ON children FOR SELECT 
-    USING (true);
+    USING (archived = FALSE);
 
 -- Public read access for sponsorships
 CREATE POLICY "Sponsorships are viewable by everyone" 
@@ -128,12 +132,13 @@ WITH CHECK (bucket_id = 'children-photos');
 -- ============================================
 -- Uncomment to add sample children for testing
 
-INSERT INTO children (name, bio, class_year, age, location, interests, amount_needed, amount_raised, status)
+INSERT INTO children (first_name, last_name, bio, class_year, age, location, interests, amount_needed, amount_raised, status)
 VALUES 
 (
-    'Sarah Nakato',
+    'Sarah',
+    'Nakato',
     'Sarah is a bright and enthusiastic student who dreams of becoming a doctor. She loves science and helps younger students with their homework. Despite facing challenges, she maintains top grades in her class.',
-    'Primary 5',
+    'P5',
     11,
     'Nyairongo, Uganda',
     'Science, Reading, Helping Others',
@@ -142,9 +147,10 @@ VALUES
     'available'
 ),
 (
-    'James Okello',
+    'James',
+    'Okello',
     'James is passionate about mathematics and sports. He is the captain of the school football team and hopes to become an engineer one day. He comes from a family of farmers and is the first in his family to attend school.',
-    'Primary 6',
+    'P6',
     12,
     'Nyairongo, Uganda',
     'Math, Football, Engineering',

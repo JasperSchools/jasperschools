@@ -3,14 +3,25 @@ import { createClient } from '@/lib/supabase/server'
 import { ChildInsert } from '@/types/database.types'
 
 // GET all children
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const supabase = await createClient()
     
-    const { data, error } = await supabase
+    // Check if request is from admin (has admin password)
+    const adminPassword = request.headers.get('x-admin-password')
+    const isAdmin = adminPassword === process.env.ADMIN_PASSWORD
+    
+    let query = supabase
       .from('children')
       .select('*')
       .order('created_at', { ascending: false })
+    
+    // If not admin, exclude archived children
+    if (!isAdmin) {
+      query = query.eq('archived', false)
+    }
+
+    const { data, error } = await query
 
     if (error) throw error
 
@@ -37,9 +48,14 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Clean up undefined values
+    const cleanedBody = Object.fromEntries(
+      Object.entries(body).filter(([_, value]) => value !== undefined)
+    )
+
     const { data, error } = await supabase
       .from('children')
-      .insert([body])
+      .insert([cleanedBody])
       .select()
       .single()
 

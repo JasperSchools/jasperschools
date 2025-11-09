@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Donation Webhook</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0D4723;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #0D4723;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0a3319;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            color: #004085;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Donation Webhook</h1>
+        <p class="subtitle">Simulate a DonorBox donation to test your system</p>
+
+        <div class="info">
+            <strong>📝 Instructions:</strong>
+            <ol>
+                <li>Make sure your dev server is running (npm run dev)</li>
+                <li>Get a Child ID from your database or admin dashboard</li>
+                <li>Get your webhook secret from .env.local</li>
+                <li>Enter values below and click "Send Test Webhook"</li>
+                <li>Check your terminal and database for updates</li>
+            </ol>
+        </div>
+
+        <form id="webhookForm">
+            <label>Child ID *</label>
+            <input type="text" id="childId" placeholder="e.g., 3cfcb089-8e54-4dd3-988e-c8afb109cf13" required>
+
+            <label>Donation Amount ($) *</label>
+            <input type="number" id="amount" placeholder="e.g., 50" step="0.01" min="0.01" value="50" required>
+
+            <label>Donor Name</label>
+            <input type="text" id="donorName" placeholder="e.g., John Smith" value="Test Donor">
+
+            <label>Donor Email</label>
+            <input type="email" id="donorEmail" placeholder="e.g., test@example.com" value="test@example.com">
+
+            <label>Webhook Secret *</label>
+            <input type="text" id="webhookSecret" placeholder="From your .env.local file" required>
+
+            <label>Frequency</label>
+            <select id="frequency">
+                <option value="false">One-time</option>
+                <option value="true">Monthly (Recurring)</option>
+            </select>
+
+            <label>Server URL</label>
+            <input type="text" id="serverUrl" value="http://localhost:3000" placeholder="http://localhost:3000">
+
+            <button type="submit">🚀 Send Test Webhook</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('webhookForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const childId = document.getElementById('childId').value;
+            const amount = document.getElementById('amount').value;
+            const donorName = document.getElementById('donorName').value;
+            const donorEmail = document.getElementById('donorEmail').value;
+            const webhookSecret = document.getElementById('webhookSecret').value;
+            const frequency = document.getElementById('frequency').value === 'true';
+            const serverUrl = document.getElementById('serverUrl').value;
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'none';
+
+            const payload = {
+                donation: {
+                    id: `test-${Date.now()}`,
+                    amount: amount,
+                    donor: {
+                        name: donorName,
+                        email: donorEmail,
+                    },
+                    recurring: frequency,
+                    designation: 'Test Donation',
+                    custom_fields: {
+                        child_id: childId,
+                    },
+                    metadata: {
+                        child_id: childId,
+                    },
+                },
+            };
+
+            try {
+                console.log('Sending webhook with payload:', payload);
+
+                const response = await fetch(`${serverUrl}/api/donorbox-webhook`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-donorbox-signature': webhookSecret,
+                    },
+                    body: JSON.stringify(payload),
+                });
+
+                const data = await response.json();
+                
+                resultDiv.style.display = 'block';
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <strong>✅ Success!</strong><br><br>
+                        Webhook processed successfully!<br><br>
+                        <strong>Next steps:</strong><br>
+                        1. Check your terminal for logs<br>
+                        2. Refresh /sponsor page - child may be archived<br>
+                        3. Check /admin/dashboard for updates<br>
+                        4. Check database for new sponsorship record<br><br>
+                        <strong>Response:</strong>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <strong>❌ Error ${response.status}</strong><br><br>
+                        ${data.error || 'Unknown error'}<br><br>
+                        <strong>Common issues:</strong><br>
+                        - Wrong webhook secret<br>
+                        - Invalid child ID<br>
+                        - Server not running<br>
+                        - Check terminal for details<br><br>
+                        <strong>Response:</strong>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <strong>❌ Connection Error</strong><br><br>
+                    Could not connect to server.<br><br>
+                    <strong>Make sure:</strong><br>
+                    - Server is running (npm run dev)<br>
+                    - URL is correct<br>
+                    - No CORS issues<br><br>
+                    <strong>Error:</strong> ${error.message}
+                `;
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>
+

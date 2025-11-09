@@ -9,37 +9,98 @@ import Image from 'next/image'
 export default function SponsorPage() {
   const [children, setChildren] = useState<Child[]>([])
   const [loading, setLoading] = useState(true)
-  const [filter, setFilter] = useState<'all' | 'available' | 'partially_sponsored'>('all')
+  const [ageFilter, setAgeFilter] = useState<string>('all')
+  const [classFilter, setClassFilter] = useState<string>('all')
+  const [modal, setModal] = useState<{
+    isOpen: boolean
+    type: 'error' | 'info'
+    title: string
+    message: string
+  }>({
+    isOpen: false,
+    type: 'info',
+    title: '',
+    message: '',
+  })
+
+  const CLASS_OPTIONS = [
+    { value: 'all', label: 'All Classes' },
+    { value: 'Baby Class', label: 'Baby Class (KG)' },
+    { value: 'Middle Class', label: 'Middle Class (KG)' },
+    { value: 'Top Class', label: 'Top Class (KG)' },
+    { value: 'P1', label: 'Primary 1' },
+    { value: 'P2', label: 'Primary 2' },
+    { value: 'P3', label: 'Primary 3' },
+    { value: 'P4', label: 'Primary 4' },
+    { value: 'P5', label: 'Primary 5' },
+    { value: 'P6', label: 'Primary 6' },
+    { value: 'P7', label: 'Primary 7' },
+  ]
+
+  const AGE_RANGES = [
+    { value: 'all', label: 'All Ages' },
+    { value: '3-5', label: '3-5 years' },
+    { value: '6-8', label: '6-8 years' },
+    { value: '9-11', label: '9-11 years' },
+    { value: '12-14', label: '12-14 years' },
+    { value: '15+', label: '15+ years' },
+  ]
 
   useEffect(() => {
     fetchChildren()
   }, [])
 
+  const showModal = (type: 'error' | 'info', title: string, message: string) => {
+    setModal({ isOpen: true, type, title, message })
+  }
+
+  const closeModal = () => {
+    setModal({ ...modal, isOpen: false })
+  }
+
   const fetchChildren = async () => {
     try {
       const res = await fetch('/api/children')
+      if (!res.ok) {
+        throw new Error(`Failed to fetch: ${res.status}`)
+      }
       const data = await res.json()
-      // Don't show fully sponsored children on public page
-      setChildren(data.filter((child: Child) => child.status !== 'fully_sponsored'))
+      
+      // Check if data needs migration
+      if (data.length > 0 && !data[0].hasOwnProperty('first_name')) {
+        console.error('⚠️ DATABASE MIGRATION REQUIRED!')
+        console.error('Please run database-migration-2024.sql in your Supabase SQL Editor')
+        showModal('error', 'Database Migration Required', 'Please run database-migration-2024.sql in Supabase. Check the browser console for details.')
+        setLoading(false)
+        return
+      }
+      
+      // Only show non-archived children on public page
+      setChildren(data.filter((child: Child) => !child.archived))
     } catch (error) {
       console.error('Error fetching children:', error)
+      showModal('error', 'Error Loading Children', 'Failed to load children. Please check the console for details.')
     } finally {
       setLoading(false)
     }
   }
 
-  const filteredChildren = filter === 'all' 
-    ? children 
-    : children.filter(child => child.status === filter)
-
-  const handleSponsor = (child: Child) => {
-    // Construct DonorBox URL with child information
-    const donorBoxCampaignId = process.env.NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID || 'YOUR_CAMPAIGN_ID'
-    const donorBoxUrl = `https://donorbox.org/embed/${donorBoxCampaignId}?default_interval=m&amount=${child.amount_needed - child.amount_raised}&designation=${encodeURIComponent(child.name)}`
+  const filterByAge = (child: Child) => {
+    if (ageFilter === 'all' || !child.age) return true
     
-    // Open DonorBox in new window
-    window.open(donorBoxUrl, '_blank', 'width=600,height=800')
+    const age = child.age
+    if (ageFilter === '3-5') return age >= 3 && age <= 5
+    if (ageFilter === '6-8') return age >= 6 && age <= 8
+    if (ageFilter === '9-11') return age >= 9 && age <= 11
+    if (ageFilter === '12-14') return age >= 12 && age <= 14
+    if (ageFilter === '15+') return age >= 15
+    return true
   }
+
+  const filteredChildren = children
+    .filter(child => classFilter === 'all' || child.class_year === classFilter)
+    .filter(filterByAge)
+
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -63,45 +124,58 @@ export default function SponsorPage() {
       {/* Filter Section */}
       <section className="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-heading-medium text-gray-700">Filter:</span>
-              <button
-                onClick={() => setFilter('all')}
-                className={`px-4 py-2 rounded-lg font-paragraph text-sm transition-colors ${
-                  filter === 'all'
-                    ? 'text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-                style={filter === 'all' ? { backgroundColor: '#0D4723' } : {}}
-              >
-                All Children
-              </button>
-              <button
-                onClick={() => setFilter('available')}
-                className={`px-4 py-2 rounded-lg font-paragraph text-sm transition-colors ${
-                  filter === 'available'
-                    ? 'text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-                style={filter === 'available' ? { backgroundColor: '#0D4723' } : {}}
-              >
-                Available
-              </button>
-              <button
-                onClick={() => setFilter('partially_sponsored')}
-                className={`px-4 py-2 rounded-lg font-paragraph text-sm transition-colors ${
-                  filter === 'partially_sponsored'
-                    ? 'text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-                style={filter === 'partially_sponsored' ? { backgroundColor: '#0D4723' } : {}}
-              >
-                Partially Sponsored
-              </button>
-            </div>
-            <div className="text-sm text-gray-600 font-paragraph">
-              {filteredChildren.length} children available
+          <div className="flex flex-wrap items-center gap-4">
+              {/* Age Filter */}
+              <div className="flex items-center gap-2">
+                <label className="text-sm font-heading-medium text-gray-700">Age:</label>
+                <div className="relative">
+                  <select
+                    value={ageFilter}
+                    onChange={(e) => setAgeFilter(e.target.value)}
+                    className="appearance-none bg-white text-gray-900 pl-3 pr-10 py-2 border border-gray-300 rounded-lg font-paragraph text-sm focus:ring-2 focus:ring-school-green focus:border-transparent cursor-pointer hover:border-gray-400 transition-colors"
+                    style={{ color: '#111827' }}
+                  >
+                    {AGE_RANGES.map((range) => (
+                      <option key={range.value} value={range.value} className="bg-white text-gray-900 py-2">
+                        {range.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Class Filter */}
+              <div className="flex items-center gap-2">
+                <label className="text-sm font-heading-medium text-gray-700">Class:</label>
+                <div className="relative">
+                  <select
+                    value={classFilter}
+                    onChange={(e) => setClassFilter(e.target.value)}
+                    className="appearance-none bg-white text-gray-900 pl-3 pr-10 py-2 border border-gray-300 rounded-lg font-paragraph text-sm focus:ring-2 focus:ring-school-green focus:border-transparent cursor-pointer hover:border-gray-400 transition-colors"
+                    style={{ color: '#111827' }}
+                  >
+                    {CLASS_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value} className="bg-white text-gray-900 py-2">
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+            {/* Results Count */}
+            <div className="ml-auto text-sm text-gray-600 font-paragraph">
+              {filteredChildren.length} children need sponsorship
             </div>
           </div>
         </div>
@@ -137,7 +211,7 @@ export default function SponsorPage() {
                       {child.photo_url ? (
                         <Image
                           src={child.photo_url}
-                          alt={child.name}
+                          alt={child.first_name ? `${child.first_name} ${child.last_name}` : (child as any).name || 'Student'}
                           fill
                           className="object-cover"
                         />
@@ -158,21 +232,13 @@ export default function SponsorPage() {
                           </svg>
                         </div>
                       )}
-                      {/* Status Badge */}
-                      {child.status === 'partially_sponsored' && (
-                        <div className="absolute top-4 right-4">
-                          <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-heading-semibold">
-                            Partially Sponsored
-                          </span>
-                        </div>
-                      )}
                     </div>
 
                     {/* Content */}
                     <div className="p-6">
                       <div className="mb-4">
                         <h3 className="text-2xl font-heading-bold text-school-blue mb-2">
-                          {child.name}
+                          {child.first_name ? `${child.first_name} ${child.last_name}` : (child as any).name || 'Student'}
                         </h3>
                         <div className="flex flex-wrap gap-2 text-sm text-gray-600 font-paragraph">
                           {child.age && <span>Age {child.age}</span>}
@@ -196,7 +262,7 @@ export default function SponsorPage() {
                         </div>
                       )}
 
-                      <p className="text-gray-700 font-paragraph mb-6 line-clamp-3">
+                      <p className="text-gray-700 font-paragraph mb-6 line-clamp-1">
                         {child.bio}
                       </p>
 
@@ -218,13 +284,13 @@ export default function SponsorPage() {
                         </div>
                       </div>
 
-                      {/* Sponsor Button */}
-                      <button
-                        onClick={() => handleSponsor(child)}
-                        className="w-full bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                      {/* Learn More & Sponsor Button */}
+                      <a
+                        href={`/sponsor/${child.id}`}
+                        className="w-full bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-center block"
                       >
-                        Sponsor {child.name} - ${remainingAmount.toFixed(2)}
-                      </button>
+                        Learn More & Sponsor {child.first_name || (child as any).name?.split(' ')[0] || 'Student'}
+                      </a>
                     </div>
                   </div>
                 )
@@ -287,6 +353,74 @@ export default function SponsorPage() {
       </section>
 
       <Footer />
+
+      {/* Custom Modal */}
+      {modal.isOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="flex min-h-screen items-center justify-center p-4">
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+              onClick={closeModal}
+            />
+            
+            {/* Modal */}
+            <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full p-6 animate-scale-in">
+              {/* Icon */}
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full mb-4" style={{
+                backgroundColor: modal.type === 'error' ? '#FDE8E8' : '#E0E7FF'
+              }}>
+                {modal.type === 'error' ? (
+                  <svg className="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )}
+              </div>
+
+              {/* Content */}
+              <div className="text-center">
+                <h3 className="text-lg font-heading-bold text-gray-900 mb-2">
+                  {modal.title}
+                </h3>
+                <p className="text-sm text-gray-600 font-paragraph whitespace-pre-line">
+                  {modal.message}
+                </p>
+              </div>
+
+              {/* Button */}
+              <div className="mt-6 flex justify-center">
+                <button
+                  onClick={closeModal}
+                  className="px-6 py-2 rounded-lg font-heading-medium transition-colors text-white hover:bg-green-700"
+                  style={{ backgroundColor: '#0D4723' }}
+                >
+                  OK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        @keyframes scale-in {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-scale-in {
+          animation: scale-in 0.2s ease-out;
+        }
+      `}</style>
     </main>
   )
 }
