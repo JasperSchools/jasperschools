@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Child } from '@/types/database.types'
@@ -46,10 +46,6 @@ export default function SponsorPage() {
     { value: '15+', label: '15+ years' },
   ]
 
-  useEffect(() => {
-    fetchChildren()
-  }, [])
-
   const showModal = (type: 'error' | 'info', title: string, message: string) => {
     setModal({ isOpen: true, type, title, message })
   }
@@ -58,7 +54,7 @@ export default function SponsorPage() {
     setModal({ ...modal, isOpen: false })
   }
 
-  const fetchChildren = async () => {
+  const fetchChildren = useCallback(async () => {
     try {
       const res = await fetch('/api/children')
       if (!res.ok) {
@@ -83,7 +79,11 @@ export default function SponsorPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    fetchChildren()
+  }, [fetchChildren])
 
   const filterByAge = (child: Child) => {
     if (ageFilter === 'all' || !child.age) return true

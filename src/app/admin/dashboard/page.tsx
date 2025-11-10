@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import Image from 'next/image'
 import { Child, ChildInsert } from '@/types/database.types'
 
 export default function AdminDashboard() {
@@ -343,12 +345,12 @@ export default function AdminDashboard() {
               Sponsor a Child - Admin Dashboard
             </h1>
             <div className="flex gap-4">
-              <a
+              <Link
                 href="/"
                 className="px-4 py-2 text-school-green hover:text-green-700 font-heading-medium"
               >
                 View Site
-              </a>
+              </Link>
               <button
                 onClick={handleLogout}
                 className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-heading-medium transition-colors"
@@ -488,10 +490,11 @@ export default function AdminDashboard() {
                     {imagePreview ? (
                       <div className="space-y-3">
                         <div className="relative w-32 h-32 rounded-lg overflow-hidden border-2 border-gray-300">
-                          <img
+                          <Image
                             src={imagePreview}
                             alt="Preview"
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
                           />
                         </div>
                         <div className="flex gap-2">
@@ -598,7 +601,7 @@ export default function AdminDashboard() {
           
           {children.length === 0 ? (
             <div className="p-8 text-center text-gray-500 font-paragraph">
-              No children added yet. Click "Add New Child" to get started.
+              No children added yet. Click &quot;Add New Child&quot; to get started.
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -631,11 +634,14 @@ export default function AdminDashboard() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           {child.photo_url && (
-                            <img
-                              src={child.photo_url}
-                              alt={`${child.first_name} ${child.last_name}`}
-                              className="h-10 w-10 rounded-full mr-3 object-cover"
-                            />
+                            <div className="relative h-10 w-10 rounded-full mr-3 overflow-hidden">
+                              <Image
+                                src={child.photo_url}
+                                alt={`${child.first_name} ${child.last_name}`}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
                           )}
                           <div>
                             <div className="text-sm font-heading-medium text-gray-900">

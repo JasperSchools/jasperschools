@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function AdminLogin() {
   const [password, setPassword] = useState('')
@@ -88,9 +89,9 @@ export default function AdminLogin() {
         </form>
 
         <div className="mt-6 text-center">
-          <a href="/" className="text-sm text-school-green hover:text-green-700 font-paragraph">
+          <Link href="/" className="text-sm text-school-green hover:text-green-700 font-paragraph">
             Back to Home
-          </a>
+          </Link>
         </div>
       </div>
     </div>

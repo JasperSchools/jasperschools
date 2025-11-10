@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -309,7 +310,7 @@ export default function Header() {
           <div className="flex justify-between items-center py-3 sm:py-4">
             {/* Logo */}
             <div className="flex items-center flex-shrink-0">
-              <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
                 <div className="relative w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-3">
                   <Image
                     src="/images/jps_logo.jpg"
@@ -325,7 +326,7 @@ export default function Header() {
                   </h1>
                   <p className="text-sm sm:text-base text-gray-600 font-paragraph">Nyairongo, Uganda</p>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
@@ -489,7 +490,7 @@ export default function Header() {
               >
                 {/* Mobile menu header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-school-green">
-                  <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
+                  <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
                     <div className="relative w-10 h-10 mr-3">
                       <Image
                         src="/images/jps_logo.jpg"
@@ -503,7 +504,7 @@ export default function Header() {
                       <h2 className="text-base font-heading-bold text-white">Jasper Primary</h2>
                       <p className="text-xs text-gray-100 font-paragraph">Nyairongo, Uganda</p>
                     </div>
-                  </a>
+                  </Link>
                   <button
                     onClick={closeMenu}
                     className="text-white hover:text-gray-200 p-2 transition-colors duration-200"

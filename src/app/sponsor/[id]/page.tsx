@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -14,13 +14,7 @@ export default function StudentDetailPage() {
   const [loading, setLoading] = useState(true)
   const [showDonorBox, setShowDonorBox] = useState(false)
 
-  useEffect(() => {
-    if (params.id) {
-      fetchChild(params.id as string)
-    }
-  }, [params.id])
-
-  const fetchChild = async (id: string) => {
+  const fetchChild = useCallback(async (id: string) => {
     try {
       const res = await fetch(`/api/children/${id}`)
       if (!res.ok) {
@@ -41,7 +35,13 @@ export default function StudentDetailPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [router])
+
+  useEffect(() => {
+    if (params.id) {
+      fetchChild(params.id as string)
+    }
+  }, [params.id, fetchChild])
 
   if (loading) {
     return (
