@@ -19,6 +19,23 @@ export async function GET(
 
     if (error) throw error
 
+    // Auto-archive if funding goal is met
+    if (data && !data.archived && data.amount_raised >= data.amount_needed) {
+      const { data: updatedData, error: updateError } = await supabase
+        .from('children')
+        .update({ archived: true })
+        .eq('id', id)
+        .select()
+        .single()
+
+      if (updateError) {
+        console.error('Error auto-archiving child:', updateError)
+        // Continue with original data if update fails
+      } else {
+        return NextResponse.json(updatedData)
+      }
+    }
+
     return NextResponse.json(data)
   } catch (error) {
     console.error('Error fetching child:', error)

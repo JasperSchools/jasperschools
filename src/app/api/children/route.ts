@@ -11,21 +11,42 @@ export async function GET(request: NextRequest) {
     const adminPassword = request.headers.get('x-admin-password')
     const isAdmin = adminPassword === process.env.ADMIN_PASSWORD
     
-    let query = supabase
+    // Fetch all children first (before filtering) to check for auto-archiving
+    const { data, error } = await supabase
       .from('children')
       .select('*')
       .order('created_at', { ascending: false })
-    
-    // If not admin, exclude archived children
-    if (!isAdmin) {
-      query = query.eq('archived', false)
-    }
-
-    const { data, error } = await query
 
     if (error) throw error
 
-    return NextResponse.json(data)
+    // Auto-archive students who have reached their funding goal
+    if (data && data.length > 0) {
+      const studentsToArchive = data.filter(
+        (child) => !child.archived && child.amount_raised >= child.amount_needed
+      )
+
+      if (studentsToArchive.length > 0) {
+        const idsToArchive = studentsToArchive.map((child) => child.id)
+        await supabase
+          .from('children')
+          .update({ archived: true })
+          .in('id', idsToArchive)
+
+        // Update the data array to reflect archived status
+        data.forEach((child) => {
+          if (idsToArchive.includes(child.id)) {
+            child.archived = true
+          }
+        })
+      }
+    }
+
+    // Filter out archived children for non-admin requests
+    const filteredData = isAdmin 
+      ? data 
+      : data?.filter((child) => !child.archived) || []
+
+    return NextResponse.json(filteredData)
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Failed to fetch children'
     console.error('Error fetching children:', message)
