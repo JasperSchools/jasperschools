@@ -43,6 +43,20 @@ export default function StudentDetailPage() {
     }
   }, [params.id, fetchChild])
 
+  // Log iframe URL when DonorBox form is shown (for debugging)
+  useEffect(() => {
+    if (showDonorBox && child) {
+      const childName = `${child.first_name} ${child.last_name}`
+      const designation = `${childName} (ID: ${child.id})`
+      const remainingAmount = child.amount_needed - child.amount_raised
+      const campaignId = process.env.NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID || 'YOUR_CAMPAIGN_ID'
+      const iframeUrl = `https://donorbox.org/embed/${campaignId}?default_interval=m&amount=${remainingAmount}&designation=${encodeURIComponent(designation)}`
+      console.log('🔍 DonorBox iframe URL:', iframeUrl)
+      console.log('📋 Designation being sent:', designation)
+      console.log('🆔 Child ID:', child.id)
+    }
+  }, [showDonorBox, child])
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -61,6 +75,8 @@ export default function StudentDetailPage() {
   }
 
   const childName = `${child.first_name} ${child.last_name}`
+  // Include child ID in designation for manual tracking when processing donations
+  const designation = `${childName} (ID: ${child.id})`
   const percentRaised = (child.amount_raised / child.amount_needed) * 100
   const remainingAmount = child.amount_needed - child.amount_raised
   const donorBoxCampaignId = process.env.NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID || 'YOUR_CAMPAIGN_ID'
@@ -249,7 +265,7 @@ export default function StudentDetailPage() {
                   {/* DonorBox Iframe */}
                   <div className="relative w-full" style={{ minHeight: '600px' }}>
                     <iframe
-                      src={`https://donorbox.org/embed/${donorBoxCampaignId}?default_interval=m&amount=${remainingAmount}&designation=${encodeURIComponent(childName)}`}
+                      src={`https://donorbox.org/embed/${donorBoxCampaignId}?default_interval=m&amount=${remainingAmount}&designation=${encodeURIComponent(designation)}`}
                       name="donorbox"
                       seamless
                       frameBorder="0"

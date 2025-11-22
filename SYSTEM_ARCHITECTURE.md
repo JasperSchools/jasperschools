@@ -35,7 +35,6 @@
 │  GET  /api/children/[id]         → Fetch one child            │
 │  PUT  /api/children/[id]         → Update child (admin)       │
 │  DELETE /api/children/[id]       → Delete child (admin)       │
-│  POST /api/donorbox-webhook      → Receive payments           │
 │                                                                 │
 └────────┬──────────────────────────────────────────┬───────────┘
          │                                           │
@@ -51,7 +50,7 @@
 │ • sponsorships      │                   │ - Webhooks       │
 │                     │                   │ - Receipts       │
 │ RLS Policies:       │                   │                  │
-│ • Public read       │◄──────────────────┤ Webhook sends    │
+│ • Public read       │                   │                  │
 │ • Service write     │                   │ donation data    │
 │                     │                   │                  │
 └─────────────────────┘                   └──────────────────┘
@@ -114,10 +113,9 @@
        │
        ↓
 ┌─────────────────────┐
-│ DonorBox sends      │
-│ webhook to:         │
-│ /api/donorbox-      │
-│ webhook             │
+│ Admin manually      │
+│ processes           │
+│ donation            │
 └──────┬──────────────┘
        │
        ↓
@@ -260,8 +258,6 @@ src/
 │       │   └── [id]/
 │       │       └── route.ts          # GET, PUT, DELETE one
 │       │
-│       └── donorbox-webhook/
-│           └── route.ts              # POST webhook handler
 │
 ├── components/
 │   ├── Header.tsx                    # Site header
@@ -366,16 +362,17 @@ src/
 └─────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────┐
-│                  DonorBox                        │
-│            (Webhook authenticated)               │
+│                  Admin                           │
+│            (Manual Update)                       │
 └────────────┬────────────────────────────────────┘
              │
-             ↓ WITH x-donorbox-signature HEADER
+             ↓ MANUAL PROCESS
 ┌─────────────────────────────────────────────────┐
-│            Webhook Verification                  │
+│            Admin Dashboard                       │
 │  ┌───────────────────────────────────────────┐  │
-│  │ if (signature !== WEBHOOK_SECRET)         │  │
-│  │   return 401 Unauthorized                 │  │
+│  │ Create sponsorship record                  │  │
+│  │ Update amount_raised                       │  │
+│  │ Archive if goal met                         │  │
 │  └───────────────────────────────────────────┘  │
 └────────────┬────────────────────────────────────┘
              │
@@ -407,20 +404,17 @@ Admin → Admin Page → API Route → Supabase → Public Page
 ### **Sequence 2: User Sponsors Child**
 
 ```
-User → Sponsor Page → DonorBox → Webhook → API → Supabase → Sponsor Page
+User → Sponsor Page → DonorBox → Admin → Supabase → Sponsor Page
 
 1. User clicks "Sponsor" on /sponsor
-2. DonorBox popup opens
+2. DonorBox form opens
 3. User completes payment
 4. DonorBox processes payment
-5. DonorBox sends webhook
-6. POST /api/donorbox-webhook
-7. API validates webhook signature
-8. API creates sponsorship record
-9. API updates child.amount_raised
-10. API updates child.status (if needed)
-11. /sponsor page auto-refreshes
-12. Progress bar updates
+5. Admin manually creates sponsorship record in Supabase
+6. Admin updates child.amount_raised
+7. Admin archives child if goal is met
+8. /sponsor page shows updated data after refresh
+9. Progress bar updates
 ```
 
 ---
@@ -559,7 +553,6 @@ Components
 │        External Services           │
 ├────────────────────────────────────┤
 │ • DonorBox (Payments)              │
-│ • Webhooks (Notifications)         │
 └────────────────────────────────────┘
 ```
 

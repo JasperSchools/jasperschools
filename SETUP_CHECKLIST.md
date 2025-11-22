@@ -33,8 +33,6 @@ Use this checklist to track your progress setting up the system.
 - [ ] Create a new campaign
 - [ ] Copy campaign ID from URL
 - [ ] Add `NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID` to `.env.local`
-- [ ] Create webhook secret (any random string)
-- [ ] Add `DONORBOX_WEBHOOK_SECRET` to `.env.local`
 
 ## Phase 4: Run Application ☑️
 
@@ -86,23 +84,6 @@ Use this checklist to track your progress setting up the system.
 - [ ] DonorBox popup/redirect opens
 - [ ] Child name appears in DonorBox form
 
-## Phase 7: Configure DonorBox Webhook (Optional) ☑️
-
-Skip this if you want to manually update amounts. Otherwise:
-
-- [ ] Install ngrok: [ngrok.com](https://ngrok.com)
-- [ ] Run `ngrok http 3000`
-- [ ] Copy ngrok URL (e.g., `https://abc123.ngrok.io`)
-- [ ] Go to DonorBox → Settings → Webhooks
-- [ ] Add new webhook
-- [ ] Webhook URL: `https://abc123.ngrok.io/api/donorbox-webhook`
-- [ ] Select event: "Donation Created"
-- [ ] Paste webhook secret from `.env.local`
-- [ ] Save webhook
-- [ ] Make a test donation on DonorBox
-- [ ] Check terminal logs for webhook received
-- [ ] Verify amount_raised updated in Supabase
-- [ ] Verify changes appear on sponsor page
 
 ## Phase 8: Add Real Children ☑️
 
@@ -133,14 +114,9 @@ Skip this if you want to manually update amounts. Otherwise:
   - `SUPABASE_SERVICE_ROLE_KEY`
   - `ADMIN_PASSWORD`
   - `NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID`
-  - `DONORBOX_WEBHOOK_SECRET`
 - [ ] Deploy application
 - [ ] Test deployed admin panel
 - [ ] Test deployed sponsor page
-- [ ] Update DonorBox webhook URL to production:
-  - `https://your-domain.com/api/donorbox-webhook`
-- [ ] Make test donation on production
-- [ ] Verify webhook works in production
 
 ## Phase 10: Final Checks ☑️
 
@@ -155,7 +131,6 @@ Skip this if you want to manually update amounts. Otherwise:
 - [ ] Load time acceptable
 - [ ] No console errors
 - [ ] DonorBox integration working
-- [ ] Webhook updating database
 - [ ] Admin can edit children
 - [ ] Admin can delete children
 
@@ -174,7 +149,6 @@ Skip this if you want to manually update amounts. Otherwise:
 - [ ] Check admin panel weekly
 - [ ] Update child information as needed
 - [ ] Monitor DonorBox for donations
-- [ ] Verify webhook still working
 - [ ] Update child status when fully sponsored
 - [ ] Add new children as needed
 - [ ] Respond to technical issues
@@ -186,8 +160,7 @@ Skip this if you want to manually update amounts. Otherwise:
 ## Quick Reference
 
 **Admin URL**: `/admin`  
-**Public URL**: `/sponsor`  
-**Webhook URL**: `/api/donorbox-webhook`
+**Public URL**: `/sponsor`
 
 **Support Docs**:
 - `QUICK_START.md` - Fast setup

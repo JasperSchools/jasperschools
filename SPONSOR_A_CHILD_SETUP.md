@@ -35,13 +35,10 @@ This guide will walk you through setting up the complete "Sponsor a Child" syste
               │
               └──► Payment Complete
                    │
-                   ├──► DonorBox Webhook
-                   │    to /api/donorbox-webhook
-                   │
-                   └──► Updates Supabase
-                        - Creates sponsorship record
-                        - Updates amount_raised
-                        - Updates child status
+                   └──► Manual Update in Supabase
+                        - Create sponsorship record
+                        - Update amount_raised
+                        - Update child status if needed
 
 ┌─────────────────┐
 │     Admin       │
@@ -221,20 +218,7 @@ CREATE POLICY "Enable insert for service role only (sponsorships)"
 3. Look at the URL: `https://donorbox.org/YOUR_CAMPAIGN_ID`
 4. Copy `YOUR_CAMPAIGN_ID`
 
-### Step 3: Set Up Webhook
-
-1. In DonorBox dashboard, go to **Settings** > **Webhooks**
-2. Click **Add Webhook**
-3. Enter your webhook URL:
-   ```
-   https://your-domain.com/api/donorbox-webhook
-   ```
-   (For local testing, use ngrok: `https://your-ngrok-url.ngrok.io/api/donorbox-webhook`)
-4. Select events: **Donation Created**
-5. Create a webhook secret (any random string, save it!)
-6. Save the webhook
-
-### Step 4: Configure Custom Fields (Important!)
+### Step 3: Configure Custom Fields (Optional)
 
 To track which child a donation is for:
 
@@ -263,7 +247,6 @@ ADMIN_PASSWORD=YourSecureAdminPassword123!
 
 # DonorBox Configuration
 NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID=your_campaign_id
-DONORBOX_WEBHOOK_SECRET=your_webhook_secret_here
 ```
 
 ### Step 2: Replace Values
@@ -275,7 +258,6 @@ Replace all placeholder values with your actual credentials:
 - `SUPABASE_SERVICE_ROLE_KEY`: From Supabase Settings > API (keep secret!)
 - `ADMIN_PASSWORD`: Choose a strong password
 - `NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID`: From DonorBox campaign URL
-- `DONORBOX_WEBHOOK_SECRET`: From DonorBox webhook settings
 
 ---
 
@@ -366,10 +348,9 @@ npm start
 1. User clicks "Sponsor" button
 2. Opens DonorBox with pre-filled amount and child name
 3. User completes payment on DonorBox
-4. DonorBox sends webhook to `/api/donorbox-webhook`
-5. API creates sponsorship record in database
-6. API updates child's `amount_raised` and `status`
-7. Changes are immediately visible on the sponsor page
+4. Admin manually creates sponsorship record in database
+5. Admin updates child's `amount_raised` and `archived` status if goal is met
+6. Changes are visible on the sponsor page after refresh
 
 ---
 
@@ -390,8 +371,6 @@ jasperschools/
 │   │       │   ├── route.ts          # GET, POST children
 │   │       │   └── [id]/
 │   │       │       └── route.ts      # GET, PUT, DELETE child
-│   │       └── donorbox-webhook/
-│   │           └── route.ts          # DonorBox webhook handler
 │   ├── components/
 │   │   ├── Header.tsx                # Updated with /sponsor links
 │   │   └── Footer.tsx
@@ -421,13 +400,13 @@ jasperschools/
 3. Check Supabase dashboard to ensure tables have data
 4. Verify RLS policies are set correctly
 
-### Issue: DonorBox webhook not working
+### Issue: DonorBox form not loading
 
 **Solution**:
-1. Verify webhook URL is correct in DonorBox
-2. For local testing, use ngrok: `ngrok http 3000`
-3. Check webhook secret matches in both DonorBox and `.env.local`
-4. Check API logs: look at `/api/donorbox-webhook` in your terminal
+1. Verify `NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID` is correct in `.env.local`
+2. Check DonorBox campaign is active
+3. Verify the iframe URL in browser console
+4. Check for CORS or iframe loading errors
 
 ### Issue: Images not loading
 
@@ -481,10 +460,10 @@ WITH CHECK (bucket_id = 'children-photos');
 ## Security Best Practices
 
 1. **Never commit `.env.local`** - It's already in `.gitignore`
-2. **Rotate secrets regularly** - Change admin password and webhook secret periodically
+2. **Rotate secrets regularly** - Change admin password periodically
 3. **Use strong passwords** - Admin password should be 20+ characters
 4. **HTTPS only in production** - Always use SSL certificates
-5. **Monitor webhook activity** - Check DonorBox logs regularly
+5. **Monitor donations** - Check DonorBox dashboard regularly for new donations
 6. **Backup database** - Supabase has automatic backups, but export regularly
 
 ---
@@ -525,16 +504,14 @@ If you encounter issues:
 Before going live, make sure you've completed:
 
 - [ ] Created Supabase project and tables
-- [ ] Set up DonorBox campaign and webhook
+- [ ] Set up DonorBox campaign
 - [ ] Configured all environment variables
 - [ ] Tested admin login and CRUD operations
 - [ ] Added at least one test child
-- [ ] Tested sponsorship flow end-to-end
-- [ ] Verified webhook is receiving and processing payments
+- [ ] Tested DonorBox form loads correctly
 - [ ] Tested on mobile devices
 - [ ] Set up production environment variables
 - [ ] Deployed to production (Vercel/Netlify)
-- [ ] Updated DonorBox webhook URL to production URL
 
 ---
 

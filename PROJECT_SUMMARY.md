@@ -23,7 +23,6 @@ A complete **Sponsor a Child** system with:
 ### **API Routes**
 4. `src/app/api/children/route.ts` - GET all children, POST new child
 5. `src/app/api/children/[id]/route.ts` - GET, PUT, DELETE single child
-6. `src/app/api/donorbox-webhook/route.ts` - Handle DonorBox payment webhooks
 
 ### **Admin Pages**
 7. `src/app/admin/page.tsx` - Admin login page

@@ -21,7 +21,6 @@ Have these ready from your `.env.local`:
 - `SUPABASE_SERVICE_ROLE_KEY`
 - `ADMIN_PASSWORD`
 - `NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID`
-- `DONORBOX_WEBHOOK_SECRET`
 
 ---
 
@@ -65,7 +64,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzd
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ud3ZtZmR2enNlaWR3bnd5b2JqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MDI4NzA4NywiZXhwIjoyMDc1ODYzMDg3fQ.Obm67RIHjY84qhmhRKqCHehDKNZZ4SVtp7U_ImbJMuY
 ADMIN_PASSWORD=thisisforjasper@uganda
 NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID=jasper-primary-school-sponsor-a-student
-DONORBOX_WEBHOOK_SECRET=your-random-webhook-secret-123
 ```
 
 **Important**: Make sure to select **"Production", "Preview", and "Development"** for all variables!
@@ -81,14 +79,7 @@ Click **"Deploy"** button. Vercel will:
 
 ## 🔧 After Deployment
 
-### 1. Update DonorBox Webhook URL
-
-In DonorBox dashboard:
-- Go to Settings → Webhooks
-- Update webhook URL to: `https://your-vercel-url.vercel.app/api/donorbox-webhook`
-- Save
-
-### 2. Test Your Live Site
+### 1. Test Your Live Site
 
 Visit your Vercel URL and test:
 - ✅ Homepage loads
@@ -97,13 +88,12 @@ Visit your Vercel URL and test:
 - ✅ Admin dashboard CRUD operations work
 - ✅ Sponsor button opens DonorBox
 
-### 3. Custom Domain (Optional)
+### 2. Custom Domain (Optional)
 
 In Vercel:
 1. Go to Settings → Domains
 2. Add your custom domain (e.g., `jasperschools.org`)
 3. Follow Vercel's DNS instructions
-4. Update DonorBox webhook to use custom domain
 
 ---
 
@@ -159,10 +149,8 @@ Before marking as "live":
 - [ ] Homepage works
 - [ ] Sponsor page loads children
 - [ ] Admin login works
-- [ ] Can add/edit/delete children
-- [ ] DonorBox webhook updated to production URL
-- [ ] Test a real donation (small amount)
-- [ ] Verify webhook updates database
+- [ ] Can add/edit/archive children
+- [ ] DonorBox form loads correctly
 - [ ] Mobile responsive (test on phone)
 - [ ] All images load
 - [ ] No console errors
