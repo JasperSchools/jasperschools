@@ -71,7 +71,9 @@ function Slideshow() {
     '/images/jps1.jpeg',
     '/images/jps2.jpeg',
     '/images/jps3.jpeg',
-    '/images/jps4.jpeg'
+    '/images/jps4.jpeg',
+    '/images/jps5.jpeg',
+    '/images/jps6.jpeg',
   ]
 
   useEffect(() => {
