@@ -381,7 +381,7 @@ export default function OurStory() {
           <div className="text-center mt-16">
             <div className="inline-flex flex-col sm:flex-row gap-4">
               <Link
-                href="/#donate"
+                href="/donate"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-[#0D4723] text-white font-heading-semibold hover:bg-green-800 transition-colors text-lg"
               >
                 Support Our Mission

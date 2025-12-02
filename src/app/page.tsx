@@ -290,6 +290,119 @@ function GetInvolvedSection() {
   )
 }
 
+// Donate Section for Homepage
+function DonateSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
+
+  return (
+    <section id="donate" ref={sectionRef} className="py-20 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green text-white relative overflow-hidden">
+      {/* Animated Background */}
+      <motion.div 
+        className="absolute inset-0 opacity-10"
+        initial={{ scale: 1.2, opacity: 0 }}
+        animate={isInView ? { scale: 1, opacity: 0.1 } : { scale: 1.2, opacity: 0 }}
+        transition={{ duration: 1.2 }}
+      >
+        <div className="absolute inset-0" style={{ 
+          backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+      </motion.div>
+
+      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold mb-6">
+              Help Us Transform Lives
+            </h2>
+            <p className="text-lg text-green-100 font-paragraph mb-8 leading-relaxed">
+              Your donation provides quality education, nutritious meals, and a brighter future for children in rural Uganda. Every contribution makes a lasting impact.
+            </p>
+            
+            <div className="space-y-4 mb-8">
+              {[
+                { amount: '$20', impact: 'provides one month of meals for a child' },
+                { amount: '$50', impact: 'buys textbooks for a student for one year' },
+                { amount: '$300', impact: 'sponsors a child\'s full education for one year' }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-start gap-3"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                >
+                  <svg className="w-6 h-6 text-school-yellow flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <div>
+                    <span className="font-heading-semibold text-school-yellow">{item.amount}</span>
+                    <span className="text-green-100 font-paragraph"> {item.impact}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href="/donate"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-bold text-lg transition-all duration-300"
+              >
+                Donate Now
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+              <a
+                href="/sponsor"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-white text-white hover:bg-white hover:text-school-green font-heading-semibold text-lg transition-all duration-300"
+              >
+                Sponsor a Child
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right: Stats */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="grid grid-cols-2 gap-6"
+          >
+            {[
+              { value: 98, suffix: '%', label: 'Goes to Programs' },
+              { value: 500, suffix: '+', label: 'Students Supported' },
+              { value: 15, suffix: '+', label: 'Teachers Employed' },
+              { value: 10, suffix: '+', label: 'Years of Impact' }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1, type: "spring" }}
+              >
+                <div className="text-4xl font-heading-bold text-school-yellow mb-2">
+                  {stat.value}{stat.suffix}
+                </div>
+                <div className="text-sm text-green-100 font-paragraph">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -304,6 +417,9 @@ export default function Home() {
 
       {/* Get Involved Section */}
       <GetInvolvedSection />
+
+      {/* Donate Section */}
+      <DonateSection />
 
       <Footer />
     </main>

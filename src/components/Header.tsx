@@ -35,7 +35,7 @@ export default function Header() {
     { name: 'Visit Us', href: '/#visit' },
     { name: 'Newsletter', href: '/#newsletter' },
     { name: 'Sponsor a Student', href: '/sponsor' },
-    { name: 'Donate', href: '/#donate' },
+    { name: 'Donate', href: '/donate' },
   ]
 
   const socialLinks = [
@@ -59,7 +59,7 @@ export default function Header() {
   ]
 
   const getInvolvedDropdown = [
-    { name: 'Donate', href: '/#donate'},
+    { name: 'Donate', href: '/donate'},
     { name: 'Sponsor a Student', href: '/sponsor'},
     { name: 'Visit Us', href: '/#visit'},
     { name: 'Join Our Team', href: '/#careers'},  
@@ -230,7 +230,7 @@ export default function Header() {
                     Sponsor
                   </button>
                   <button
-                    onClick={() => window.location.href = '#donate'}
+                    onClick={() => window.location.href = '/donate'}
                     className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
                   >
                     Donate

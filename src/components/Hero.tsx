@@ -153,8 +153,8 @@ export default function Hero() {
               
               {/* Call-to-Action Button */}
               <motion.a
-                href="#donate"
-                className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 shadow-2xl hover:shadow-yellow-500/25"
+                href="/donate"
+                className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
                 style={{ margin: '20px 0px 0px', padding: '16px 32px' }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}

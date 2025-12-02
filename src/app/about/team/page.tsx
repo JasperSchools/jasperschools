@@ -175,7 +175,7 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              href="/#donate" 
+              href="/donate" 
               className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-[#0D4723] text-white font-heading-semibold hover:bg-green-800 transition-colors text-lg"
             >
               Donate Now

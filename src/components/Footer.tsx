@@ -66,7 +66,7 @@ export default function Footer() {
           <div className="lg:col-span-1 text-center lg:text-left">
             <h4 className="text-lg font-heading-semibold text-white mb-4">Support</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Donate</a></li>
+              <li><a href="/donate" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Donate</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Volunteer</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Sponsor a Child</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Partnerships</a></li>
@@ -90,7 +90,7 @@ export default function Footer() {
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 lg:flex-shrink-0 justify-center lg:justify-end">
-                  <a href="#donate" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
+                  <a href="/donate" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:bg-white hover:text-gray-900 font-paragraph transition-all duration-300 text-base">
                     <span>Support Our Mission</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
