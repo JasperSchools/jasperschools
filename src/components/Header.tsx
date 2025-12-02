@@ -199,10 +199,11 @@ export default function Header() {
                 {/* Social Icons - Left Side */}
                 <div className="flex items-center space-x-1.5 sm:space-x-2">
                   {socialLinks.slice(0, 3).map((social) => (
-                    
-                      <a
-                        key={social.name}
+                    <a
+                      key={social.name}
                       href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:text-gray-200 transition-colors duration-200 p-1.5"
                       aria-label={social.name}
                     >
@@ -244,13 +245,14 @@ export default function Header() {
               {/* Social Icons */}
               <div className="flex items-center space-x-2">
                 {socialLinks.map((social) => (
-                  
-                    <a
-                      key={social.name}
-                    href={social.href}
-                    className="hover:text-gray-200 transition-colors duration-200"
-                    aria-label={social.name}
-                  >
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-200 transition-colors duration-200"
+                  aria-label={social.name}
+                >
                     {renderSocialIcon(social.icon)}
                   </a>
                 ))}
@@ -281,19 +283,18 @@ export default function Header() {
             <div className="hidden lg:flex items-center space-x-2 xl:space-x-3">
               {topHeaderLinks.map((link) => (
                 link.name === 'Sponsor a Student' || link.name === 'Donate' ? (
-                  <button
+                  <Link
                     key={link.name}
-                    onClick={() => window.location.href = link.href}
-                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-base px-4 xl:px-5 py-2 xl:py-2.5  transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap"
+                    href={link.href}
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-base px-4 xl:px-5 py-2 xl:py-2.5 transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap inline-block"
                   >
                     {link.name}
-                  </button>
+                  </Link>
                 ) : (
-                  
-                    <a
-                      key={link.name}
+                  <a
+                    key={link.name}
                     href={link.href}
-                    className="hover:text-gray-200 transition-all duration-200 text-sm px-2 xl:px-3 py-1.5  whitespace-nowrap font-paragraph"
+                    className="hover:text-gray-200 transition-all duration-200 text-sm px-2 xl:px-3 py-1.5 whitespace-nowrap font-paragraph"
                   >
                     {link.name}
                   </a>
@@ -349,13 +350,12 @@ export default function Header() {
                   </button>
                   {activeDropdown === 'about' && (
                     <div className="absolute top-full left-0 pt-2 z-50">
-                      <div className="w-56 bg-white  shadow-xl border border-gray-100 overflow-hidden">
+                      <div className="w-56 bg-white shadow-xl border border-gray-100 overflow-hidden">
                         {aboutUsDropdown.map((item) => (
-                          
-                            <a
-                              key={item.name}
+                          <a
+                            key={item.name}
                             href={item.href}
-                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold  tracking-wide"
+                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold tracking-wide"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
@@ -368,11 +368,10 @@ export default function Header() {
 
                 {/* Other Navigation Links */}
                 {navigation.map((item) => (
-                  
-                    <a
-                      key={item.name}
+                  <a
+                    key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
+                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.name}
                   </a>
@@ -395,13 +394,12 @@ export default function Header() {
                   </button>
                   {activeDropdown === 'schools' && (
                     <div className="absolute top-full left-0 pt-2 z-50">
-                      <div className="w-48 bg-white  shadow-xl border border-gray-100 overflow-hidden">
+                      <div className="w-48 bg-white shadow-xl border border-gray-100 overflow-hidden">
                         {schoolsDropdown.map((item) => (
-                          
-                            <a
-                              key={item.name}
+                          <a
+                            key={item.name}
                             href={item.href}
-                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold  tracking-wide"
+                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold tracking-wide"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {'icon' in item && renderDropdownIcon(item.icon as string)}
@@ -430,13 +428,12 @@ export default function Header() {
                   </button>
                   {activeDropdown === 'getInvolved' && (
                     <div className="absolute top-full left-0 pt-2 z-50">
-                      <div className="w-56 bg-white  shadow-xl border border-gray-100 overflow-hidden">
+                      <div className="w-56 bg-white shadow-xl border border-gray-100 overflow-hidden">
                         {getInvolvedDropdown.map((item) => (
-                          
-                            <a
-                              key={item.name}
+                          <a
+                            key={item.name}
                             href={item.href}
-                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold  tracking-wide"
+                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold tracking-wide"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
@@ -599,7 +596,7 @@ export default function Header() {
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
-                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-heading-bold transition-all duration-200  tracking-wide"
+                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-heading-bold transition-all duration-200 tracking-wide"
                         onClick={closeMenu}
                       >
                         {'icon' in item && renderDropdownIcon(item.icon as string)}
@@ -634,7 +631,7 @@ export default function Header() {
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
-                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-heading-bold transition-all duration-200  tracking-wide"
+                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-heading-bold transition-all duration-200 tracking-wide"
                         onClick={closeMenu}
                       >
                         {'icon' in item && renderDropdownIcon(item.icon as string)}

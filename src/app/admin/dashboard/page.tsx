@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -41,17 +41,6 @@ export default function AdminDashboard() {
   })
   const router = useRouter()
 
-  useEffect(() => {
-    // Check if user is authenticated
-    const adminPassword = sessionStorage.getItem('adminPassword')
-    if (!adminPassword) {
-      router.push('/admin')
-      return
-    }
-
-    fetchChildren()
-  }, [router])
-
   const showModal = (type: 'success' | 'error' | 'confirm', title: string, message: string, onConfirm?: () => void) => {
     setModal({ isOpen: true, type, title, message, onConfirm })
   }
@@ -60,7 +49,7 @@ export default function AdminDashboard() {
     setModal({ ...modal, isOpen: false })
   }
 
-  const fetchChildren = async () => {
+  const fetchChildren = useCallback(async () => {
     try {
       const adminPassword = sessionStorage.getItem('adminPassword')
       const res = await fetch('/api/children', {
@@ -92,7 +81,18 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    // Check if user is authenticated
+    const adminPassword = sessionStorage.getItem('adminPassword')
+    if (!adminPassword) {
+      router.push('/admin')
+      return
+    }
+
+    fetchChildren()
+  }, [router, fetchChildren])
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]

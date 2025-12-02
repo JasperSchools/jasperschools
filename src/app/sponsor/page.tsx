@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Child } from '@/types/database.types'
@@ -285,12 +286,12 @@ export default function SponsorPage() {
                       </div>
 
                       {/* Learn More & Sponsor Button */}
-                      <a
+                      <Link
                         href={`/sponsor/${child.id}`}
                         className="w-full bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-center block"
                       >
                         Learn More & Sponsor {child.first_name || (child as any).name?.split(' ')[0] || 'Student'}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 )

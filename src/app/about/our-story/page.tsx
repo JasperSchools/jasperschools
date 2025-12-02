@@ -386,12 +386,12 @@ export default function OurStory() {
               >
                 Support Our Mission
               </Link>
-              <a
+              <Link
                 href="/about/vision-mission"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-white text-gray-900 font-heading-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 text-lg"
               >
                 Read Our Vision & Mission
-              </a>
+              </Link>
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Footer from '@/components/Footer'
@@ -99,12 +100,12 @@ function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              <a href="/about/vision-mission" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-school-green text-white font-heading-medium hover:bg-green-700 transition-colors text-base">
+              <Link href="/about/vision-mission" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-school-green text-white font-heading-medium hover:bg-green-700 transition-colors text-base">
                 Read our Vision & Mission
-              </a>
-              <a href="/about/our-story" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-gray-900 font-heading-medium hover:bg-gray-50 transition-colors border-2 border-gray-200 text-base">
+              </Link>
+              <Link href="/about/our-story" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-gray-900 font-heading-medium hover:bg-gray-50 transition-colors border-2 border-gray-200 text-base">
                 Our Story
-              </a>
+              </Link>
             </motion.div>
           </div>
 
@@ -350,7 +351,7 @@ function DonateSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
+              <Link
                 href="/donate"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-bold text-lg transition-all duration-300"
               >
@@ -358,13 +359,13 @@ function DonateSection() {
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/sponsor"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-white text-white hover:bg-white hover:text-school-green font-heading-semibold text-lg transition-all duration-300"
               >
                 Sponsor a Child
-              </a>
+              </Link>
             </div>
           </motion.div>
 

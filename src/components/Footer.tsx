@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Footer() {
   return (
     <footer className="text-white" style={{ backgroundColor: '#0A0A0A' }}>
@@ -42,9 +44,9 @@ export default function Footer() {
           <div className="lg:col-span-1 text-center lg:text-left">
             <h4 className="text-lg font-heading-semibold text-white mb-4">School</h4>
             <ul className="space-y-3">
-              <li><a href="/about/our-story" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">About Us</a></li>
-              <li><a href="/about/vision-mission" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Vision & Mission</a></li>
-              <li><a href="/about/team" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Our Team</a></li>
+              <li><Link href="/about/our-story" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">About Us</Link></li>
+              <li><Link href="/about/vision-mission" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Vision & Mission</Link></li>
+              <li><Link href="/about/team" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Our Team</Link></li>
               <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Contact Us</a></li>
               <li><a href="#get-involved" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Get Involved</a></li>
             </ul>
@@ -66,9 +68,9 @@ export default function Footer() {
           <div className="lg:col-span-1 text-center lg:text-left">
             <h4 className="text-lg font-heading-semibold text-white mb-4">Support</h4>
             <ul className="space-y-3">
-              <li><a href="/donate" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Donate</a></li>
+              <li><Link href="/donate" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Donate</Link></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Volunteer</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Sponsor a Child</a></li>
+              <li><Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Sponsor a Child</Link></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Partnerships</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Newsletter</a></li>
             </ul>
@@ -90,18 +92,18 @@ export default function Footer() {
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 lg:flex-shrink-0 justify-center lg:justify-end">
-                  <a href="/donate" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:bg-white hover:text-gray-900 font-paragraph transition-all duration-300 text-base">
+                  <Link href="/donate" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:bg-white hover:text-gray-900 font-paragraph transition-all duration-300 text-base">
                     <span>Support Our Mission</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                  </a>
-                  <a href="#sponsor" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
+                  </Link>
+                  <Link href="/sponsor" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
                     <span>Sponsor a Student</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
