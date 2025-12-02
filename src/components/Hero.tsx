@@ -2,32 +2,24 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
-// Animated Counter Component
-function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
+// Animated Counter Component for Hero (starts immediately with delay)
+function AnimatedCounter({ end, duration = 2000, suffix = '', delay = 0 }: { end: number, duration?: number, suffix?: string, delay?: number }) {
   const [count, setCount] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
+  const [hasStarted, setHasStarted] = useState(false)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
+    // Start animation after specified delay
+    const delayTimer = setTimeout(() => {
+      setHasStarted(true)
+    }, delay)
 
-    const element = document.getElementById(`counter-${end}`)
-    if (element) {
-      observer.observe(element)
-    }
-
-    return () => observer.disconnect()
-  }, [end, isVisible])
+    return () => clearTimeout(delayTimer)
+  }, [delay])
 
   useEffect(() => {
-    if (!isVisible) return
+    if (!hasStarted) return
 
     let startTime: number
     let animationFrame: number
@@ -54,10 +46,10 @@ function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number, d
         cancelAnimationFrame(animationFrame)
       }
     }
-  }, [end, duration, isVisible])
+  }, [end, duration, hasStarted])
 
   return (
-    <span id={`counter-${end}`}>
+    <span>
       {count}{suffix}
     </span>
   )
@@ -122,26 +114,57 @@ export default function Hero() {
             <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
               {/* Main Heading */}
               <h1 className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-light leading-[1.1] mb-4 sm:mb-6 text-left">
-                <span className="block">Transformative</span>
-                <span className="block">Education</span>
+                <motion.span 
+                  className="block"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  Transformative
+                </motion.span>
+                <motion.span 
+                  className="block"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  Education
+                </motion.span>
               </h1>
               
-              {/* Descriptive Paragraph */}
-              <p className="text-sm sm:text-base text-white/90 font-paragraph leading-relaxed mb-6 sm:mb-8 max-w-2xl text-left">
-                We empower children in rural areas through access to quality education, nurturing lifelong learning, innovation, and transformative growth.
-              </p>
+              {/* Descriptive Paragraph - Word by word animation */}
+              <div className="text-sm sm:text-base text-white/90 font-paragraph leading-relaxed mb-6 sm:mb-8 max-w-2xl text-left">
+                {['We', 'empower', 'children', 'in', 'rural', 'areas', 'through', 'access', 'to', 'quality', 'education,', 'nurturing', 'lifelong', 'learning,', 'innovation,', 'and', 'transformative', 'growth.'].map((word, index) => (
+                  <motion.span
+                    key={index}
+                    className="inline-block mr-[0.3em]"
+                    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 1.0 + (index * 0.08), // Fast, poetic stagger
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </div>
               
               {/* Call-to-Action Button */}
-              <a
+              <motion.a
                 href="#donate"
                 className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 shadow-2xl hover:shadow-yellow-500/25"
                 style={{ margin: '20px 0px 0px', padding: '16px 32px' }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 2.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 <span>Support Our Mission</span>
                 {/* <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg> */}
-              </a>
+              </motion.a>
             </div>
           </div>
         </div>
@@ -151,42 +174,67 @@ export default function Hero() {
           <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
               {/* Left Column - Description */}
-              <div className="text-center lg:text-left">
+              <motion.div 
+                className="text-center lg:text-left"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 2.8, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <p className="text-white font-paragraph text-base sm:text-base leading-relaxed">
                   Learn how Jasper Schools transforms lives in rural Uganda
                 </p>
-              </div>
+              </motion.div>
               
               {/* Middle Column - Statistics */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6">
-                <div className="text-center">
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 3.0, type: "spring", stiffness: 100 }}
+                >
                   <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
-                    500+
+                    <AnimatedCounter end={500} duration={2000} suffix="+" delay={3200} />
                   </div>
                   <div className="text-white/90 font-paragraph text-sm sm:text-sm">
                     Students Impacted
                   </div>
-                </div>
-                <div className="text-center">
+                </motion.div>
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 3.2, type: "spring", stiffness: 100 }}
+                >
                   <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
-                    15+
+                    <AnimatedCounter end={15} duration={1800} suffix="+" delay={3400} />
                   </div>
                   <div className="text-white/90 font-paragraph text-sm sm:text-sm">
                     Teachers
                   </div>
-                </div>
-                <div className="text-center">
+                </motion.div>
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 3.4, type: "spring", stiffness: 100 }}
+                >
                   <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
-                    97%
+                    <AnimatedCounter end={97} duration={1600} suffix="%" delay={3600} />
                   </div>
                   <div className="text-white/90 font-paragraph text-sm sm:text-sm">
                     Community Support
                   </div>
-                </div>
+                </motion.div>
               </div>
               
               {/* Right Column - Action Buttons */}
-              <div className="flex flex-col gap-3 justify-center">
+              <motion.div 
+                className="flex flex-col gap-3 justify-center"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 3.6, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <a
                   href="/about/our-story"
                   className="group inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base"
@@ -205,7 +253,7 @@ export default function Hero() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </a>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

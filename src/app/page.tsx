@@ -3,33 +3,15 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Footer from '@/components/Footer'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
-// Animated Counter Component
-function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
+// Animated Counter Component with InView trigger
+function AnimatedCounter({ end, duration = 2000, suffix = '', inView }: { end: number, duration?: number, suffix?: string, inView: boolean }) {
   const [count, setCount] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    const element = document.getElementById(`counter-${end}`)
-    if (element) {
-      observer.observe(element)
-    }
-
-    return () => observer.disconnect()
-  }, [end, isVisible])
-
-  useEffect(() => {
-    if (!isVisible) return
+    if (!inView) return
 
     let startTime: number
     let animationFrame: number
@@ -56,12 +38,255 @@ function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number, d
         cancelAnimationFrame(animationFrame)
       }
     }
-  }, [end, duration, isVisible])
+  }, [end, duration, inView])
 
   return (
-    <span id={`counter-${end}`}>
+    <span>
       {count}{suffix}
     </span>
+  )
+}
+
+// About Section Component with Modern Animations
+function AboutSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
+
+  return (
+    <section id="about" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Main Content - Left Side */}
+          <div className="lg:col-span-7 order-2 lg:order-1">
+            <motion.h2 
+              className="text-2xl sm:text-3xl lg:text-4xl font-heading-semibold text-school-blue mb-4 sm:mb-6 lg:mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              About Us
+            </motion.h2>
+            
+            <div className="space-y-4 sm:space-y-5 text-gray-700 text-base sm:text-lg leading-relaxed font-paragraph">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Our vision is to champion community building through innovative, inclusive, and resilient learning.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              >
+                We exist to nurture potential, create opportunity, and strengthen the fabric of our community through
+                learning experiences that are accessible, practical, and future-ready.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              >
+                While this content is placeholder and will be refined, our commitment remains the same: empowering
+                children in Nyairongo with quality education and a supportive environment to thrive.
+              </motion.p>
+            </div>
+
+            <motion.div 
+              className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <a href="/about/vision-mission" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-school-green text-white font-heading-medium hover:bg-green-700 transition-colors text-base">
+                Read our Vision & Mission
+              </a>
+              <a href="/about/our-story" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-gray-900 font-heading-medium hover:bg-gray-50 transition-colors border-2 border-gray-200 text-base">
+                Our Story
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Sidebar Card - Right Side */}
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <motion.div 
+              className="bg-white rounded-2xl shadow-md p-6 lg:p-8 border border-gray-100"
+              initial={{ opacity: 0, x: 30, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 30, scale: 0.95 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h3 className="text-xl font-heading-medium text-school-blue mb-3">What guides us</h3>
+              <ul className="space-y-2 text-gray-700 font-paragraph">
+                {[
+                  'Inclusive learning that welcomes every child.',
+                  'Resilience through community and care.',
+                  'Innovation grounded in local context.',
+                  'Accountability and partnership.'
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-start"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5, delay: 0.4 + (index * 0.1), ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <svg className="w-5 h-5 text-school-green mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Statistics Section */}
+        <StatisticsSection />
+      </div>
+    </section>
+  )
+}
+
+// Statistics Section Component
+function StatisticsSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
+
+  const stats = [
+    { end: 500, suffix: '+', label: 'Students', description: 'Empowered through education', duration: 2500, delay: 0.2 },
+    { end: 15, suffix: '+', label: 'Teachers', description: 'Dedicated educators', duration: 2000, delay: 0.4 },
+    { end: 10, suffix: '+', label: 'Years', description: 'Of educational excellence', duration: 1800, delay: 0.6 }
+  ]
+
+  return (
+    <div ref={sectionRef} className="mt-16 pt-12 border-t border-gray-200">
+      <div className="text-center mb-12">
+        <motion.h3 
+          className="text-2xl sm:text-3xl font-heading-semibold text-school-blue mb-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Our Impact
+        </motion.h3>
+        <motion.p 
+          className="text-gray-600 text-lg font-paragraph"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Numbers that reflect our commitment to education
+        </motion.p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        {stats.map((stat, index) => (
+          <motion.div 
+            key={index}
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.8, y: 30 }}
+            animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 30 }}
+            transition={{ 
+              duration: 0.7, 
+              delay: stat.delay, 
+              ease: [0.22, 1, 0.36, 1],
+              type: "spring",
+              stiffness: 100
+            }}
+          >
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-school-green mb-2">
+              <AnimatedCounter end={stat.end} duration={stat.duration} suffix={stat.suffix} inView={isInView} />
+            </div>
+            <div className="text-lg font-heading-medium text-gray-700 mb-1">{stat.label}</div>
+            <div className="text-gray-600 font-paragraph">{stat.description}</div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// Impact Section Component
+function ImpactSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.5 })
+
+  return (
+    <section id="impact" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-school-green text-white relative overflow-hidden">
+      {/* Animated Background Pattern */}
+      <motion.div 
+        className="absolute inset-0 opacity-10"
+        initial={{ scale: 1.2, opacity: 0 }}
+        animate={isInView ? { scale: 1, opacity: 0.1 } : { scale: 1.2, opacity: 0 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="absolute inset-0" style={{ 
+          backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+      </motion.div>
+
+      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
+        <motion.h2 
+          className="text-2xl sm:text-3xl lg:text-4xl font-heading-semibold mb-4 sm:mb-6 lg:mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Our Impact
+        </motion.h2>
+        <motion.p 
+          className="text-base sm:text-lg lg:text-xl text-green-100 max-w-3xl mx-auto leading-relaxed font-paragraph"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          See how we&apos;re transforming lives and building a brighter future for our community.
+        </motion.p>
+      </div>
+    </section>
+  )
+}
+
+// Get Involved Section Component
+function GetInvolvedSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.5 })
+
+  const words = ['Join', 'us', 'in', 'making', 'a', 'difference.', 'There', 'are', 'many', 'ways', 'to', 'support', 'our', 'mission.']
+
+  return (
+    <section id="get-involved" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
+        <motion.h2 
+          className="text-2xl sm:text-3xl lg:text-4xl font-heading-semibold text-school-blue mb-4 sm:mb-6 lg:mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Get Involved
+        </motion.h2>
+        <div className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-paragraph">
+          {words.map((word, index) => (
+            <motion.span
+              key={index}
+              className={`inline-block mr-[0.3em] ${word === 'difference.' ? 'font-semibold text-gray-900' : ''}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.2 + (index * 0.05),
+                ease: [0.22, 1, 0.36, 1]
+              }}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -72,106 +297,13 @@ export default function Home() {
       <Hero />
       
       {/* About Us Section */}
-      <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            <div className="lg:col-span-7 order-2 lg:order-1">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-semibold text-school-blue mb-4 sm:mb-6 lg:mb-8">
-                About Us
-              </h2>
-              <div className="space-y-4 sm:space-y-5 text-gray-700 text-base sm:text-lg leading-relaxed font-paragraph">
-                <p>
-                  Our vision is to champion community building through innovative, inclusive, and resilient learning.
-                </p>
-                <p>
-                  We exist to nurture potential, create opportunity, and strengthen the fabric of our community through
-                  learning experiences that are accessible, practical, and future-ready.
-                </p>
-                <p>
-                  While this content is placeholder and will be refined, our commitment remains the same: empowering
-                  children in Nyairongo with quality education and a supportive environment to thrive.
-                </p>
-              </div>
+      <AboutSection />
 
-              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3">
-                <a href="/about/vision-mission" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-school-green text-white font-heading-medium hover:bg-green-700 transition-colors text-base">
-                  Read our Vision & Mission
-                </a>
-                <a href="/about/our-story" className="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-gray-900 font-heading-medium hover:bg-gray-50 transition-colors border-2 border-gray-200 text-base">
-                  Our Story
-                </a>
-              </div>
-            </div>
+      {/* Impact Section */}
+      <ImpactSection />
 
-            <div className="lg:col-span-5 order-1 lg:order-2">
-              <div className="bg-white rounded-2xl shadow-md p-6 lg:p-8 border border-gray-100">
-                <h3 className="text-xl font-heading-medium text-school-blue mb-3">What guides us</h3>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700 font-paragraph">
-                  <li>Inclusive learning that welcomes every child.</li>
-                  <li>Resilience through community and care.</li>
-                  <li>Innovation grounded in local context.</li>
-                  <li>Accountability and partnership.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Statistics Section */}
-          <div className="mt-16 pt-12 border-t border-gray-200">
-            <div className="text-center mb-12">
-              <h3 className="text-2xl sm:text-3xl font-heading-semibold text-school-blue mb-4">Our Impact</h3>
-              <p className="text-gray-600 text-lg font-paragraph">Numbers that reflect our commitment to education</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-              <div className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-school-green mb-2">
-                  <AnimatedCounter end={500} duration={2500} suffix="+" />
-                </div>
-                <div className="text-lg font-heading-medium text-gray-700 mb-1">Students</div>
-                <div className="text-gray-600 font-paragraph">Empowered through education</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-school-green mb-2">
-                  <AnimatedCounter end={15} duration={2000} suffix="+" />
-                </div>
-                <div className="text-lg font-heading-medium text-gray-700 mb-1">Teachers</div>
-                <div className="text-gray-600 font-paragraph">Dedicated educators</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-school-green mb-2">
-                  <AnimatedCounter end={10} duration={1800} suffix="+" />
-                </div>
-                <div className="text-lg font-heading-medium text-gray-700 mb-1">Years</div>
-                <div className="text-gray-600 font-paragraph">Of educational excellence</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="impact" className="py-12 sm:py-16 lg:py-20 bg-school-green text-white">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-semibold mb-4 sm:mb-6 lg:mb-8">
-            Our Impact
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-green-100 max-w-3xl mx-auto leading-relaxed font-paragraph">
-            See how we&apos;re transforming lives and building a brighter future for our community.
-          </p>
-        </div>
-      </section>
-
-      <section id="get-involved" className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-semibold text-school-blue mb-4 sm:mb-6 lg:mb-8">
-            Get Involved
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-paragraph">
-            Join us in making a <span style={{ color: '#0A0A0A' }}>difference</span>. There are many ways to support our mission.
-          </p>
-        </div>
-      </section>
-
+      {/* Get Involved Section */}
+      <GetInvolvedSection />
 
       <Footer />
     </main>
