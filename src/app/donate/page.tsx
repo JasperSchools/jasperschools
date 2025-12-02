@@ -180,16 +180,16 @@ function ImpactStats() {
           Your Impact By The Numbers
         </motion.h2>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="text-center"
+              className="text-center p-4 bg-white rounded-xl shadow-sm"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.6, delay: index * 0.1, type: "spring" }}
             >
-              <div className="text-4xl lg:text-5xl font-heading-bold text-school-green mb-2">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-school-green mb-2">
                 <AnimatedCounter 
                   end={stat.value} 
                   duration={stat.duration} 
@@ -198,7 +198,7 @@ function ImpactStats() {
                   inView={isInView} 
                 />
               </div>
-              <div className="text-gray-600 font-paragraph">{stat.label}</div>
+              <div className="text-sm sm:text-base text-gray-600 font-paragraph">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -243,7 +243,7 @@ function DonationFormSection() {
         </motion.div>
 
         <motion.div 
-          className="bg-gray-50 rounded-2xl p-8 border border-gray-100"
+          className="bg-gray-50 rounded-2xl p-4 sm:p-6 md:p-8 border border-gray-100"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -287,43 +287,43 @@ function DonationFormSection() {
                 <label className="block text-sm font-heading-semibold text-gray-700 mb-3">
                   Select Amount (USD)
                 </label>
-                <div className="grid grid-cols-3 gap-3 mb-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 mb-4">
                   {DONATION_TIERS.map((tier) => (
                     <button
                       key={tier.amount}
                       onClick={() => setAmount(tier.amount)}
-                      className={`py-4 px-4 rounded-lg font-heading-semibold transition-all ${
+                      className={`py-3 sm:py-4 px-2 sm:px-4 rounded-lg font-heading-semibold transition-all touch-manipulation ${
                         amount === tier.amount
                           ? 'bg-school-green text-white ring-2 ring-school-green ring-offset-2'
                           : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
                       }`}
                     >
-                      <div className="text-xl">{tier.label}</div>
-                      <div className="text-xs mt-1 opacity-90">{tier.impact.split(' ').slice(0, 3).join(' ')}</div>
+                      <div className="text-lg sm:text-xl">{tier.label}</div>
+                      <div className="text-xs mt-1 opacity-90 hidden sm:block">{tier.impact.split(' ').slice(0, 3).join(' ')}</div>
                     </button>
                   ))}
                 </div>
 
                 {/* Custom Amount */}
-                <div className="flex items-center gap-3">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                   <button
                     onClick={() => setAmount('custom')}
-                    className={`flex-shrink-0 py-3 px-6 rounded-lg font-heading-medium transition-all ${
+                    className={`flex-shrink-0 py-3 px-6 rounded-lg font-heading-medium transition-all touch-manipulation ${
                       amount === 'custom'
                         ? 'bg-school-green text-white'
                         : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
                     }`}
                   >
-                    Custom
+                    Custom Amount
                   </button>
                   {amount === 'custom' && (
                     <motion.div
-                      initial={{ opacity: 0, width: 0 }}
-                      animate={{ opacity: 1, width: '100%' }}
-                      className="flex-1"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      className="flex-1 w-full"
                     >
                       <div className="relative">
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-heading-semibold">
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-heading-semibold text-lg">
                           $
                         </span>
                     <input
@@ -331,8 +331,9 @@ function DonationFormSection() {
                       value={customAmount}
                       onChange={(e) => setCustomAmount(e.target.value)}
                       placeholder="Enter amount"
-                      className="w-full pl-8 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-school-green focus:border-transparent font-paragraph bg-white text-gray-900"
+                      className="w-full pl-10 pr-4 py-3 text-lg rounded-lg border border-gray-300 focus:ring-2 focus:ring-school-green focus:border-transparent font-paragraph bg-white text-gray-900"
                       min="1"
+                      inputMode="numeric"
                     />
                       </div>
                     </motion.div>
@@ -365,10 +366,10 @@ function DonationFormSection() {
               <button
                 onClick={handleDonate}
                 disabled={amount === 'custom' && !customAmount}
-                className="w-full py-4 px-8 rounded-lg bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-bold text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-4 px-6 sm:px-8 rounded-lg bg-school-yellow hover:bg-yellow-500 active:bg-yellow-600 text-gray-900 font-heading-bold text-base sm:text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 touch-manipulation"
               >
-                <span>Donate ${amount === 'custom' ? customAmount || '0' : amount} {frequency === 'monthly' && '/month'}</span>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="truncate">Donate ${amount === 'custom' ? customAmount || '0' : amount} {frequency === 'monthly' && '/month'}</span>
+                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </button>
@@ -381,33 +382,34 @@ function DonationFormSection() {
             <>
               {/* DonorBox Embedded */}
               <div className="mb-4 flex items-center justify-between">
-                <h3 className="text-xl font-heading-semibold text-gray-900">
+                <h3 className="text-lg sm:text-xl font-heading-semibold text-gray-900">
                   Complete Your Donation
                 </h3>
                 <button
                   onClick={() => setShowDonorBox(false)}
-                  className="text-gray-500 hover:text-gray-700 transition-colors"
+                  className="text-gray-500 hover:text-gray-700 active:text-gray-900 transition-colors p-2 touch-manipulation"
                   aria-label="Go back to donation form"
                 >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
 
-              <div id="donorbox-embed" className="relative w-full" style={{ minHeight: '800px' }}>
+              <div id="donorbox-embed" className="relative w-full overflow-hidden rounded-lg" style={{ minHeight: '600px' }}>
                 <iframe
                   src={`https://donorbox.org/embed/${process.env.NEXT_PUBLIC_DONORBOX_CAMPAIGN_ID}?amount=${amount === 'custom' ? customAmount : amount}&frequency=${frequency}&designation=${purpose}`}
                   name="donorbox"
                   seamless
                   frameBorder="0"
-                  scrolling="no"
+                  scrolling="yes"
                   className="w-full rounded-lg"
                   style={{ 
                     maxWidth: '100%',
                     minWidth: '100%',
                     maxHeight: 'none',
-                    minHeight: '800px',
+                    minHeight: '600px',
+                    height: '800px',
                   }}
                   allow="payment"
                 />
@@ -536,11 +538,11 @@ function FundAllocation() {
           <p className="text-sm text-gray-600 font-paragraph mb-4">
             Trusted by donors worldwide
           </p>
-          <div className="flex justify-center items-center gap-8 flex-wrap">
-            <div className="text-gray-500 font-paragraph">🔒 Secure Payment</div>
-            <div className="text-gray-500 font-paragraph">✓ Tax Deductible</div>
-            <div className="text-gray-500 font-paragraph">📊 Full Transparency</div>
-            <div className="text-gray-500 font-paragraph">💯 100% Nonprofit</div>
+          <div className="flex justify-center items-center gap-4 sm:gap-6 md:gap-8 flex-wrap">
+            <div className="text-sm sm:text-base text-gray-500 font-paragraph">🔒 Secure Payment</div>
+            <div className="text-sm sm:text-base text-gray-500 font-paragraph">✓ Tax Deductible</div>
+            <div className="text-sm sm:text-base text-gray-500 font-paragraph">📊 Full Transparency</div>
+            <div className="text-sm sm:text-base text-gray-500 font-paragraph">💯 100% Nonprofit</div>
           </div>
         </motion.div>
       </div>
@@ -591,16 +593,16 @@ function ImpactStories() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {stories.map((story, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-gray-200 transition-colors"
+              className="bg-gray-50 rounded-2xl p-6 sm:p-8 border border-gray-100 hover:border-gray-200 transition-colors"
             >
-              <div className="relative w-20 h-20 rounded-full overflow-hidden mb-6 mx-auto border-4 border-white">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden mb-4 sm:mb-6 mx-auto border-4 border-white">
                 <Image
                   src={story.image}
                   alt={story.author}
@@ -608,7 +610,7 @@ function ImpactStories() {
                   className="object-cover"
                 />
               </div>
-              <blockquote className="text-gray-700 font-paragraph text-center mb-6 italic">
+              <blockquote className="text-sm sm:text-base text-gray-700 font-paragraph text-center mb-4 sm:mb-6 italic leading-relaxed">
                 &ldquo;{story.quote}&rdquo;
               </blockquote>
               <div className="text-center">
@@ -648,19 +650,19 @@ export default function DonatePage() {
           }} />
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl font-heading-bold mb-4">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading-bold mb-4">
             Ready to Make a Difference?
           </h2>
-          <p className="text-lg text-green-100 font-paragraph mb-8">
+          <p className="text-base sm:text-lg text-green-100 font-paragraph mb-6 sm:mb-8">
             Every donation, no matter the size, transforms lives.
           </p>
           <a 
             href="#donation-form"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-bold text-lg transition-all duration-300"
+            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-school-yellow hover:bg-yellow-500 active:bg-yellow-600 text-gray-900 font-heading-bold text-base sm:text-lg transition-all duration-300 touch-manipulation"
           >
             Donate Now
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
             </svg>
           </a>
