@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function TeamPage() {
   const teamMembers = [
@@ -67,10 +68,31 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
         <div className="absolute inset-0" style={{ backgroundColor: '#0D4723' }} />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4">Our Team</h1>
-          <p className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
-            Meet the dedicated leaders driving transformative education in rural Uganda
-          </p>
+          <motion.h1 
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Our Team
+          </motion.h1>
+          <div className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
+            {['Meet', 'the', 'dedicated', 'leaders', 'driving', 'transformative', 'education', 'in', 'rural', 'Uganda'].map((word, index) => (
+              <motion.span
+                key={index}
+                className="inline-block mr-2"
+                initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.8 + (index * 0.2), // Poetic stagger timing
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </div>
         </div>
       </section>
 

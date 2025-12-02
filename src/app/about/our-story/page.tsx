@@ -4,33 +4,15 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
-// Animated Counter Component
-function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number, duration?: number, suffix?: string }) {
+// Animated Counter Component with Scroll Trigger
+function AnimatedCounter({ end, duration = 2000, suffix = '', inView }: { end: number, duration?: number, suffix?: string, inView: boolean }) {
   const [count, setCount] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    const element = document.getElementById(`counter-${end}`)
-    if (element) {
-      observer.observe(element)
-    }
-
-    return () => observer.disconnect()
-  }, [end, isVisible])
-
-  useEffect(() => {
-    if (!isVisible) return
+    if (!inView) return
 
     let startTime: number
     let animationFrame: number
@@ -57,12 +39,160 @@ function AnimatedCounter({ end, duration = 2000, suffix = '' }: { end: number, d
         cancelAnimationFrame(animationFrame)
       }
     }
-  }, [end, duration, isVisible])
+  }, [end, duration, inView])
 
   return (
-    <span id={`counter-${end}`}>
+    <span>
       {count}{suffix}
     </span>
+  )
+}
+
+// Story Introduction Section - Phase 3 Scrollytelling
+function StoryIntroSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.5 })
+
+  return (
+    <section ref={sectionRef} className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+      {/* Animated Background Transition */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 1 }}
+      />
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Main Heading - Fades in with scale */}
+        <motion.h3
+          className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6"
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          The Story Behind Our Mission
+        </motion.h3>
+
+        {/* Subtitle - Fades in slightly after heading */}
+        <motion.p
+          className="text-lg sm:text-xl text-gray-600 leading-relaxed font-paragraph max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Understanding the challenges that drive our commitment to rural education in Uganda
+        </motion.p>
+      </div>
+    </section>
+  )
+}
+
+// Impact Section Component with Phase 2 Scrollytelling
+function ImpactSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
+
+  return (
+    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
+      {/* Animated Background Color Transition */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-white via-green-50/30 to-white"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 1.2 }}
+      />
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Content - Left Side */}
+          <div className="lg:col-span-7 order-2 lg:order-1">
+            {/* Heading - Slide in from left */}
+            <motion.h2 
+              className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6"
+              initial={{ opacity: 0, x: -50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              A Legacy of Educational Impact
+            </motion.h2>
+            
+            {/* Paragraphs - Stagger fade in */}
+            <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Founded with a vision to transform rural education in Uganda, Jasper Schools Uganda has been at the forefront of addressing educational inequity in Nyairongo and surrounding communities.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                Our commitment to providing quality education has created lasting change, empowering children to break the cycle of poverty through learning and opportunity.
+              </motion.p>
+            </div>
+            
+            {/* Impact Figures - Scale up and reveal */}
+            <div className="grid grid-cols-2 gap-8 mt-8">
+              {/* Stat 1 - Students */}
+              <motion.div 
+                className="text-center lg:text-left"
+                initial={{ opacity: 0, scale: 0.5, y: 30 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.5, y: 30 }}
+                transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 100 }}
+              >
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-[#0D4723] mb-2">
+                  <AnimatedCounter end={500} duration={2500} suffix="+" inView={isInView} />
+                </div>
+                <div className="text-gray-600 font-heading-medium">Students Impacted</div>
+              </motion.div>
+              
+              {/* Stat 2 - Teachers */}
+              <motion.div 
+                className="text-center lg:text-left"
+                initial={{ opacity: 0, scale: 0.5, y: 30 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.5, y: 30 }}
+                transition={{ duration: 0.6, delay: 1, type: "spring", stiffness: 100 }}
+              >
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-[#0D4723] mb-2">
+                  <AnimatedCounter end={15} duration={2000} suffix="+" inView={isInView} />
+                </div>
+                <div className="text-gray-600 font-heading-medium">Qualified Teachers</div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Logo Section - Right Side - Slide in from right */}
+          <div className="lg:col-span-5 order-1 lg:order-2">
+            <motion.div 
+              className="flex justify-center lg:justify-end"
+              initial={{ opacity: 0, x: 50, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
+              transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 80 }}
+            >
+              <motion.div 
+                className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-white rounded-2xl p-8 flex items-center justify-center"
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Image
+                  src="/images/jps_logo.jpg"
+                  alt="Jasper Primary School Logo"
+                  width={300}
+                  height={300}
+                  className="object-contain"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -76,78 +206,39 @@ export default function OurStory() {
         <div className="absolute inset-0" style={{ backgroundColor: '#0D4723' }} />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4">Our Story</h1>
-          <p className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
-            What inspired Jasper Schools Uganda
-          </p>
-        </div>
-      </section>
-
-      {/* Impact Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
-            {/* Content */}
-            <div className="lg:col-span-7 order-2 lg:order-1">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6">
-                A Legacy of Educational Impact
-              </h2>
-              <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
-                <p>
-                  Founded with a vision to transform rural education in Uganda, Jasper Schools Uganda has been at the forefront of addressing educational inequity in Nyairongo and surrounding communities.
-                </p>
-                <p>
-                  Our commitment to providing quality education has created lasting change, empowering children to break the cycle of poverty through learning and opportunity.
-                </p>
-              </div>
-              
-              {/* Impact Figures */}
-              <div className="grid grid-cols-2 gap-8 mt-8">
-                <div className="text-center lg:text-left">
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-[#0D4723] mb-2">
-                    <AnimatedCounter end={500} duration={2500} suffix="+" />
-                  </div>
-                  <div className="text-gray-600 font-heading-medium">Students Impacted</div>
-                </div>
-                <div className="text-center lg:text-left">
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-[#0D4723] mb-2">
-                    <AnimatedCounter end={15} duration={2000} suffix="+" />
-                  </div>
-                  <div className="text-gray-600 font-heading-medium">Qualified Teachers</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Logo Section */}
-            <div className="lg:col-span-5 order-1 lg:order-2">
-              <div className="flex justify-center lg:justify-end">
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-white rounded-2xl p-8 flex items-center justify-center">
-                  <Image
-                    src="/images/jps_logo.jpg"
-                    alt="Jasper Primary School Logo"
-                    width={300}
-                    height={300}
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
+          <motion.h1 
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Our Story
+          </motion.h1>
+          <div className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
+            {['What', 'inspired', 'Jasper', 'Schools', 'Uganda'].map((word, index) => (
+              <motion.span
+                key={index}
+                className="inline-block mr-2"
+                initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.8 + (index * 0.3), // Staggered delay for each word
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Transition Section */}
-      <section className="py-8 bg-gray-50">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
-          <div className="w-20 h-1 bg-[#0D4723] mx-auto mb-6"></div>
-          <h3 className="text-2xl sm:text-3xl font-heading-semibold text-gray-900 mb-4">The Story Behind Our Mission</h3>
-          <p className="text-lg text-gray-600 leading-relaxed font-paragraph">
-            Understanding the challenges that drive our commitment to rural education in Uganda
-          </p>
-        </div>
-      </section>
+      {/* Impact Section - Phase 2 Scrollytelling */}
+      <ImpactSection />
+
+      {/* Transition Section - Phase 3 Scrollytelling */}
+      <StoryIntroSection />
 
       {/* Main Content */}
       <article className="py-12 sm:py-16 lg:py-20">
