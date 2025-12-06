@@ -62,10 +62,13 @@ function Slideshow() {
   const slides = [
     '/images/jps1.jpeg',
     '/images/jps2.jpeg',
-    '/images/jps3.jpeg',
+    '/images/jps3.jpg',
     '/images/jps4.jpeg',
-    '/images/jps5.jpeg',
+    '/images/jps5.jpg',
     '/images/jps6.jpeg',
+    '/images/jps7.jpeg',
+    '/images/jps8.jpeg',
+    '/images/jps9.jpg',
   ]
 
   useEffect(() => {

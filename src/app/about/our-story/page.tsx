@@ -254,8 +254,8 @@ export default function OurStory() {
           {/* Hero Image */}
           <div className="relative w-full h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden mb-12 shadow-xl">
             <Image
-              src="/images/istockphoto-1435346080-1024x1024_cleanup.jpg"
-              alt="Rural education in Uganda"
+              src="/images/jps1.jpeg"
+              alt="Students at Jasper Primary School"
               fill
               className="object-cover"
             />
@@ -278,16 +278,16 @@ export default function OurStory() {
           <div className="grid md:grid-cols-2 gap-6 mb-16">
             <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="/images/istockphoto-1435346080-1024x1024_cleanup.jpg"
-                alt="Students in rural school"
+                src="/images/jps2.jpeg"
+                alt="Students learning at Jasper Primary School"
                 fill
                 className="object-cover"
               />
             </div>
             <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="/images/istockphoto-1435346080-1024x1024_cleanup.jpg"
-                alt="School facilities"
+                src="/images/jps4.jpeg"
+                alt="School activities and facilities"
                 fill
                 className="object-cover"
               />
@@ -306,11 +306,23 @@ export default function OurStory() {
 
           {/* Teacher Shortage Section */}
           <section className="bg-gray-50 rounded-2xl p-8 sm:p-10 lg:p-12 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The Teacher Shortage</h2>
-            <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed font-paragraph">
-                The shortage of qualified teachers in rural areas is another significant barrier. Many educators are reluctant to work in these remote regions due to the lack of amenities and professional opportunities. As a result, students in rural schools often receive a lower quality of education, with larger class sizes and less individualised attention, further exacerbating educational disparities.
-              </p>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The Teacher Shortage</h2>
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-gray-700 leading-relaxed font-paragraph">
+                    The shortage of qualified teachers in rural areas is another significant barrier. Many educators are reluctant to work in these remote regions due to the lack of amenities and professional opportunities. As a result, students in rural schools often receive a lower quality of education, with larger class sizes and less individualised attention, further exacerbating educational disparities.
+                  </p>
+                </div>
+              </div>
+              <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/images/jps6.jpeg"
+                  alt="Teachers and students at Jasper Primary School"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </section>
 
@@ -327,8 +339,8 @@ export default function OurStory() {
           {/* Featured Image */}
           <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden mb-16 shadow-xl">
             <Image
-              src="/images/istockphoto-1435346080-1024x1024_cleanup.jpg"
-              alt="Education inequality"
+              src="/images/jps5.jpg"
+              alt="Jasper Primary School students and teachers"
               fill
               className="object-cover"
             />
@@ -367,13 +379,51 @@ export default function OurStory() {
               <div className="w-20 h-1 bg-[#0D4723] mx-auto mb-8"></div>
             </div>
             
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 sm:p-10 lg:p-12 border-2 border-gray-100">
-              <p className="text-xl sm:text-2xl leading-relaxed text-gray-800 text-center mb-6 font-paragraph">
-                Due to these systemic failures in rural education, Jasper Schools Uganda is establishing Jasper Primary School-Nyirongo to transform the educational landscape for children in rural areas.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed text-center font-paragraph">
-                By addressing the root causes of educational inequity, the school aims to provide a supportive, high-quality learning environment where all students, regardless of their socioeconomic background, can thrive and achieve their full potential.
-              </p>
+            <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 sm:p-10 lg:p-12 border-2 border-gray-100">
+                <p className="text-xl sm:text-2xl leading-relaxed text-gray-800 mb-6 font-paragraph">
+                  Due to these systemic failures in rural education, Jasper Schools Uganda is establishing Jasper Primary School-Nyirongo to transform the educational landscape for children in rural areas.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed font-paragraph">
+                  By addressing the root causes of educational inequity, the school aims to provide a supportive, high-quality learning environment where all students, regardless of their socioeconomic background, can thrive and achieve their full potential.
+                </p>
+              </div>
+              <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/jps7.jpeg"
+                  alt="Jasper Primary School transforming education"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            
+            {/* Additional Images Gallery */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8">
+              <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/images/jps8.jpeg"
+                  alt="School community and activities"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/images/jps9.jpg"
+                  alt="Students engaged in learning"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden shadow-lg sm:col-span-2 lg:col-span-1">
+                <Image
+                  src="/images/jps2.jpeg"
+                  alt="Jasper Primary School impact"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </section>
 
