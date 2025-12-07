@@ -72,12 +72,12 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
     slug: 'milton-edodi'
   },
   {
-    name: 'Erick Mulundi',
+    name: 'Erick Mulindi',
     role: 'Executive Director',
     education: '',
-    profile: `Erick Mulundi is the Executive Director of Jasper Schools Uganda, bringing extensive leadership experience and a deep commitment to educational excellence.`,
+    profile: `Erick Mulindi is the Executive Director of Jasper Schools Uganda, bringing extensive leadership experience and a deep commitment to educational excellence.`,
     achievements: [],
-    slug: 'erick-mulundi'
+    slug: 'erick-mulindi'
   },
   {
     name: 'Jane Mukasa',

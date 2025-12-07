@@ -59,7 +59,7 @@ export default function TeamPage() {
       imageSrc: '/images/eddie.jpg'
     },
     {
-      name: 'Erick Mulundi',
+      name: 'Erick Mulindi',
       role: 'Executive Director',
       education: '',
       profile: '',
