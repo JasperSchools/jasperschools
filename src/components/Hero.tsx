@@ -62,7 +62,7 @@ function Slideshow() {
   const slides = [
     '/images/jps1.jpeg',
     '/images/jps2.jpeg',
-    '/images/jps3.jpg',
+    // '/images/jps3.jpg',
     '/images/jps4.jpeg',
     '/images/jps5.jpg',
     '/images/jps6.jpeg',
@@ -96,7 +96,7 @@ function Slideshow() {
             quality={100}
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-60" />
+          <div className="absolute inset-0 bg-black bg-opacity-75" />
         </div>
       ))}
     </div>
@@ -105,16 +105,15 @@ function Slideshow() {
 
 export default function Hero() {
   return (
-    <section className="relative text-white overflow-hidden min-h-[85vh]">
+    <section className="relative text-white overflow-hidden min-h-[100vh]">
       {/* Slideshow Background */}
       <Slideshow />
       
       {/* Main Content - Overlaid directly on background */}
-      <div className="relative z-10 min-h-[85vh] flex flex-col">
-        {/* Top Content */}
-        <div className="flex-1 flex items-center pt-16 sm:pt-20 lg:pt-24 pb-16 sm:pb-20 lg:pb-24">
-          <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
-            <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
+      <div className="relative z-10 min-h-[100vh] flex items-center justify-center pb-32 sm:pb-36 lg:pb-40">
+        {/* Centered Content */}
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
               {/* Main Heading */}
               <h1 className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-light leading-[1.1] mb-4 sm:mb-6 text-left">
                 <motion.span 
@@ -156,108 +155,107 @@ export default function Hero() {
               
               {/* Call-to-Action Button */}
               <motion.a
-                href="/donate"
+                href="/sponsor"
                 className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
                 style={{ margin: '20px 0px 0px', padding: '16px 32px' }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 2.5, ease: [0.22, 1, 0.36, 1] }}
               >
-                <span>Support Our Mission</span>
+                <span>Sponsor a Student</span>
                 {/* <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg> */}
               </motion.a>
-            </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Stats Section */}
-        <div className="bg-black/85 backdrop-blur-sm border-t border-white/10">
-          <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
-              {/* Left Column - Description */}
+      {/* Bottom Stats Section - Positioned absolutely at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 bg-black/85 backdrop-blur-sm border-t border-white/10">
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
+            {/* Left Column - Description */}
+            <motion.div 
+              className="text-center lg:text-left"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 2.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <p className="text-white font-paragraph text-base sm:text-base leading-relaxed">
+                Learn how Jasper Schools transforms lives in rural Uganda
+              </p>
+            </motion.div>
+            
+            {/* Middle Column - Statistics */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-6">
               <motion.div 
-                className="text-center lg:text-left"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 2.8, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 3.0, type: "spring", stiffness: 100 }}
               >
-                <p className="text-white font-paragraph text-base sm:text-base leading-relaxed">
-                  Learn how Jasper Schools transforms lives in rural Uganda
-                </p>
+                <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                  <AnimatedCounter end={500} duration={2000} suffix="+" delay={3200} />
+                </div>
+                <div className="text-white/90 font-paragraph text-sm sm:text-sm">
+                  Students Impacted
+                </div>
               </motion.div>
-              
-              {/* Middle Column - Statistics */}
-              <div className="grid grid-cols-3 gap-4 sm:gap-6">
-                <motion.div 
-                  className="text-center"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 3.0, type: "spring", stiffness: 100 }}
-                >
-                  <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
-                    <AnimatedCounter end={500} duration={2000} suffix="+" delay={3200} />
-                  </div>
-                  <div className="text-white/90 font-paragraph text-sm sm:text-sm">
-                    Students Impacted
-                  </div>
-                </motion.div>
-                <motion.div 
-                  className="text-center"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 3.2, type: "spring", stiffness: 100 }}
-                >
-                  <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
-                    <AnimatedCounter end={15} duration={1800} suffix="+" delay={3400} />
-                  </div>
-                  <div className="text-white/90 font-paragraph text-sm sm:text-sm">
-                    Teachers
-                  </div>
-                </motion.div>
-                <motion.div 
-                  className="text-center"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 3.4, type: "spring", stiffness: 100 }}
-                >
-                  <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
-                    <AnimatedCounter end={97} duration={1600} suffix="%" delay={3600} />
-                  </div>
-                  <div className="text-white/90 font-paragraph text-sm sm:text-sm">
-                    Community Support
-                  </div>
-                </motion.div>
-              </div>
-              
-              {/* Right Column - Action Buttons */}
               <motion.div 
-                className="flex flex-col gap-3 justify-center"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 3.6, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 3.2, type: "spring", stiffness: 100 }}
               >
-                <a
-                  href="/about/our-story"
-                  className="group inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base"
-                >
-                  Learn More
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </a>
-                <a
-                  href="/about/vision-mission"
-                  className="group inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base"
-                >
-                  Our Vision
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </a>
+                <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                  <AnimatedCounter end={15} duration={1800} suffix="+" delay={3400} />
+                </div>
+                <div className="text-white/90 font-paragraph text-sm sm:text-sm">
+                  Teachers
+                </div>
+              </motion.div>
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 3.4, type: "spring", stiffness: 100 }}
+              >
+                <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                  <AnimatedCounter end={97} duration={1600} suffix="%" delay={3600} />
+                </div>
+                <div className="text-white/90 font-paragraph text-sm sm:text-sm">
+                  Community Support
+                </div>
               </motion.div>
             </div>
+            
+            {/* Right Column - Action Buttons */}
+            <motion.div 
+              className="flex flex-col gap-3 justify-center"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 3.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <a
+                href="/about/our-story"
+                className="group inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base"
+              >
+                Learn More
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+              <a
+                href="/about/vision-mission"
+                className="group inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base"
+              >
+                Our Vision
+                <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </motion.div>
           </div>
         </div>
       </div>
