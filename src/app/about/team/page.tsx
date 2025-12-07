@@ -135,18 +135,19 @@ export default function TeamPage() {
     }
   ]
 
-  // Positioning for overlapping collage effect - centered with natural overlap
+  // Positioning for overlapping collage effect - inspired by natural, organic layout
   const getPosition = (index: number, total: number) => {
-    // Using pixel offsets from center to create natural overlap with more spacing
+    // Natural, spread-out arrangement with subtle corner overlaps
+    // Varying sizes and positions for organic feel - ensuring all faces are visible
     const positions = [
-      { top: '5%', left: '-240px', rotate: -8, zIndex: 7 },
-      { top: '0%', left: '-80px', rotate: 5, zIndex: 6 },
-      { top: '8%', left: '80px', rotate: -3, zIndex: 8 },
-      { top: '3%', left: '240px', rotate: 7, zIndex: 5 },
-      { top: '45%', left: '-270px', rotate: -6, zIndex: 4 },
-      { top: '50%', left: '-110px', rotate: 4, zIndex: 9 },
-      { top: '55%', left: '30px', rotate: -5, zIndex: 7 },
-      { top: '52%', left: '210px', rotate: 6, zIndex: 6 }
+      { top: '0%', left: '-35%', rotate: -5, zIndex: 1, scale: 1.0 },
+      { top: '40%', left: '-30%', rotate: 4, zIndex: 2, scale: 0.95 },
+      { top: '10%', left: '-10%', rotate: -3, zIndex: 3, scale: 1.05 },
+      { top: '5%', left: '18%', rotate: 6, zIndex: 4, scale: 0.9 },
+      { top: '45%', left: '8%', rotate: -4, zIndex: 5, scale: 1.0 },
+      { top: '3%', left: '35%', rotate: -6, zIndex: 6, scale: 1.1 },
+      { top: '42%', left: '33%', rotate: 5, zIndex: 7, scale: 0.95 },
+      { top: '48%', left: '-12%', rotate: 3, zIndex: 8, scale: 1.0 }
     ]
     return positions[index % positions.length]
   }
@@ -166,10 +167,54 @@ export default function TeamPage() {
                 : "Our dedicated teachers bring passion, expertise, and commitment to creating an inspiring learning environment for every student at Jasper Primary School."}
             </p>
           </div>
+        </div>
 
-          {/* Centered Collage */}
-          <div className="flex items-center justify-center w-full">
-            <div className="relative h-[400px] sm:h-[450px] lg:h-[500px]" style={{ width: '100%', maxWidth: '900px', margin: '0 auto' }}>
+        {/* Mobile Stack Layout */}
+        <div className="lg:hidden w-full px-4 sm:px-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            {members.map((member, index) => (
+              <motion.div
+                key={member.name}
+                className="relative cursor-pointer group"
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, zIndex: 100 }}
+              >
+                <Link href={`/about/team/${createSlug(member.name)}`}>
+                  <div className="relative aspect-[3/4] w-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl">
+                    {member.imageSrc ? (
+                      <Image
+                        src={member.imageSrc}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
+                        <span className="text-2xl sm:text-4xl font-bold text-white">
+                          {member.name.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                    )}
+                    {/* Overlay with name - always visible on mobile */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
+                      <div className="w-full p-2 sm:p-3">
+                        <h3 className="text-white font-heading-bold text-xs sm:text-sm mb-0.5">{member.name}</h3>
+                        <p className="text-white/90 font-paragraph text-[10px] sm:text-xs line-clamp-1">{member.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Collage - Full width container for proper centering */}
+        <div className="hidden lg:flex w-full items-center justify-center overflow-visible">
+          <div className="relative h-[550px] xl:h-[600px] w-full max-w-[1000px] mx-auto">
               {members.map((member, index) => {
                 const position = getPosition(index, members.length)
                 return (
@@ -179,15 +224,15 @@ export default function TeamPage() {
                     style={{
                       top: position.top,
                       left: `calc(50% + ${position.left})`,
-                      width: '200px',
-                      height: '250px',
-                      transform: `translateX(-50%) rotate(${position.rotate}deg)`,
+                      width: `clamp(100px, ${18 * (position.scale || 1)}vw, ${200 * (position.scale || 1)}px)`,
+                      height: `clamp(120px, ${22 * (position.scale || 1)}vw, ${250 * (position.scale || 1)}px)`,
+                      transform: `translateX(-50%) rotate(${position.rotate}deg) scale(${position.scale || 1})`,
                       zIndex: position.zIndex || (members.length - index)
                     }}
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, rotate: 0, zIndex: 100 }}
+                    whileHover={{ scale: (position.scale || 1) * 1.05, rotate: 0, zIndex: 100 }}
                   >
                     <Link href={`/about/team/${createSlug(member.name)}`}>
                       <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl">
@@ -201,16 +246,16 @@ export default function TeamPage() {
                           />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
-                            <span className="text-4xl font-bold text-white">
+                            <span className="text-2xl sm:text-4xl font-bold text-white">
                               {member.name.split(' ').map(n => n[0]).join('')}
                             </span>
                           </div>
                         )}
-                        {/* Overlay with name on hover */}
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-end">
-                          <div className="w-full p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                            <h3 className="text-white font-heading-bold text-lg mb-1">{member.name}</h3>
-                            <p className="text-white/90 font-paragraph text-sm">{member.role}</p>
+                        {/* Overlay with name - always visible */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
+                          <div className="w-full p-2 sm:p-3 lg:p-4">
+                            <h3 className="text-white font-heading-bold text-xs sm:text-sm lg:text-base mb-0.5">{member.name}</h3>
+                            <p className="text-white/90 font-paragraph text-[10px] sm:text-xs lg:text-sm line-clamp-1">{member.role}</p>
                           </div>
                         </div>
                       </div>
@@ -218,7 +263,6 @@ export default function TeamPage() {
                   </motion.div>
                 )
               })}
-            </div>
           </div>
         </div>
       </section>

@@ -293,10 +293,10 @@ export default function Header() {
             <div className="lg:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-school-green p-2  transition-all duration-300"
+                className="text-gray-700 hover:text-school-green p-2 transition-all duration-300 rounded-full border-2 border-gray-200 hover:border-school-green flex items-center justify-center w-10 h-10"
                 aria-label="Toggle menu"
               >
-                <svg className="h-6 w-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {isMenuOpen ? (
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   ) : (
