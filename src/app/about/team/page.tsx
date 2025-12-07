@@ -6,58 +6,224 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
+// Helper function to create slug from name
+function createSlug(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+}
+
+interface TeamMember {
+  name: string
+  role: string
+  education?: string
+  profile?: string
+  achievements?: string[]
+  imageSrc?: string
+}
+
 export default function TeamPage() {
-  const teamMembers = [
+  const topManagement: TeamMember[] = [
     {
       name: 'Eric Ayamba',
       role: 'Co-Founder & Educator',
       education: 'United States International University Africa (USIU-Africa)',
-      profile: `Eric Ayamba is an educator and visionary leader passionate about harnessing education as a catalyst for transforming rural communities into self-reliant and sustainable societies. He holds a Bachelor of Science in Finance with a concentration in Economics from United States International University-Africa and has cultivated expertise in economics, econometrics, and rural education transformation. In 2022, Eric expanded his global perspective by studying Economics for Developing Countries at Sciences Po, France, where he deepened his understanding of policy formulation for low-income and developing nations.
-
-As the Co-Founder of Jasper Schools Uganda, established in 2025, Eric leads the organization's flagship institution, Jasper Primary School in Nyairongo-Uganda where he has strengthened community partnerships, implemented efficient administrative systems, and enhanced the school's community profile. Under his leadership, Jasper has built partnerships with leading institutions such as the African Leadership Academy, advancing its mission to eliminate barriers to quality education in rural areas.
-
-He was awarded the Little Bets Challenge by ALforEducation during the 2024 gathering in Johannesburg, South Africa, which supported his establishment of community hubs promoting gender equity in education, leading to increased school enrolment for young girls in Nyairongo. He was also part of the inaugural cohort of the Edupreneur Growth Lab in 2021 and the Cohort 4 Apprenticeship Program under ALforEducation, experiences that built his understanding of Africa's state of education and strengthened his commitment to designing education solutions across the continent and the Global South at large.
-
-Guided by the belief that "no child should be denied education because of gender or location," Eric continues to champion transformative educational models that empower communities and inspire sustainable development.`,
+      profile: `Eric Ayamba is an educator and visionary leader passionate about harnessing education as a catalyst for transforming rural communities into self-reliant and sustainable societies. He holds a Bachelor of Science in Finance with a concentration in Economics from United States International University-Africa and has cultivated expertise in economics, econometrics, and rural education transformation.`,
       achievements: [
         'Awarded Little Bets Challenge by ALforEducation',
         'Co-founder, Jasper Schools Uganda',
         'Edupreneur Growth Lab Cohort 2021'
-      ]
+      ],
+      imageSrc: '/images/eddie.jpg'
     },
     {
       name: 'Byaruhanga Erisha',
       role: 'Co-Founder & Community Developer',
       education: 'United States International University–Africa (USIU-Africa)',
-      profile: `Erisha is a passionate student at United States International University–Africa, pursuing a Bachelor's degree in International Business Administration. He is deeply driven by a commitment to education, community empowerment, and youth development.
-
-As the Co-founder of Jasper Primary School- Nyairongo, Erisha plays a key role in improving access to quality education for children in underserved communities. His vision for the school is rooted in his belief that education is a powerful tool for breaking cycles of poverty and unlocking potential among young learners.
-
-Before joining university, Erisha volunteered with Save the Children International for about two years as a Community Learning Facilitator in Kyangwali Refugee Settlement. In this role, he worked with children from diverse backgrounds to strengthen their literacy and numeracy skills, create inclusive learning spaces, and support teachers in delivering effective lessons. This experience not only deepened his love for education but also strengthened his leadership, communication, and mentorship abilities.
-
-Through his academic journey and community work, Erisha continues to seek innovative ways to bridge educational gaps, nurture young minds, and inspire change within his community and beyond.`,
+      profile: `Erisha is a passionate student at United States International University–Africa, pursuing a Bachelor's degree in International Business Administration. He is deeply driven by a commitment to education, community empowerment, and youth development.`,
       achievements: [
         'Community Learning Facilitator, Save the Children International',
         '2+ years of refugee community engagement',
         'Co-founder, Jasper Primary School'
-      ]
+      ],
+      imageSrc: '/images/eddie.jpg'
     },
     {
       name: 'Milton Edodi',
       role: 'Co-Founder & Strategic Leader',
       education: 'United States International University Africa (USIU-A)',
-      profile: `Milton Edodi is a Mastercard Foundation Scholar pursuing a Bachelor of Science in International Business Administration (Management) at the United States International University-Africa (USIU-Africa) and the Co-Founder of Jasper Primary School in western Uganda. Driven by a strong commitment to educational transformation, strategic leadership, mentorship, and evidence-informed decision-making, he seeks to shape progressive education systems that foster innovation, inclusion, and sustainable development across Africa.
-
-Through his leadership at Jasper Primary School, Milton has played a pivotal role in strengthening community partnerships, enhancing school management systems, and promoting inclusive learning opportunities for children in rural Uganda. His extensive volunteer experience with the World Food Programme (WFP), World Vision, Save the Children, Lutheran World Federation (LWF), and Alight has deepened his understanding of the link between education, child protection, and community development.
-
-Guided by integrity, excellence, empathy, and resilience, Milton continues to champion education as a powerful driver of social and economic transformation, envisioning a future where every child regardless of background, has access to quality learning and the opportunity to thrive.`,
+      profile: `Milton Edodi is a Mastercard Foundation Scholar pursuing a Bachelor of Science in International Business Administration (Management) at the United States International University-Africa and the Co-Founder of Jasper Primary School in western Uganda.`,
       achievements: [
         'Mastercard Foundation Scholar',
         'Volunteer with WFP, World Vision, and Save the Children',
         'Co-founder, Jasper Primary School'
-      ]
+      ],
+      imageSrc: '/images/eddie.jpg'
+    },
+    {
+      name: 'Erick Mulundi',
+      role: 'Executive Director',
+      education: '',
+      profile: '',
+      achievements: [],
+      imageSrc: '/images/eddie.jpg'
     }
   ]
+
+  const teachers: TeamMember[] = [
+    {
+      name: 'Jane Mukasa',
+      role: 'Mathematics Teacher',
+      education: '',
+      profile: '',
+      achievements: [],
+      imageSrc: '/images/eddie.jpg'
+    },
+    {
+      name: 'Peter Kato',
+      role: 'Science Teacher',
+      education: '',
+      profile: '',
+      achievements: [],
+      imageSrc: '/images/eddie.jpg'
+    },
+    {
+      name: 'Sarah Nakato',
+      role: 'English Teacher',
+      education: '',
+      profile: '',
+      achievements: [],
+      imageSrc: '/images/eddie.jpg'
+    },
+    {
+      name: 'David Ochieng',
+      role: 'Social Studies Teacher',
+      education: '',
+      profile: '',
+      achievements: [],
+      imageSrc: '/images/eddie.jpg'
+    },
+    {
+      name: 'Mary Achieng',
+      role: 'Arts Teacher',
+      education: '',
+      profile: '',
+      achievements: [],
+      imageSrc: '/images/eddie.jpg'
+    },
+    {
+      name: 'James Okello',
+      role: 'Physical Education Teacher',
+      education: '',
+      profile: '',
+      achievements: [],
+      imageSrc: '/images/eddie.jpg'
+    },
+    {
+      name: 'Grace Akello',
+      role: 'Primary Teacher',
+      education: '',
+      profile: '',
+      achievements: [],
+      imageSrc: '/images/eddie.jpg'
+    },
+    {
+      name: 'Robert Ssemwogerere',
+      role: 'Primary Teacher',
+      education: '',
+      profile: '',
+      achievements: [],
+      imageSrc: '/images/eddie.jpg'
+    }
+  ]
+
+  // Positioning for overlapping collage effect - centered with natural overlap
+  const getPosition = (index: number, total: number) => {
+    // Using pixel offsets from center to create natural overlap with more spacing
+    const positions = [
+      { top: '5%', left: '-240px', rotate: -8, zIndex: 7 },
+      { top: '0%', left: '-80px', rotate: 5, zIndex: 6 },
+      { top: '8%', left: '80px', rotate: -3, zIndex: 8 },
+      { top: '3%', left: '240px', rotate: 7, zIndex: 5 },
+      { top: '45%', left: '-270px', rotate: -6, zIndex: 4 },
+      { top: '50%', left: '-110px', rotate: 4, zIndex: 9 },
+      { top: '55%', left: '30px', rotate: -5, zIndex: 7 },
+      { top: '52%', left: '210px', rotate: 6, zIndex: 6 }
+    ]
+    return positions[index % positions.length]
+  }
+
+  const renderCollage = (members: TeamMember[], sectionTitle: string) => {
+    return (
+      <section className={`py-8 sm:py-10 lg:py-12 ${sectionTitle === 'Top Management' ? 'bg-white' : 'bg-gray-50'}`}>
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          {/* Title and Description */}
+          <div className="max-w-3xl mx-auto mb-8 lg:mb-10 text-center">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-school-blue mb-6">
+              {sectionTitle}
+            </h2>
+            <p className="text-lg text-gray-700 leading-relaxed font-paragraph">
+              {sectionTitle === 'Top Management' 
+                ? "Our team brings a wealth of experience from leading educational institutions, international organizations, and community development initiatives, driving transformative education in rural Uganda."
+                : "Our dedicated teachers bring passion, expertise, and commitment to creating an inspiring learning environment for every student at Jasper Primary School."}
+            </p>
+          </div>
+
+          {/* Centered Collage */}
+          <div className="flex items-center justify-center w-full">
+            <div className="relative h-[400px] sm:h-[450px] lg:h-[500px]" style={{ width: '100%', maxWidth: '900px', margin: '0 auto' }}>
+              {members.map((member, index) => {
+                const position = getPosition(index, members.length)
+                return (
+                  <motion.div
+                    key={member.name}
+                    className="absolute cursor-pointer group"
+                    style={{
+                      top: position.top,
+                      left: `calc(50% + ${position.left})`,
+                      width: '200px',
+                      height: '250px',
+                      transform: `translateX(-50%) rotate(${position.rotate}deg)`,
+                      zIndex: position.zIndex || (members.length - index)
+                    }}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05, rotate: 0, zIndex: 100 }}
+                  >
+                    <Link href={`/about/team/${createSlug(member.name)}`}>
+                      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl">
+                        {member.imageSrc ? (
+                          <Image
+                            src={member.imageSrc}
+                            alt={member.name}
+                            fill
+                            className="object-cover"
+                            unoptimized
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
+                            <span className="text-4xl font-bold text-white">
+                              {member.name.split(' ').map(n => n[0]).join('')}
+                            </span>
+                          </div>
+                        )}
+                        {/* Overlay with name on hover */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-end">
+                          <div className="w-full p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 className="text-white font-heading-bold text-lg mb-1">{member.name}</h3>
+                            <p className="text-white/90 font-paragraph text-sm">{member.role}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <main className="min-h-screen bg-white">
@@ -85,7 +251,7 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{
                   duration: 0.8,
-                  delay: 0.8 + (index * 0.2), // Poetic stagger timing
+                  delay: 0.8 + (index * 0.2),
                   ease: [0.22, 1, 0.36, 1]
                 }}
               >
@@ -96,76 +262,14 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
         </div>
       </section>
 
-      {/* Team Members Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="space-y-16">
-            {teamMembers.map((member, index) => (
-              <div 
-                key={member.name}
-                className={`rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 lg:p-10 ${
-                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } lg:flex lg:gap-8 lg:items-start`}
-              >
-                {/* Image Section */}
-                <div className="lg:w-1/3 mb-6 lg:mb-0">
-                  <div className="relative w-full max-w-sm mx-auto lg:mx-0">
-                    <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-50 shadow-lg">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-32 h-32 bg-[#0D4723] rounded-full flex items-center justify-center">
-                          <span className="text-4xl font-bold text-white">
-                            {member.name.split(' ').map(n => n[0]).join('')}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      {/* Top Management Section with Collage */}
+      {renderCollage(topManagement, 'Top Management')}
 
-                {/* Content Section */}
-                <div className="lg:w-2/3">
-                  <div className="mb-4">
-                    <h2 className="text-2xl sm:text-3xl font-heading-bold text-gray-900 mb-1">
-                      {member.name}
-                    </h2>
-                    <p className="text-lg text-[#0D4723] font-heading-semibold mb-2">{member.role}</p>
-                    <p className="text-sm text-gray-600 font-paragraph">{member.education}</p>
-                  </div>
-
-                  <div className="prose prose-lg max-w-none">
-                    <p className="text-gray-700 leading-relaxed mb-6 font-paragraph">
-                      {member.profile.split('\n\n')[0]}
-                    </p>
-                    <p className="text-gray-700 leading-relaxed font-paragraph">
-                      {member.profile.split('\n\n').slice(1).join('\n\n')}
-                    </p>
-                  </div>
-
-                  {/* Achievements */}
-                  <div className="mt-6 pt-6 border-t border-gray-100">
-                    <h3 className="text-sm font-heading-semibold text-gray-900 uppercase tracking-wide mb-3">
-                      Key Achievements
-                    </h3>
-                    <ul className="space-y-2">
-                      {member.achievements.map((achievement, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <svg className="w-5 h-5 text-[#0D4723] mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className="text-gray-700 font-paragraph">{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Teachers Section with Collage */}
+      {renderCollage(teachers, 'Teachers')}
 
       {/* Call to Action */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-gray-900 mb-4">
             Join Our Mission
@@ -176,13 +280,13 @@ Guided by integrity, excellence, empathy, and resilience, Milton continues to ch
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/donate" 
-              className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-[#0D4723] text-white font-heading-semibold hover:bg-green-800 transition-colors text-lg"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-school-green text-white font-heading-semibold hover:bg-green-800 transition-colors text-lg"
             >
               Donate Now
             </Link>
             <Link 
               href="/#contact" 
-              className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-white text-gray-900 font-heading-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 text-lg"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-gray-900 font-heading-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 text-lg"
             >
               Get in Touch
             </Link>
