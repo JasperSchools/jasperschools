@@ -163,7 +163,7 @@ export default function TeamMemberPage() {
         <section className="py-20 text-center">
           <div className="max-w-4xl mx-auto px-4">
             <h1 className="text-3xl font-heading-bold text-gray-900 mb-4">Team Member Not Found</h1>
-            <p className="text-gray-600 mb-8 font-paragraph">The team member you're looking for doesn't exist.</p>
+            <p className="text-gray-600 mb-8 font-paragraph">The team member you&apos;re looking for doesn&apos;t exist.</p>
             <Link 
               href="/about/team"
               className="inline-flex items-center px-6 py-3 bg-school-green text-white rounded-full hover:bg-green-800 transition-colors font-heading-semibold"
