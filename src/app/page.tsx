@@ -158,7 +158,7 @@ function StatisticsSection() {
   const stats = [
     { end: 500, suffix: '+', label: 'Students', description: 'Empowered through education', duration: 2500, delay: 0.2 },
     { end: 15, suffix: '+', label: 'Teachers', description: 'Dedicated educators', duration: 2000, delay: 0.4 },
-    { end: 10, suffix: '+', label: 'Years', description: 'Of educational excellence', duration: 1800, delay: 0.6 }
+    { end: 1, suffix: '', label: 'Year', description: 'Of educational excellence', duration: 1800, delay: 0.6 }
   ]
 
   return (
@@ -380,7 +380,7 @@ function DonateSection() {
               { value: 98, suffix: '%', label: 'Goes to Programs' },
               { value: 500, suffix: '+', label: 'Students Supported' },
               { value: 15, suffix: '+', label: 'Teachers Employed' },
-              { value: 10, suffix: '+', label: 'Years of Impact' }
+              { value: 1, suffix: '', label: 'Year of Impact' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
