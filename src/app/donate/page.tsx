@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, ReactElement } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { motion, useInView } from 'framer-motion'
@@ -483,7 +483,7 @@ function FundAllocation() {
                     />
                   )
                   return acc
-                }, [] as JSX.Element[])}
+                }, [] as ReactElement[])}
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">

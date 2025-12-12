@@ -252,7 +252,7 @@ export default function OurStory() {
           </div>
 
           {/* Hero Image */}
-          <div className="relative w-full h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden mb-12 shadow-xl">
+          <div className="relative w-full h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden mb-12">
             <Image
               src="/images/jps1.jpeg"
               alt="Students at Jasper Primary School"
@@ -263,20 +263,27 @@ export default function OurStory() {
 
           {/* The Challenge */}
           <section className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The Challenge</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The Challenges</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6 font-paragraph">
-                These challenges are particularly pronounced in Nyairongo, where Jasper Schools Uganda has identified a critical need to intervene by establishing Jasper Primary School-Nyairongo.
+                Nyairongo is a rural community whose education system faces the cliche challenges in education that majority of rural Africa faces. Though the challenges faced by children in rural Nyairongo are similar to most rural communities in Africa, they are made unique by their intensity. The challenges are:
               </p>
+            </div>
+          </section>
+
+          {/* Lack of learning materials in schools */}
+          <section className="mb-16">
+            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Lack of learning materials in schools</h2>
+            <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed font-paragraph">
-                One of the pressing issues is the lack of learning materials in rural schools. For example, Nyairongo has no learning centre for easy access to learning materials. This shortage deprives students of the tools necessary for effective learning, contributing to a widening gap in educational outcomes between rural and urban students. Further to this, the poor infrastructure of many rural schools with inadequate facilities, including dilapidated buildings and a lack of basic amenities, creates an environment that is not conducive to learning, further discouraging student attendance and engagement.
+                Nyairongo has no learning centre for easy access to learning materials. This shortage deprives students of the tools necessary for effective learning, contributing to a widening gap in educational outcomes between rural and urban students. Further to this, the poor infrastructure of many rural schools with inadequate facilities, including dilapidated buildings and a lack of basic amenities, creates an environment that is not conducive to learning, further discouraging student attendance and engagement.
               </p>
             </div>
           </section>
 
           {/* Image Grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-16">
-            <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg">
+            <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden">
               <Image
                 src="/images/jps2.jpeg"
                 alt="Students learning at Jasper Primary School"
@@ -284,7 +291,7 @@ export default function OurStory() {
                 className="object-cover"
               />
             </div>
-            <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg">
+            <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden">
               <Image
                 src="/images/jps4.jpeg"
                 alt="School activities and facilities"
@@ -296,7 +303,7 @@ export default function OurStory() {
 
           {/* Accessibility Barriers */}
           <section className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Accessibility Barriers</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Accessibility barriers</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed font-paragraph">
                 In addition to these material deficiencies, the inaccessibility of schools poses a major hurdle. Many children in rural areas must travel long distances to reach school, a daily journey that is both physically exhausting and unsafe. This challenge not only limits regular attendance but also negatively impacts students&apos; academic performance and overall well-being.
@@ -308,14 +315,14 @@ export default function OurStory() {
           <section className="bg-gray-50 rounded-2xl p-8 sm:p-10 lg:p-12 mb-16">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The Teacher Shortage</h2>
+                <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The teacher shortage</h2>
                 <div className="prose prose-lg max-w-none">
                   <p className="text-gray-700 leading-relaxed font-paragraph">
                     The shortage of qualified teachers in rural areas is another significant barrier. Many educators are reluctant to work in these remote regions due to the lack of amenities and professional opportunities. As a result, students in rural schools often receive a lower quality of education, with larger class sizes and less individualised attention, further exacerbating educational disparities.
                   </p>
                 </div>
               </div>
-              <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden shadow-lg">
+              <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden">
                 <Image
                   src="/images/jps6.jpeg"
                   alt="Teachers and students at Jasper Primary School"
@@ -328,7 +335,7 @@ export default function OurStory() {
 
           {/* Technology & Digital Divide */}
           <section className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The Digital Divide</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The digital divide</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed font-paragraph">
                 Technology barriers also play a critical role in this educational inequity. The lack of access to digital tools and resources in rural areas prevents students from developing the technological skills essential for success in the modern world. This digital divide not only limits their current educational experiences but also hinders their future opportunities in an increasingly technology-driven global economy.
@@ -337,7 +344,7 @@ export default function OurStory() {
           </section>
 
           {/* Featured Image */}
-          <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden mb-16 shadow-xl">
+          <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden mb-16">
             <Image
               src="/images/jps5.jpg"
               alt="Jasper Primary School students and teachers"
@@ -348,23 +355,13 @@ export default function OurStory() {
 
           {/* Cultural Barriers */}
           <section className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Cultural & Economic Barriers</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Cultural and economic barriers</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6 font-paragraph">
                 In addition, there is a widespread lack of awareness in rural communities about the long-term benefits of education, especially for girls. Cultural norms and gender biases often prioritize short-term economic contributions over schooling, leading to high dropout rates and limiting girls&apos; opportunities to achieve their full potential.
               </p>
               <p className="text-gray-700 leading-relaxed font-paragraph">
                 Most households face the challenge of poverty as many families in rural areas depend on seasonal crop farming, which provides an unstable and insufficient income. This economic instability forces families to make difficult choices, often prioritizing immediate survival over long-term educational goals, leading to high dropout rates and perpetuating the cycle of poverty.
-              </p>
-            </div>
-          </section>
-
-          {/* Student Motivation */}
-          <section className="bg-gray-50 rounded-2xl p-8 sm:p-10 lg:p-12 mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The Motivation Challenge</h2>
-            <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed font-paragraph">
-                Lastly, these adverse conditions contribute to a lack of self-motivation among students. Faced with numerous obstacles and limited support, many students in rural areas struggle to find the drive to pursue their education with vigor, which in turn affects their academic performances, especially in their national exams (PLE).
               </p>
             </div>
           </section>
@@ -388,7 +385,7 @@ export default function OurStory() {
                   By addressing the root causes of educational inequity, the school aims to provide a supportive, high-quality learning environment where all students, regardless of their socioeconomic background, can thrive and achieve their full potential.
                 </p>
               </div>
-              <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden shadow-xl">
+              <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden">
                 <Image
                   src="/images/jps7.jpeg"
                   alt="Jasper Primary School transforming education"
@@ -400,7 +397,7 @@ export default function OurStory() {
             
             {/* Additional Images Gallery */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8">
-              <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden shadow-lg">
+              <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden">
                 <Image
                   src="/images/jps8.jpeg"
                   alt="School community and activities"
@@ -408,7 +405,7 @@ export default function OurStory() {
                   className="object-cover"
                 />
               </div>
-              <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden shadow-lg">
+              <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden">
                 <Image
                   src="/images/jps9.jpg"
                   alt="Students engaged in learning"
@@ -416,7 +413,7 @@ export default function OurStory() {
                   className="object-cover"
                 />
               </div>
-              <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden shadow-lg sm:col-span-2 lg:col-span-1">
+              <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden sm:col-span-2 lg:col-span-1">
                 <Image
                   src="/images/jps2.jpeg"
                   alt="Jasper Primary School impact"

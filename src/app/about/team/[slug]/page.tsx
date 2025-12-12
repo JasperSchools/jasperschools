@@ -35,7 +35,6 @@ Guided by the belief that "no child should be denied education because of gender
       'Co-founder, Jasper Schools Uganda',
       'Edupreneur Growth Lab Cohort 2021'
     ],
-    imageSrc: '/images/leadership/eric_ayamba.jpg',
     slug: 'eric-ayamba'
   },
   {
@@ -54,7 +53,6 @@ Through his academic journey and community work, Erisha continues to seek innova
       '2+ years of refugee community engagement',
       'Co-founder, Jasper Primary School'
     ],
-    imageSrc: '/images/leadership/erisha.jpg',
     slug: 'byaruhanga-erisha'
   },
   {
@@ -69,7 +67,7 @@ Through his leadership at Jasper Primary School, Milton has played a pivotal rol
       'Volunteer with WFP, World Vision, and Save the Children',
       'Co-founder, Jasper Primary School'
     ],
-    imageSrc: '/images/leadership/milton_edodi.jpg',
+    imageSrc: '/images/leadership/milton.jpg',
     slug: 'milton-edodi'
   },
   {
@@ -104,7 +102,6 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
     education: '',
     profile: '',
     achievements: [],
-    imageSrc: '/images/leadership/sunday_amon.jpg',
     slug: 'sunday-amon'
   },
   {

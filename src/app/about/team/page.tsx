@@ -73,8 +73,7 @@ Guided by the belief that "no child should be denied education because of gender
         'Awarded Little Bets Challenge by ALforEducation',
         'Co-founder, Jasper Schools Uganda',
         'Edupreneur Growth Lab Cohort 2021'
-      ],
-      imageSrc: '/images/leadership/eric_ayamba.jpg'
+      ]
     }
   ]
 
@@ -95,7 +94,6 @@ Guided by the belief that "no child should be denied education because of gender
         'Co-founder, Jasper Schools Uganda',
         'Edupreneur Growth Lab Cohort 2021'
       ],
-      imageSrc: '/images/leadership/eric_ayamba.jpg'
     },
     {
       name: 'Milton Edodi',
@@ -127,7 +125,6 @@ Through his academic journey and community work, Erisha continues to seek innova
         '2+ years of refugee community engagement',
         'Co-founder, Jasper Primary School'
       ],
-      imageSrc: '/images/leadership/erisha.jpg'
     },
     {
       name: 'Erick Mulindi',
@@ -147,7 +144,6 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
       education: '',
       profile: '',
       achievements: [],
-      imageSrc: '/images/leadership/sunday_amon.jpg'
     }
   ]
 
