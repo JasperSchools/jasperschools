@@ -73,7 +73,8 @@ Guided by the belief that "no child should be denied education because of gender
         'Awarded Little Bets Challenge by ALforEducation',
         'Co-founder, Jasper Schools Uganda',
         'Edupreneur Growth Lab Cohort 2021'
-      ]
+      ],
+      imageSrc: '/images/leadership/ayamba.jpeg'
     }
   ]
 
@@ -94,6 +95,7 @@ Guided by the belief that "no child should be denied education because of gender
         'Co-founder, Jasper Schools Uganda',
         'Edupreneur Growth Lab Cohort 2021'
       ],
+      imageSrc: '/images/leadership/ayamba.jpeg'
     },
     {
       name: 'Milton Edodi',
@@ -125,6 +127,7 @@ Through his academic journey and community work, Erisha continues to seek innova
         '2+ years of refugee community engagement',
         'Co-founder, Jasper Primary School'
       ],
+      imageSrc: '/images/leadership/erisha.jpeg'
     },
     {
       name: 'Erick Mulindi',
@@ -144,6 +147,7 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
       education: '',
       profile: '',
       achievements: [],
+      imageSrc: '/images/leadership/sunday.jpg'
     }
   ]
 
@@ -552,7 +556,7 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
       
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0" style={{ backgroundColor: '#0D4723' }} />
+        <div className="absolute inset-0 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green" />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
           <motion.h1 
@@ -604,13 +608,15 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/donate" 
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-school-green text-white font-heading-semibold hover:bg-green-800 transition-colors text-lg"
+              className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+              style={{ padding: '16px 32px' }}
             >
               Donate Now
             </Link>
             <Link 
               href="/#contact" 
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-gray-900 font-heading-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 text-lg"
+              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border-2 border-gray-200"
+              style={{ padding: '16px 32px' }}
             >
               Get in Touch
             </Link>

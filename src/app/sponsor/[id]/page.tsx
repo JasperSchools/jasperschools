@@ -237,7 +237,8 @@ export default function StudentDetailPage() {
                 {!showDonorBox && (
                   <button
                     onClick={() => setShowDonorBox(true)}
-                    className="w-full bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-bold py-4 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-lg"
+                    className="w-full inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                    style={{ padding: '16px 32px' }}
                   >
                     Sponsor {child.first_name} Now
                   </button>

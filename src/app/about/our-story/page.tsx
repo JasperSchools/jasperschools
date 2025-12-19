@@ -146,7 +146,7 @@ function ImpactSection() {
                 transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 100 }}
               >
                 <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-[#0D4723] mb-2">
-                  <AnimatedCounter end={500} duration={2500} suffix="+" inView={isInView} />
+                  <AnimatedCounter end={600} duration={2500} suffix="+" inView={isInView} />
                 </div>
                 <div className="text-gray-600 font-heading-medium">Students Impacted</div>
               </motion.div>
@@ -203,7 +203,7 @@ export default function OurStory() {
       
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0" style={{ backgroundColor: '#0D4723' }} />
+        <div className="absolute inset-0 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green" />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
           <motion.h1 
@@ -429,13 +429,15 @@ export default function OurStory() {
             <div className="inline-flex flex-col sm:flex-row gap-4">
               <Link
                 href="/donate"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-[#0D4723] text-white font-heading-semibold hover:bg-green-800 transition-colors text-lg"
+                className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                style={{ padding: '16px 32px' }}
               >
                 Support Our Mission
               </Link>
               <Link
                 href="/about/vision-mission"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-md bg-white text-gray-900 font-heading-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 text-lg"
+                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border-2 border-gray-200"
+                style={{ padding: '16px 32px' }}
               >
                 Read Our Vision & Mission
               </Link>

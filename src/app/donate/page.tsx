@@ -92,7 +92,7 @@ function AnimatedCounter({ end, duration = 2000, suffix = '', prefix = '', inVie
 function DonateHero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0D4723] via-[#1a5c34] to-[#0D4723]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green" />
       <div className="absolute inset-0 bg-black/20" />
       
       {/* Animated Background Pattern */}
@@ -143,7 +143,8 @@ function DonateHero() {
         >
           <a 
             href="#donation-form" 
-            className="inline-flex items-center px-8 py-4 rounded-full bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold text-lg transition-all duration-300"
+            className="inline-flex items-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+            style={{ padding: '16px 32px' }}
           >
             Donate Now
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,7 +163,8 @@ function ImpactStats() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
 
   const stats = [
-    { value: 500, suffix: '+', label: 'Students Supported', duration: 2500 },
+    { value: 600, suffix: '+', label: 'Students Supported', duration: 2500 },
+    { value: 200, suffix: '', label: 'Students Sponsored', duration: 2200 },
     { value: 15, suffix: '+', label: 'Teachers Employed', duration: 2000 },
     { value: 98, suffix: '%', label: 'Funds to Programs', duration: 2200 },
     { value: 50000, prefix: '$', suffix: '+', label: 'Raised This Year', duration: 3000 },
@@ -637,7 +639,7 @@ export default function DonatePage() {
       <ImpactStories />
       
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-to-r from-school-green to-[#1a5c34] text-white relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green text-white relative overflow-hidden">
         <motion.div 
           className="absolute inset-0 opacity-10"
           initial={{ opacity: 0 }}
@@ -659,7 +661,8 @@ export default function DonatePage() {
           </p>
           <a 
             href="#donation-form"
-            className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-school-yellow hover:bg-yellow-500 active:bg-yellow-600 text-gray-900 font-heading-bold text-base sm:text-lg transition-all duration-300 touch-manipulation"
+            className="inline-flex items-center bg-school-yellow hover:bg-yellow-500 active:bg-yellow-600 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 touch-manipulation"
+            style={{ padding: '16px 32px' }}
           >
             Donate Now
             <svg className="w-5 h-5 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

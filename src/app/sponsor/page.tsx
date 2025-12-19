@@ -109,7 +109,7 @@ export default function SponsorPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0" style={{ backgroundColor: '#0D4723' }} />
+        <div className="absolute inset-0 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green" />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4">
@@ -288,7 +288,8 @@ export default function SponsorPage() {
                       {/* Learn More & Sponsor Button */}
                       <Link
                         href={`/sponsor/${child.id}`}
-                        className="w-full bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-center block"
+                        className="w-full inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 text-center"
+                        style={{ padding: '16px 32px' }}
                       >
                         Learn More & Sponsor {child.first_name || (child as any).name?.split(' ')[0] || 'Student'}
                       </Link>
@@ -396,8 +397,7 @@ export default function SponsorPage() {
               <div className="mt-6 flex justify-center">
                 <button
                   onClick={closeModal}
-                  className="px-6 py-2 rounded-lg font-heading-medium transition-colors text-white hover:bg-green-700"
-                  style={{ backgroundColor: '#0D4723' }}
+                  className="px-6 py-2 rounded-lg font-heading-medium transition-colors bg-school-green hover:bg-green-700 text-white"
                 >
                   OK
                 </button>

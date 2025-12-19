@@ -35,7 +35,8 @@ Guided by the belief that "no child should be denied education because of gender
       'Co-founder, Jasper Schools Uganda',
       'Edupreneur Growth Lab Cohort 2021'
     ],
-    slug: 'eric-ayamba'
+    slug: 'eric-ayamba',
+    imageSrc: '/images/leadership/ayamba.jpeg'
   },
   {
     name: 'Byaruhanga Erisha',
@@ -53,7 +54,8 @@ Through his academic journey and community work, Erisha continues to seek innova
       '2+ years of refugee community engagement',
       'Co-founder, Jasper Primary School'
     ],
-    slug: 'byaruhanga-erisha'
+    slug: 'byaruhanga-erisha',
+    imageSrc: '/images/leadership/erisha.jpeg'
   },
   {
     name: 'Milton Edodi',
@@ -102,7 +104,8 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
     education: '',
     profile: '',
     achievements: [],
-    slug: 'sunday-amon'
+    slug: 'sunday-amon',
+    imageSrc: '/images/leadership/sunday.jpg'
   },
   {
     name: 'Fineas Jackson',
@@ -204,7 +207,8 @@ export default function TeamMemberPage() {
             <p className="text-gray-600 mb-8 font-paragraph">The team member you&apos;re looking for doesn&apos;t exist.</p>
             <Link 
               href="/about/team"
-              className="inline-flex items-center px-6 py-3 bg-school-green text-white rounded-full hover:bg-green-800 transition-colors font-heading-semibold"
+              className="inline-flex items-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+              style={{ padding: '16px 32px' }}
             >
               Back to Team
             </Link>
