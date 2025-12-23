@@ -66,8 +66,8 @@ export default function SponsorPage() {
       // Check if data needs migration
       if (data.length > 0 && !data[0].hasOwnProperty('first_name')) {
         console.error('⚠️ DATABASE MIGRATION REQUIRED!')
-        console.error('Please run database-migration-2024.sql in your Supabase SQL Editor')
-        showModal('error', 'Database Migration Required', 'Please run database-migration-2024.sql in Supabase. Check the browser console for details.')
+        console.error('Database schema needs to be updated. Please contact the administrator.')
+        showModal('error', 'Database Migration Required', 'Database schema needs to be updated. Please contact the administrator.')
         setLoading(false)
         return
       }

@@ -66,10 +66,9 @@ export default function AdminDashboard() {
       
       // Check if data needs migration
       if (data.length > 0 && !data[0].hasOwnProperty('first_name')) {
-        showModal('error', 'Database Migration Required', 'Please run database-migration-2024.sql in your Supabase SQL Editor before using the admin dashboard. See QUICK_START.md for instructions.')
+        showModal('error', 'Database Migration Required', 'Database schema needs to be updated before using the admin dashboard. Please contact the administrator.')
         console.error('⚠️ DATABASE MIGRATION REQUIRED!')
-        console.error('Please run database-migration-2024.sql in your Supabase SQL Editor')
-        console.error('See QUICK_START.md for step-by-step instructions')
+        console.error('Database schema needs to be updated. Please contact the administrator.')
         setLoading(false)
         return
       }
