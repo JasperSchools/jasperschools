@@ -191,7 +191,7 @@ function ImpactStats() {
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.6, delay: index * 0.1, type: "spring" }}
             >
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-school-green mb-2">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-heading text-school-green mb-2">
                 <AnimatedCounter 
                   end={stat.value} 
                   duration={stat.duration} 
@@ -489,7 +489,7 @@ function FundAllocation() {
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-4xl font-heading-bold text-gray-900">98%</div>
+                  <div className="text-4xl font-heading text-gray-900">98%</div>
                   <div className="text-sm text-gray-600 font-paragraph">to programs</div>
                 </div>
               </div>
@@ -513,7 +513,7 @@ function FundAllocation() {
                 <div className="flex-1">
                   <div className="flex justify-between items-center mb-2">
                     <span className="font-heading-semibold text-gray-900">{item.category}</span>
-                    <span className="font-heading-bold text-lg text-gray-900">{item.percentage}%</span>
+                    <span className="font-heading text-lg text-gray-900">{item.percentage}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <motion.div

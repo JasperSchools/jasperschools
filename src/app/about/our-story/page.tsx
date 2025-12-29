@@ -145,7 +145,7 @@ function ImpactSection() {
                 animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.5, y: 30 }}
                 transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 100 }}
               >
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-[#0D4723] mb-2">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-heading text-[#0D4723] mb-2">
                   <AnimatedCounter end={600} duration={2500} suffix="+" inView={isInView} />
                 </div>
                 <div className="text-gray-600 font-heading-medium">Students Impacted</div>
@@ -158,7 +158,7 @@ function ImpactSection() {
                 animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.5, y: 30 }}
                 transition={{ duration: 0.6, delay: 1, type: "spring", stiffness: 100 }}
               >
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-heading-bold text-[#0D4723] mb-2">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-heading text-[#0D4723] mb-2">
                   <AnimatedCounter end={15} duration={2000} suffix="+" inView={isInView} />
                 </div>
                 <div className="text-gray-600 font-heading-medium">Qualified Teachers</div>

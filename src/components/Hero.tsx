@@ -197,7 +197,7 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 3.0, type: "spring", stiffness: 100 }}
               >
-                <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                <div className="text-3xl sm:text-3xl lg:text-4xl font-heading text-school-yellow mb-1">
                   <AnimatedCounter end={600} duration={2000} suffix="+" delay={3200} />
                 </div>
                 <div className="text-white/90 font-paragraph text-sm sm:text-sm">
@@ -210,7 +210,7 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 3.2, type: "spring", stiffness: 100 }}
               >
-                <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                <div className="text-3xl sm:text-3xl lg:text-4xl font-heading text-school-yellow mb-1">
                   <AnimatedCounter end={15} duration={1800} suffix="+" delay={3400} />
                 </div>
                 <div className="text-white/90 font-paragraph text-sm sm:text-sm">
@@ -223,7 +223,7 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 3.4, type: "spring", stiffness: 100 }}
               >
-                <div className="text-3xl sm:text-3xl lg:text-4xl font-heading-bold text-school-yellow mb-1">
+                <div className="text-3xl sm:text-3xl lg:text-4xl font-heading text-school-yellow mb-1">
                   <AnimatedCounter end={97} duration={1600} suffix="%" delay={3600} />
                 </div>
                 <div className="text-white/90 font-paragraph text-sm sm:text-sm">

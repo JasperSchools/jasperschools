@@ -241,7 +241,7 @@ function StatisticsSection() {
               stiffness: 100
             }}
           >
-            <div className="text-5xl sm:text-6xl lg:text-7xl font-heading-bold bg-gradient-to-br from-school-green to-green-600 bg-clip-text text-transparent mb-3">
+            <div className="text-5xl sm:text-6xl lg:text-7xl font-heading bg-gradient-to-br from-school-green to-green-600 bg-clip-text text-transparent mb-3">
               <AnimatedCounter end={stat.end} duration={stat.duration} suffix={stat.suffix} inView={isInView} />
             </div>
             <div className="text-xl font-heading-semibold text-gray-900 mb-2">{stat.label}</div>
@@ -436,7 +436,7 @@ function DonateSection() {
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1, type: "spring" }}
               >
-                <div className="text-4xl font-heading-bold text-school-yellow mb-2">
+                <div className="text-4xl font-heading text-school-yellow mb-2">
                   {stat.value}{stat.suffix}
                 </div>
                 <div className="text-sm text-green-100 font-paragraph">
