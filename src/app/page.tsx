@@ -71,15 +71,14 @@ function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="inline-block text-school-green font-heading-semibold text-sm uppercase tracking-wider mb-4">About Us</span>
               <h2 
-                className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8 leading-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl font-heading text-gray-900 mb-6 sm:mb-8 lg:mb-10 leading-tight"
               >
                 Transforming Lives Through Education
               </h2>
             </motion.div>
             
-            <div className="space-y-5 sm:space-y-6 text-gray-700 text-lg sm:text-xl leading-relaxed font-paragraph">
+            <div className="space-y-5 sm:space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
               <motion.p
                 className="text-gray-800"
                 initial={{ opacity: 0, y: 20 }}
@@ -122,7 +121,7 @@ function AboutSection() {
               </Link>
               <Link 
                 href="/about/our-story" 
-                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border-2 border-gray-200" 
+                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"
                 style={{ padding: '16px 32px' }}
               >
                 Our Story
@@ -211,15 +210,14 @@ function StatisticsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="inline-block text-school-green font-heading-semibold text-sm uppercase tracking-wider mb-4">Our Impact</span>
           <h3 
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4"
           >
             Making a Real Difference
           </h3>
         </motion.div>
         <motion.p 
-          className="text-gray-600 text-lg sm:text-xl font-paragraph max-w-2xl mx-auto"
+          className="text-gray-600 text-sm sm:text-base font-paragraph max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -277,7 +275,7 @@ function ImpactSection() {
 
       <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
         <motion.h2 
-          className="text-2xl sm:text-3xl lg:text-4xl font-heading-semibold mb-4 sm:mb-6 lg:mb-8"
+          className="text-2xl sm:text-3xl lg:text-4xl font-heading mb-4 sm:mb-6 lg:mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -285,7 +283,7 @@ function ImpactSection() {
           Our Impact
         </motion.h2>
         <motion.p 
-          className="text-base sm:text-lg lg:text-xl text-green-100 max-w-3xl mx-auto leading-relaxed font-paragraph"
+          className="text-sm sm:text-base text-green-100 max-w-3xl mx-auto leading-relaxed font-paragraph"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -308,14 +306,14 @@ function GetInvolvedSection() {
     <section id="get-involved" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gray-50">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
         <motion.h2 
-          className="text-2xl sm:text-3xl lg:text-4xl font-heading-semibold text-school-blue mb-4 sm:mb-6 lg:mb-8"
+          className="text-2xl sm:text-3xl lg:text-4xl font-heading text-school-blue mb-4 sm:mb-6 lg:mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           Get Involved
         </motion.h2>
-        <div className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-paragraph">
+        <div className="text-sm sm:text-base text-gray-600 max-w-3xl mx-auto leading-relaxed font-paragraph">
           {words.map((word, index) => (
             <motion.span
               key={index}
@@ -365,10 +363,10 @@ function DonateSection() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading mb-6">
               Help Us Transform Lives
             </h2>
-            <p className="text-lg text-green-100 font-paragraph mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base text-green-100 font-paragraph mb-8 leading-relaxed">
               Your donation provides quality education, nutritious meals, and a brighter future for children in rural Uganda. Every contribution makes a lasting impact.
             </p>
             

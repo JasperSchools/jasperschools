@@ -139,7 +139,7 @@ export default function StudentDetailPage() {
 
               {/* Basic Info Card */}
               <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-                <h1 className="text-3xl font-heading-bold text-school-blue mb-4">
+                <h1 className="text-3xl font-heading text-school-blue mb-4">
                   {childName}
                 </h1>
                 

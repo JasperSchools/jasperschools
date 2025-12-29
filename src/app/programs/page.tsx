@@ -18,14 +18,14 @@ export default function ProgramsPage() {
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
           <motion.h1 
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Our Programs
           </motion.h1>
-          <div className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
+          <div className="text-green-100 text-sm sm:text-base max-w-3xl mx-auto font-paragraph">
             {['Comprehensive', 'education', 'programs', 'designed', 'to', 'nurture', 'every', 'child\'s', 'potential'].map((word, index) => (
               <motion.span
                 key={index}
@@ -60,10 +60,10 @@ export default function ProgramsPage() {
       {/* Call to Action */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-gray-900 mb-4">
             Support Our Programs
           </h2>
-          <p className="text-lg text-gray-600 mb-8 font-paragraph">
+          <p className="text-sm sm:text-base text-gray-600 mb-8 font-paragraph">
             Help us continue providing quality education and empowering teachers to transform lives.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -76,7 +76,7 @@ export default function ProgramsPage() {
             </Link>
             <Link 
               href="/sponsor" 
-              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border-2 border-gray-200"
+              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"
               style={{ padding: '16px 32px' }}
             >
               Sponsor a Child
@@ -102,7 +102,7 @@ function PrimaryEducationSection() {
           {/* Content - Left Side */}
           <div className="lg:col-span-7 order-2 lg:order-1">
             <motion.h2 
-              className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-6"
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -110,7 +110,7 @@ function PrimaryEducationSection() {
               1. Primary Education
             </motion.h2>
             
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
+            <div className="space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -186,7 +186,7 @@ function TeacherEmpowermentSection() {
           {/* Content - Right Side */}
           <div className="lg:col-span-7 order-2">
             <motion.h2 
-              className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-6"
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -194,7 +194,7 @@ function TeacherEmpowermentSection() {
               2. Teacher Empowerment
             </motion.h2>
             
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
+            <div className="space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -229,7 +229,7 @@ function ECDEducationSection() {
           {/* Content - Left Side */}
           <div className="lg:col-span-7 order-2 lg:order-1">
             <motion.h2 
-              className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-6"
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -237,7 +237,7 @@ function ECDEducationSection() {
               3. ECD Education
             </motion.h2>
             
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
+            <div className="space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -287,7 +287,7 @@ function JCEPSection() {
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="max-w-4xl mx-auto">
           <motion.h2 
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -295,7 +295,7 @@ function JCEPSection() {
             4. Jasper Community Education Program
           </motion.h2>
           
-          <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
+          <div className="space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}

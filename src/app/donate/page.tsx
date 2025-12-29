@@ -110,7 +110,7 @@ function DonateHero() {
       
       <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
         <motion.h1 
-          className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-heading-bold text-white mb-6"
+          className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-heading text-white mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -118,7 +118,7 @@ function DonateHero() {
           Transform Lives Through Education
         </motion.h1>
         
-        <div className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph mb-8">
+        <div className="text-green-100 text-sm sm:text-base max-w-3xl mx-auto font-paragraph mb-8">
           {['Your', 'donation', 'empowers', 'children', 'in', 'rural', 'Uganda', 'with', 'quality', 'education.'].map((word, index) => (
             <motion.span
               key={index}
@@ -174,7 +174,7 @@ function ImpactStats() {
     <section ref={sectionRef} className="py-16 bg-gray-50">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2 
-          className="text-3xl sm:text-4xl font-heading-bold text-center text-gray-900 mb-12"
+          className="text-3xl sm:text-4xl font-heading text-center text-gray-900 mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
@@ -236,10 +236,10 @@ function DonationFormSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl font-heading-bold text-center text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-heading text-center text-gray-900 mb-4">
             Make Your Donation
           </h2>
-          <p className="text-center text-gray-600 font-paragraph mb-12">
+          <p className="text-center text-sm sm:text-base text-gray-600 font-paragraph mb-12">
             Every contribution makes a lasting difference
           </p>
         </motion.div>
@@ -445,10 +445,10 @@ function FundAllocation() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-heading text-gray-900 mb-4">
             Where Your Money Goes
           </h2>
-          <p className="text-lg text-gray-600 font-paragraph">
+          <p className="text-sm sm:text-base text-gray-600 font-paragraph">
             We&apos;re committed to transparency. Here&apos;s how we allocate every dollar.
           </p>
         </motion.div>
@@ -587,10 +587,10 @@ function ImpactStories() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-heading text-gray-900 mb-4">
             Stories of Impact
           </h2>
-          <p className="text-lg text-gray-600 font-paragraph max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-600 font-paragraph max-w-2xl mx-auto">
             See how your donations are changing lives in rural Uganda
           </p>
         </motion.div>
@@ -653,10 +653,10 @@ export default function DonatePage() {
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading mb-4">
             Ready to Make a Difference?
           </h2>
-          <p className="text-base sm:text-lg text-green-100 font-paragraph mb-6 sm:mb-8">
+          <p className="text-sm sm:text-base text-green-100 font-paragraph mb-6 sm:mb-8">
             Every donation, no matter the size, transforms lives.
           </p>
           <a 

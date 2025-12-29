@@ -17,14 +17,14 @@ export default function VisionMissionPage() {
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
           <motion.h1 
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Vision & Mission
           </motion.h1>
-          <div className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
+          <div className="text-green-100 text-sm sm:text-base max-w-3xl mx-auto font-paragraph">
             {['Our', 'commitment', 'to', 'inclusive,', 'innovative,', 'and', 'resilient', 'learning', 'drives', 'everything', 'we', 'do.'].map((word, index) => (
               <motion.span
                 key={index}
@@ -75,11 +75,10 @@ function VisionMissionSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="inline-block text-school-green font-heading-semibold text-sm uppercase tracking-wider mb-4">Our Foundation</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4">
             What Drives Us
           </h2>
-          <p className="text-gray-600 text-lg sm:text-xl font-paragraph max-w-2xl mx-auto">
+          <p className="text-gray-600 text-sm sm:text-base font-paragraph max-w-2xl mx-auto">
             Our vision and mission guide every decision we make and every action we take.
           </p>
         </motion.div>
@@ -98,8 +97,8 @@ function VisionMissionSection() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-heading-bold text-gray-900 mb-4">Our Vision</h2>
-            <p className="text-gray-700 text-lg leading-relaxed font-paragraph">
+            <h2 className="text-2xl sm:text-3xl font-heading text-gray-900 mb-4">Our Vision</h2>
+            <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
               A future where every community thrives through innovative, inclusive, and resilient learning.
             </p>
           </motion.div>
@@ -116,8 +115,8 @@ function VisionMissionSection() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-heading-bold text-gray-900 mb-4">Our Mission</h2>
-            <p className="text-gray-700 text-lg leading-relaxed font-paragraph">
+            <h2 className="text-2xl sm:text-3xl font-heading text-gray-900 mb-4">Our Mission</h2>
+            <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
               Elevating children in rural areas through access to quality education, nurturing lifelong learning, innovation, and transformative growth.
             </p>
           </motion.div>
@@ -190,11 +189,10 @@ function ValuesSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="inline-block text-school-green font-heading-semibold text-sm uppercase tracking-wider mb-4">Our Values</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4">
             The Principles That Guide Us
           </h2>
-          <p className="text-gray-600 text-lg sm:text-xl font-paragraph max-w-2xl mx-auto">
+          <p className="text-gray-600 text-sm sm:text-base font-paragraph max-w-2xl mx-auto">
             The principles that guide how we learn, work, and serve.
           </p>
         </motion.div>
@@ -216,10 +214,10 @@ function ValuesSection() {
               <div className="w-16 h-16 rounded-2xl bg-school-green/10 flex items-center justify-center mb-6">
                 {value.icon}
               </div>
-              <h3 className="text-xl sm:text-2xl font-heading-bold text-gray-900 mb-3">
+              <h3 className="text-xl sm:text-2xl font-heading text-gray-900 mb-3">
                 {value.name}
               </h3>
-              <p className="text-gray-700 leading-relaxed font-paragraph">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
                 {value.description}
               </p>
             </motion.div>

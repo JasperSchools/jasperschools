@@ -66,7 +66,7 @@ function StoryIntroSection() {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Main Heading - Fades in with scale */}
         <motion.h3
-          className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6"
+          className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-6"
           initial={{ opacity: 0, y: 30, scale: 0.95 }}
           animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
           transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -76,7 +76,7 @@ function StoryIntroSection() {
 
         {/* Subtitle - Fades in slightly after heading */}
         <motion.p
-          className="text-lg sm:text-xl text-gray-600 leading-relaxed font-paragraph max-w-2xl mx-auto"
+          className="text-sm sm:text-base text-gray-600 leading-relaxed font-paragraph max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -110,7 +110,7 @@ function ImpactSection() {
           <div className="lg:col-span-7 order-2 lg:order-1">
             {/* Heading - Slide in from left */}
             <motion.h2 
-              className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-6"
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -119,7 +119,7 @@ function ImpactSection() {
             </motion.h2>
             
             {/* Paragraphs - Stagger fade in */}
-            <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
+            <div className="space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -207,14 +207,14 @@ export default function OurStory() {
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
           <motion.h1 
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Our Story
           </motion.h1>
-          <div className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
+          <div className="text-green-100 text-sm sm:text-base max-w-3xl mx-auto font-paragraph">
             {['What', 'inspired', 'Jasper', 'Schools', 'Uganda'].map((word, index) => (
               <motion.span
                 key={index}
@@ -246,7 +246,7 @@ export default function OurStory() {
           
           {/* Opening Statement */}
           <div className="prose prose-lg max-w-none mb-12">
-            <p className="text-xl sm:text-2xl leading-relaxed text-gray-800 font-paragraph">
+            <p className="text-base sm:text-lg leading-relaxed text-gray-800 font-paragraph">
               Access to quality education remains a significant challenge for children in rural areas of Uganda, where systemic and socio-economic barriers create a cycle of educational inequity.
             </p>
           </div>
@@ -263,9 +263,9 @@ export default function OurStory() {
 
           {/* The Challenge */}
           <section className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The Challenges</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading text-gray-900 mb-6">The Challenges</h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed mb-6 font-paragraph">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 font-paragraph">
                 Nyairongo is a rural community whose education system faces the cliche challenges in education that majority of rural Africa faces. Though the challenges faced by children in rural Nyairongo are similar to most rural communities in Africa, they are made unique by their intensity. The challenges are:
               </p>
             </div>
@@ -273,9 +273,9 @@ export default function OurStory() {
 
           {/* Lack of learning materials in schools */}
           <section className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Lack of learning materials in schools</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading text-gray-900 mb-6">Lack of learning materials in schools</h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed font-paragraph">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
                 Nyairongo has no learning centre for easy access to learning materials. This shortage deprives students of the tools necessary for effective learning, contributing to a widening gap in educational outcomes between rural and urban students. Further to this, the poor infrastructure of many rural schools with inadequate facilities, including dilapidated buildings and a lack of basic amenities, creates an environment that is not conducive to learning, further discouraging student attendance and engagement.
               </p>
             </div>
@@ -303,9 +303,9 @@ export default function OurStory() {
 
           {/* Accessibility Barriers */}
           <section className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Accessibility barriers</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading text-gray-900 mb-6">Accessibility barriers</h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed font-paragraph">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
                 In addition to these material deficiencies, the inaccessibility of schools poses a major hurdle. Many children in rural areas must travel long distances to reach school, a daily journey that is both physically exhausting and unsafe. This challenge not only limits regular attendance but also negatively impacts students&apos; academic performance and overall well-being.
               </p>
             </div>
@@ -315,9 +315,9 @@ export default function OurStory() {
           <section className="bg-gray-50 rounded-2xl p-8 sm:p-10 lg:p-12 mb-16">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The teacher shortage</h2>
+                <h2 className="text-3xl sm:text-4xl font-heading text-gray-900 mb-6">The teacher shortage</h2>
                 <div className="prose prose-lg max-w-none">
-                  <p className="text-gray-700 leading-relaxed font-paragraph">
+                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
                     The shortage of qualified teachers in rural areas is another significant barrier. Many educators are reluctant to work in these remote regions due to the lack of amenities and professional opportunities. As a result, students in rural schools often receive a lower quality of education, with larger class sizes and less individualised attention, further exacerbating educational disparities.
                   </p>
                 </div>
@@ -335,9 +335,9 @@ export default function OurStory() {
 
           {/* Technology & Digital Divide */}
           <section className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">The digital divide</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading text-gray-900 mb-6">The digital divide</h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed font-paragraph">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
                 Technology barriers also play a critical role in this educational inequity. The lack of access to digital tools and resources in rural areas prevents students from developing the technological skills essential for success in the modern world. This digital divide not only limits their current educational experiences but also hinders their future opportunities in an increasingly technology-driven global economy.
               </p>
             </div>
@@ -355,12 +355,12 @@ export default function OurStory() {
 
           {/* Cultural Barriers */}
           <section className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-6">Cultural and economic barriers</h2>
+            <h2 className="text-3xl sm:text-4xl font-heading text-gray-900 mb-6">Cultural and economic barriers</h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed mb-6 font-paragraph">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6 font-paragraph">
                 In addition, there is a widespread lack of awareness in rural communities about the long-term benefits of education, especially for girls. Cultural norms and gender biases often prioritize short-term economic contributions over schooling, leading to high dropout rates and limiting girls&apos; opportunities to achieve their full potential.
               </p>
-              <p className="text-gray-700 leading-relaxed font-paragraph">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
                 Most households face the challenge of poverty as many families in rural areas depend on seasonal crop farming, which provides an unstable and insufficient income. This economic instability forces families to make difficult choices, often prioritizing immediate survival over long-term educational goals, leading to high dropout rates and perpetuating the cycle of poverty.
               </p>
             </div>
@@ -372,16 +372,16 @@ export default function OurStory() {
           {/* The Solution */}
           <section className="mb-12">
             <div className="text-center mb-8">
-              <h2 className="text-4xl sm:text-5xl font-heading-bold text-gray-900 mb-6">Our Solution</h2>
+              <h2 className="text-4xl sm:text-5xl font-heading text-gray-900 mb-6">Our Solution</h2>
               <div className="w-20 h-1 bg-[#0D4723] mx-auto mb-8"></div>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
               <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 sm:p-10 lg:p-12 border-2 border-gray-100">
-                <p className="text-xl sm:text-2xl leading-relaxed text-gray-800 mb-6 font-paragraph">
+                <p className="text-base sm:text-lg leading-relaxed text-gray-800 mb-6 font-paragraph">
                   Due to these systemic failures in rural education, Jasper Schools Uganda is establishing Jasper Primary School-Nyirongo to transform the educational landscape for children in rural areas.
                 </p>
-                <p className="text-lg text-gray-700 leading-relaxed font-paragraph">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-paragraph">
                   By addressing the root causes of educational inequity, the school aims to provide a supportive, high-quality learning environment where all students, regardless of their socioeconomic background, can thrive and achieve their full potential.
                 </p>
               </div>
@@ -436,7 +436,7 @@ export default function OurStory() {
               </Link>
               <Link
                 href="/about/vision-mission"
-                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border-2 border-gray-200"
+                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"
                 style={{ padding: '16px 32px' }}
               >
                 Read Our Vision & Mission

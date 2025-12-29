@@ -112,10 +112,10 @@ export default function SponsorPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green" />
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-white mb-4">
             Sponsor a Child
           </h1>
-          <p className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
+          <p className="text-green-100 text-sm sm:text-base max-w-3xl mx-auto font-paragraph">
             Change a child&apos;s life through education. Your sponsorship provides tuition, books, 
             uniforms, and supplies to help a child reach their full potential.
           </p>
@@ -306,10 +306,10 @@ export default function SponsorPage() {
       <section className="bg-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-heading-bold text-school-blue mb-4">
+            <h2 className="text-3xl sm:text-4xl font-heading text-school-blue mb-4">
               How Sponsorship Works
             </h2>
-            <p className="text-lg text-gray-600 font-paragraph max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-600 font-paragraph max-w-3xl mx-auto">
               Your support makes a direct impact on a child&apos;s education and future.
             </p>
           </div>

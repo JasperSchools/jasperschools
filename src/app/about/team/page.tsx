@@ -261,10 +261,10 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           {/* Title and Description */}
           <div className="max-w-3xl mx-auto mb-8 lg:mb-10 text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-school-blue mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-school-blue mb-6">
               {sectionTitle}
             </h2>
-            <p className="text-lg text-gray-700 leading-relaxed font-paragraph">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-paragraph">
               {sectionTitle === 'Board Members' 
                 ? "Our team brings a wealth of experience from leading educational institutions, international organizations, and community development initiatives, driving transformative education in rural Uganda."
                 : sectionTitle === 'Leadership and Management Team'
@@ -560,14 +560,14 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
           <motion.h1 
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-white mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Our Team
           </motion.h1>
-          <div className="text-green-100 text-base sm:text-lg lg:text-xl max-w-3xl mx-auto font-paragraph">
+          <div className="text-green-100 text-sm sm:text-base max-w-3xl mx-auto font-paragraph">
             {['Meet', 'the', 'dedicated', 'leaders', 'driving', 'transformative', 'education', 'in', 'rural', 'Uganda'].map((word, index) => (
               <motion.span
                 key={index}
@@ -599,10 +599,10 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
       {/* Call to Action */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-gray-900 mb-4">
             Join Our Mission
           </h2>
-          <p className="text-lg text-gray-600 mb-8 font-paragraph">
+          <p className="text-sm sm:text-base text-gray-600 mb-8 font-paragraph">
             Together, we can empower communities and transform lives through quality education.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -615,7 +615,7 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
             </Link>
             <Link 
               href="/#contact" 
-              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border-2 border-gray-200"
+              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"
               style={{ padding: '16px 32px' }}
             >
               Get in Touch
