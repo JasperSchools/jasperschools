@@ -54,6 +54,9 @@ export default function ProgramsPage() {
       {/* ECD Education Section */}
       <ECDEducationSection />
 
+      {/* Jasper Community Education Program Section */}
+      <JCEPSection />
+
       {/* Call to Action */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -104,7 +107,7 @@ function PrimaryEducationSection() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Primary Education
+              1. Primary Education
             </motion.h2>
             
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
@@ -188,7 +191,7 @@ function TeacherEmpowermentSection() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Teacher Empowerment
+              2. Teacher Empowerment
             </motion.h2>
             
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
@@ -231,7 +234,7 @@ function ECDEducationSection() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              ECD Education
+              3. ECD Education
             </motion.h2>
             
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
@@ -267,6 +270,63 @@ function ECDEducationSection() {
                 className="object-cover"
               />
             </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Jasper Community Education Program Section Component
+function JCEPSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
+
+  return (
+    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div className="max-w-4xl mx-auto">
+          <motion.h2 
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading-bold text-gray-900 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            4. Jasper Community Education Program
+          </motion.h2>
+          
+          <div className="space-y-6 text-gray-700 text-lg leading-relaxed font-paragraph">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              The Jasper Community Education Program (JCEP) is a holistic community empowerment initiative designed by Jasper Primary School to strengthen the knowledge, skills, and socio-economic well-being of parents, youth, and community leaders in Nyairongo, Kikuube District. Built on the belief that sustainable rural development requires educated, informed, and economically resilient households, JCEP creates a bridge between school and community, addressing the root causes of educational underperformance, poverty, gender inequality, and low digital adoption.
+            </motion.p>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              This carefully crafted initiative integrates adult literacy, digital skills, climate change awareness, sustainable development training, livelihood empowerment, gender equity education, and financial literacy. Through structured community learning sessions, mentorship, economic empowerment groups, and participatory community dialogues, JCEP aims to transform Nyairongo into a knowledgeable, self-reliant, and future-ready community.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              The program was born out of the challenges faced by rural families: low literacy, limited livelihoods, climate change threats, gender disparities, and weak parental engagement in education. By weaving together adult education, climate literacy, gender equity, financial living skills, and community leadership, JCEP turns Jasper Primary School into a dynamic engine for community empowerment.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+            >
+              The hallmark of this approach is its inclusivity—parents, youth, guardians, and village opinion leaders learn together, strengthening family and community bonds while actively supporting children's academic journeys. This collaborative model ensures that the entire community grows together, creating a sustainable foundation for long-term transformation.
+            </motion.p>
           </div>
         </div>
       </div>
