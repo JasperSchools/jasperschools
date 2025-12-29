@@ -285,17 +285,16 @@ function JCEPSection() {
   return (
     <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gray-50">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2 
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            4. Jasper Community Education Program
-          </motion.h2>
-          
-          <div className="space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
+        <motion.h2 
+          className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          4. Jasper Community Education Program
+        </motion.h2>
+        
+        <div className="space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -328,7 +327,6 @@ function JCEPSection() {
               The hallmark of this approach is its inclusivity—parents, youth, guardians, and village opinion leaders learn together, strengthening family and community bonds while actively supporting children's academic journeys. This collaborative model ensures that the entire community grows together, creating a sustainable foundation for long-term transformation.
             </motion.p>
           </div>
-        </div>
       </div>
     </section>
   )
