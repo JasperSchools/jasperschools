@@ -23,17 +23,17 @@ function AboutSection() {
       
       <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Header */}
-        <motion.div
+            <motion.div
           className="text-center mb-12 sm:mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
+            >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4 sm:mb-6">
-            Transforming Lives Through Education
-          </h2>
-        </motion.div>
-
+                Transforming Lives Through Education
+              </h2>
+            </motion.div>
+            
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Side - Single Image */}
           <div className="lg:col-span-6 order-1">
@@ -67,28 +67,28 @@ function AboutSection() {
               </motion.div>
               
               <div className="space-y-6 text-gray-600 text-sm sm:text-base leading-relaxed font-paragraph">
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                >
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              >
                   Our vision is to champion community building through innovative, inclusive, and resilient learning. We exist to nurture potential, create opportunity, and strengthen the fabric of our community through learning experiences that are accessible, practical, and future-ready.
-                </motion.p>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                >
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              >
                   Through a balanced curriculum, dedicated teachers, and learner-centred teaching methods, we ensure that every child develops the skills, values, and confidence needed to succeed academically and socially. Our commitment remains the same: empowering children in Nyairongo with quality education and a supportive environment to thrive.
-                </motion.p>
-                
+              </motion.p>
+
                 {/* Bullet Points */}
                 <motion.ul 
                   className="space-y-3 text-gray-600 font-paragraph"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                >
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
                   {[
                     'Inclusive learning that welcomes every child',
                     'Resilience through community and care',
@@ -112,7 +112,7 @@ function AboutSection() {
                   ))}
                 </motion.ul>
               </div>
-            </div>
+              </div>
 
             <motion.div 
               className="mt-auto"
@@ -196,12 +196,12 @@ function ProgramsSection() {
                 fill
                 className="object-cover"
               />
-            </motion.div>
+        </motion.div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            >
+        >
               <Link
                 href="/programs"
                 className="inline-flex items-center text-school-green font-heading-semibold hover:text-school-green/80 transition-colors group/link"
@@ -212,14 +212,14 @@ function ProgramsSection() {
                 </svg>
               </Link>
             </motion.div>
-          </div>
-
+      </div>
+      
           {/* Right Side - Numbered Cards Grid */}
           <div className="lg:col-span-7 order-2">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {programs.map((program, index) => (
-                <motion.div
-                  key={index}
+          <motion.div 
+            key={index}
                   className="bg-white rounded-2xl p-6 border border-gray-200"
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -228,7 +228,7 @@ function ProgramsSection() {
                   {/* Number Circle */}
                   <div className="w-12 h-12 rounded-full bg-school-green/10 text-school-green flex items-center justify-center mb-4">
                     <span className="text-xl font-heading-semibold">{program.number}</span>
-                  </div>
+            </div>
                   
                   {/* Title */}
                   <h3 className="text-lg sm:text-xl font-heading-semibold text-gray-900 mb-3">
@@ -239,10 +239,10 @@ function ProgramsSection() {
                   <p className="text-sm sm:text-base text-gray-600 font-paragraph leading-relaxed">
                     {program.description}
                   </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
         </div>
       </div>
     </section>
@@ -286,23 +286,23 @@ function GetInvolvedSection() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4 sm:mb-6">
-            Get Involved
+          Get Involved
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-paragraph">
             Join us in making a difference. There are many ways to support our mission and transform lives through education.
           </p>
-        </motion.div>
+      </motion.div>
 
         {/* Cards Grid */}
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {waysToGetInvolved.map((way, index) => (
-            <motion.div
+          <motion.div
               key={index}
               className="bg-white rounded-2xl border border-gray-200 p-8 transition-all duration-300 group flex flex-col h-full"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.1 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
+                >
               {/* Content */}
               <h3 className="text-xl sm:text-2xl font-heading text-gray-900 mb-3">
                 {way.title}
@@ -321,8 +321,8 @@ function GetInvolvedSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
         </div>
       </div>
     </section>
