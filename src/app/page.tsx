@@ -55,7 +55,7 @@ function AboutSection() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
 
   return (
-    <section id="about" ref={sectionRef} className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-20 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-school-green/5 rounded-full blur-3xl" />
@@ -203,8 +203,8 @@ function StatisticsSection() {
   ]
 
   return (
-    <div ref={sectionRef} className="mt-20 pt-16 border-t border-gray-200">
-      <div className="text-center mb-16">
+    <div ref={sectionRef} className="mt-12 sm:mt-16 lg:mt-20 pt-12 sm:pt-16 border-t border-gray-200 pb-4 sm:pb-6">
+      <div className="text-center mb-12 sm:mb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -253,198 +253,80 @@ function StatisticsSection() {
   )
 }
 
-// Impact Section Component
-function ImpactSection() {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, amount: 0.5 })
-
-  return (
-    <section id="impact" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green text-white relative overflow-hidden">
-      {/* Animated Background Pattern */}
-      <motion.div 
-        className="absolute inset-0 opacity-10"
-        initial={{ scale: 1.2, opacity: 0 }}
-        animate={isInView ? { scale: 1, opacity: 0.1 } : { scale: 1.2, opacity: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div className="absolute inset-0" style={{ 
-          backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
-      </motion.div>
-
-      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
-        <motion.h2 
-          className="text-2xl sm:text-3xl lg:text-4xl font-heading mb-4 sm:mb-6 lg:mb-8"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Our Impact
-        </motion.h2>
-        <motion.p 
-          className="text-sm sm:text-base text-green-100 max-w-3xl mx-auto leading-relaxed font-paragraph"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        >
-          See how we&apos;re transforming lives and building a brighter future for our community.
-        </motion.p>
-      </div>
-    </section>
-  )
-}
-
 // Get Involved Section Component
 function GetInvolvedSection() {
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, amount: 0.5 })
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
 
-  const words = ['Join', 'us', 'in', 'making', 'a', 'difference.', 'There', 'are', 'many', 'ways', 'to', 'support', 'our', 'mission.']
+  const waysToGetInvolved = [
+    {
+      title: 'Donate',
+      description: 'Support our mission with a financial contribution. Every dollar makes a difference in transforming lives.',
+      link: '/donate',
+      linkText: 'Donate Now'
+    },
+    {
+      title: 'Sponsor a Child',
+      description: 'Make a lasting impact by sponsoring a child\'s education and providing them with opportunities for a brighter future.',
+      link: '/sponsor',
+      linkText: 'Learn More'
+    },
+    {
+      title: 'Volunteer',
+      description: 'Share your time and skills to help us create meaningful change in the lives of children and families.',
+      link: '/contact',
+      linkText: 'Get Started'
+    }
+  ]
 
   return (
-    <section id="get-involved" ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 text-center">
-        <motion.h2 
-          className="text-2xl sm:text-3xl lg:text-4xl font-heading text-school-blue mb-4 sm:mb-6 lg:mb-8"
+    <section id="get-involved" ref={sectionRef} className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 border-t border-gray-200 bg-white relative overflow-hidden">
+      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          Get Involved
-        </motion.h2>
-        <div className="text-sm sm:text-base text-gray-600 max-w-3xl mx-auto leading-relaxed font-paragraph">
-          {words.map((word, index) => (
-            <motion.span
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4 sm:mb-6">
+            Get Involved
+          </h2>
+          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-paragraph">
+            Join us in making a difference. There are many ways to support our mission and transform lives through education.
+          </p>
+        </motion.div>
+
+        {/* Cards Grid */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          {waysToGetInvolved.map((way, index) => (
+            <motion.div
               key={index}
-              className={`inline-block mr-[0.3em] ${word === 'difference.' ? 'font-semibold text-gray-900' : ''}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.2 + (index * 0.05),
-                ease: [0.22, 1, 0.36, 1]
-              }}
+              className="bg-white rounded-2xl border border-gray-400 p-8 transition-all duration-300 group flex flex-col h-full"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.1 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
-              {word}
-            </motion.span>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+              {/* Content */}
+              <h3 className="text-xl sm:text-2xl font-heading text-gray-900 mb-3">
+                {way.title}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 font-paragraph leading-relaxed mb-6 flex-grow">
+                {way.description}
+              </p>
 
-// Donate Section for Homepage
-function DonateSection() {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
-
-  return (
-    <section id="donate" ref={sectionRef} className="py-20 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green text-white relative overflow-hidden">
-      {/* Animated Background */}
-      <motion.div 
-        className="absolute inset-0 opacity-10"
-        initial={{ scale: 1.2, opacity: 0 }}
-        animate={isInView ? { scale: 1, opacity: 0.1 } : { scale: 1.2, opacity: 0 }}
-        transition={{ duration: 1.2 }}
-      >
-        <div className="absolute inset-0" style={{ 
-          backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
-      </motion.div>
-
-      <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading mb-6">
-              Help Us Transform Lives
-            </h2>
-            <p className="text-sm sm:text-base text-green-100 font-paragraph mb-8 leading-relaxed">
-              Your donation provides quality education, nutritious meals, and a brighter future for children in rural Uganda. Every contribution makes a lasting impact.
-            </p>
-            
-            <div className="space-y-4 mb-8">
-              {[
-                { amount: '$20', impact: 'provides one month of meals for a child' },
-                { amount: '$50', impact: 'buys textbooks for a student for one year' },
-                { amount: '$300', impact: 'sponsors a child\'s full education for one year' }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="flex items-start gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                >
-                  <svg className="w-6 h-6 text-school-yellow flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <div>
-                    <span className="font-heading-semibold text-school-yellow">{item.amount}</span>
-                    <span className="text-green-100 font-paragraph"> {item.impact}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
+              {/* Link */}
               <Link
-                href="/donate"
-                className="inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
-                style={{ padding: '16px 32px' }}
+                href={way.link}
+                className="inline-flex items-center text-school-green font-heading-semibold hover:text-school-green/80 transition-colors group/link mt-auto"
               >
-                Donate Now
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {way.linkText}
+                <svg className="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
-              <Link
-                href="/sponsor"
-                className="inline-flex items-center justify-center border-2 border-white hover:bg-white hover:text-school-green text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
-                style={{ padding: '16px 32px' }}
-              >
-                Sponsor a Child
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Right: Stats */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="grid grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {[
-              { value: 98, suffix: '%', label: 'Goes to Programs' },
-              { value: 600, suffix: '+', label: 'Students Supported' },
-              { value: 200, suffix: '', label: 'Students Sponsored' },
-              { value: 15, suffix: '+', label: 'Teachers Employed' },
-              { value: 1, suffix: '', label: 'Year of Impact' }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5, delay: 0.4 + index * 0.1, type: "spring" }}
-              >
-                <div className="text-4xl font-heading text-school-yellow mb-2">
-                  {stat.value}{stat.suffix}
-                </div>
-                <div className="text-sm text-green-100 font-paragraph">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -460,14 +342,8 @@ export default function Home() {
       {/* About Us Section */}
       <AboutSection />
 
-      {/* Impact Section */}
-      <ImpactSection />
-
       {/* Get Involved Section */}
       <GetInvolvedSection />
-
-      {/* Donate Section */}
-      <DonateSection />
 
       <Footer />
     </main>
