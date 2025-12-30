@@ -38,7 +38,7 @@ function AboutSection() {
           {/* Left Side - Single Image */}
           <div className="lg:col-span-6 order-1">
             <motion.div 
-              className="relative w-full h-80 sm:h-96 lg:h-[500px] rounded-tr-2xl rounded-br-2xl overflow-hidden"
+              className="relative w-full h-80 sm:h-96 lg:h-[500px] rounded-tr-[3rem] overflow-hidden"
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -185,7 +185,7 @@ function ProgramsSection() {
           {/* Left Side - Image */}
           <div className="lg:col-span-5 order-1">
             <motion.div 
-              className="relative w-full h-96 sm:h-[500px] lg:h-[600px] rounded-tl-2xl rounded-br-2xl overflow-hidden mb-6"
+              className="relative w-full h-96 sm:h-[500px] lg:h-[600px] rounded-tr-[3rem] overflow-hidden mb-6"
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
