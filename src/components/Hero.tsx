@@ -112,7 +112,7 @@ export default function Hero() {
       </div>
       
       {/* Main Content - Overlaid directly on background */}
-      <div className="relative z-10 min-h-[100vh] flex items-center justify-center pb-56 sm:pb-36 lg:pb-40">
+      <div className="relative z-10 min-h-[100vh] flex items-center justify-center pb-72 sm:pb-36 lg:pb-40">
         {/* Centered Content */}
         <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="max-w-3xl sm:max-w-4xl lg:max-w-5xl">
@@ -174,7 +174,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom Stats Section - Positioned absolutely at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 bg-black/85 backdrop-blur-sm border-t border-white/10 transform translate-y-4 sm:translate-y-0">
+      <div className="absolute bottom-0 left-0 right-0 z-30 bg-black/85 backdrop-blur-sm border-t border-white/10">
         <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
             {/* Left Column - Description */}

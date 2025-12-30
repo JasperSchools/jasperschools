@@ -14,7 +14,7 @@ function AboutSection() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
 
   return (
-    <section id="about" ref={sectionRef} className="pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-20 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
+    <section id="about" ref={sectionRef} className="pt-16 sm:pt-20 lg:pt-24 pb-16 sm:pb-20 lg:pb-24 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-10 w-72 h-72 bg-school-green/5 rounded-full blur-3xl" />
@@ -54,7 +54,7 @@ function AboutSection() {
           </div>
 
           {/* Right Side - Text Content */}
-          <div className="lg:col-span-6 order-2 h-80 sm:h-96 lg:h-[500px] flex flex-col justify-between">
+          <div className="lg:col-span-6 order-2 lg:h-[500px] flex flex-col justify-between">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -122,7 +122,7 @@ function AboutSection() {
             >
               <Link 
                 href="/about/our-story" 
-                className="group inline-flex items-center justify-center border border-black rounded-full px-6 py-3 text-gray-900 font-heading-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300 text-base sm:text-lg"
+                className="group inline-flex items-center text-school-green font-heading-semibold hover:text-school-green/80 transition-colors sm:justify-center sm:border sm:border-black sm:rounded-full sm:px-6 sm:py-3 sm:text-gray-900 sm:hover:bg-gray-900 sm:hover:text-white sm:hover:border-gray-900 sm:transition-all sm:duration-300 text-base sm:text-lg"
               >
                 Find out more
                 <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
