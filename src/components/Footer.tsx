@@ -93,7 +93,7 @@ export default function Footer() {
             <h4 className="text-lg font-heading-semibold text-white mb-4">Support</h4>
             <ul className="space-y-3">
               <li><Link href="/donate" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Donate</Link></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Volunteer</a></li>
+              <li><Link href="/volunteer" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Volunteer</Link></li>
               <li><Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Sponsor a Child</Link></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Partnerships</a></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Newsletter</a></li>

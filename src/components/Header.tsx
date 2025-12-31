@@ -46,7 +46,7 @@ export default function Header() {
     { name: 'Donate', href: '/donate'},
     { name: 'Sponsor a Student', href: '/sponsor'},
     { name: 'Visit Us', href: '/#visit'},
-    { name: 'Careers', href: '/#careers'},
+    { name: 'Volunteer', href: '/volunteer'},
     { name: 'Newsletter', href: '/#newsletter'},
   ]
 

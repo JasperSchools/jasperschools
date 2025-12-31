@@ -270,7 +270,7 @@ function GetInvolvedSection() {
     {
       title: 'Volunteer',
       description: 'Share your time and skills to help us create meaningful change in the lives of children and families.',
-      link: '/contact',
+      link: '/volunteer',
       linkText: 'Get Started'
     }
   ]
