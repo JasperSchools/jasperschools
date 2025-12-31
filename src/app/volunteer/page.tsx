@@ -59,7 +59,7 @@ export default function VolunteerPage() {
                 frameBorder="0"
                 width="100%"
                 height="533"
-                style={{ background: 'transparent', border: '1px solid #e5e7eb', borderRadius: '0.5rem', minHeight: '533px' }}
+                style={{ background: 'transparent', border: '1px solid #ccc', borderRadius: '0.5rem' }}
               />
             </div>
           </motion.div>
