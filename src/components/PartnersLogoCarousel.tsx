@@ -13,15 +13,6 @@ export default function PartnersLogoCarousel() {
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-12">
-          <h3 className="text-lg sm:text-xl font-heading-semibold text-gray-600 uppercase tracking-wide mb-2">
-            Our Partners
-          </h3>
-          <p className="text-sm sm:text-base text-gray-500 font-paragraph">
-            Trusted organizations working with us to transform education
-          </p>
-        </div>
-        
         <div className="relative overflow-hidden">
           {/* Gradient overlays for smooth fade effect */}
           <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
