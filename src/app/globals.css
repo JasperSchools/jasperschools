@@ -176,3 +176,31 @@ body {
 .menu-content {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Partners logo carousel animation */
+@keyframes scroll-partners {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partners-scroll {
+  animation: scroll-partners 30s linear infinite;
+}
+
+.partners-scroll-paused {
+  animation-play-state: paused;
+}

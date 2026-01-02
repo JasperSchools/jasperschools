@@ -2,6 +2,7 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -624,6 +625,7 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
         </div>
       </section>
 
+      <PartnersLogoCarousel />
       <Footer />
     </main>
   )

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import { Child } from '@/types/database.types'
 import Image from 'next/image'
 
@@ -65,6 +66,7 @@ export default function StudentDetailPage() {
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderColor: '#0D4723' }}></div>
           <p className="ml-4 text-gray-600 font-paragraph">Loading...</p>
         </div>
+        <PartnersLogoCarousel />
         <Footer />
       </div>
     )

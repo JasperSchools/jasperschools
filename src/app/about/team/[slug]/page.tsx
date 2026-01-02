@@ -2,6 +2,7 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -214,6 +215,7 @@ export default function TeamMemberPage() {
             </Link>
           </div>
         </section>
+        <PartnersLogoCarousel />
         <Footer />
       </main>
     )

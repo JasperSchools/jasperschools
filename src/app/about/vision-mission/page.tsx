@@ -2,6 +2,7 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -50,6 +51,7 @@ export default function VisionMissionPage() {
       {/* Our Values Section */}
       <ValuesSection />
 
+      <PartnersLogoCarousel />
       <Footer />
     </main>
   )

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Footer from '@/components/Footer'
+import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
@@ -344,6 +345,7 @@ export default function Home() {
       {/* Get Involved Section */}
       <GetInvolvedSection />
 
+      <PartnersLogoCarousel />
       <Footer />
     </main>
   )

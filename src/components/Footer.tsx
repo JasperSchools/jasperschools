@@ -95,7 +95,7 @@ export default function Footer() {
               <li><Link href="/donate" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Donate</Link></li>
               <li><Link href="/volunteer" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Volunteer</Link></li>
               <li><Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Sponsor a Child</Link></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Partnerships</a></li>
+              <li><Link href="/about/partners" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Partnerships</Link></li>
               <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Newsletter</a></li>
             </ul>
           </div>

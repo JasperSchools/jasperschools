@@ -35,7 +35,7 @@ export default function Header() {
     { name: 'Vision & Mission', href: '/about/vision-mission'},
     { name: 'Our Story', href: '/about/our-story'},
     { name: 'Our Team', href: '/about/team'},
-    { name: 'Partners', href: '/#partners'},
+    { name: 'Partners', href: '/about/partners'},
   ]
 
   const schoolsDropdown = [

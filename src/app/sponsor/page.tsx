@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import { Child } from '@/types/database.types'
 import Image from 'next/image'
 
@@ -354,6 +355,7 @@ export default function SponsorPage() {
         </div>
       </section>
 
+      <PartnersLogoCarousel />
       <Footer />
 
       {/* Custom Modal */}

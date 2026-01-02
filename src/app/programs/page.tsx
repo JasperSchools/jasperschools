@@ -2,6 +2,7 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
@@ -85,6 +86,7 @@ export default function ProgramsPage() {
         </div>
       </section>
 
+      <PartnersLogoCarousel />
       <Footer />
     </main>
   )
