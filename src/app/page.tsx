@@ -156,7 +156,7 @@ function ProgramsSection() {
     },
     {
       number: 3,
-      title: 'ECD Education',
+      title: 'Early Childhood Education (ECD)',
       description: 'Our Early Childhood Development program consists of Baby Class, Middle Class, and Top Class. Through play-based learning and guided activities, we focus on developing early literacy, numeracy, social skills, creativity, and confidence.'
     },
     {

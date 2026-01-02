@@ -234,7 +234,7 @@ function ECDEducationSection() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              3. ECD Education
+              3. Early Childhood Education (ECD)
             </motion.h2>
             
             <div className="space-y-6 text-gray-700 text-sm sm:text-base leading-relaxed font-paragraph">
