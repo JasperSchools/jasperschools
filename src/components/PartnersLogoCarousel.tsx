@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
 
 const partners = [
   { name: 'ACN', logo: '/images/partners/acn-logo.svg', alt: 'ACN Logo' },
@@ -11,14 +10,8 @@ const partners = [
 ]
 
 export default function PartnersLogoCarousel() {
-  const [isPaused, setIsPaused] = useState(false)
-
   return (
-    <section 
-      className="py-12 sm:py-16 lg:py-20 bg-gray-50 border-t border-gray-200"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
           <h3 className="text-lg sm:text-xl font-heading-semibold text-gray-600 uppercase tracking-wide mb-2">
@@ -36,9 +29,7 @@ export default function PartnersLogoCarousel() {
           
           <div className="flex gap-8 sm:gap-12 lg:gap-16 overflow-x-hidden scrollbar-hide">
             {/* First set - visible */}
-            <div 
-              className={`flex gap-8 sm:gap-12 lg:gap-16 flex-shrink-0 partners-scroll ${isPaused ? 'partners-scroll-paused' : ''}`}
-            >
+            <div className="flex gap-8 sm:gap-12 lg:gap-16 flex-shrink-0 partners-scroll">
               {partners.map((partner, index) => (
                 <div
                   key={`${partner.name}-first-${index}`}
@@ -59,9 +50,7 @@ export default function PartnersLogoCarousel() {
             </div>
             
             {/* Second set - for seamless loop */}
-            <div 
-              className={`flex gap-8 sm:gap-12 lg:gap-16 flex-shrink-0 partners-scroll ${isPaused ? 'partners-scroll-paused' : ''}`}
-            >
+            <div className="flex gap-8 sm:gap-12 lg:gap-16 flex-shrink-0 partners-scroll">
               {partners.map((partner, index) => (
                 <div
                   key={`${partner.name}-second-${index}`}
