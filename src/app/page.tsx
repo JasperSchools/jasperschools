@@ -302,20 +302,20 @@ function StoriesOfImpact() {
     setCurrentStoryIndex((prev) => (prev + 1) % stories.length)
     // Pause auto-play when user manually navigates
     setIsAutoPlayPaused(true)
-    // Resume auto-play after 5 seconds
+    // Resume auto-play after 3 seconds
     setTimeout(() => {
       setIsAutoPlayPaused(false)
-    }, 5000)
+    }, 3000)
   }
 
   const prevStory = () => {
     setCurrentStoryIndex((prev) => (prev - 1 + stories.length) % stories.length)
     // Pause auto-play when user manually navigates
     setIsAutoPlayPaused(true)
-    // Resume auto-play after 5 seconds
+    // Resume auto-play after 3 seconds
     setTimeout(() => {
       setIsAutoPlayPaused(false)
-    }, 5000)
+    }, 3000)
   }
 
   // Auto-advance carousel
@@ -324,7 +324,7 @@ function StoriesOfImpact() {
 
     const interval = setInterval(() => {
       setCurrentStoryIndex((prev) => (prev + 1) % stories.length)
-    }, 5000) // Change story every 5 seconds
+    }, 3000) // Change story every 3 seconds
 
     return () => clearInterval(interval)
   }, [isInView, isAutoPlayPaused, stories.length])
@@ -371,11 +371,12 @@ function StoriesOfImpact() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-full lg:w-[120%] order-1 lg:order-2"
+            className="w-full lg:w-[120%] order-1 lg:order-2 flex flex-col gap-4 sm:gap-6"
           >
-            <div className="bg-white rounded-br-[2rem] sm:rounded-br-[3rem] lg:rounded-br-[4rem] p-5 sm:p-6 lg:p-8 xl:p-10 border border-gray-200 h-full flex flex-col">
+            {/* Review Content Card with Curved Border */}
+            <div className="bg-white rounded-br-[2rem] sm:rounded-br-[3rem] lg:rounded-br-[4rem] p-5 sm:p-6 lg:p-8 xl:p-10 border border-gray-200 flex flex-col">
               {/* Testimonial Content */}
-              <div className="flex-grow mb-4 sm:mb-6 relative overflow-hidden min-h-[200px] sm:min-h-[250px]">
+              <div className="flex-grow relative overflow-hidden min-h-[200px] sm:min-h-[250px]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentStoryIndex}
@@ -384,7 +385,7 @@ function StoriesOfImpact() {
                     exit={{ opacity: 0, x: -30 }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <blockquote className="text-sm sm:text-base lg:text-lg text-gray-700 font-paragraph leading-relaxed mb-4 sm:mb-6">
+                    <blockquote className="text-sm sm:text-base lg:text-lg text-gray-600 font-paragraph leading-relaxed mb-4 sm:mb-6">
                       &ldquo;{currentStory.quote}&rdquo;
                     </blockquote>
                     
@@ -406,56 +407,56 @@ function StoriesOfImpact() {
                   </motion.div>
                 </AnimatePresence>
               </div>
+            </div>
 
-              {/* Review Summary with Navigation */}
-              <div className="pt-4 sm:pt-6 border-t border-gray-200 relative">
-                {/* Progress Indicator - Green dash on the border line */}
-                <motion.div
-                  className="absolute top-[-1px] left-0 h-[2px] w-10 sm:w-12 bg-school-green"
-                  initial={{ left: 0 }}
-                  animate={{ left: `${(currentStoryIndex / (stories.length - 1)) * 100}%` }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  style={{ transform: 'translateX(-50%)' }}
-                />
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
-                    <div className="flex items-center gap-2">
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            {/* Review Summary with Navigation - Separate from review card */}
+            <div className="pt-4 sm:pt-6 border-t border-gray-200 relative">
+              {/* Progress Indicator - Green dash on the border line */}
+              <motion.div
+                className="absolute top-[-1px] left-0 h-[2px] w-10 sm:w-12 bg-school-green"
+                initial={{ left: 0 }}
+                animate={{ left: `${(currentStoryIndex / (stories.length - 1)) * 100}%` }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                style={{ transform: 'translateX(-50%)' }}
+              />
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <span className="text-xs sm:text-sm lg:text-base font-heading-semibold text-gray-900 whitespace-nowrap">
+                      Read our {stories.length} impact stories
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-0.5 sm:gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
-                      <span className="text-xs sm:text-sm lg:text-base font-heading-semibold text-gray-900 whitespace-nowrap">
-                        Read our {stories.length} impact stories
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-0.5 sm:gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                      ))}
-                    </div>
+                    ))}
                   </div>
-                  
-                  <div className="flex items-center gap-2 self-end sm:self-auto">
-                    <button
-                      onClick={prevStory}
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-300 hover:border-school-green hover:bg-school-green/10 active:bg-school-green/20 flex items-center justify-center transition-all duration-300 touch-manipulation"
-                      aria-label="Previous story"
-                    >
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={nextStory}
-                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-300 hover:border-school-green hover:bg-school-green/10 active:bg-school-green/20 flex items-center justify-center transition-all duration-300 touch-manipulation"
-                      aria-label="Next story"
-                    >
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-                  </div>
+                </div>
+                
+                <div className="flex items-center gap-2 self-end sm:self-auto">
+                  <button
+                    onClick={prevStory}
+                    className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-300 hover:border-school-green hover:bg-school-green text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300 touch-manipulation"
+                    aria-label="Previous story"
+                  >
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={nextStory}
+                    className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-300 hover:border-school-green hover:bg-school-green text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300 touch-manipulation"
+                    aria-label="Next story"
+                  >
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
