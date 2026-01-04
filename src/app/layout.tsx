@@ -11,6 +11,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Jasper Primary School - Nyairongo',
   description: 'Creating bright paths together. A nonprofit primary school in rural Uganda dedicated to quality education for all children.',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({
