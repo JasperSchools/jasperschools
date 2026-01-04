@@ -123,7 +123,7 @@ function AboutSection() {
             >
               <Link 
                 href="/about/our-story" 
-                className="group inline-flex items-center text-school-green font-heading-semibold hover:text-school-green/80 transition-colors sm:justify-center sm:border sm:border-black sm:rounded-full sm:px-6 sm:py-3 sm:text-gray-900 sm:hover:bg-gray-900 sm:hover:text-white sm:hover:border-gray-900 sm:transition-all sm:duration-300 text-base sm:text-lg"
+                className="group inline-flex items-center text-school-green/80 font-heading-semibold hover:text-school-green transition-colors sm:justify-center sm:border sm:border-gray-900 sm:rounded-full sm:px-6 sm:py-3 sm:bg-gray-900 sm:text-white sm:hover:bg-transparent sm:hover:text-gray-900 sm:hover:border-black sm:transition-all sm:duration-300 text-base sm:text-lg"
               >
                 Find out more
                 <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -302,20 +302,20 @@ function StoriesOfImpact() {
     setCurrentStoryIndex((prev) => (prev + 1) % stories.length)
     // Pause auto-play when user manually navigates
     setIsAutoPlayPaused(true)
-    // Resume auto-play after 3 seconds
+    // Resume auto-play after 5 seconds
     setTimeout(() => {
       setIsAutoPlayPaused(false)
-    }, 3000)
+    }, 5000) 
   }
 
   const prevStory = () => {
     setCurrentStoryIndex((prev) => (prev - 1 + stories.length) % stories.length)
     // Pause auto-play when user manually navigates
     setIsAutoPlayPaused(true)
-    // Resume auto-play after 3 seconds
+    // Resume auto-play after 5 seconds
     setTimeout(() => {
       setIsAutoPlayPaused(false)
-    }, 3000)
+    }, 5000)
   }
 
   // Auto-advance carousel
@@ -324,7 +324,7 @@ function StoriesOfImpact() {
 
     const interval = setInterval(() => {
       setCurrentStoryIndex((prev) => (prev + 1) % stories.length)
-    }, 3000) // Change story every 3 seconds
+    }, 5000) // Change story every 5 seconds
 
     return () => clearInterval(interval)
   }, [isInView, isAutoPlayPaused, stories.length])
@@ -441,7 +441,7 @@ function StoriesOfImpact() {
                 <div className="flex items-center gap-2 self-end sm:self-auto">
                   <button
                     onClick={prevStory}
-                    className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-300 hover:border-school-green hover:bg-school-green text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300 touch-manipulation"
+                    className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-school-green hover:bg-school-green text-school-green hover:text-white flex items-center justify-center transition-all duration-300 touch-manipulation"
                     aria-label="Previous story"
                   >
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -450,7 +450,7 @@ function StoriesOfImpact() {
                   </button>
                   <button
                     onClick={nextStory}
-                    className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gray-300 hover:border-school-green hover:bg-school-green text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300 touch-manipulation"
+                    className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-school-green hover:bg-school-green text-school-green hover:text-white flex items-center justify-center transition-all duration-300 touch-manipulation"
                     aria-label="Next story"
                   >
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
