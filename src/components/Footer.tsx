@@ -145,7 +145,7 @@ export default function Footer() {
               <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm font-paragraph">Complaints Policy</a>
         </div>
             <p className="text-gray-400 text-sm font-paragraph">
-          © 2024 Jasper Primary School. All rights reserved.
+          © {new Date().getFullYear()} Jasper Primary School. All rights reserved.
         </p>
           </div>
         </div>

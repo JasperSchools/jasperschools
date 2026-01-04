@@ -73,15 +73,11 @@ function VisionMissionSection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="mb-4">
-              <div className="relative w-12 h-12">
-                <Image
-                  src="/images/assets/vision.png"
-                  alt="Vision icon"
-                  fill
-                  className="object-contain"
-                />
-              </div>
+            <div className="w-12 h-12 rounded-xl bg-school-green/10 flex items-center justify-center mb-4">
+              <svg className="w-8 h-8 text-school-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
             </div>
             <h2 className="text-lg sm:text-xl font-heading-semibold text-gray-900 mb-3">
               Our Vision
@@ -98,15 +94,10 @@ function VisionMissionSection() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="mb-4">
-              <div className="relative w-12 h-12">
-                <Image
-                  src="/images/assets/mission.png"
-                  alt="Mission icon"
-                  fill
-                  className="object-contain"
-                />
-              </div>
+            <div className="w-12 h-12 rounded-xl bg-school-green/10 flex items-center justify-center mb-4">
+              <svg className="w-8 h-8 text-school-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
             <h2 className="text-lg sm:text-xl font-heading-semibold text-gray-900 mb-3">
               Our Mission

@@ -15,24 +15,35 @@ export default function VolunteerPage() {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 bg-gradient-to-b from-white via-gray-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4 sm:mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green" />
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
+          <motion.h1 
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             Volunteer With Us
           </motion.h1>
-          <motion.p
-            className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed font-paragraph"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            Share your time and skills to help us create meaningful change in the lives of children and families. Your contribution makes a lasting impact on our community.
-          </motion.p>
+          <div className="text-green-100 text-sm sm:text-base max-w-3xl mx-auto font-paragraph">
+            {['Share', 'your', 'time', 'and', 'skills', 'to', 'help', 'us', 'create', 'meaningful', 'change', 'in', 'the', 'lives', 'of', 'children', 'and', 'families.'].map((word, index) => (
+              <motion.span
+                key={index}
+                className="inline-block mr-2"
+                initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.8 + (index * 0.15),
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </div>
         </div>
       </section>
 
