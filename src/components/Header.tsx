@@ -52,7 +52,6 @@ export default function Header() {
 
   const navigation = [
     { name: 'Programs', href: '/programs' },
-    { name: 'Our Impact', href: '/#impact' },
     { name: 'Contact', href: '/#contact' },
   ]
 
