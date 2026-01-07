@@ -5,7 +5,8 @@ import Footer from '@/components/Footer'
 import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 // Helper function to create slug from name
 function createSlug(name: string): string {
@@ -19,6 +20,9 @@ interface TeamMember {
   profile?: string
   achievements?: string[]
   imageSrc?: string
+  email?: string
+  linkedin?: string
+  twitter?: string
 }
 
 export default function TeamPage() {
@@ -152,80 +156,6 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
     }
   ]
 
-  const staff: TeamMember[] = [
-    {
-      name: 'Dalious',
-      role: 'Staff Member',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/staff/dalious .jpg'
-    },
-    {
-      name: 'Emmanuel',
-      role: 'Staff Member',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/staff/emmanuel.jpg'
-    },
-    {
-      name: 'Eria',
-      role: 'Staff Member',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/staff/eria.jpg'
-    },
-    {
-      name: 'Evelyn',
-      role: 'Staff Member',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/staff/evelyn.JPG'
-    },
-    {
-      name: 'Evelyne',
-      role: 'Bursar',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/staff/evelyne bursar.jpg'
-    },
-    {
-      name: 'Jakisa',
-      role: 'Staff Member',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/staff/jakisa.JPG'
-    },
-    {
-      name: 'Seputa',
-      role: 'Cook',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/staff/seputa cook.jpg'
-    },
-    {
-      name: 'Shillah',
-      role: 'Staff Member',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/staff/shillah.jpg'
-    },
-    {
-      name: 'Yedidiya',
-      role: 'P3 Teacher',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/staff/yedidiya p3.jpg'
-    }
-  ]
 
   // Positioning for same-level row arrangement (Board Members only)
   const getTrophyPosition = (index: number) => {
@@ -256,16 +186,162 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
     return positions[index % positions.length]
   }
 
+  // Team Hero Section Component with Slideshow
+  function TeamHeroSection() {
+    const [currentSlide, setCurrentSlide] = useState(0)
+    
+    const slides = [
+      '/images/teampage/team_a.jpg',
+      '/images/teampage/team_b.jpg',
+      '/images/teampage/team_c.jpg',
+      '/images/teampage/team_d.jpg',
+    ]
+
+    // Auto-advance slideshow
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length)
+      }, 5000)
+
+      return () => clearInterval(interval)
+    }, [slides.length])
+
+    return (
+      <section className="relative min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[550px] flex flex-col lg:flex-row">
+        {/* Left Panel - Text and Buttons */}
+        <div className="w-full lg:w-1/2 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 sm:py-10 md:py-12 lg:py-14 xl:py-16 flex flex-col justify-center relative overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 right-10 w-72 h-72 bg-white/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-20 left-10 w-96 h-96 bg-school-yellow/5 rounded-full blur-3xl" />
+          </div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-2xl mx-auto lg:mx-0 relative z-10"
+          >
+            <h1 className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-light text-white mb-4 sm:mb-6 leading-[1.1]">
+              Know our Team
+            </h1>
+            <p className="text-sm sm:text-base text-white/90 font-paragraph leading-relaxed max-w-xl">
+              Behind Jasper Primary School's work is a team of passionate and skilled professionals who are dedicated to fostering education, leadership, and growth for disadvantaged youth.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Right Panel - Image Slideshow */}
+        <div className="w-full lg:w-1/2 relative bg-white min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-full overflow-hidden">
+          {/* Slideshow Container */}
+          <div className="relative w-full h-full bg-white">
+            {slides.map((slide, index) => (
+              <motion.div
+                key={`slide-${index}`}
+                initial={false}
+                animate={{ 
+                  opacity: index === currentSlide ? 1 : 0,
+                }}
+                transition={{ 
+                  duration: 1.0,
+                  ease: [0.4, 0, 0.2, 1]
+                }}
+                className="absolute inset-0 bg-white"
+                style={{ 
+                  zIndex: index === currentSlide ? 10 : 1
+                }}
+              >
+                <Image
+                  src={slide}
+                  alt={`Team photo ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: 'center center' }}
+                  priority={index === 0}
+                  unoptimized
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // Helper function to render social media icons (responsive)
+  const renderSocialIcons = (member: TeamMember) => (
+    <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 md:top-2.5 md:right-2.5 flex gap-1 sm:gap-1.5 z-10">
+      {member.email ? (
+        <a
+          href={`mailto:${member.email}`}
+          onClick={(e) => e.stopPropagation()}
+          className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm touch-manipulation"
+          aria-label="Email"
+        >
+          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </a>
+      ) : (
+        <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/60 rounded-full flex items-center justify-center">
+          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+      )}
+      {member.linkedin ? (
+        <a
+          href={member.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm touch-manipulation"
+          aria-label="LinkedIn"
+        >
+          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.94v5.666H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.369-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433c-1.144 0-2.067-.925-2.067-2.067C3.27 4.225 4.193 3.3 5.337 3.3c1.142 0 2.066.925 2.066 2.066 0 1.142-.924 2.067-2.066 2.067zM7.119 20.452H3.554V9h3.565v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.225.792 24 1.771 24h20.451C23.2 24 24 23.225 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+        </a>
+      ) : (
+        <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/60 rounded-full flex items-center justify-center">
+          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.94v5.666H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.369-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433c-1.144 0-2.067-.925-2.067-2.067C3.27 4.225 4.193 3.3 5.337 3.3c1.142 0 2.066.925 2.066 2.066 0 1.142-.924 2.067-2.066 2.067zM7.119 20.452H3.554V9h3.565v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.225.792 24 1.771 24h20.451C23.2 24 24 23.225 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+        </div>
+      )}
+      {member.twitter ? (
+        <a
+          href={member.twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm touch-manipulation"
+          aria-label="X (Twitter)"
+        >
+          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26L22.5 21.75h-6.406l-5.02-6.545-5.743 6.545H1.922l7.73-8.81L1.5 2.25h6.594l4.533 5.988 5.617-5.988zm-1.16 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
+      ) : (
+        <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/60 rounded-full flex items-center justify-center">
+          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26L22.5 21.75h-6.406l-5.02-6.545-5.743 6.545H1.922l7.73-8.81L1.5 2.25h6.594l4.533 5.988 5.617-5.988zm-1.16 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </div>
+      )}
+    </div>
+  )
+
   const renderCollage = (members: TeamMember[], sectionTitle: string) => {
     return (
-      <section className={`py-8 sm:py-10 lg:py-12 ${sectionTitle === 'Board Members' ? 'bg-white' : sectionTitle === 'Leadership and Management Team' ? 'bg-white' : 'bg-gray-50'}`}>
+      <section className={`py-6 sm:py-8 md:py-10 lg:py-12 xl:py-14 ${sectionTitle === 'Board Members' ? 'bg-white' : sectionTitle === 'Leadership and Management Team' ? 'bg-white' : 'bg-gray-50'}`}>
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           {/* Title and Description */}
-          <div className="max-w-3xl mx-auto mb-8 lg:mb-10 text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-school-blue mb-6">
+          <div className="max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading text-school-blue mb-4 sm:mb-5 md:mb-6">
               {sectionTitle}
             </h2>
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed font-paragraph">
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed font-paragraph">
               {sectionTitle === 'Board Members' 
                 ? "Our team brings a wealth of experience from leading educational institutions, international organizations, and community development initiatives, driving transformative education in rural Uganda."
                 : sectionTitle === 'Leadership and Management Team'
@@ -275,12 +351,12 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
           </div>
         </div>
 
-        {/* Mobile Stack Layout */}
-        <div className="lg:hidden w-full px-4 sm:px-6">
-          <div className="grid grid-cols-1 gap-6 sm:gap-8 max-w-md mx-auto">
+        {/* Mobile and Tablet Stack Layout */}
+        <div className="lg:hidden w-full px-4 sm:px-6 md:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-2xl sm:max-w-4xl mx-auto">
             {members.map((member, index) => {
               const content = (
-                <div className="relative aspect-[3/4] w-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl">
+                <div className="relative aspect-[3/4] w-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-2 md:border-[3px] lg:border-4 border-school-green">
                   {member.imageSrc ? (
                     <Image
                       src={member.imageSrc}
@@ -296,11 +372,13 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                       </span>
                     </div>
                   )}
+                  {/* Social Media Icons - Top Right */}
+                  {renderSocialIcons(member)}
                   {/* Overlay with name - always visible on mobile */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
-                    <div className="w-full p-2 sm:p-3">
-                      <h3 className="text-white font-heading-bold text-xs sm:text-sm mb-0.5">{member.name}</h3>
-                      <p className="text-white/90 font-paragraph text-[10px] sm:text-xs line-clamp-1">{member.role}</p>
+                    <div className="w-full p-2 sm:p-3 md:p-4">
+                      <h3 className="text-white font-heading-bold text-xs sm:text-sm md:text-base mb-0.5">{member.name}</h3>
+                      <p className="text-white/90 font-paragraph text-[10px] sm:text-xs md:text-sm line-clamp-1">{member.role}</p>
                     </div>
                   </div>
                 </div>
@@ -313,7 +391,6 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, zIndex: 100 }}
                 >
                   {sectionTitle === 'Staff' ? content : (
                     <Link href={`/about/team/${createSlug(member.name)}`}>
@@ -328,26 +405,25 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
 
         {/* Desktop Layout - Flexbox for Board Members, Collage for others */}
         {sectionTitle === 'Board Members' && members.length === 4 ? (
-          <div className="hidden lg:flex w-full items-center justify-center py-8">
-            <div className="flex items-center justify-center gap-8 xl:gap-12">
+          <div className="hidden lg:flex w-full items-center justify-center py-6 lg:py-8 xl:py-10 overflow-x-auto px-4">
+            <div className="flex items-center justify-center gap-6 lg:gap-8 xl:gap-10 2xl:gap-12">
               {members.map((member, index) => {
                 const position = getTrophyPosition(index)
                 return (
                   <motion.div
                     key={member.name}
-                    className="relative cursor-pointer group"
+                    className="relative cursor-pointer group flex-shrink-0"
                     style={{
-                      width: 'clamp(180px, 20vw, 220px)',
-                      height: 'clamp(240px, 26vw, 280px)',
+                      width: 'clamp(200px, 22vw, 280px)',
+                      height: 'clamp(280px, 30vw, 380px)',
                       transform: `rotate(${position.rotate}deg)`,
                     }}
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, rotate: 0, zIndex: 100 }}
                   >
                     <Link href={`/about/team/${createSlug(member.name)}`}>
-                      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl">
+                      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-4 border-school-green">
                         {member.imageSrc ? (
                           <Image
                             src={member.imageSrc}
@@ -363,6 +439,8 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                             </span>
                           </div>
                         )}
+                        {/* Social Media Icons - Top Right */}
+                        {renderSocialIcons(member)}
                         {/* Overlay with name - always visible */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
                           <div className="w-full p-2 sm:p-3 lg:p-4">
@@ -378,13 +456,13 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
             </div>
           </div>
         ) : sectionTitle === 'Staff' || sectionTitle === 'Leadership and Management Team' ? (
-          <div className="hidden lg:block w-full py-8">
-            <div className="flex flex-col items-center gap-8">
+          <div className="hidden lg:block w-full py-6 lg:py-8 xl:py-10 overflow-x-auto px-4">
+            <div className="flex flex-col items-center gap-6 lg:gap-8 xl:gap-10">
               {/* First row - 5 items */}
-              <div className="flex items-center justify-center gap-6 xl:gap-8">
+              <div className="flex items-center justify-center gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
                 {members.slice(0, 5).map((member, index) => {
                   const content = (
-                    <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl">
+                    <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-2 md:border-[3px] lg:border-4 border-school-green">
                       {member.imageSrc ? (
                         <Image
                           src={member.imageSrc}
@@ -400,6 +478,8 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                           </span>
                         </div>
                       )}
+                      {/* Social Media Icons - Top Right */}
+                      {renderSocialIcons(member)}
                       {/* Overlay with name - always visible */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
                         <div className="w-full p-2 sm:p-3 lg:p-4">
@@ -415,13 +495,12 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                       key={member.name}
                       className={`relative ${sectionTitle === 'Staff' ? 'group' : 'cursor-pointer group'}`}
                       style={{
-                        width: 'clamp(140px, 15vw, 180px)',
-                        height: 'clamp(180px, 20vw, 240px)',
+                        width: 'clamp(160px, 18vw, 240px)',
+                        height: 'clamp(220px, 25vw, 320px)',
                       }}
                       initial={{ opacity: 0, scale: 0.8, y: 20 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      whileHover={{ scale: 1.05, zIndex: 100 }}
                     >
                       {sectionTitle === 'Staff' ? content : (
                         <Link href={`/about/team/${createSlug(member.name)}`}>
@@ -434,10 +513,10 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
               </div>
               {/* Second row - remaining items (4 items) */}
               {members.length > 5 && (
-                <div className="flex items-center justify-center gap-6 xl:gap-8">
+                <div className="flex items-center justify-center gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
                   {members.slice(5).map((member, index) => {
                     const content = (
-                      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl">
+                      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-2 md:border-[3px] lg:border-4 border-school-green">
                         {member.imageSrc ? (
                           <Image
                             src={member.imageSrc}
@@ -453,6 +532,8 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                             </span>
                           </div>
                         )}
+                        {/* Social Media Icons - Top Right */}
+                        {renderSocialIcons(member)}
                         {/* Overlay with name - always visible */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
                           <div className="w-full p-2 sm:p-3 lg:p-4">
@@ -468,13 +549,12 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                         key={member.name}
                         className={`relative ${sectionTitle === 'Staff' ? 'group' : 'cursor-pointer group'}`}
                         style={{
-                          width: 'clamp(140px, 15vw, 180px)',
-                          height: 'clamp(180px, 20vw, 240px)',
+                          width: 'clamp(160px, 18vw, 240px)',
+                          height: 'clamp(220px, 25vw, 320px)',
                         }}
                         initial={{ opacity: 0, scale: 0.8, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: (index + 5) * 0.1 }}
-                        whileHover={{ scale: 1.05, zIndex: 100 }}
                       >
                         {sectionTitle === 'Staff' ? content : (
                           <Link href={`/about/team/${createSlug(member.name)}`}>
@@ -489,15 +569,15 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
             </div>
           </div>
         ) : (
-          <div className="hidden lg:flex w-full items-center justify-center overflow-visible py-8">
-            <div className="relative flex items-center justify-center" style={{ minHeight: '550px', width: '100%', maxWidth: '1200px' }}>
+          <div className="hidden lg:flex w-full items-center justify-center overflow-hidden py-6 lg:py-8 xl:py-10 px-4">
+            <div className="relative flex items-center justify-center" style={{ minHeight: '500px', width: '100%', maxWidth: '1400px' }}>
                 {members.map((member, index) => {
                   const position = getPosition(index, members.length)
                   // Convert percentage-based left positioning to centered flexbox with overlap
                   // Parse the left percentage (e.g., '-35%' -> -35)
                   const leftPercent = position.left ? parseFloat(position.left) : 0
-                  // Convert to viewport-based offset for better centering
-                  const leftOffset = `${leftPercent * 0.6}vw` // Scale down spread for better centering
+                  // Convert to viewport-based offset for better centering - responsive scaling
+                  const leftOffset = `${leftPercent * 0.5}vw` // Scale down spread for better centering
                   return (
                     <motion.div
                       key={member.name}
@@ -505,18 +585,17 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                       style={{
                         left: `calc(50% + ${leftOffset})`,
                         top: position.top,
-                        width: `clamp(100px, ${18 * (position.scale || 1)}vw, ${200 * (position.scale || 1)}px)`,
-                        height: `clamp(120px, ${22 * (position.scale || 1)}vw, ${250 * (position.scale || 1)}px)`,
+                        width: `clamp(150px, ${20 * (position.scale || 1)}vw, ${260 * (position.scale || 1)}px)`,
+                        height: `clamp(200px, ${26 * (position.scale || 1)}vw, ${340 * (position.scale || 1)}px)`,
                         transform: `translateX(-50%) rotate(${position.rotate}deg) scale(${position.scale || 1})`,
                         zIndex: position.zIndex || (members.length - index)
                       }}
                       initial={{ opacity: 0, scale: 0.8, y: 20 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
-                      whileHover={{ scale: (position.scale || 1) * 1.05, rotate: 0, zIndex: 100 }}
                     >
                       <Link href={`/about/team/${createSlug(member.name)}`}>
-                        <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl">
+                        <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-2 md:border-[3px] lg:border-4 border-school-green">
                           {member.imageSrc ? (
                             <Image
                               src={member.imageSrc}
@@ -532,6 +611,8 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                               </span>
                             </div>
                           )}
+                          {/* Social Media Icons - Top Right */}
+                          {renderSocialIcons(member)}
                           {/* Overlay with name - always visible */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
                             <div className="w-full p-2 sm:p-3 lg:p-4">
@@ -555,38 +636,8 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
     <main className="min-h-screen bg-white">
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-school-green via-[#1a5c34] to-school-green" />
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-20 sm:py-28 lg:py-32 text-center">
-          <motion.h1 
-            className="text-3xl sm:text-4xl lg:text-5xl font-heading text-white mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Our Team
-          </motion.h1>
-          <div className="text-green-100 text-sm sm:text-base max-w-3xl mx-auto font-paragraph">
-            {['Meet', 'the', 'dedicated', 'leaders', 'driving', 'transformative', 'education', 'in', 'rural', 'Uganda'].map((word, index) => (
-              <motion.span
-                key={index}
-                className="inline-block mr-2"
-                initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{
-                  duration: 0.8,
-                  delay: 0.8 + (index * 0.2),
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Two-Panel Layout */}
+      <TeamHeroSection />
 
       {/* Board Members Section with Collage */}
       {renderCollage(boardMembers, 'Board Members')}
@@ -594,30 +645,27 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
       {/* Leadership and Management Team Section */}
       {renderCollage(leadershipTeam, 'Leadership and Management Team')}
 
-      {/* Staff Section */}
-      {renderCollage(staff, 'Staff')}
-
       {/* Call to Action */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading text-gray-900 mb-4">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900 mb-3 sm:mb-4 md:mb-5">
             Join Our Mission
           </h2>
-          <p className="text-sm sm:text-base text-gray-600 mb-8 font-paragraph">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 md:mb-10 font-paragraph px-2">
             Together, we can empower communities and transform lives through quality education.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center px-4">
             <Link 
               href="/donate" 
-              className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
-              style={{ padding: '16px 32px' }}
+              className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 w-full sm:w-auto touch-manipulation"
+              style={{ padding: '14px 28px', minHeight: '48px' }}
             >
               Donate Now
             </Link>
             <Link 
               href="/#contact" 
-              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"
-              style={{ padding: '16px 32px' }}
+              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 border border-black/20 w-full sm:w-auto touch-manipulation"
+              style={{ padding: '14px 28px', minHeight: '48px' }}
             >
               Get in Touch
             </Link>

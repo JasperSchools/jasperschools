@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="text-white" style={{ backgroundColor: '#0A0A0A' }}>
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
           {/* Brand Identity & Social Media */}
           <div className="lg:col-span-1 text-center lg:text-left">
             <div className="mb-6">
@@ -80,11 +80,10 @@ export default function Footer() {
           <div className="lg:col-span-1 text-center lg:text-left">
             <h4 className="text-lg font-heading-semibold text-white mb-4">Programs</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Primary Education</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Early Childhood</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Special Needs</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Community Outreach</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Teacher Training</a></li>
+              <li><Link href="/programs" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Primary Education</Link></li>
+              <li><Link href="/programs" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Early Childhood</Link></li>
+              <li><Link href="/programs" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Community Outreach</Link></li>
+              <li><Link href="/programs" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Teacher Training</Link></li>
             </ul>
           </div>
 
@@ -96,8 +95,35 @@ export default function Footer() {
               <li><Link href="/volunteer" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Volunteer</Link></li>
               <li><Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Sponsor a Child</Link></li>
               <li><Link href="/about/partners" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Partnerships</Link></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Newsletter</a></li>
             </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="lg:col-span-1 text-center lg:text-left">
+            <h4 className="text-lg font-heading-semibold text-white mb-4">Contact Us</h4>
+            <div className="space-y-3">
+              <div>
+                <p className="text-white font-heading-semibold text-sm mb-1">Jasper Primary School</p>
+                <p className="text-gray-300 text-sm font-paragraph">
+                  Nyairongo village, Kikuube District,<br />
+                  Western Uganda
+                </p>
+              </div>
+              <div>
+                <p className="text-white font-heading-semibold text-sm mb-1">Email</p>
+                <a href="mailto:jasperschoolsuganda@gmail.com" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">
+                  jasperschoolsuganda@gmail.com
+                </a>
+              </div>
+              <div>
+                <p className="text-white font-heading-semibold text-sm mb-1">Phone</p>
+                <p className="text-gray-300 text-sm font-paragraph">
+                  <a href="tel:+256770799066" className="hover:text-white transition-colors">+256 770 799 066</a>
+                  <br />
+                  <a href="tel:+256782972117" className="hover:text-white transition-colors">+256 782 972 117</a>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 

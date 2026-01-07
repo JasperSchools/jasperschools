@@ -38,8 +38,8 @@ export default function Header() {
     { name: 'Partners', href: '/about/partners'},
   ]
 
-  const schoolsDropdown = [
-    { name: 'Uganda', href: '/#school-uganda', icon: 'location'},
+  const whereWeWorkDropdown = [
+    { name: 'Uganda', href: '/where-we-work', icon: 'location'},
   ]
 
   const getInvolvedDropdown = [
@@ -56,7 +56,7 @@ export default function Header() {
   ]
 
   const handleDropdownToggle = (dropdownName: string) => {
-    if (dropdownName === 'about' || dropdownName === 'schools' || dropdownName === 'getInvolved') {
+    if (dropdownName === 'about' || dropdownName === 'whereWeWork' || dropdownName === 'getInvolved') {
       navigateToSubMenu(dropdownName)
     } else {
       setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName)
@@ -211,25 +211,25 @@ export default function Header() {
                   </a>
                 ))}
 
-                {/* Schools Dropdown */}
+                {/* Where We Work Dropdown */}
                 <div 
                   className="relative"
-                  onMouseEnter={() => setActiveDropdown('schools')}
+                  onMouseEnter={() => setActiveDropdown('whereWeWork')}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
                   <button
-                    onClick={() => handleDropdownToggle('schools')}
+                    onClick={() => handleDropdownToggle('whereWeWork')}
                     className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
-                    Schools
+                    Where We Work
                     <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                  {activeDropdown === 'schools' && (
+                  {activeDropdown === 'whereWeWork' && (
                     <div className="absolute top-full left-0 pt-2 z-50">
                       <div className="w-48 bg-white shadow-xl border border-gray-100 overflow-hidden">
-                        {schoolsDropdown.map((item) => (
+                        {whereWeWorkDropdown.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
@@ -384,13 +384,13 @@ export default function Header() {
                     </div>
                   ))}
 
-                  {/* Mobile Schools */}
+                  {/* Mobile Where We Work */}
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.5s both` }}>
                     <button
-                      onClick={() => navigateToSubMenu('schools')}
+                      onClick={() => navigateToSubMenu('whereWeWork')}
                       className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
-                      Schools
+                      Where We Work
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
@@ -460,10 +460,10 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* Sub Menu - Schools */}
+              {/* Sub Menu - Where We Work */}
               <div
                 className={`absolute inset-0 menu-content ${
-                  activeDropdown === 'schools' ? 'translate-x-0' : 'translate-x-full'
+                  activeDropdown === 'whereWeWork' ? 'translate-x-0' : 'translate-x-full'
                 }`}
               >
                 <div className="flex items-center p-4 border-b border-gray-200 bg-school-green" style={{ animation: `slideInUp 0.3s ease-out 0.1s both` }}>
@@ -476,10 +476,10 @@ export default function Header() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
-                  <h2 className="text-lg font-heading-bold text-white">Schools</h2>
+                  <h2 className="text-lg font-heading-bold text-white">Where We Work</h2>
                 </div>
                 <div className="px-4 py-6">
-                  {schoolsDropdown.map((item, index) => (
+                  {whereWeWorkDropdown.map((item, index) => (
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}

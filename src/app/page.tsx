@@ -547,6 +547,122 @@ function GetInvolvedSection() {
   )
 }
 
+// Contact Section Component
+function ContactSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
+
+  return (
+    <section id="contact" ref={sectionRef} className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 border-t border-gray-200 bg-white relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-school-green/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-school-yellow/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <motion.div
+          className="text-center mb-12 sm:mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4 sm:mb-6">
+            Contact Us
+          </h2>
+          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-paragraph">
+            Get in touch with us. We'd love to hear from you and answer any questions you may have.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="bg-gray-50 rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-sm"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-heading-semibold text-gray-900 mb-4">
+                Jasper Primary School
+              </h3>
+            </div>
+
+            <div className="flex items-start">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-school-green/10 flex items-center justify-center mr-4">
+                <svg className="w-5 h-5 text-school-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-heading-semibold text-gray-900 mb-1">Our Address</h4>
+                <p className="text-gray-600 font-paragraph">
+                  Nyairongo village, Kikuube District, Western Uganda
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-school-green/10 flex items-center justify-center mr-4">
+                <svg className="w-5 h-5 text-school-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-heading-semibold text-gray-900 mb-1">Our Email</h4>
+                <a 
+                  href="mailto:jasperschoolsuganda@gmail.com" 
+                  className="text-school-green hover:text-school-green/80 font-paragraph transition-colors"
+                >
+                  jasperschoolsuganda@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-school-green/10 flex items-center justify-center mr-4">
+                <svg className="w-5 h-5 text-school-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-heading-semibold text-gray-900 mb-1">Contacts</h4>
+                <p className="text-gray-600 font-paragraph">
+                  <a href="tel:+256770799066" className="text-school-green hover:text-school-green/80 transition-colors">
+                    +256 770 799 066
+                  </a>
+                  {' / '}
+                  <a href="tel:+256782972117" className="text-school-green hover:text-school-green/80 transition-colors">
+                    +256 782 972 117
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-8 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Link
+            href="/where-we-work"
+            className="inline-flex items-center text-school-green font-heading-semibold hover:text-school-green/80 transition-colors group"
+          >
+            Learn more about where we work
+            <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -564,6 +680,9 @@ export default function Home() {
 
       {/* Get Involved Section */}
       <GetInvolvedSection />
+
+      {/* Contact Section */}
+      <ContactSection />
 
       <PartnersLogoCarousel />
       <Footer />
