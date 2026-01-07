@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -8,7 +8,7 @@ import JobFilter from '@/components/careers/JobFilter'
 import JobCard from '@/components/careers/JobCard'
 import { Job, JobCategory, JobFilters, JobStats as Stats } from '@/types/careers'
 
-export default function BrowseJobsPage() {
+function BrowseJobsContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   
@@ -147,9 +147,7 @@ export default function BrowseJobsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <Header />
-      
+    <>
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 lg:py-12">
         <div className="grid lg:grid-cols-12 gap-8">
           {/* Left Sidebar - Filters */}
@@ -279,7 +277,23 @@ export default function BrowseJobsPage() {
           </div>
         </div>
       </div>
+    </>
+  )
+}
 
+export default function BrowseJobsPage() {
+  return (
+    <main className="min-h-screen bg-gray-50">
+      <Header />
+      <Suspense fallback={
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 lg:py-12">
+          <div className="text-center py-24">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-school-green"></div>
+          </div>
+        </div>
+      }>
+        <BrowseJobsContent />
+      </Suspense>
       <Footer />
     </main>
   )

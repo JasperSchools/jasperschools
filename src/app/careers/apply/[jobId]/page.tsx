@@ -38,17 +38,19 @@ export default function ApplyPage() {
     }
   }
 
-  const handleSubmit = async (formData: JobApplicationInsert) => {
+  const handleSubmit = async (formData: any) => {
     try {
+      const applicationData: JobApplicationInsert = {
+        ...formData,
+        job_id: jobId,
+      }
+
       const res = await fetch('/api/careers/applications', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...formData,
-          job_id: jobId,
-        }),
+        body: JSON.stringify(applicationData),
       })
 
       if (!res.ok) {

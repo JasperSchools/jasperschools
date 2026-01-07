@@ -4,12 +4,7 @@ import { useState, useRef } from 'react'
 import { Job } from '@/types/careers'
 import { isValidEmail, isValidPhone } from '@/lib/careers/utils'
 
-interface ApplicationFormProps {
-  job: Job
-  onSubmit: (data: FormData) => Promise<void>
-}
-
-interface FormData {
+interface ApplicationFormData {
   full_name: string
   email: string
   phone?: string
@@ -20,8 +15,13 @@ interface FormData {
   academic_documents_url?: string[]
 }
 
+interface ApplicationFormProps {
+  job: Job
+  onSubmit: (data: ApplicationFormData) => Promise<void>
+}
+
 export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps) {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<ApplicationFormData>({
     full_name: '',
     email: '',
     phone: '',
@@ -38,7 +38,7 @@ export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
+    setFormData(prev => ({ ...prev, [name]: value } as ApplicationFormData))
     // Clear error when user types
     if (errors[name]) {
       setErrors(prev => {

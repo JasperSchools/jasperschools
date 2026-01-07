@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/server'
-import { JobInsert, JobFilters } from '@/types/careers'
+import { JobInsert, JobFilters, JobStatus } from '@/types/careers'
 import { generateSlug } from '@/lib/careers/utils'
 
 // GET all jobs with optional filters
@@ -10,12 +10,18 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     
     // Parse filters
+    const statusParam = searchParams.get('status')
+    const validStatuses: JobStatus[] = ['active', 'expired', 'draft']
+    const parsedStatus = statusParam && validStatuses.includes(statusParam as JobStatus) 
+      ? (statusParam as JobStatus) 
+      : 'active' // Default to active
+
     const filters: JobFilters = {
       search: searchParams.get('search') || undefined,
       category_id: searchParams.get('category_id') || undefined,
       location: searchParams.get('location') || undefined,
       employment_type: searchParams.get('employment_type') as any || undefined,
-      status: searchParams.get('status') as any || 'active',
+      status: parsedStatus,
       featured: searchParams.get('featured') === 'true' ? true : undefined,
       page: parseInt(searchParams.get('page') || '1'),
       limit: parseInt(searchParams.get('limit') || '10'),
@@ -29,10 +35,10 @@ export async function GET(request: NextRequest) {
         category:job_categories(*)
       `)
 
-    // Apply filters
-    if (filters.status && filters.status !== 'all') {
+    // Apply filters - status is always a valid JobStatus now
+    if (filters.status) {
       query = query.eq('status', filters.status)
-    } else if (!filters.status || filters.status === 'active') {
+    } else {
       // Default to active jobs only for public access
       query = query.eq('status', 'active')
     }
@@ -65,7 +71,7 @@ export async function GET(request: NextRequest) {
       .from('jobs')
       .select('*', { count: 'exact', head: true })
       .eq('archived', false)
-      .eq('status', filters.status === 'active' ? 'active' : filters.status || 'active')
+      .eq('status', filters.status || 'active')
 
     // Order and paginate
     query = query
