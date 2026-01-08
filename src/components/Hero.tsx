@@ -222,7 +222,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 3.4, type: "spring", stiffness: 100 }}
               >
                 <div className="text-3xl sm:text-3xl lg:text-4xl font-heading text-school-yellow mb-1">
-                  <AnimatedCounter end={1} duration={1600} suffix="" delay={3600} />
+                  <AnimatedCounter end={1} duration={1600} suffix="" delay={600} />
                 </div>
                 <div className="text-white/90 font-paragraph text-sm sm:text-sm">
                   Year of Educational Excellence
