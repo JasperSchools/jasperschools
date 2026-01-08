@@ -78,11 +78,14 @@ export interface JobApplication {
   created_at: string
   updated_at: string
   job_id: string
-  full_name: string
+  first_name: string
+  last_name: string
   email: string
   phone?: string
   whatsapp?: string
-  cover_letter: string
+  cover_letter?: string // Kept for backward compatibility
+  cover_letter_url?: string
+  cover_letter_filename?: string
   cv_url?: string
   cv_filename?: string
   academic_documents_url?: string[]
@@ -96,11 +99,14 @@ export interface JobApplication {
 
 export interface JobApplicationInsert {
   job_id: string
-  full_name: string
+  first_name: string
+  last_name: string
   email: string
   phone?: string
   whatsapp?: string
-  cover_letter: string
+  cover_letter?: string // Kept for backward compatibility
+  cover_letter_url?: string
+  cover_letter_filename?: string
   cv_url?: string
   cv_filename?: string
   academic_documents_url?: string[]

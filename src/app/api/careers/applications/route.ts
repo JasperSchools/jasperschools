@@ -9,9 +9,9 @@ export async function POST(request: NextRequest) {
     const body: JobApplicationInsert = await request.json()
 
     // Validate required fields
-    if (!body.job_id || !body.full_name || !body.email || !body.cover_letter) {
+    if (!body.job_id || !body.first_name || !body.last_name || !body.email || !body.cover_letter_url) {
       return NextResponse.json(
-        { error: 'Missing required fields: job_id, full_name, email, cover_letter' },
+        { error: 'Missing required fields: job_id, first_name, last_name, email, cover_letter_url' },
         { status: 400 }
       )
     }

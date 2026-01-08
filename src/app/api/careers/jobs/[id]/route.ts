@@ -11,22 +11,38 @@ export async function GET(
     const supabase = await createServiceClient()
     const { id } = await params
 
-    // Try to find by ID first, then by slug
-    let query = supabase
+    // Try by ID first
+    let { data, error } = await supabase
       .from('jobs')
       .select(`
         *,
         category:job_categories(*)
       `)
-      .or(`id.eq.${id},slug.eq.${id}`)
+      .eq('id', id)
       .eq('archived', false)
       .single()
 
-    const { data, error } = await query
+    // If not found by ID, try by slug
+    if (error || !data) {
+      const slugResult = await supabase
+        .from('jobs')
+        .select(`
+          *,
+          category:job_categories(*)
+        `)
+        .eq('slug', id)
+        .eq('archived', false)
+        .single()
 
-    if (error) throw error
+      if (!slugResult.error && slugResult.data) {
+        data = slugResult.data
+        error = null
+      } else {
+        error = slugResult.error || error
+      }
+    }
 
-    if (!data) {
+    if (error || !data) {
       return NextResponse.json(
         { error: 'Job not found' },
         { status: 404 }
@@ -53,7 +69,7 @@ export async function GET(
     const message = error instanceof Error ? error.message : 'Failed to fetch job'
     console.error('Error fetching job:', message)
     
-    if (message.includes('not found')) {
+    if (message.includes('not found') || message.includes('PGRST116')) {
       return NextResponse.json({ error: 'Job not found' }, { status: 404 })
     }
     

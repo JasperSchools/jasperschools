@@ -5,11 +5,13 @@ import { Job } from '@/types/careers'
 import { isValidEmail, isValidPhone } from '@/lib/careers/utils'
 
 interface ApplicationFormData {
-  full_name: string
+  first_name: string
+  last_name: string
   email: string
   phone?: string
   whatsapp?: string
-  cover_letter: string
+  cover_letter_url?: string
+  cover_letter_filename?: string
   cv_url?: string
   cv_filename?: string
   academic_documents_url?: string[]
@@ -22,17 +24,19 @@ interface ApplicationFormProps {
 
 export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps) {
   const [formData, setFormData] = useState<ApplicationFormData>({
-    full_name: '',
+    first_name: '',
+    last_name: '',
     email: '',
     phone: '',
     whatsapp: '',
-    cover_letter: '',
   })
+  const [coverLetterFile, setCoverLetterFile] = useState<File | null>(null)
   const [cvFile, setCvFile] = useState<File | null>(null)
   const [academicFiles, setAcademicFiles] = useState<File[]>([])
   const [uploading, setUploading] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitting, setSubmitting] = useState(false)
+  const coverLetterInputRef = useRef<HTMLInputElement>(null)
   const cvInputRef = useRef<HTMLInputElement>(null)
   const academicInputRef = useRef<HTMLInputElement>(null)
 
@@ -44,6 +48,34 @@ export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps)
       setErrors(prev => {
         const newErrors = { ...prev }
         delete newErrors[name]
+        return newErrors
+      })
+    }
+  }
+
+  const handleCoverLetterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      // Validate file type
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+      const allowedExtensions = ['.pdf', '.doc', '.docx']
+      const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase()
+      
+      if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(fileExtension)) {
+        setErrors(prev => ({ ...prev, cover_letter: 'Invalid file type. Only PDF, DOC, and DOCX files are allowed.' }))
+        return
+      }
+
+      // Validate file size (5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        setErrors(prev => ({ ...prev, cover_letter: 'File too large. Maximum size is 5MB.' }))
+        return
+      }
+
+      setCoverLetterFile(file)
+      setErrors(prev => {
+        const newErrors = { ...prev }
+        delete newErrors.cover_letter
         return newErrors
       })
     }
@@ -123,8 +155,12 @@ export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps)
   const validate = (): boolean => {
     const newErrors: Record<string, string> = {}
 
-    if (!formData.full_name.trim()) {
-      newErrors.full_name = 'Full name is required'
+    if (!formData.first_name.trim()) {
+      newErrors.first_name = 'First name is required'
+    }
+
+    if (!formData.last_name.trim()) {
+      newErrors.last_name = 'Last name is required'
     }
 
     if (!formData.email.trim()) {
@@ -137,10 +173,12 @@ export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps)
       newErrors.phone = 'Invalid phone number format'
     }
 
-    if (!formData.cover_letter.trim()) {
-      newErrors.cover_letter = 'Cover letter is required'
-    } else if (formData.cover_letter.trim().length < 50) {
-      newErrors.cover_letter = 'Cover letter must be at least 50 characters'
+    if (!coverLetterFile) {
+      newErrors.cover_letter = 'Cover letter file is required'
+    }
+
+    if (!cvFile) {
+      newErrors.cv = 'CV/Resume file is required'
     }
 
     setErrors(newErrors)
@@ -158,6 +196,14 @@ export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps)
     setUploading(true)
 
     try {
+      // Upload cover letter file (required)
+      let coverLetterUrl: string | undefined
+      let coverLetterFilename: string | undefined
+      if (coverLetterFile) {
+        coverLetterUrl = await uploadFile(coverLetterFile, job.id)
+        coverLetterFilename = coverLetterFile.name
+      }
+
       // Upload CV if provided
       let cvUrl: string | undefined
       let cvFilename: string | undefined
@@ -177,6 +223,8 @@ export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps)
 
       const submitData = {
         ...formData,
+        cover_letter_url: coverLetterUrl,
+        cover_letter_filename: coverLetterFilename,
         cv_url: cvUrl,
         cv_filename: cvFilename,
         academic_documents_url: academicUrls.length > 0 ? academicUrls : undefined,
@@ -202,22 +250,42 @@ export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps)
         </div>
       )}
 
-      <div>
-        <label htmlFor="full_name" className="block text-sm font-heading-semibold text-gray-900 mb-2">
-          Full Name <span className="text-school-red">*</span>
-        </label>
-        <input
-          type="text"
-          id="full_name"
-          name="full_name"
-          value={formData.full_name}
-          onChange={handleChange}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-school-green focus:border-transparent ${
-            errors.full_name ? 'border-school-red' : 'border-gray-300'
-          }`}
-          placeholder="Enter your full name"
-        />
-        {errors.full_name && <p className="mt-1 text-sm text-school-red">{errors.full_name}</p>}
+      <div className="grid md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="first_name" className="block text-sm font-heading-semibold text-gray-900 mb-2">
+            First Name <span className="text-school-red">*</span>
+          </label>
+          <input
+            type="text"
+            id="first_name"
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-school-green focus:border-transparent ${
+              errors.first_name ? 'border-school-red' : 'border-gray-300'
+            }`}
+            placeholder="Enter your first name"
+          />
+          {errors.first_name && <p className="mt-1 text-sm text-school-red">{errors.first_name}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="last_name" className="block text-sm font-heading-semibold text-gray-900 mb-2">
+            Last Name <span className="text-school-red">*</span>
+          </label>
+          <input
+            type="text"
+            id="last_name"
+            name="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-school-green focus:border-transparent ${
+              errors.last_name ? 'border-school-red' : 'border-gray-300'
+            }`}
+            placeholder="Enter your last name"
+          />
+          {errors.last_name && <p className="mt-1 text-sm text-school-red">{errors.last_name}</p>}
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -277,21 +345,24 @@ export default function ApplicationForm({ job, onSubmit }: ApplicationFormProps)
         <label htmlFor="cover_letter" className="block text-sm font-heading-semibold text-gray-900 mb-2">
           Cover Letter <span className="text-school-red">*</span>
         </label>
-        <textarea
+        <input
+          ref={coverLetterInputRef}
+          type="file"
           id="cover_letter"
           name="cover_letter"
-          value={formData.cover_letter}
-          onChange={handleChange}
-          rows={8}
-          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-school-green focus:border-transparent ${
+          onChange={handleCoverLetterChange}
+          accept=".pdf,.doc,.docx"
+          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-school-green focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-heading-semibold file:bg-school-green/10 file:text-school-green hover:file:bg-school-green/20 ${
             errors.cover_letter ? 'border-school-red' : 'border-gray-300'
           }`}
-          placeholder="Write a cover letter explaining your suitability for this role..."
         />
-        <p className="mt-1 text-sm text-gray-500 font-paragraph">
-          {formData.cover_letter.length} characters (minimum 50)
-        </p>
+        {coverLetterFile && (
+          <p className="mt-2 text-sm text-school-green font-paragraph-medium">
+            Selected: {coverLetterFile.name} ({(coverLetterFile.size / 1024 / 1024).toFixed(2)} MB)
+          </p>
+        )}
         {errors.cover_letter && <p className="mt-1 text-sm text-school-red">{errors.cover_letter}</p>}
+        <p className="mt-1 text-sm text-gray-500 font-paragraph">PDF, DOC, or DOCX (Max 5MB)</p>
       </div>
 
       <div>
