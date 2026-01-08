@@ -176,7 +176,7 @@ export default function Header() {
                 >
                   <button
                     onClick={() => handleDropdownToggle('about')}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
+                    className="text-gray-900 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
                     About Us
                     <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -190,7 +190,7 @@ export default function Header() {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold tracking-wide"
+                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-900 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold tracking-wide"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
@@ -206,7 +206,7 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2 text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
+                    className="text-gray-900 hover:text-school-green px-1 xl:px-3 py-2 text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.name}
                   </a>
@@ -220,7 +220,7 @@ export default function Header() {
                 >
                   <button
                     onClick={() => handleDropdownToggle('whereWeWork')}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
+                    className="text-gray-900 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
                     Where We Work
                     <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -234,7 +234,7 @@ export default function Header() {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold tracking-wide"
+                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-900 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold tracking-wide"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {'icon' in item && renderDropdownIcon(item.icon as string)}
@@ -254,7 +254,7 @@ export default function Header() {
                 >
                   <button
                     onClick={() => handleDropdownToggle('getInvolved')}
-                    className="text-gray-700 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
+                    className="text-gray-900 hover:text-school-green px-1 xl:px-3 py-2  text-sm xl:text-base font-heading-bold uppercase tracking-wide transition-colors duration-200 whitespace-nowrap flex items-center"
                   >
                     Get Involved
                     <svg className="ml-1 h-3 w-3 xl:h-4 xl:w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -268,7 +268,7 @@ export default function Header() {
                           <a
                             key={item.name}
                             href={item.href}
-                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-700 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold tracking-wide"
+                            className="flex items-center px-4 py-3 text-sm xl:text-base text-gray-900 hover:bg-school-green hover:text-white transition-all duration-200 border-b border-gray-50 last:border-b-0 font-heading-bold tracking-wide"
                             onClick={() => setActiveDropdown(null)}
                           >
                             {item.name}
@@ -293,7 +293,7 @@ export default function Header() {
             <div className="lg:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-school-green p-2 transition-all duration-300 rounded-full border-2 border-gray-200 hover:border-school-green flex items-center justify-center w-10 h-10"
+                className="text-gray-900 hover:text-school-green p-2 transition-all duration-300 rounded-full border-2 border-gray-200 hover:border-school-green flex items-center justify-center w-10 h-10"
                 aria-label="Toggle menu"
               >
                 <svg className="h-5 w-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -361,7 +361,7 @@ export default function Header() {
                   <div style={{ animation: `slideInUp 0.4s ease-out 0s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('about')}
-                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
+                      className="text-gray-900 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       About Us
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -376,7 +376,7 @@ export default function Header() {
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${(index + 1) * 0.1}s both` }}>
                       <a
                         href={item.href}
-                        className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 uppercase tracking-wide"
+                        className="text-gray-900 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 uppercase tracking-wide"
                         onClick={closeMenu}
                       >
                         {item.name}
@@ -389,7 +389,7 @@ export default function Header() {
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.5s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('whereWeWork')}
-                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
+                      className="text-gray-900 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       Where We Work
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -403,7 +403,7 @@ export default function Header() {
                   <div style={{ animation: `slideInUp 0.4s ease-out 0.6s both` }}>
                     <button
                       onClick={() => navigateToSubMenu('getInvolved')}
-                      className="text-gray-700 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
+                      className="text-gray-900 hover:text-school-green hover:bg-gray-50 block px-4 py-3 text-base font-heading-bold transition-all duration-200 w-full text-left flex items-center justify-between uppercase tracking-wide"
                     >
                       Get Involved
                       <svg className="h-5 w-5 text-school-green transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -449,7 +449,7 @@ export default function Header() {
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
-                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-heading-bold transition-all duration-200 tracking-wide"
+                        className="flex items-center text-gray-900 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-heading-bold transition-all duration-200 tracking-wide"
                         onClick={closeMenu}
                       >
                         {'icon' in item && renderDropdownIcon(item.icon as string)}
@@ -484,7 +484,7 @@ export default function Header() {
                     <div key={item.name} style={{ animation: `slideInUp 0.4s ease-out ${index * 0.08}s both` }}>
                       <a
                         href={item.href}
-                        className="flex items-center text-gray-700 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-heading-bold transition-all duration-200 tracking-wide"
+                        className="flex items-center text-gray-900 hover:text-school-green hover:bg-gray-50 py-3 px-4 text-base font-heading-bold transition-all duration-200 tracking-wide"
                         onClick={closeMenu}
                       >
                         {'icon' in item && renderDropdownIcon(item.icon as string)}
