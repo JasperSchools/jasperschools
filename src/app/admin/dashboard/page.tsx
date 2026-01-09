@@ -339,20 +339,37 @@ export default function AdminDashboard() {
       {/* Header */}
       <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-heading-bold text-school-blue">
-              Sponsor a Child - Admin Dashboard
-            </h1>
-            <div className="flex gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h1 className="text-2xl font-heading-bold text-school-blue">
+                Sponsor a Child - Admin
+              </h1>
+              <p className="text-xs text-gray-500 font-paragraph">
+                Manage children profiles and sponsorship details.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 sm:gap-3 items-center">
+              <Link
+                href="/admin/overview"
+                className="px-3 py-1.5 rounded-lg text-sm font-heading-medium text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                Admin Overview
+              </Link>
+              <Link
+                href="/admin/applications"
+                className="px-3 py-1.5 rounded-lg text-sm font-heading-medium text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                Job Applications
+              </Link>
               <Link
                 href="/"
-                className="px-4 py-2 text-school-green hover:text-green-700 font-heading-medium"
+                className="px-3 py-1.5 text-sm text-school-green hover:text-green-700 font-heading-medium"
               >
                 View Site
               </Link>
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 font-heading-medium transition-colors"
+                className="px-3 py-1.5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 text-sm font-heading-medium transition-colors"
               >
                 Logout
               </button>

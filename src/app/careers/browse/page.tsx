@@ -167,41 +167,42 @@ function BrowseJobsContent() {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
                 <h1 className="text-2xl sm:text-3xl font-heading-bold text-gray-900">All Jobs</h1>
                 {totalJobs > 0 && (
-                  <div className="bg-school-yellow text-gray-900 px-4 py-2 rounded-lg font-heading-semibold">
-                    {totalJobs} {totalJobs === 1 ? 'job' : 'jobs'} found
+                  <div className="inline-flex items-center rounded-full bg-gray-100 text-gray-800 px-4 py-1.5 text-sm font-paragraph">
+                    <span className="font-heading-semibold mr-1">{totalJobs}</span>
+                    <span>{totalJobs === 1 ? 'job' : 'jobs'} found</span>
                   </div>
                 )}
               </div>
 
               {/* Tab Navigation */}
-              <div className="flex gap-2 border-b border-gray-200">
+              <div className="flex gap-4 border-b border-gray-200">
                 <button
                   onClick={() => handleTabChange('all')}
-                  className={`px-4 py-2 font-heading-semibold transition-colors ${
+                  className={`px-1 pb-3 text-sm sm:text-base font-heading-medium border-b-2 ${
                     activeTab === 'all'
-                      ? 'bg-school-green text-white rounded-t-lg'
-                      : 'text-gray-600 hover:text-school-green'
-                  }`}
+                      ? 'border-school-green text-gray-900'
+                      : 'border-transparent text-gray-500 hover:text-gray-900'
+                  } transition-colors`}
                 >
                   All Jobs {stats && `(${stats.total})`}
                 </button>
                 <button
                   onClick={() => handleTabChange('active')}
-                  className={`px-4 py-2 font-heading-semibold transition-colors ${
+                  className={`px-1 pb-3 text-sm sm:text-base font-heading-medium border-b-2 ${
                     activeTab === 'active'
-                      ? 'bg-school-blue text-white rounded-t-lg'
-                      : 'text-gray-600 hover:text-school-blue'
-                  }`}
+                      ? 'border-school-green text-gray-900'
+                      : 'border-transparent text-gray-500 hover:text-gray-900'
+                  } transition-colors`}
                 >
                   Active {stats && `(${stats.active})`}
                 </button>
                 <button
                   onClick={() => handleTabChange('expired')}
-                  className={`px-4 py-2 font-heading-semibold transition-colors ${
+                  className={`px-1 pb-3 text-sm sm:text-base font-heading-medium border-b-2 ${
                     activeTab === 'expired'
-                      ? 'bg-school-red text-white rounded-t-lg'
-                      : 'text-gray-600 hover:text-school-red'
-                  }`}
+                      ? 'border-school-green text-gray-900'
+                      : 'border-transparent text-gray-500 hover:text-gray-900'
+                  } transition-colors`}
                 >
                   Expired {stats && `(${stats.expired})`}
                 </button>
@@ -251,7 +252,7 @@ function BrowseJobsContent() {
                       <button
                         onClick={() => handlePageChange(currentPage + 1)}
                         disabled={currentPage === totalPages}
-                        className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors bg-school-yellow text-gray-900 font-heading-semibold"
+                        className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors text-gray-800 font-heading-medium"
                       >
                         Next &gt;
                       </button>

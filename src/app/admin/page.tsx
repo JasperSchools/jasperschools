@@ -30,9 +30,9 @@ export default function AdminLogin() {
       })
 
       if (res.ok) {
-        // Password is correct, store it and redirect
+        // Password is correct, store it and redirect to admin overview
         sessionStorage.setItem('adminPassword', password)
-        router.push('/admin/dashboard')
+        router.push('/admin/overview')
       } else {
         // Password is incorrect
         setError('Invalid password. Please try again.')
