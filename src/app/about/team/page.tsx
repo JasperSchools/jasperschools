@@ -7,23 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
-
-// Helper function to create slug from name
-function createSlug(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
-}
-
-interface TeamMember {
-  name: string
-  role: string
-  education?: string
-  profile?: string
-  achievements?: string[]
-  imageSrc?: string
-  email?: string
-  linkedin?: string
-  twitter?: string
-}
+import { teamMembers, createSlug, TeamMember } from '@/data/teamMembers'
 
 export default function TeamPage() {
   const boardMembers: TeamMember[] = [
@@ -37,7 +21,8 @@ His path was transformed when the Collaborative Schools Network arrived at his p
 
 Now, as a board member, Arjun brings both analytical rigor and lived experience. His work as a Tax Associate gives him the skills to evaluate strategy, manage finances responsibly, and help with fundraising. But what drives his work is straightforward: he knows what transformative education looks like because he has lived it, and he is committed to ensuring that same opportunity is available to every child at Jasper.`,
       achievements: [],
-      imageSrc: '/images/leadership/arjun_headshot.jpeg'
+      imageSrc: '/images/leadership/arjun_headshot.jpeg',
+      slug: 'arjun-b-k'
     },
     {
       name: 'Erick Mulindi',
@@ -49,7 +34,8 @@ After graduating from secondary school, Erick earned a place at the African Lead
 
 As a board member of Jasper, Erick brings strategic thinking, a deep understanding of community-centered development, and lived experience with the very barriers Jasper exists to address. His background in software development allows him to support Jasper's long-term systems planning and digital innovation in education, while his personal story keeps the school grounded in its mission. He knows what it means to grow up in a place where education can change everything. Erick's commitment is clear: to build schools where every child can see a future they did not know was possible, and to ensure that Jasper becomes a place where hope is not just imagined, but realized.`,
       achievements: [],
-      imageSrc: '/images/leadership/erick_headshot.JPG'
+      imageSrc: '/images/leadership/erick_headshot.JPG',
+      slug: 'erick-mulindi'
     },
     {
       name: 'Fineas Jackson',
@@ -61,7 +47,8 @@ Fineas studied Computer Science at Skidmore College in New York, where he spent 
 
 As a board member at Jasper, Fineas brings a combination of technical expertise, financial discipline, and long-term thinking. His background in software and quantitative finance allows him to support Jasper's strategic planning, data systems, and economic model—from how the school raises money to how it stewards dollars. More importantly, he is driven by a simple belief: capital and technology should expand, not limit, who gets a real chance. At Jasper, his commitment is to help build an institution that is financially resilient, relentlessly student-centered, and capable of proving that when you design a school around those who are most often excluded, everyone's future gets bigger.`,
       achievements: [],
-      imageSrc: '/images/leadership/fineas_headshot.jpg'
+      imageSrc: '/images/leadership/fineas_headshot.jpg',
+      slug: 'fineas-jackson'
     },
     {
       name: 'Eric Ayamba',
@@ -79,7 +66,8 @@ Guided by the belief that "no child should be denied education because of gender
         'Co-founder, Jasper Schools Uganda',
         'Edupreneur Growth Lab Cohort 2021'
       ],
-      imageSrc: '/images/leadership/ayamba.jpeg'
+      imageSrc: '/images/leadership/ayamba.jpeg',
+      slug: 'eric-ayamba'
     }
   ]
 
@@ -100,7 +88,8 @@ Guided by the belief that "no child should be denied education because of gender
         'Co-founder, Jasper Schools Uganda',
         'Edupreneur Growth Lab Cohort 2021'
       ],
-      imageSrc: '/images/leadership/ayamba.jpeg'
+      imageSrc: '/images/leadership/ayamba.jpeg',
+      slug: 'eric-ayamba'
     },
     {
       name: 'Milton Edodi',
@@ -114,7 +103,8 @@ Through his leadership at Jasper Primary School, Milton has played a pivotal rol
         'Volunteer with WFP, World Vision, and Save the Children',
         'Co-founder, Jasper Primary School'
       ],
-      imageSrc: '/images/leadership/milton.jpg'
+      imageSrc: '/images/leadership/milton.jpg',
+      slug: 'milton-edodi'
     },
     {
       name: 'Byaruhanga Erisha',
@@ -132,7 +122,8 @@ Through his academic journey and community work, Erisha continues to seek innova
         '2+ years of refugee community engagement',
         'Co-founder, Jasper Primary School'
       ],
-      imageSrc: '/images/leadership/erisha.jpeg'
+      imageSrc: '/images/leadership/erisha.jpeg',
+      slug: 'byaruhanga-erisha'
     },
     {
       name: 'Erick Mulindi',
@@ -144,17 +135,30 @@ After graduating from secondary school, Erick earned a place at the African Lead
 
 As a board member of Jasper, Erick brings strategic thinking, a deep understanding of community-centered development, and lived experience with the very barriers Jasper exists to address. His background in software development allows him to support Jasper's long-term systems planning and digital innovation in education, while his personal story keeps the school grounded in its mission. He knows what it means to grow up in a place where education can change everything. Erick's commitment is clear: to build schools where every child can see a future they did not know was possible, and to ensure that Jasper becomes a place where hope is not just imagined, but realized.`,
       achievements: [],
-      imageSrc: '/images/leadership/erick_headshot.JPG'
+      imageSrc: '/images/leadership/erick_headshot.JPG',
+      slug: 'erick-mulindi'
     },
     {
       name: 'Sunday Amon',
       role: 'Operations Manager',
-      education: '',
-      profile: '',
-      achievements: [],
-      imageSrc: '/images/leadership/sunday.jpg'
+      education: 'Makerere University - Bachelor\'s degree in Adult and Community Education (in progress)',
+      profile: `Sunday Amon was born in 2003 in western Uganda's Kikuube District, where access to quality education and digital resources was limited. His determination pushed him to excel from Nyarugongo Primary Public School then through Kitara secondary public school, where he completed Senior Six in 2023 with a focus on HED-Math where he served as Head Prefect.
+
+His path shifted when he joined Makerere University under the MasterCard Foundation Scholars Program, gaining exposure to community leadership, social innovation, and digital tools for development. At Makerere, he was elected President of the Scholars Association and later became a Baobab Ambassador and ACN Peer Coach, roles that strengthened his skills in organizing teams, coordinating programs, and supporting students from marginalized backgrounds.
+
+As Operations Manager at Jasper, Sunday brings hands on experience in community education, leadership, and project coordination. He is currently pursuing a Bachelor's degree in Adult and Community Education, training in planning, management, ICTs, and participatory development skills he applies to streamline systems, support school leaders, and keep programs aligned with Jasper's mission of inclusive, high quality education.`,
+      achievements: [
+        'Head Prefect, Kitara Secondary School',
+        'MasterCard Foundation Scholar',
+        'President, Scholars Association at Makerere University',
+        'Baobab Ambassador',
+        'ACN Peer Coach'
+      ],
+      imageSrc: '/images/leadership/sunday.jpg',
+      slug: 'sunday-amon'
     }
   ]
+
 
 
   // Positioning for same-level row arrangement (Board Members only)
@@ -258,7 +262,9 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                   className="object-cover"
                   style={{ objectPosition: 'center center' }}
                   priority={index === 0}
-                  unoptimized
+                  loading={index === 0 ? "eager" : "lazy"}
+                  quality={85}
+                  sizes="50vw"
                 />
               </motion.div>
             ))}
@@ -363,7 +369,9 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                       alt={member.name}
                       fill
                       className="object-cover"
-                      unoptimized
+                      loading="lazy"
+                      quality={85}
+                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
@@ -393,7 +401,7 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   {sectionTitle === 'Staff' ? content : (
-                    <Link href={`/about/team/${createSlug(member.name)}`}>
+                    <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
                       {content}
                     </Link>
                   )}
@@ -422,7 +430,7 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <Link href={`/about/team/${createSlug(member.name)}`}>
+                    <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
                       <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-4 border-school-green">
                         {member.imageSrc ? (
                           <Image
@@ -430,7 +438,9 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                             alt={member.name}
                             fill
                             className="object-cover"
-                            unoptimized
+                            loading="lazy"
+                            quality={85}
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                           />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
@@ -500,10 +510,10 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                       }}
                       initial={{ opacity: 0, scale: 0.8, y: 20 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
                     >
                       {sectionTitle === 'Staff' ? content : (
-                        <Link href={`/about/team/${createSlug(member.name)}`}>
+                        <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
                           {content}
                         </Link>
                       )}
@@ -523,7 +533,9 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                             alt={member.name}
                             fill
                             className="object-cover"
-                            unoptimized
+                            loading="lazy"
+                            quality={85}
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                           />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
@@ -554,10 +566,10 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                         }}
                         initial={{ opacity: 0, scale: 0.8, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: (index + 5) * 0.1 }}
+                        transition={{ duration: 0.3, delay: (index + 5) * 0.05 }}
                       >
                         {sectionTitle === 'Staff' ? content : (
-                          <Link href={`/about/team/${createSlug(member.name)}`}>
+                          <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
                             {content}
                           </Link>
                         )}
@@ -592,9 +604,9 @@ As a board member of Jasper, Erick brings strategic thinking, a deep understandi
                       }}
                       initial={{ opacity: 0, scale: 0.8, y: 20 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
                     >
-                      <Link href={`/about/team/${createSlug(member.name)}`}>
+                      <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
                         <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-2 md:border-[3px] lg:border-4 border-school-green">
                           {member.imageSrc ? (
                             <Image
