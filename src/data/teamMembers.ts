@@ -6,6 +6,9 @@ export interface TeamMember {
   achievements?: string[]
   imageSrc?: string
   slug: string
+  email?: string
+  linkedin?: string
+  twitter?: string
 }
 
 // Helper function to create slug from name
