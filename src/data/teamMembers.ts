@@ -20,7 +20,7 @@ export function createSlug(name: string): string {
 export const teamMembers: TeamMember[] = [
   {
     name: 'Eric Ayamba',
-    role: 'Board Member, Executive Director',
+    role: 'Executive Director',
     education: 'United States International University-Africa - Bachelor of Science in Finance with concentration in Economics',
     profile: `Eric Ayamba is an educator and visionary leader passionate about harnessing education as a catalyst for transforming rural communities into self-reliant and sustainable societies. He holds a Bachelor of Science in Finance with a concentration in Economics from United States International University-Africa and has cultivated expertise in economics, econometrics, and rural education transformation. In 2022, Eric expanded his global perspective by studying Economics for Developing Countries at Sciences Po, France, where he deepened his understanding of policy formulation for low-income and developing nations.
 
@@ -86,7 +86,7 @@ Now, as a board member, Arjun brings both analytical rigor and lived experience.
   },
   {
     name: 'Erick Mulindi',
-    role: 'Board Member, Strategy and Innovation Director',
+    role: 'Board Chair',
     education: 'Skidmore College - Computer Science',
     profile: `Erick grew up a refugee in Kyangwali refugee settlement in Western Uganda, where access to education was never guaranteed, and where most dreams were shaped by survival rather than opportunity. Growing up in a community of displacement taught him resilience, responsibility, and the belief that education is not just a path upward; it is a lifeline.
 

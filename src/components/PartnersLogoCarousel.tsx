@@ -6,6 +6,7 @@ const partners = [
   { name: 'ACN', logo: '/images/partners/acn-logo.svg', alt: 'ACN Logo' },
   { name: 'African Leadership Academy', logo: '/images/partners/ala_logo.png', alt: 'African Leadership Academy Logo' },
   { name: 'SOLFA', logo: '/images/partners/solfa_logo.png', alt: 'SOLFA Logo' },
+  { name: 'ALforEducation', logo: '/images/partners/alfored.jpeg', alt: 'ALforEducation Logo' },
 ]
 
 export default function PartnersLogoCarousel() {

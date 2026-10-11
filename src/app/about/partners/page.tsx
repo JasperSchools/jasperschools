@@ -24,6 +24,11 @@ const partners = [
     logo: '/images/partners/acn-logo.svg',
     alt: 'ACN Logo',
   },
+  {
+    name: 'ALforEducation',
+    logo: '/images/partners/alfored.jpeg',
+    alt: 'ALforEducation Logo',
+  },
 ]
 
 export default function PartnersPage() {
@@ -83,8 +88,8 @@ export default function PartnersPage() {
 
       {/* Partners Logos */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {partners.map((partner, index) => (
               <motion.div
                 key={partner.name}

@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { teamMembers, createSlug, TeamMember } from '@/data/teamMembers'
 import { FEATURES } from '@/config/features'
@@ -49,25 +49,6 @@ As a board member at Jasper, Fineas brings a combination of technical expertise,
       achievements: [],
       imageSrc: '/images/leadership/fineas_headshot.jpg',
       slug: 'fineas-jackson'
-    },
-    {
-      name: 'Eric Ayamba',
-      role: 'Board Member',
-      education: 'United States International University-Africa - Bachelor of Science in Finance with concentration in Economics',
-      profile: `Eric Ayamba is an educator and visionary leader passionate about harnessing education as a catalyst for transforming rural communities into self-reliant and sustainable societies. He holds a Bachelor of Science in Finance with a concentration in Economics from United States International University-Africa and has cultivated expertise in economics, econometrics, and rural education transformation. In 2022, Eric expanded his global perspective by studying Economics for Developing Countries at Sciences Po, France, where he deepened his understanding of policy formulation for low-income and developing nations.
-
-As the Co-Founder of Jasper Schools Uganda, established in 2025, Eric leads the organization's flagship institution, Jasper Primary School in Nyairongo, Uganda, where he has strengthened community partnerships, implemented efficient administrative systems, and enhanced the school's community profile. Under his leadership, Jasper has built partnerships with leading institutions such as the African Leadership Academy, advancing its mission to eliminate barriers to quality education in rural areas.
-
-He was awarded the Little Bets Challenge by ALforEducation during the 2024 gathering in Johannesburg, South Africa, which supported his establishment of community hubs promoting gender equity in education, leading to increased school enrolment for young girls in Nyairongo. He was also part of the inaugural cohort of the Edupreneur Growth Lab in 2021 and the Cohort 4 Apprenticeship Program under ALforEducation, experiences that built his understanding of Africa's state of education and strengthened his commitment to designing education solutions across the continent and the Global South at large.
-
-Guided by the belief that "no child should be denied education because of gender or location," Eric continues to champion transformative educational models that empower communities and inspire sustainable development.`,
-      achievements: [
-        'Awarded Little Bets Challenge by ALforEducation',
-        'Co-founder, Jasper Schools Uganda',
-        'Edupreneur Growth Lab Cohort 2021'
-      ],
-      imageSrc: '/images/leadership/ayamba.jpeg',
-      slug: 'eric-ayamba'
     }
   ]
 
@@ -126,19 +107,6 @@ Through his academic journey and community work, Erisha continues to seek innova
       slug: 'byaruhanga-erisha'
     },
     {
-      name: 'Erick Mulindi',
-      role: 'Strategy and Innovation Director',
-      education: 'Skidmore College - Computer Science',
-      profile: `Erick grew up a refugee in Kyangwali refugee settlement in Western Uganda, where access to education was never guaranteed, and where most dreams were shaped by survival rather than opportunity. Growing up in a community of displacement taught him resilience, responsibility, and the belief that education is not just a path upward; it is a lifeline.
-
-After graduating from secondary school, Erick earned a place at the African Leadership Academy (ALA) in South Africa, a school committed to developing the next generation of African Leaders. At ALA, Erick learned what education could become when it is rooted in purpose and empowerment. He later attended Skidmore College in New York, where he graduated with a degree in Computer Science. Erick is currently a software engineer at Amazon, working for Amazon Web Services (AWS). Each step of his journey reinforced a simple truth: talent is universal, but opportunity is not.
-
-As a board member of Jasper, Erick brings strategic thinking, a deep understanding of community-centered development, and lived experience with the very barriers Jasper exists to address. His background in software development allows him to support Jasper's long-term systems planning and digital innovation in education, while his personal story keeps the school grounded in its mission. He knows what it means to grow up in a place where education can change everything. Erick's commitment is clear: to build schools where every child can see a future they did not know was possible, and to ensure that Jasper becomes a place where hope is not just imagined, but realized.`,
-      achievements: [],
-      imageSrc: '/images/leadership/erick_headshot.JPG',
-      slug: 'erick-mulindi'
-    },
-    {
       name: 'Sunday Amon',
       role: 'Operations Manager',
       education: 'Makerere University - Bachelor\'s degree in Adult and Community Education (in progress)',
@@ -161,34 +129,7 @@ As Operations Manager at Jasper, Sunday brings hands on experience in community 
 
 
 
-  // Positioning for same-level row arrangement (Board Members only)
-  const getTrophyPosition = (index: number) => {
-    // All four at the same level in a row, centered horizontally
-    const positions = [
-      { top: '20%', left: '-27%', rotate: -2, zIndex: 2, scale: 1.0 }, // Left (Arjun)
-      { top: '20%', left: '-9%', rotate: 0, zIndex: 3, scale: 1.0 },   // Left-center (Erick)
-      { top: '20%', left: '9%', rotate: 0, zIndex: 3, scale: 1.0 },    // Right-center (Fineas)
-      { top: '20%', left: '27%', rotate: 2, zIndex: 2, scale: 1.0 }   // Right (Eric)
-    ]
-    return positions[index] || positions[0]
-  }
 
-  // Positioning for overlapping collage effect - inspired by natural, organic layout
-  const getPosition = (index: number, total: number) => {
-    // Natural, spread-out arrangement with subtle corner overlaps
-    // Varying sizes and positions for organic feel - ensuring all faces are visible
-    const positions = [
-      { top: '0%', left: '-35%', rotate: -5, zIndex: 1, scale: 1.0 },
-      { top: '40%', left: '-30%', rotate: 4, zIndex: 2, scale: 0.95 },
-      { top: '10%', left: '-10%', rotate: -3, zIndex: 3, scale: 1.05 },
-      { top: '5%', left: '18%', rotate: 6, zIndex: 4, scale: 0.9 },
-      { top: '45%', left: '8%', rotate: -4, zIndex: 5, scale: 1.0 },
-      { top: '3%', left: '35%', rotate: -6, zIndex: 6, scale: 1.1 },
-      { top: '42%', left: '33%', rotate: 5, zIndex: 7, scale: 0.95 },
-      { top: '48%', left: '-12%', rotate: 3, zIndex: 8, scale: 1.0 }
-    ]
-    return positions[index % positions.length]
-  }
 
   // Team Hero Section Component with Slideshow
   function TeamHeroSection() {
@@ -274,372 +215,73 @@ As Operations Manager at Jasper, Sunday brings hands on experience in community 
     )
   }
 
-  // Helper function to render social media icons (responsive)
-  const renderSocialIcons = (member: TeamMember) => (
-    <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 md:top-2.5 md:right-2.5 flex gap-1 sm:gap-1.5 z-10">
-      {member.email ? (
-        <a
-          href={`mailto:${member.email}`}
-          onClick={(e) => e.stopPropagation()}
-          className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm touch-manipulation"
-          aria-label="Email"
-        >
-          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        </a>
-      ) : (
-        <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/60 rounded-full flex items-center justify-center">
-          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        </div>
-      )}
-      {member.linkedin ? (
-        <a
-          href={member.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm touch-manipulation"
-          aria-label="LinkedIn"
-        >
-          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.94v5.666H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.369-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433c-1.144 0-2.067-.925-2.067-2.067C3.27 4.225 4.193 3.3 5.337 3.3c1.142 0 2.066.925 2.066 2.066 0 1.142-.924 2.067-2.066 2.067zM7.119 20.452H3.554V9h3.565v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.225.792 24 1.771 24h20.451C23.2 24 24 23.225 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-          </svg>
-        </a>
-      ) : (
-        <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/60 rounded-full flex items-center justify-center">
-          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.94v5.666H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.369-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433c-1.144 0-2.067-.925-2.067-2.067C3.27 4.225 4.193 3.3 5.337 3.3c1.142 0 2.066.925 2.066 2.066 0 1.142-.924 2.067-2.066 2.067zM7.119 20.452H3.554V9h3.565v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.225.792 24 1.771 24h20.451C23.2 24 24 23.225 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-          </svg>
-        </div>
-      )}
-      {member.twitter ? (
-        <a
-          href={member.twitter}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm touch-manipulation"
-          aria-label="X (Twitter)"
-        >
-          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M18.244 2.25h3.308l-7.227 8.26L22.5 21.75h-6.406l-5.02-6.545-5.743 6.545H1.922l7.73-8.81L1.5 2.25h6.594l4.533 5.988 5.617-5.988zm-1.16 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </a>
-      ) : (
-        <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-white/60 rounded-full flex items-center justify-center">
-          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M18.244 2.25h3.308l-7.227 8.26L22.5 21.75h-6.406l-5.02-6.545-5.743 6.545H1.922l7.73-8.81L1.5 2.25h6.594l4.533 5.988 5.617-5.988zm-1.16 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </div>
-      )}
-    </div>
-  )
+  // Render team section with clean grid, cards with names/roles below pictures, and no icons
+  const renderTeamSection = (members: TeamMember[], sectionTitle: string) => {
+    const isBoard = sectionTitle === 'Board Members'
 
-  const renderCollage = (members: TeamMember[], sectionTitle: string) => {
     return (
-      <section className={`py-6 sm:py-8 md:py-10 lg:py-12 xl:py-14 ${sectionTitle === 'Board Members' ? 'bg-white' : sectionTitle === 'Leadership and Management Team' ? 'bg-white' : 'bg-gray-50'}`}>
+      <section className={`py-12 sm:py-16 lg:py-20 ${isBoard ? 'bg-white' : 'bg-gray-50 border-t border-gray-100'}`}>
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           {/* Title and Description */}
-          <div className="max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 lg:mb-12 text-center px-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading text-school-blue mb-4 sm:mb-5 md:mb-6">
+          <div className="max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 text-center px-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-school-blue mb-4 sm:mb-6">
               {sectionTitle}
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed font-paragraph">
-              {sectionTitle === 'Board Members' 
-                ? "Our team brings a wealth of experience from leading educational institutions, international organizations, and community development initiatives, driving transformative education in rural Uganda."
-                : sectionTitle === 'Leadership and Management Team'
-                ? "Our leadership team brings together diverse expertise and shared commitment to advancing Jasper's mission of providing quality education in rural Uganda."
-                : "Our dedicated staff bring passion, expertise, and commitment to creating an inspiring learning environment for every student at Jasper Primary School."}
+              {isBoard 
+                ? "Our board brings a wealth of experience from leading educational institutions, international organizations, and community development initiatives, guiding transformative education in rural Uganda."
+                : "Our leadership team brings together diverse expertise and shared commitment to advancing Jasper's mission of providing quality education in rural Uganda."}
             </p>
           </div>
-        </div>
 
-        {/* Mobile and Tablet Stack Layout */}
-        <div className="lg:hidden w-full px-4 sm:px-6 md:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-2xl sm:max-w-4xl mx-auto">
-            {members.map((member, index) => {
-              const content = (
-                <div className="relative aspect-[3/4] w-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-2 md:border-[3px] lg:border-4 border-school-green">
-                  {member.imageSrc ? (
-                    <Image
-                      src={member.imageSrc}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                      loading="lazy"
-                      quality={85}
-                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
-                      <span className="text-2xl sm:text-4xl font-bold text-white">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                  )}
-                  {/* Social Media Icons - Top Right */}
-                  {renderSocialIcons(member)}
-                  {/* Overlay with name - always visible on mobile */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
-                    <div className="w-full p-2 sm:p-3 md:p-4">
-                      <h3 className="text-white font-heading-bold text-xs sm:text-sm md:text-base mb-0.5">{member.name}</h3>
-                      <p className="text-white/90 font-paragraph text-[10px] sm:text-xs md:text-sm line-clamp-1">{member.role}</p>
-                    </div>
-                  </div>
-                </div>
-              )
-              
-              return (
-                <motion.div
-                  key={member.name}
-                  className={`relative ${sectionTitle === 'Staff' ? 'group' : 'cursor-pointer group'}`}
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+          {/* Clean Profile Cards Grid */}
+          <div className={`grid grid-cols-1 sm:grid-cols-2 ${isBoard ? 'lg:grid-cols-3 max-w-5xl' : 'lg:grid-cols-4 max-w-7xl'} gap-6 sm:gap-8 lg:gap-10 mx-auto`}>
+            {members.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="h-full"
+              >
+                <Link 
+                  href={`/about/team/${createSlug(member.name)}`} 
+                  className="group block bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col"
                 >
-                  {sectionTitle === 'Staff' ? content : (
-                    <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
-                      {content}
-                    </Link>
-                  )}
-                </motion.div>
-              )
-            })}
+                  {/* Picture (without icons and without overlay text) */}
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-100">
+                    {member.imageSrc ? (
+                      <Image
+                        src={member.imageSrc}
+                        alt={member.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
+                        <span className="text-3xl sm:text-4xl font-bold text-white">
+                          {member.name.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Name and Role below the picture */}
+                  <div className="p-5 text-center flex-grow flex flex-col justify-center">
+                    <h3 className="text-lg sm:text-xl font-heading-bold text-gray-900 mb-1.5 group-hover:text-school-green transition-colors">
+                      {member.name}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-600 font-paragraph">
+                      {member.role}
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
-
-        {/* Desktop Layout - Flexbox for Board Members, Collage for others */}
-        {sectionTitle === 'Board Members' && members.length === 4 ? (
-          <div className="hidden lg:flex w-full items-center justify-center py-6 lg:py-8 xl:py-10 overflow-x-auto px-4">
-            <div className="flex items-center justify-center gap-6 lg:gap-8 xl:gap-10 2xl:gap-12">
-              {members.map((member, index) => {
-                const position = getTrophyPosition(index)
-                return (
-                  <motion.div
-                    key={member.name}
-                    className="relative cursor-pointer group flex-shrink-0"
-                    style={{
-                      width: 'clamp(200px, 22vw, 280px)',
-                      height: 'clamp(280px, 30vw, 380px)',
-                      transform: `rotate(${position.rotate}deg)`,
-                    }}
-                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
-                      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-4 border-school-green">
-                        {member.imageSrc ? (
-                          <Image
-                            src={member.imageSrc}
-                            alt={member.name}
-                            fill
-                            className="object-cover"
-                            loading="lazy"
-                            quality={85}
-                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                          />
-                        ) : (
-                          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
-                            <span className="text-2xl sm:text-4xl font-bold text-white">
-                              {member.name.split(' ').map(n => n[0]).join('')}
-                            </span>
-                          </div>
-                        )}
-                        {/* Social Media Icons - Top Right */}
-                        {renderSocialIcons(member)}
-                        {/* Overlay with name - always visible */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
-                          <div className="w-full p-2 sm:p-3 lg:p-4">
-                            <h3 className="text-white font-heading-bold text-xs sm:text-sm lg:text-base mb-0.5">{member.name}</h3>
-                            <p className="text-white/90 font-paragraph text-[10px] sm:text-xs lg:text-sm line-clamp-1">{member.role}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </div>
-        ) : sectionTitle === 'Staff' || sectionTitle === 'Leadership and Management Team' ? (
-          <div className="hidden lg:block w-full py-6 lg:py-8 xl:py-10 overflow-x-auto px-4">
-            <div className="flex flex-col items-center gap-6 lg:gap-8 xl:gap-10">
-              {/* First row - 5 items */}
-              <div className="flex items-center justify-center gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
-                {members.slice(0, 5).map((member, index) => {
-                  const content = (
-                    <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-2 md:border-[3px] lg:border-4 border-school-green">
-                      {member.imageSrc ? (
-                        <Image
-                          src={member.imageSrc}
-                          alt={member.name}
-                          fill
-                          className="object-cover"
-                          unoptimized
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
-                          <span className="text-2xl sm:text-4xl font-bold text-white">
-                            {member.name.split(' ').map(n => n[0]).join('')}
-                          </span>
-                        </div>
-                      )}
-                      {/* Social Media Icons - Top Right */}
-                      {renderSocialIcons(member)}
-                      {/* Overlay with name - always visible */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
-                        <div className="w-full p-2 sm:p-3 lg:p-4">
-                          <h3 className="text-white font-heading-bold text-xs sm:text-sm lg:text-base mb-0.5">{member.name}</h3>
-                          <p className="text-white/90 font-paragraph text-[10px] sm:text-xs lg:text-sm line-clamp-1">{member.role}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                  
-                  return (
-                    <motion.div
-                      key={member.name}
-                      className={`relative ${sectionTitle === 'Staff' ? 'group' : 'cursor-pointer group'}`}
-                      style={{
-                        width: 'clamp(160px, 18vw, 240px)',
-                        height: 'clamp(220px, 25vw, 320px)',
-                      }}
-                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 }}
-                    >
-                      {sectionTitle === 'Staff' ? content : (
-                        <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
-                          {content}
-                        </Link>
-                      )}
-                    </motion.div>
-                  )
-                })}
-              </div>
-              {/* Second row - remaining items (4 items) */}
-              {members.length > 5 && (
-                <div className="flex items-center justify-center gap-4 lg:gap-6 xl:gap-8 2xl:gap-10">
-                  {members.slice(5).map((member, index) => {
-                    const content = (
-                      <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-2 md:border-[3px] lg:border-4 border-school-green">
-                        {member.imageSrc ? (
-                          <Image
-                            src={member.imageSrc}
-                            alt={member.name}
-                            fill
-                            className="object-cover"
-                            loading="lazy"
-                            quality={85}
-                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                          />
-                        ) : (
-                          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
-                            <span className="text-2xl sm:text-4xl font-bold text-white">
-                              {member.name.split(' ').map(n => n[0]).join('')}
-                            </span>
-                          </div>
-                        )}
-                        {/* Social Media Icons - Top Right */}
-                        {renderSocialIcons(member)}
-                        {/* Overlay with name - always visible */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
-                          <div className="w-full p-2 sm:p-3 lg:p-4">
-                            <h3 className="text-white font-heading-bold text-xs sm:text-sm lg:text-base mb-0.5">{member.name}</h3>
-                            <p className="text-white/90 font-paragraph text-[10px] sm:text-xs lg:text-sm line-clamp-1">{member.role}</p>
-                          </div>
-                        </div>
-                      </div>
-                    )
-                    
-                    return (
-                      <motion.div
-                        key={member.name}
-                        className={`relative ${sectionTitle === 'Staff' ? 'group' : 'cursor-pointer group'}`}
-                        style={{
-                          width: 'clamp(160px, 18vw, 240px)',
-                          height: 'clamp(220px, 25vw, 320px)',
-                        }}
-                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: (index + 5) * 0.05 }}
-                      >
-                        {sectionTitle === 'Staff' ? content : (
-                          <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
-                            {content}
-                          </Link>
-                        )}
-                      </motion.div>
-                    )
-                  })}
-                </div>
-              )}
-            </div>
-          </div>
-        ) : (
-          <div className="hidden lg:flex w-full items-center justify-center overflow-hidden py-6 lg:py-8 xl:py-10 px-4">
-            <div className="relative flex items-center justify-center" style={{ minHeight: '500px', width: '100%', maxWidth: '1400px' }}>
-                {members.map((member, index) => {
-                  const position = getPosition(index, members.length)
-                  // Convert percentage-based left positioning to centered flexbox with overlap
-                  // Parse the left percentage (e.g., '-35%' -> -35)
-                  const leftPercent = position.left ? parseFloat(position.left) : 0
-                  // Convert to viewport-based offset for better centering - responsive scaling
-                  const leftOffset = `${leftPercent * 0.5}vw` // Scale down spread for better centering
-                  return (
-                    <motion.div
-                      key={member.name}
-                      className="absolute cursor-pointer group"
-                      style={{
-                        left: `calc(50% + ${leftOffset})`,
-                        top: position.top,
-                        width: `clamp(150px, ${20 * (position.scale || 1)}vw, ${260 * (position.scale || 1)}px)`,
-                        height: `clamp(200px, ${26 * (position.scale || 1)}vw, ${340 * (position.scale || 1)}px)`,
-                        transform: `translateX(-50%) rotate(${position.rotate}deg) scale(${position.scale || 1})`,
-                        zIndex: position.zIndex || (members.length - index)
-                      }}
-                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 }}
-                    >
-                      <Link href={`/about/team/${createSlug(member.name)}`} prefetch={true}>
-                        <div className="relative w-full h-full rounded-lg overflow-hidden shadow-xl transition-all duration-300 group-hover:shadow-2xl border-2 md:border-[3px] lg:border-4 border-school-green">
-                          {member.imageSrc ? (
-                            <Image
-                              src={member.imageSrc}
-                              alt={member.name}
-                              fill
-                              className="object-cover"
-                              unoptimized
-                            />
-                          ) : (
-                            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-school-green to-school-blue">
-                              <span className="text-2xl sm:text-4xl font-bold text-white">
-                                {member.name.split(' ').map(n => n[0]).join('')}
-                              </span>
-                            </div>
-                          )}
-                          {/* Social Media Icons - Top Right */}
-                          {renderSocialIcons(member)}
-                          {/* Overlay with name - always visible */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end">
-                            <div className="w-full p-2 sm:p-3 lg:p-4">
-                              <h3 className="text-white font-heading-bold text-xs sm:text-sm lg:text-base mb-0.5">{member.name}</h3>
-                              <p className="text-white/90 font-paragraph text-[10px] sm:text-xs lg:text-sm line-clamp-1">{member.role}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    </motion.div>
-                  )
-                })}
-            </div>
-          </div>
-        )}
       </section>
     )
   }
@@ -651,11 +293,11 @@ As Operations Manager at Jasper, Sunday brings hands on experience in community 
       {/* Hero Section with Two-Panel Layout */}
       <TeamHeroSection />
 
-      {/* Board Members Section with Collage */}
-      {renderCollage(boardMembers, 'Board Members')}
+      {/* Board Members Section */}
+      {renderTeamSection(boardMembers, 'Board Members')}
 
       {/* Leadership and Management Team Section */}
-      {renderCollage(leadershipTeam, 'Leadership and Management Team')}
+      {renderTeamSection(leadershipTeam, 'Leadership and Management Team')}
 
       {/* Call to Action */}
       <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-white">
