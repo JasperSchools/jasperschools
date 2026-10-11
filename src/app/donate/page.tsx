@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect, ReactElement } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -166,7 +165,7 @@ function ImpactStats() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
 
   const stats = [
-    { value: 600, suffix: '+', label: 'Students Supported', duration: 2500 },
+    { value: 500, suffix: '+', label: 'Students Supported', duration: 2500 },
     { value: 200, suffix: '', label: 'Students Sponsored', duration: 2200 },
     { value: 15, suffix: '+', label: 'Teachers Employed', duration: 2000 },
     { value: 98, suffix: '%', label: 'Funds to Programs', duration: 2200 },
@@ -731,7 +730,6 @@ export default function DonatePage() {
         </div>
       </section>
 
-      <PartnersLogoCarousel />
       <Footer />
     </main>
   )

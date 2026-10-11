@@ -2,7 +2,6 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import Link from 'next/link'
 import { teamMembers, createSlug } from '@/data/teamMembers'
@@ -27,7 +26,6 @@ export default function TeamMemberClient({ slug }: { slug: string }) {
             </Link>
           </div>
         </section>
-        <PartnersLogoCarousel />
         <Footer />
       </main>
     )

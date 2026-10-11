@@ -2,7 +2,6 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Link from 'next/link'
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
@@ -118,7 +117,6 @@ export default function VolunteerPage() {
         </div>
       </section>
 
-      <PartnersLogoCarousel />
       <Footer />
     </main>
   )

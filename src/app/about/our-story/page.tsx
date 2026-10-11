@@ -2,7 +2,6 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState, useRef } from 'react'
@@ -148,7 +147,7 @@ function ImpactSection() {
                 transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 100 }}
               >
                 <div className="text-4xl sm:text-5xl lg:text-6xl font-heading text-[#0D4723] mb-2">
-                  <AnimatedCounter end={600} duration={2500} suffix="+" inView={isInView} />
+                  <AnimatedCounter end={500} duration={2500} suffix="+" inView={isInView} />
                 </div>
                 <div className="text-gray-600 font-heading-medium">Students Impacted</div>
               </motion.div>
@@ -483,7 +482,6 @@ export default function OurStory() {
         </div>
       </article>
 
-      <PartnersLogoCarousel />
       <Footer />
     </main>
   )

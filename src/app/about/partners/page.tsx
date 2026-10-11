@@ -2,7 +2,6 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
@@ -12,35 +11,18 @@ import { FEATURES } from '@/config/features'
 const partners = [
   {
     name: 'African Leadership Academy',
-    acronym: 'ALA',
     logo: '/images/partners/ala_logo.png',
-    description: 'African Leadership Academy is a pan-African institution that develops the next generation of African leaders. Through our partnership, we collaborate on educational initiatives, leadership development programs, and student exchange opportunities that empower young leaders across the continent.',
-    focus: ['Leadership Development', 'Educational Excellence', 'Pan-African Collaboration'],
-    website: 'https://www.africanleadershipacademy.org',
-  },
-  {
-    name: 'United States International University',
-    acronym: 'USIU',
-    logo: '/images/partners/usiu_logo.png',
-    description: 'USIU-Africa is a premier institution of higher learning in East Africa. Our partnership focuses on teacher training, curriculum development, and research initiatives that enhance educational quality and access in rural communities.',
-    focus: ['Teacher Training', 'Curriculum Development', 'Research & Innovation'],
-    website: 'https://www.usiu.ac.ke',
+    alt: 'African Leadership Academy Logo',
   },
   {
     name: 'SOLFA',
-    acronym: 'SOLFA',
     logo: '/images/partners/solfa_logo.png',
-    description: 'SOLFA partners with us to provide comprehensive support for educational programs, community development, and capacity building initiatives. Together, we work to create sustainable educational solutions that transform communities.',
-    focus: ['Community Development', 'Capacity Building', 'Sustainable Solutions'],
-    website: '#',
+    alt: 'SOLFA Logo',
   },
   {
     name: 'ACN',
-    acronym: 'ACN',
     logo: '/images/partners/acn-logo.svg',
-    description: 'ACN collaborates with Jasper Primary School to advance educational opportunities for children in underserved communities. Our partnership focuses on resource mobilization, program support, and advocacy for quality education.',
-    focus: ['Resource Mobilization', 'Program Support', 'Educational Advocacy'],
-    website: '#',
+    alt: 'ACN Logo',
   },
 ]
 
@@ -99,12 +81,29 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Partners Grid */}
+      {/* Partners Logos */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {partners.map((partner, index) => (
-              <PartnerCard key={partner.name} partner={partner} index={index} />
+              <motion.div
+                key={partner.name}
+                className="bg-white rounded-2xl border border-gray-200 p-8 sm:p-10 shadow-sm flex items-center justify-center min-h-[160px] sm:min-h-[180px]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <div className="relative w-48 sm:w-56 h-24 sm:h-28">
+                  <Image
+                    src={partner.logo}
+                    alt={partner.alt}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 192px, 224px"
+                  />
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -216,83 +215,8 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      <PartnersLogoCarousel />
       <Footer />
     </main>
-  )
-}
-
-function PartnerCard({ partner, index }: { partner: typeof partners[0]; index: number }) {
-  const cardRef = useRef(null)
-  const isInView = useInView(cardRef, { once: true, amount: 0.2 })
-
-  return (
-    <motion.div
-      ref={cardRef}
-      className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 lg:p-10 shadow-sm hover:shadow-md transition-shadow duration-300"
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-    >
-      {/* Logo */}
-      <div className="mb-6">
-        <div className="relative w-32 h-24 sm:w-40 sm:h-28">
-          <Image
-            src={partner.logo}
-            alt={`${partner.name} logo`}
-            fill
-            className="object-contain"
-            sizes="(max-width: 640px) 128px, 160px"
-          />
-        </div>
-      </div>
-
-      {/* Content */}
-      <h3 className="text-xl sm:text-2xl font-heading-semibold text-gray-900 mb-3">
-        {partner.name}
-      </h3>
-      {partner.acronym !== partner.name && (
-        <p className="text-sm text-gray-500 font-paragraph-medium mb-4 uppercase tracking-wide">
-          {partner.acronym}
-        </p>
-      )}
-      
-      <p className="text-sm sm:text-base text-gray-600 font-paragraph leading-relaxed mb-6">
-        {partner.description}
-      </p>
-
-      {/* Focus Areas */}
-      <div className="mb-6">
-        <h4 className="text-sm font-heading-semibold text-gray-900 mb-3 uppercase tracking-wide">
-          Focus Areas
-        </h4>
-        <div className="flex flex-wrap gap-2">
-          {partner.focus.map((area) => (
-            <span
-              key={area}
-              className="inline-block px-3 py-1 bg-school-green/10 text-school-green text-xs font-paragraph-medium rounded-full"
-            >
-              {area}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Website Link */}
-      {partner.website !== '#' && (
-        <a
-          href={partner.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center text-school-green font-heading-semibold hover:text-school-green/80 transition-colors text-sm sm:text-base"
-        >
-          Visit Website
-          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </a>
-      )}
-    </motion.div>
   )
 }
 

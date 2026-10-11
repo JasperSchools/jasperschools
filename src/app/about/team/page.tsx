@@ -2,7 +2,6 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -722,7 +721,6 @@ As Operations Manager at Jasper, Sunday brings hands on experience in community 
         </div>
       </section>
 
-      <PartnersLogoCarousel />
       <Footer />
     </main>
   )

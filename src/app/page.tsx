@@ -5,9 +5,8 @@ import Image from 'next/image'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Footer from '@/components/Footer'
-import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
-import { useState, useEffect, useRef } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { FEATURES } from '@/config/features'
 
 // About Section Component with Modern Animations
@@ -251,222 +250,7 @@ function ProgramsSection() {
   )
 }
 
-// Stories of Impact Section
-function StoriesOfImpact() {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
-  const [currentStoryIndex, setCurrentStoryIndex] = useState(0)
-  const [isAutoPlayPaused, setIsAutoPlayPaused] = useState(false)
 
-  const stories = [
-    {
-      quote: "Thanks to Jasper Schools, my daughter can now read and write. She dreams of becoming a teacher and helping other children like her. This has been invaluable for her, and we can tell she's been inspired by the quality education she's receiving.",
-      author: "Grace M.",
-      role: "Parent",
-      image: "/images/jps2.jpeg"
-    },
-    {
-      quote: "The meals program changed everything. Now students can focus on learning instead of hunger. Attendance has improved significantly, and we see more engagement in the classroom.",
-      author: "Teacher John",
-      role: "Primary Teacher",
-      image: "/images/jps3.jpeg"
-    },
-    {
-      quote: "I never thought I'd go to school. Now I'm top of my class. Thank you to everyone who donated and believed in us! When we speak with her, we hear how much more confident and at ease she's become.",
-      author: "Samuel, 12",
-      role: "Student",
-      image: "/images/jps4.jpeg"
-    },
-    {
-      quote: "The teacher training program has transformed how I teach. I now use innovative methods that make learning fun and effective. It's been great having access to quality professional development.",
-      author: "Teacher Mary",
-      role: "ECD Teacher",
-      image: "/images/jps5.jpg"
-    },
-    {
-      quote: "Through the community education program, I learned to read and write. Now I can help my children with their homework. This has empowered our entire family.",
-      author: "Sarah K.",
-      role: "Community Member",
-      image: "/images/jps8.jpeg"
-    },
-    {
-      quote: "Jasper Primary School gave me hope. I want to become a doctor and help my community. Education is the key to our future, and I'm grateful for this opportunity.",
-      author: "Esther, 10",
-      role: "Student",
-      image: "/images/jps9.jpg"
-    }
-  ]
-
-  const currentStory = stories[currentStoryIndex]
-
-  const nextStory = () => {
-    setCurrentStoryIndex((prev) => (prev + 1) % stories.length)
-    // Pause auto-play when user manually navigates
-    setIsAutoPlayPaused(true)
-    // Resume auto-play after 5 seconds
-    setTimeout(() => {
-      setIsAutoPlayPaused(false)
-    }, 5000) 
-  }
-
-  const prevStory = () => {
-    setCurrentStoryIndex((prev) => (prev - 1 + stories.length) % stories.length)
-    // Pause auto-play when user manually navigates
-    setIsAutoPlayPaused(true)
-    // Resume auto-play after 5 seconds
-    setTimeout(() => {
-      setIsAutoPlayPaused(false)
-    }, 5000)
-  }
-
-  // Auto-advance carousel
-  useEffect(() => {
-    if (!isInView || isAutoPlayPaused) return
-
-    const interval = setInterval(() => {
-      setCurrentStoryIndex((prev) => (prev + 1) % stories.length)
-    }, 5000) // Change story every 5 seconds
-
-    return () => clearInterval(interval)
-  }, [isInView, isAutoPlayPaused, stories.length])
-
-  return (
-    <section id="impact" ref={sectionRef} className="py-16 sm:py-20 lg:py-24 bg-gray-50">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4">
-            Stories of Impact
-          </h2>
-          <p className="text-sm sm:text-base text-gray-600 font-paragraph max-w-2xl mx-auto">
-            Real stories from students, parents, teachers, and community members whose lives have been transformed
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-6xl mx-auto">
-          {/* Image Section - Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full order-2 lg:order-1"
-          >
-            <div className="bg-white overflow-hidden border border-gray-200 rounded-tl-[2rem] sm:rounded-tl-[3rem] lg:rounded-tl-[4rem]">
-              <div className="relative w-full aspect-[4/3] bg-gray-100">
-                <Image
-                  src="/images/jps8.jpeg"
-                  alt="Jasper Primary School impact"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Testimonial Carousel Section - Right */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-full lg:w-[120%] order-1 lg:order-2 flex flex-col gap-4 sm:gap-6"
-          >
-            {/* Review Content Card with Curved Border */}
-            <div className="bg-white rounded-br-[2rem] sm:rounded-br-[3rem] lg:rounded-br-[4rem] p-5 sm:p-6 lg:p-8 xl:p-10 border border-gray-200 flex flex-col">
-              {/* Testimonial Content */}
-              <div className="flex-grow relative overflow-hidden min-h-[200px] sm:min-h-[250px]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentStoryIndex}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -30 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <blockquote className="text-sm sm:text-base lg:text-lg text-gray-600 font-paragraph leading-relaxed mb-4 sm:mb-6">
-                      &ldquo;{currentStory.quote}&rdquo;
-                    </blockquote>
-                    
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full bg-school-green/10 flex items-center justify-center flex-shrink-0">
-                        <span className="text-base sm:text-lg lg:text-xl font-heading-semibold text-school-green">
-                          {currentStory.author.split(' ').map(n => n[0]).join('').toUpperCase()}
-                        </span>
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="font-heading-semibold text-gray-900 text-sm sm:text-base lg:text-lg truncate">
-                          {currentStory.author}
-                        </div>
-                        <div className="text-xs sm:text-sm text-gray-600 font-paragraph">
-                          {currentStory.role}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-
-            {/* Review Summary with Navigation - Separate from review card */}
-            <div className="pt-4 sm:pt-6 border-t border-gray-200 relative">
-              {/* Progress Indicator - Green dash on the border line */}
-              <motion.div
-                className="absolute top-[-1px] left-0 h-[2px] w-10 sm:w-12 bg-school-green"
-                initial={{ left: 0 }}
-                animate={{ left: `${(currentStoryIndex / (stories.length - 1)) * 100}%` }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                style={{ transform: 'translateX(-50%)' }}
-              />
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
-                  <div className="flex items-center gap-2">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <span className="text-xs sm:text-sm lg:text-base font-heading-semibold text-gray-900 whitespace-nowrap">
-                      Read our {stories.length} impact stories
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-0.5 sm:gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-2 self-end sm:self-auto">
-                  <button
-                    onClick={prevStory}
-                    className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-school-green hover:bg-school-green text-school-green hover:text-white flex items-center justify-center transition-all duration-300 touch-manipulation"
-                    aria-label="Previous story"
-                  >
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={nextStory}
-                    className="group w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-school-green hover:bg-school-green text-school-green hover:text-white flex items-center justify-center transition-all duration-300 touch-manipulation"
-                    aria-label="Next story"
-                  >
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 // Get Involved Section Component
 function GetInvolvedSection() {
@@ -584,13 +368,9 @@ export default function Home() {
       {/* Programs Section */}
       <ProgramsSection />
 
-      {/* Stories of Impact Section */}
-      <StoriesOfImpact />
-
       {/* Get Involved Section */}
       <GetInvolvedSection />
 
-      <PartnersLogoCarousel />
       <Footer />
     </main>
   )

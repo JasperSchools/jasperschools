@@ -2,7 +2,6 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -51,7 +50,6 @@ export default function VisionMissionPage() {
       {/* Our Values Section */}
       <ValuesSection />
 
-      <PartnersLogoCarousel />
       <Footer />
     </main>
   )
@@ -176,7 +174,7 @@ function ValuesSection() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gray-900 mb-4">
-            The Principles That Guide Us
+            Our Core Values
           </h2>
           <p className="text-gray-600 text-sm sm:text-base font-paragraph max-w-2xl mx-auto">
             The principles that guide how we learn, work, and serve.

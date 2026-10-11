@@ -95,7 +95,7 @@ function Slideshow() {
             quality={100}
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/30 to-black/55" />
         </div>
       ))}
     </div>
@@ -190,7 +190,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom Stats Section - Positioned absolutely at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 bg-black/85 backdrop-blur-sm border-t border-white/10">
+      <div className="absolute bottom-0 left-0 right-0 z-30 bg-black/60 border-t border-white/10">
         <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-center">
             {/* Left Column - Description */}
@@ -214,7 +214,7 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 3.0, type: "spring", stiffness: 100 }}
               >
                 <div className="text-3xl sm:text-3xl lg:text-4xl font-heading text-school-yellow mb-1">
-                  <AnimatedCounter end={600} duration={2000} suffix="+" delay={3200} />
+                  <AnimatedCounter end={500} duration={2000} suffix="+" delay={3200} />
                 </div>
                 <div className="text-white/90 font-paragraph text-sm sm:text-sm">
                   Students Impacted

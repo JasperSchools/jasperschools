@@ -2,7 +2,6 @@
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
@@ -49,7 +48,6 @@ export default function WhereWeWorkPage() {
       {/* Contact Section */}
       <ContactSection />
 
-      <PartnersLogoCarousel />
       <Footer />
     </main>
   )
@@ -73,17 +71,17 @@ function LocationSection() {
           {/* Left Side - Image */}
           <div className="lg:col-span-6 order-2 lg:order-1">
             <motion.div 
-              className="relative w-full h-80 sm:h-96 lg:h-[500px] rounded-tr-[3rem] overflow-hidden"
+              className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden bg-gray-50 shadow-sm"
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               <Image
-                src="/images/teampage/team_a.jpg"
+                src="/images/jps10.jpg"
                 alt="Jasper Primary School in Nyairongo village"
                 fill
-                className="object-cover"
-                style={{ objectPosition: 'center center' }}
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </motion.div>
           </div>
