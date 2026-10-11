@@ -7,6 +7,9 @@ import Footer from '@/components/Footer'
 import JobFilter from '@/components/careers/JobFilter'
 import JobCard from '@/components/careers/JobCard'
 import { Job, JobCategory, JobFilters, JobStats as Stats } from '@/types/careers'
+import Link from 'next/link'
+import { FEATURES } from '@/config/features'
+import { sampleJobs, sampleJobCategories } from '@/data/careers'
 
 function BrowseJobsContent() {
   const searchParams = useSearchParams()
@@ -61,13 +64,74 @@ function BrowseJobsContent() {
     fetchJobs()
   }, [filters.search, filters.category_id, filters.location, filters.employment_type, filters.status, filters.page]) // Only specific filter fields
 
+  if (!FEATURES.ENABLE_CAREERS) {
+    return (
+      <main className="min-h-screen bg-gray-50">
+        <Header />
+        <section className="py-24 sm:py-32 bg-white text-center px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-4">
+              Careers Portal Offline
+            </h1>
+            <p className="text-gray-600 font-paragraph mb-8 leading-relaxed">
+              We do not currently have active job openings posted.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {FEATURES.ENABLE_VOLUNTEER ? (
+                <Link
+                  href="/volunteer"
+                  className="bg-school-green hover:bg-green-700 text-white font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Volunteer With Us
+                </Link>
+              ) : (
+                <Link
+                  href="/about/our-story"
+                  className="bg-school-green hover:bg-green-700 text-white font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Our Story
+                </Link>
+              )}
+              {FEATURES.ENABLE_CONTACT ? (
+                <Link
+                  href="/#contact"
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Contact Us
+                </Link>
+              ) : (
+                <Link
+                  href="/programs"
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Our Programs
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </main>
+    )
+  }
+
   const fetchStats = async () => {
+    if (!FEATURES.ENABLE_DATABASE) {
+      setStats({
+        total: sampleJobs.length,
+        active: sampleJobs.filter(j => j.status === 'active').length,
+        expired: 0,
+        categories: sampleJobCategories.length,
+        locations: 1,
+      })
+      return
+    }
+
     try {
       const res = await fetch('/api/careers/stats')
       if (res.ok) {
         const data = await res.json()
         setStats(data)
-        // Removed setActiveTab() call that was causing infinite loop
       }
     } catch (error) {
       console.error('Error fetching stats:', error)
@@ -75,6 +139,11 @@ function BrowseJobsContent() {
   }
 
   const fetchCategories = async () => {
+    if (!FEATURES.ENABLE_DATABASE) {
+      setCategories(sampleJobCategories)
+      return
+    }
+
     try {
       const res = await fetch('/api/careers/categories')
       if (res.ok) {
@@ -87,6 +156,11 @@ function BrowseJobsContent() {
   }
 
   const fetchLocations = async () => {
+    if (!FEATURES.ENABLE_DATABASE) {
+      setLocations(['Nyairongo, Uganda'])
+      return
+    }
+
     try {
       const res = await fetch('/api/careers/jobs?limit=100')
       if (res.ok) {
@@ -103,6 +177,22 @@ function BrowseJobsContent() {
 
   const fetchJobs = useCallback(async () => {
     setLoading(true)
+    if (!FEATURES.ENABLE_DATABASE) {
+      let filtered = [...sampleJobs]
+      if (filters.status) {
+        filtered = filtered.filter(j => j.status === filters.status)
+      }
+      if (filters.search) {
+        const q = filters.search.toLowerCase()
+        filtered = filtered.filter(j => j.title.toLowerCase().includes(q) || j.description.toLowerCase().includes(q))
+      }
+      setJobs(filtered)
+      setTotalPages(1)
+      setTotalJobs(filtered.length)
+      setLoading(false)
+      return
+    }
+
     try {
       const queryParams = new URLSearchParams()
       if (filters.search) queryParams.append('search', filters.search)

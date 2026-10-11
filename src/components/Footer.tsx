@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { FEATURES } from '@/config/features'
 
 export default function Footer() {
   return (
@@ -71,7 +72,9 @@ export default function Footer() {
               <li><Link href="/about/our-story" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">About Us</Link></li>
               <li><Link href="/about/vision-mission" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Vision & Mission</Link></li>
               <li><Link href="/about/team" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Our Team</Link></li>
-              <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Contact Us</a></li>
+              {FEATURES.ENABLE_CONTACT && (
+                <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Contact Us</a></li>
+              )}
               <li><a href="#get-involved" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Get Involved</a></li>
             </ul>
           </div>
@@ -91,9 +94,15 @@ export default function Footer() {
           <div className="lg:col-span-1 text-center lg:text-left">
             <h4 className="text-lg font-heading-semibold text-white mb-4">Support</h4>
             <ul className="space-y-3">
-              <li><Link href="/donate" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Donate</Link></li>
-              <li><Link href="/volunteer" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Volunteer</Link></li>
-              <li><Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Sponsor a Child</Link></li>
+              {FEATURES.ENABLE_DONATIONS && (
+                <li><Link href="/donate" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Donate</Link></li>
+              )}
+              {FEATURES.ENABLE_VOLUNTEER && (
+                <li><Link href="/volunteer" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Volunteer</Link></li>
+              )}
+              {FEATURES.ENABLE_CHILDREN_SPONSORSHIP && (
+                <li><Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Sponsor a Child</Link></li>
+              )}
               <li><Link href="/about/partners" className="text-gray-300 hover:text-white transition-colors text-sm font-paragraph">Partnerships</Link></li>
             </ul>
           </div>
@@ -142,14 +151,37 @@ export default function Footer() {
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 lg:flex-shrink-0 justify-center lg:justify-end">
-                  <Link href="/donate" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
-                    <span>Support Our Mission</span>
-                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                  <Link href="/sponsor" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
-                    <span>Sponsor a Student</span>
+                  {FEATURES.ENABLE_DONATIONS ? (
+                    <Link href="/donate" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
+                      <span>Support Our Mission</span>
+                      <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </Link>
+                  ) : FEATURES.ENABLE_CHILDREN_SPONSORSHIP ? (
+                    <Link href="/sponsor" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
+                      <span>Sponsor a Student</span>
+                      <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </Link>
+                  ) : FEATURES.ENABLE_VOLUNTEER ? (
+                    <Link href="/volunteer" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
+                      <span>Volunteer With Us</span>
+                      <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </Link>
+                  ) : FEATURES.ENABLE_CONTACT ? (
+                    <Link href="/#contact" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
+                      <span>Contact Us</span>
+                      <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </Link>
+                  ) : null}
+                  <Link href="/about/our-story" className="group inline-flex items-center justify-center px-6 py-3 rounded-full border border-white text-white hover:shadow-lg hover:shadow-white/25 font-paragraph transition-all duration-300 text-base">
+                    <span>Learn About Us</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>

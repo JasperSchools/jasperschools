@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { FEATURES } from '@/config/features'
 
 // Animated Counter Component for Hero (starts immediately with delay)
 function AnimatedCounter({ end, duration = 2000, suffix = '', delay = 0 }: { end: number, duration?: number, suffix?: string, delay?: number }) {
@@ -155,17 +156,34 @@ export default function Hero() {
               
               {/* Call-to-Action Button */}
               <motion.a
-                href="/sponsor"
+                href={
+                  FEATURES.ENABLE_CHILDREN_SPONSORSHIP
+                    ? '/sponsor'
+                    : FEATURES.ENABLE_DONATIONS
+                    ? '/donate'
+                    : FEATURES.ENABLE_VOLUNTEER
+                    ? '/volunteer'
+                    : FEATURES.ENABLE_CONTACT
+                    ? '/#contact'
+                    : '/about/our-story'
+                }
                 className="group inline-flex items-center justify-center bg-school-yellow hover:bg-yellow-500 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 z-50 relative mb-8 sm:mb-0"
                 style={{ padding: '16px 32px' }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 2.5, ease: [0.22, 1, 0.36, 1] }}
               >
-                <span>Sponsor a Student</span>
-                {/* <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg> */}
+                <span>
+                  {FEATURES.ENABLE_CHILDREN_SPONSORSHIP
+                    ? 'Sponsor a Student'
+                    : FEATURES.ENABLE_DONATIONS
+                    ? 'Donate Now'
+                    : FEATURES.ENABLE_VOLUNTEER
+                    ? 'Volunteer With Us'
+                    : FEATURES.ENABLE_CONTACT
+                    ? 'Contact Us'
+                    : 'Discover Our Story'}
+                </span>
               </motion.a>
           </div>
         </div>

@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { FEATURES } from '@/config/features'
 
 // Animated Counter Component with Scroll Trigger
 function AnimatedCounter({ end, duration = 2000, suffix = '', inView }: { end: number, duration?: number, suffix?: string, inView: boolean }) {
@@ -428,13 +429,47 @@ export default function OurStory() {
           {/* Call to Action */}
           <div className="text-center mt-16">
             <div className="inline-flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/donate"
-                className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
-                style={{ padding: '16px 32px' }}
-              >
-                Support Our Mission
-              </Link>
+              {FEATURES.ENABLE_DONATIONS ? (
+                <Link
+                  href="/donate"
+                  className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                  style={{ padding: '16px 32px' }}
+                >
+                  Support Our Mission
+                </Link>
+              ) : FEATURES.ENABLE_CHILDREN_SPONSORSHIP ? (
+                <Link
+                  href="/sponsor"
+                  className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                  style={{ padding: '16px 32px' }}
+                >
+                  Sponsor a Student
+                </Link>
+              ) : FEATURES.ENABLE_VOLUNTEER ? (
+                <Link
+                  href="/volunteer"
+                  className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                  style={{ padding: '16px 32px' }}
+                >
+                  Volunteer With Us
+                </Link>
+              ) : FEATURES.ENABLE_CONTACT ? (
+                <Link
+                  href="/#contact"
+                  className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                  style={{ padding: '16px 32px' }}
+                >
+                  Contact Us
+                </Link>
+              ) : (
+                <Link
+                  href="/programs"
+                  className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                  style={{ padding: '16px 32px' }}
+                >
+                  Our Programs
+                </Link>
+              )}
               <Link
                 href="/about/vision-mission"
                 className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"

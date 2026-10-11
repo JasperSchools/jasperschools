@@ -6,6 +6,8 @@ import Footer from '@/components/Footer'
 import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
+import { FEATURES } from '@/config/features'
 
 // Donation purpose options
 const DONATION_PURPOSES = [
@@ -630,6 +632,62 @@ function ImpactStories() {
 
 // Main Donate Page Component
 export default function DonatePage() {
+  if (!FEATURES.ENABLE_DONATIONS) {
+    return (
+      <main className="min-h-screen bg-white">
+        <Header />
+        <section className="py-24 sm:py-32 bg-gray-50 text-center px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto">
+            <div className="w-16 h-16 bg-school-green/10 text-school-green rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-4">
+              Donations Unavailable
+            </h1>
+            <p className="text-gray-600 font-paragraph mb-8 leading-relaxed">
+              Online donations are currently disabled. If you would like to partner with us or support Jasper Primary School directly, please contact our team or explore volunteer opportunities.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {FEATURES.ENABLE_CONTACT ? (
+                <Link
+                  href="/#contact"
+                  className="bg-school-green hover:bg-green-700 text-white font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Contact Our Team
+                </Link>
+              ) : (
+                <Link
+                  href="/about/our-story"
+                  className="bg-school-green hover:bg-green-700 text-white font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Our Story
+                </Link>
+              )}
+              {FEATURES.ENABLE_VOLUNTEER ? (
+                <Link
+                  href="/volunteer"
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Volunteer With Us
+                </Link>
+              ) : (
+                <Link
+                  href="/programs"
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Our Programs
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </main>
+    )
+  }
+
   return (
     <main className="min-h-screen bg-white">
       <Header />

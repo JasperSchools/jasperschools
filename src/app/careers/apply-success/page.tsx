@@ -6,6 +6,8 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Job } from '@/types/careers'
+import { FEATURES } from '@/config/features'
+import { sampleJobs } from '@/data/careers'
 
 function ApplySuccessContent() {
   const searchParams = useSearchParams()
@@ -19,14 +21,25 @@ function ApplySuccessContent() {
   }, [jobId])
 
   const fetchJob = async () => {
+    if (!FEATURES.ENABLE_DATABASE) {
+      const found = sampleJobs.find(j => j.id === jobId || j.slug === jobId)
+      if (found) setJob(found)
+      return
+    }
+
     try {
       const res = await fetch(`/api/careers/jobs/${jobId}`)
       if (res.ok) {
         const data = await res.json()
         setJob(data)
+      } else {
+        const found = sampleJobs.find(j => j.id === jobId || j.slug === jobId)
+        if (found) setJob(found)
       }
     } catch (error) {
       console.error('Error fetching job:', error)
+      const found = sampleJobs.find(j => j.id === jobId || j.slug === jobId)
+      if (found) setJob(found)
     }
   }
 

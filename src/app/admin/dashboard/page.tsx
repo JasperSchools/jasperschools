@@ -5,8 +5,30 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Child, ChildInsert } from '@/types/database.types'
+import { FEATURES } from '@/config/features'
 
 export default function AdminDashboard() {
+  const router = useRouter()
+
+  if (!FEATURES.ENABLE_ADMIN) {
+    return (
+      <main className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+          <h1 className="text-2xl font-heading-bold text-gray-900 mb-2">Admin Portal Disabled</h1>
+          <p className="text-gray-600 font-paragraph text-sm mb-6">
+            The children and sponsorship management dashboard is currently disabled.
+          </p>
+          <Link
+            href="/"
+            className="inline-block bg-school-green hover:bg-green-700 text-white font-heading-semibold px-6 py-2.5 rounded-full transition-colors text-sm"
+          >
+            Return to Homepage
+          </Link>
+        </div>
+      </main>
+    )
+  }
+
   const [children, setChildren] = useState<Child[]>([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
@@ -39,7 +61,6 @@ export default function AdminDashboard() {
     title: '',
     message: '',
   })
-  const router = useRouter()
 
   const showModal = (type: 'success' | 'error' | 'confirm', title: string, message: string, onConfirm?: () => void) => {
     setModal({ isOpen: true, type, title, message, onConfirm })

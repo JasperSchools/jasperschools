@@ -7,6 +7,8 @@ import Footer from '@/components/Footer'
 import JobCard from '@/components/careers/JobCard'
 import { Job } from '@/types/careers'
 import { motion } from 'framer-motion'
+import { FEATURES } from '@/config/features'
+import { sampleJobs } from '@/data/careers'
 
 export default function CareersPage() {
   const [featuredJobs, setFeaturedJobs] = useState<Job[]>([])
@@ -17,17 +19,82 @@ export default function CareersPage() {
   }, [])
 
   const fetchFeaturedJobs = async () => {
+    if (!FEATURES.ENABLE_DATABASE) {
+      setFeaturedJobs(sampleJobs.filter(j => j.featured && j.status === 'active'))
+      setLoading(false)
+      return
+    }
+
     try {
       const res = await fetch('/api/careers/jobs?featured=true&limit=3&status=active')
       if (res.ok) {
         const data = await res.json()
         setFeaturedJobs(data.jobs || [])
+      } else {
+        setFeaturedJobs(sampleJobs.filter(j => j.featured && j.status === 'active'))
       }
     } catch (error) {
       console.error('Error fetching featured jobs:', error)
+      setFeaturedJobs(sampleJobs.filter(j => j.featured && j.status === 'active'))
     } finally {
       setLoading(false)
     }
+  }
+
+  if (!FEATURES.ENABLE_CAREERS) {
+    return (
+      <main className="min-h-screen bg-gray-50">
+        <Header />
+        <section className="py-24 sm:py-32 bg-white text-center px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto">
+            <div className="w-16 h-16 bg-school-green/10 text-school-green rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-4">
+              Careers Portal Offline
+            </h1>
+            <p className="text-gray-600 font-paragraph mb-8 leading-relaxed">
+              We do not currently have active job openings posted. If you are passionate about transformative rural education and would like to get involved, please explore our volunteer opportunities or contact us.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {FEATURES.ENABLE_VOLUNTEER ? (
+                <Link
+                  href="/volunteer"
+                  className="bg-school-green hover:bg-green-700 text-white font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Volunteer With Us
+                </Link>
+              ) : (
+                <Link
+                  href="/about/our-story"
+                  className="bg-school-green hover:bg-green-700 text-white font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Our Story
+                </Link>
+              )}
+              {FEATURES.ENABLE_CONTACT ? (
+                <Link
+                  href="/#contact"
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Contact Us
+                </Link>
+              ) : (
+                <Link
+                  href="/programs"
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Our Programs
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </main>
+    )
   }
 
   return (

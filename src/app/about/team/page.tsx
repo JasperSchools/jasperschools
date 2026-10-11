@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { teamMembers, createSlug, TeamMember } from '@/data/teamMembers'
+import { FEATURES } from '@/config/features'
 
 export default function TeamPage() {
   const boardMembers: TeamMember[] = [
@@ -667,20 +668,56 @@ As Operations Manager at Jasper, Sunday brings hands on experience in community 
             Together, we can empower communities and transform lives through quality education.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center px-4">
-            <Link 
-              href="/donate" 
-              className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 w-full sm:w-auto touch-manipulation"
-              style={{ padding: '14px 28px', minHeight: '48px' }}
-            >
-              Donate Now
-            </Link>
-            <Link 
-              href="/#contact" 
-              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 border border-black/20 w-full sm:w-auto touch-manipulation"
-              style={{ padding: '14px 28px', minHeight: '48px' }}
-            >
-              Get in Touch
-            </Link>
+            {FEATURES.ENABLE_DONATIONS ? (
+              <Link 
+                href="/donate" 
+                className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 w-full sm:w-auto touch-manipulation"
+                style={{ padding: '14px 28px', minHeight: '48px' }}
+              >
+                Donate Now
+              </Link>
+            ) : FEATURES.ENABLE_VOLUNTEER ? (
+              <Link 
+                href="/volunteer" 
+                className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 w-full sm:w-auto touch-manipulation"
+                style={{ padding: '14px 28px', minHeight: '48px' }}
+              >
+                Volunteer With Us
+              </Link>
+            ) : (
+              <Link 
+                href="/about/our-story" 
+                className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 w-full sm:w-auto touch-manipulation"
+                style={{ padding: '14px 28px', minHeight: '48px' }}
+              >
+                Our Story
+              </Link>
+            )}
+            {FEATURES.ENABLE_CONTACT ? (
+              <Link 
+                href="/#contact" 
+                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 border border-black/20 w-full sm:w-auto touch-manipulation"
+                style={{ padding: '14px 28px', minHeight: '48px' }}
+              >
+                Get in Touch
+              </Link>
+            ) : FEATURES.ENABLE_CHILDREN_SPONSORSHIP ? (
+              <Link 
+                href="/sponsor" 
+                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 border border-black/20 w-full sm:w-auto touch-manipulation"
+                style={{ padding: '14px 28px', minHeight: '48px' }}
+              >
+                Sponsor a Child
+              </Link>
+            ) : (
+              <Link 
+                href="/about/vision-mission" 
+                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-sm sm:text-base md:text-lg lg:text-xl transition-all duration-300 border border-black/20 w-full sm:w-auto touch-manipulation"
+                style={{ padding: '14px 28px', minHeight: '48px' }}
+              >
+                Vision & Mission
+              </Link>
+            )}
           </div>
         </div>
       </section>

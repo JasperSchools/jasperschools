@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FEATURES } from '@/config/features'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -43,17 +44,17 @@ export default function Header() {
   ]
 
   const getInvolvedDropdown = [
-    { name: 'Donate', href: '/donate'},
-    { name: 'Sponsor a Student', href: '/sponsor'},
+    ...(FEATURES.ENABLE_DONATIONS ? [{ name: 'Donate', href: '/donate'}] : []),
+    ...(FEATURES.ENABLE_CHILDREN_SPONSORSHIP ? [{ name: 'Sponsor a Student', href: '/sponsor'}] : []),
     { name: 'Visit Us', href: '/#visit'},
-    { name: 'Volunteer', href: '/volunteer'},
+    ...(FEATURES.ENABLE_VOLUNTEER ? [{ name: 'Volunteer', href: '/volunteer'}] : []),
     { name: 'Newsletter', href: '/#newsletter'},
   ]
 
   const navigation = [
     { name: 'Programs', href: '/programs' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Contact', href: '/#contact' },
+    ...(FEATURES.ENABLE_CAREERS ? [{ name: 'Careers', href: '/careers' }] : []),
+    ...(FEATURES.ENABLE_CONTACT ? [{ name: 'Contact', href: '/#contact' }] : []),
   ]
 
   const handleDropdownToggle = (dropdownName: string) => {
@@ -279,13 +280,36 @@ export default function Header() {
                   )}
                 </div>
 
-                {/* Donate Button */}
-                <Link
-                  href="/donate"
-                  className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-base px-4 xl:px-5 py-2 xl:py-2.5 transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap rounded-full"
-                >
-                  Donate
-                </Link>
+                {/* Action CTA Button */}
+                {FEATURES.ENABLE_DONATIONS ? (
+                  <Link
+                    href="/donate"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-base px-4 xl:px-5 py-2 xl:py-2.5 transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap rounded-full"
+                  >
+                    Donate
+                  </Link>
+                ) : FEATURES.ENABLE_CHILDREN_SPONSORSHIP ? (
+                  <Link
+                    href="/sponsor"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-base px-4 xl:px-5 py-2 xl:py-2.5 transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap rounded-full"
+                  >
+                    Sponsor a Child
+                  </Link>
+                ) : FEATURES.ENABLE_VOLUNTEER ? (
+                  <Link
+                    href="/volunteer"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-base px-4 xl:px-5 py-2 xl:py-2.5 transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap rounded-full"
+                  >
+                    Volunteer
+                  </Link>
+                ) : FEATURES.ENABLE_CONTACT ? (
+                  <Link
+                    href="/#contact"
+                    className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold text-base px-4 xl:px-5 py-2 xl:py-2.5 transition-all duration-200 border-0 cursor-pointer shadow-sm whitespace-nowrap rounded-full"
+                  >
+                    Contact Us
+                  </Link>
+                ) : null}
               </div>
             </div>
 
@@ -413,16 +437,44 @@ export default function Header() {
                     <div className="border-b border-gray-200"></div>
                   </div>
 
-                  {/* Mobile Donate Button */}
-                  <div style={{ animation: `slideInUp 0.4s ease-out 0.7s both` }}>
-                    <Link
-                      href="/donate"
-                      className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold block px-4 py-3 text-base transition-all duration-200 rounded-full mx-4 mt-2 text-center"
-                      onClick={closeMenu}
-                    >
-                      Donate
-                    </Link>
-                  </div>
+                  {/* Mobile Action CTA Button */}
+                  {(FEATURES.ENABLE_DONATIONS || FEATURES.ENABLE_CHILDREN_SPONSORSHIP || FEATURES.ENABLE_VOLUNTEER || FEATURES.ENABLE_CONTACT) && (
+                    <div style={{ animation: `slideInUp 0.4s ease-out 0.7s both` }}>
+                      {FEATURES.ENABLE_DONATIONS ? (
+                        <Link
+                          href="/donate"
+                          className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold block px-4 py-3 text-base transition-all duration-200 rounded-full mx-4 mt-2 text-center"
+                          onClick={closeMenu}
+                        >
+                          Donate
+                        </Link>
+                      ) : FEATURES.ENABLE_CHILDREN_SPONSORSHIP ? (
+                        <Link
+                          href="/sponsor"
+                          className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold block px-4 py-3 text-base transition-all duration-200 rounded-full mx-4 mt-2 text-center"
+                          onClick={closeMenu}
+                        >
+                          Sponsor a Child
+                        </Link>
+                      ) : FEATURES.ENABLE_VOLUNTEER ? (
+                        <Link
+                          href="/volunteer"
+                          className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold block px-4 py-3 text-base transition-all duration-200 rounded-full mx-4 mt-2 text-center"
+                          onClick={closeMenu}
+                        >
+                          Volunteer
+                        </Link>
+                      ) : FEATURES.ENABLE_CONTACT ? (
+                        <Link
+                          href="/#contact"
+                          className="bg-school-yellow hover:bg-yellow-500 text-gray-800 font-heading-semibold block px-4 py-3 text-base transition-all duration-200 rounded-full mx-4 mt-2 text-center"
+                          onClick={closeMenu}
+                        >
+                          Contact Us
+                        </Link>
+                      ) : null}
+                    </div>
+                  )}
                 </div>
               </div>
 

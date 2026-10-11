@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
+import { FEATURES } from '@/config/features'
 
 const partners = [
   {
@@ -182,12 +183,28 @@ export default function PartnersPage() {
               We're always looking for organizations and individuals who share our vision of transforming education in rural communities. Let's explore how we can work together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/#contact"
-                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-school-green font-heading-semibold rounded-full text-base sm:text-lg transition-all duration-300 px-8 py-4"
-              >
-                Get in Touch
-              </Link>
+              {FEATURES.ENABLE_CONTACT ? (
+                <Link
+                  href="/#contact"
+                  className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-school-green font-heading-semibold rounded-full text-base sm:text-lg transition-all duration-300 px-8 py-4"
+                >
+                  Get in Touch
+                </Link>
+              ) : FEATURES.ENABLE_VOLUNTEER ? (
+                <Link
+                  href="/volunteer"
+                  className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-school-green font-heading-semibold rounded-full text-base sm:text-lg transition-all duration-300 px-8 py-4"
+                >
+                  Volunteer With Us
+                </Link>
+              ) : (
+                <Link
+                  href="/programs"
+                  className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-school-green font-heading-semibold rounded-full text-base sm:text-lg transition-all duration-300 px-8 py-4"
+                >
+                  Our Programs
+                </Link>
+              )}
               <Link
                 href="/about/our-story"
                 className="inline-flex items-center justify-center bg-transparent hover:bg-white/10 text-white font-heading-semibold rounded-full text-base sm:text-lg transition-all duration-300 border-2 border-white px-8 py-4"

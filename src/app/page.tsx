@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { FEATURES } from '@/config/features'
 
 // About Section Component with Modern Animations
 function AboutSection() {
@@ -473,25 +474,49 @@ function GetInvolvedSection() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
 
   const waysToGetInvolved = [
-    {
+    ...(FEATURES.ENABLE_DONATIONS ? [{
       title: 'Donate',
       description: 'Support our mission with a financial contribution. Every dollar makes a difference in transforming lives.',
       link: '/donate',
       linkText: 'Donate Now'
-    },
-    {
+    }] : []),
+    ...(FEATURES.ENABLE_CHILDREN_SPONSORSHIP ? [{
       title: 'Sponsor a Child',
       description: 'Make a lasting impact by sponsoring a child\'s education and providing them with opportunities for a brighter future.',
       link: '/sponsor',
       linkText: 'Learn More'
-    },
-    {
+    }] : []),
+    ...(FEATURES.ENABLE_VOLUNTEER ? [{
       title: 'Volunteer',
       description: 'Share your time and skills to help us create meaningful change in the lives of children and families.',
       link: '/volunteer',
       linkText: 'Get Started'
+    }] : []),
+    {
+      title: 'Partner With Us',
+      description: 'Collaborate with Jasper Schools to create sustainable educational impact and empower future leaders.',
+      link: '/about/partners',
+      linkText: 'Learn More'
+    },
+    ...(FEATURES.ENABLE_CONTACT ? [{
+      title: 'Visit Our School',
+      description: 'Experience firsthand the vibrant learning environment and meet our incredible students and educators.',
+      link: '/#contact',
+      linkText: 'Plan a Visit'
+    }] : []),
+    {
+      title: 'Our Programs',
+      description: 'Discover how our curriculum, educators, and community initiatives support students.',
+      link: '/programs',
+      linkText: 'Explore Programs'
+    },
+    {
+      title: 'Our Story',
+      description: 'Learn more about the founding story and community mission of Jasper Primary School.',
+      link: '/about/our-story',
+      linkText: 'Read Our Story'
     }
-  ]
+  ].slice(0, 3)
 
   return (
     <section id="get-involved" ref={sectionRef} className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 border-t border-gray-200 bg-gray-50 relative overflow-hidden">

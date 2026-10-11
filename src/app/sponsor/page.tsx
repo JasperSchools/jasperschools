@@ -7,6 +7,8 @@ import Footer from '@/components/Footer'
 import PartnersLogoCarousel from '@/components/PartnersLogoCarousel'
 import { Child } from '@/types/database.types'
 import Image from 'next/image'
+import { FEATURES } from '@/config/features'
+import { sampleChildren } from '@/data/children'
 
 export default function SponsorPage() {
   const [children, setChildren] = useState<Child[]>([])
@@ -57,6 +59,12 @@ export default function SponsorPage() {
   }
 
   const fetchChildren = useCallback(async () => {
+    if (!FEATURES.ENABLE_DATABASE) {
+      setChildren(sampleChildren.filter((child: Child) => !child.archived))
+      setLoading(false)
+      return
+    }
+
     try {
       const res = await fetch('/api/children')
       if (!res.ok) {
@@ -77,11 +85,67 @@ export default function SponsorPage() {
       setChildren(data.filter((child: Child) => !child.archived))
     } catch (error) {
       console.error('Error fetching children:', error)
-      showModal('error', 'Error Loading Children', 'Failed to load children. Please check the console for details.')
+      setChildren(sampleChildren.filter((child: Child) => !child.archived))
     } finally {
       setLoading(false)
     }
   }, [])
+
+  if (!FEATURES.ENABLE_CHILDREN_SPONSORSHIP) {
+    return (
+      <main className="min-h-screen bg-white">
+        <Header />
+        <section className="py-24 sm:py-32 bg-gray-50 text-center px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto">
+            <div className="w-16 h-16 bg-school-green/10 text-school-green rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+              </svg>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-heading-bold text-gray-900 mb-4">
+              Student Sponsorship Unavailable
+            </h1>
+            <p className="text-gray-600 font-paragraph mb-8 leading-relaxed">
+              Student sponsorship profiles are currently unavailable. If you would like to support Jasper Primary School, please get in touch with our team or explore our volunteer opportunities.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {FEATURES.ENABLE_CONTACT ? (
+                <Link
+                  href="/#contact"
+                  className="bg-school-green hover:bg-green-700 text-white font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Contact Our Team
+                </Link>
+              ) : (
+                <Link
+                  href="/about/our-story"
+                  className="bg-school-green hover:bg-green-700 text-white font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Our Story
+                </Link>
+              )}
+              {FEATURES.ENABLE_VOLUNTEER ? (
+                <Link
+                  href="/volunteer"
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Volunteer With Us
+                </Link>
+              ) : (
+                <Link
+                  href="/programs"
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 font-heading-semibold px-6 py-3 rounded-full transition-colors"
+                >
+                  Our Programs
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </main>
+    )
+  }
 
   useEffect(() => {
     fetchChildren()

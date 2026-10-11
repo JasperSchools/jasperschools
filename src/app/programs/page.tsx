@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { FEATURES } from '@/config/features'
 
 export default function ProgramsPage() {
   return (
@@ -68,20 +69,56 @@ export default function ProgramsPage() {
             Help us continue providing quality education and empowering teachers to transform lives.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/donate" 
-              className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
-              style={{ padding: '16px 32px' }}
-            >
-              Donate Now
-            </Link>
-            <Link 
-              href="/sponsor" 
-              className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"
-              style={{ padding: '16px 32px' }}
-            >
-              Sponsor a Child
-            </Link>
+            {FEATURES.ENABLE_DONATIONS ? (
+              <Link 
+                href="/donate" 
+                className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                style={{ padding: '16px 32px' }}
+              >
+                Donate Now
+              </Link>
+            ) : FEATURES.ENABLE_VOLUNTEER ? (
+              <Link 
+                href="/volunteer" 
+                className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                style={{ padding: '16px 32px' }}
+              >
+                Volunteer With Us
+              </Link>
+            ) : (
+              <Link 
+                href="/about/our-story" 
+                className="inline-flex items-center justify-center bg-school-green hover:bg-green-700 text-white font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300"
+                style={{ padding: '16px 32px' }}
+              >
+                Discover Our Story
+              </Link>
+            )}
+            {FEATURES.ENABLE_CHILDREN_SPONSORSHIP ? (
+              <Link 
+                href="/sponsor" 
+                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"
+                style={{ padding: '16px 32px' }}
+              >
+                Sponsor a Child
+              </Link>
+            ) : FEATURES.ENABLE_CONTACT ? (
+              <Link 
+                href="/#contact" 
+                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"
+                style={{ padding: '16px 32px' }}
+              >
+                Contact Us
+              </Link>
+            ) : (
+              <Link 
+                href="/about/team" 
+                className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-heading-semibold rounded-full text-base sm:text-lg lg:text-xl transition-all duration-300 border border-black/20"
+                style={{ padding: '16px 32px' }}
+              >
+                Meet Our Team
+              </Link>
+            )}
           </div>
         </div>
       </section>
