@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  env: {
+    ENABLE_DATABASE: process.env.ENABLE_DATABASE,
+    ENABLE_DONATIONS: process.env.ENABLE_DONATIONS,
+    ENABLE_CHILDREN_SPONSORSHIP: process.env.ENABLE_CHILDREN_SPONSORSHIP,
+    ENABLE_VOLUNTEER: process.env.ENABLE_VOLUNTEER,
+    ENABLE_CONTACT: process.env.ENABLE_CONTACT,
+    ENABLE_CAREERS: process.env.ENABLE_CAREERS,
+    ENABLE_ADMIN: process.env.ENABLE_ADMIN,
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
